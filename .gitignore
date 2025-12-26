@@ -44,3 +44,4 @@ Thumbs.db
 
 # Stashed files
 stashed-other-app/
+package-lock.json
