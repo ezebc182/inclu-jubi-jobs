@@ -1,0 +1,191 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  role      UserRole @default(CANDIDATE)
+  email     String   @unique
+  emailVerified Boolean @default(false)
+  name      String?
+  image     String?
+
+  // Perfil candidato
+  isDisabled         Boolean         @default(false)
+  disabilityType     DisabilityType?
+  accessibilityNeeds String?
+  phoneNumber        String?
+  phoneNumberVerified Boolean?
+  location           String? // Ciudad/Provincia (ej: "CABA", "Córdoba")
+  birthYear          Int? // Para validar 60+/65+
+
+  // 3 preguntas
+  did      String? // ¿Qué hiciste?
+  canDo    String? // ¿Qué sabés hacer?
+  wantToDo String? // ¿Qué te gustaría hacer?
+
+  company      Company?
+  applications Application[]
+  sessions     Session[]
+  accounts     Account[]
+
+  @@index([email])
+  @@index([role])
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  token     String   @unique
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model Account {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accountId       String
+  providerId      String
+  accessToken     String?
+  refreshToken    String?
+  idToken         String?
+  expiresAt       DateTime?
+  password        String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@unique([providerId, accountId])
+  @@index([userId])
+}
+
+model Verification {
+  id         String   @id @default(cuid())
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([identifier, value])
+}
+
+model Company {
+  id         String   @id @default(cuid())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  ownerId    String   @unique
+  owner      User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  name       String
+  logoUrl    String?
+  website    String?
+  about      String?
+  location   String? // Provincia/Ciudad
+  isVerified Boolean  @default(false)
+
+  jobs Job[]
+
+  @@index([ownerId])
+}
+
+model Job {
+  id           String    @id @default(cuid())
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  companyId    String
+  company      Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  title        String
+  description  String
+  province     String // Normalizado a provincias AR
+  city         String?
+  schedule     Schedule // PART_TIME, FLEX, POR_DIA
+  modality     Modality // PRESENCIAL, HIBRIDO, REMOTO
+  salaryArsMin Int?
+  salaryArsMax Int?
+  status       JobStatus @default(PUBLISHED)
+  tags         String[] // p. ej. ["Atención al cliente","Administración"]
+
+  applicants Application[]
+
+  @@index([status, province, modality, schedule])
+  @@index([companyId])
+}
+
+model Application {
+  id        String    @id @default(cuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  jobId     String
+  job       Job       @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Respuestas guardadas por si el usuario las ajusta distinto a su perfil
+  did      String
+  canDo    String
+  wantToDo String
+
+  status AppStatus @default(SUBMITTED) // SUBMITTED, REVIEWED, CONTACTED, REJECTED
+  notes  String?
+
+  @@unique([jobId, userId]) // Una postulación por usuario por empleo
+  @@index([jobId, createdAt(sort: Desc)])
+  @@index([userId])
+}
+
+enum UserRole {
+  CANDIDATE
+  COMPANY
+  ADMIN
+}
+
+enum DisabilityType {
+  NONE
+  MOTRIZ
+  VISUAL
+  AUDITIVA
+  COGNITIVA
+  OTRA
+}
+
+enum Schedule {
+  PART_TIME
+  FLEX
+  POR_DIA
+}
+
+enum Modality {
+  PRESENCIAL
+  HIBRIDO
+  REMOTO
+}
+
+enum JobStatus {
+  DRAFT
+  PUBLISHED
+  PAUSED
+  CLOSED
+}
+
+enum AppStatus {
+  SUBMITTED
+  REVIEWED
+  CONTACTED
+  REJECTED
+}

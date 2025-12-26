@@ -1,0 +1,42 @@
+"use client";
+
+import { useState } from "react";
+import { LargeToggleRole } from "@/components/forms/LargeToggleRole";
+import { useRouter } from "next/navigation";
+
+export function OnboardingSelector() {
+  const router = useRouter();
+  const [role, setRole] = useState<"CANDIDATE" | "COMPANY">("CANDIDATE");
+
+  const handleContinue = () => {
+    if (role === "CANDIDATE") {
+      router.push("/onboarding/candidato");
+    } else {
+      router.push("/onboarding/empresa");
+    }
+  };
+
+  return (
+    <div className="mx-auto max-w-2xl px-4 py-12 transition-colors dark:bg-gray-900">
+      <div className="rounded-lg border-2 border-gray-300 bg-white p-8 transition-colors dark:border-gray-700 dark:bg-gray-800">
+        <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-gray-100">
+          ¡Bienvenido a JubiJobs!
+        </h1>
+        <p className="mb-8 text-xl text-gray-700 dark:text-gray-300">
+          Primero, contanos qué querés hacer:
+        </p>
+
+        <div className="mb-8">
+          <LargeToggleRole value={role} onChange={setRole} />
+        </div>
+
+        <button
+          onClick={handleContinue}
+          className="w-full min-h-[52px] rounded-lg bg-primary-600 px-8 py-4 text-xl font-bold text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
+        >
+          Continuar
+        </button>
+      </div>
+    </div>
+  );
+}

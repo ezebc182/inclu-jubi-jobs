@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables según BRANDING.md */
+:root {
+  --azure-trust: #2563EB;
+  --gray-900: #111827;
+  --gray-50: #F9FAFB;
+}
+
+body {
+  color: var(--gray-900);
+  background-color: var(--gray-50);
+  font-size: 18px; /* Mínimo según BRANDING.md */
+  line-height: 1.7;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode colors */
+.dark body {
+  color: #f3f4f6; /* gray-100 */
+  background-color: #111827; /* gray-900 */
+}
+
+/* Accesibilidad: focus visible con Azure Trust */
+*:focus-visible {
+  outline: 3px solid var(--azure-trust);
+  outline-offset: 2px;
+}
+
+/* Skip to content link - accesibilidad WCAG */
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 1rem 1.5rem;
+  background-color: var(--azure-trust);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 0.5rem;
+}
+
+.skip-to-content:focus {
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1rem;
+}
