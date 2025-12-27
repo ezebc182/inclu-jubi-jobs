@@ -4,6 +4,7 @@ import { useState } from "react";
 import { APP_STATUS_LABELS, formatDate } from "@/lib/constants";
 import { contactCandidate } from "@/app/actions/applications";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 interface Application {
   id: string;
@@ -33,15 +34,18 @@ export function ApplicationsList({ applications }: { applications: Application[]
   const [expanded, setExpanded] = useState<string | null>(null);
 
   const handleContact = async (applicationId: string) => {
-    if (!confirm("¿Enviar solicitud de contacto al candidato?")) return;
-
     setContacting(applicationId);
     try {
       await contactCandidate(applicationId);
-      alert("¡Solicitud de contacto enviada!");
+      toast.success("¡Solicitud de contacto enviada!", {
+        description: "El candidato recibirá un email con tus datos de contacto",
+        duration: 4000,
+      });
       router.refresh();
     } catch (error: any) {
-      alert(`Error: ${error.message}`);
+      toast.error("Error al enviar contacto", {
+        description: error.message || "Por favor, intentá nuevamente",
+      });
     } finally {
       setContacting(null);
     }

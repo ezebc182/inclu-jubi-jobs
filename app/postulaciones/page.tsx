@@ -42,10 +42,10 @@ export default async function PostulacionesPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
       <header className="mb-8">
-        <h1 className="mb-4 text-4xl font-bold text-gray-900">
+        <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-gray-100">
           Mis postulaciones
         </h1>
-        <p className="text-xl text-gray-700">
+        <p className="text-xl text-gray-700 dark:text-gray-300">
           {applications.length}{" "}
           {applications.length === 1
             ? "postulación realizada"
@@ -75,36 +75,36 @@ export default async function PostulacionesPage() {
         </div>
       )}
 
-      <section className="mt-12 rounded-lg bg-primary-50 p-6">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900">
+      <section className="mt-12 rounded-lg bg-primary-50 p-6 dark:bg-gray-800 dark:border dark:border-gray-700">
+        <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
           Estados de las postulaciones
         </h2>
-        <ul className="space-y-3 text-lg text-gray-700">
+        <ul className="space-y-3 text-lg text-gray-700 dark:text-gray-300">
           <li className="flex items-start gap-3">
-            <span className="text-2xl">📤</span>
+            <span className="text-2xl" aria-hidden="true">📤</span>
             <div>
-              <strong>Enviada:</strong> Tu postulación fue recibida y la
+              <strong className="dark:text-gray-100">Enviada:</strong> Tu postulación fue recibida y la
               empresa la va a revisar.
             </div>
           </li>
           <li className="flex items-start gap-3">
-            <span className="text-2xl">👀</span>
+            <span className="text-2xl" aria-hidden="true">👀</span>
             <div>
-              <strong>Revisada:</strong> La empresa vio tu postulación y está
+              <strong className="dark:text-gray-100">Revisada:</strong> La empresa vio tu postulación y está
               evaluando tu perfil.
             </div>
           </li>
           <li className="flex items-start gap-3">
-            <span className="text-2xl">✅</span>
+            <span className="text-2xl" aria-hidden="true">✅</span>
             <div>
-              <strong>Contactado/a:</strong> ¡La empresa se interesó en tu
+              <strong className="dark:text-gray-100">Contactado/a:</strong> ¡La empresa se interesó en tu
               perfil! Deberías recibir un email con sus datos de contacto.
             </div>
           </li>
           <li className="flex items-start gap-3">
-            <span className="text-2xl">❌</span>
+            <span className="text-2xl" aria-hidden="true">❌</span>
             <div>
-              <strong>Rechazada:</strong> La empresa decidió no continuar con
+              <strong className="dark:text-gray-100">Rechazada:</strong> La empresa decidió no continuar con
               tu postulación esta vez. Seguí buscando otras oportunidades.
             </div>
           </li>

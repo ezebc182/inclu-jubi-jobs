@@ -4,6 +4,7 @@ import { useState } from "react";
 import { MODALITIES, SCHEDULES } from "@/lib/constants";
 import { createJob } from "@/app/actions/jobs";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export function JobForm() {
   const router = useRouter();
@@ -32,7 +33,10 @@ export function JobForm() {
     try {
       const result = await createJob(formData);
       if (result.success) {
-        alert("¡Empleo publicado exitosamente!");
+        toast.success("¡Empleo publicado exitosamente!", {
+          description: "Los candidatos ya pueden ver tu oferta laboral",
+          duration: 4000,
+        });
         (e.target as HTMLFormElement).reset();
         setTags([]);
         // Redirigir a la página /empresa que mostrará la tab de empleos por defecto
@@ -40,7 +44,10 @@ export function JobForm() {
         router.refresh();
       }
     } catch (error: any) {
-      alert(`Error: ${error.message}`);
+      toast.error("Error al publicar empleo", {
+        description: error.message || "Por favor, intentá nuevamente",
+        duration: 5000,
+      });
     } finally {
       setIsSubmitting(false);
     }

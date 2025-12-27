@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import { sendOTPWithRateLimit } from "@/app/actions/auth";
+import { toast } from "sonner";
 
 export function PhoneLogin() {
   const router = useRouter();
@@ -32,12 +34,31 @@ export function PhoneLogin() {
         ? `+54${cleanPhone.substring(1)}`
         : `+54${cleanPhone}`;
 
+      // Check rate limit before sending OTP
+      const rateLimitResult = await sendOTPWithRateLimit(formattedPhone);
+
+      if (!rateLimitResult.success) {
+        setError(rateLimitResult.error!);
+        toast.error("Demasiados intentos", {
+          description: rateLimitResult.error,
+          duration: 6000,
+        });
+        setLoading(false);
+        return;
+      }
+
+      // Rate limit passed - send OTP
       await authClient.phoneNumber.sendOtp({
         phoneNumber: formattedPhone,
       });
 
       setPhoneNumber(formattedPhone);
       setStep("otp");
+
+      toast.info("Código enviado", {
+        description: `Revisá tu teléfono. Tenés ${rateLimitResult.remaining} intentos más en los próximos 15 minutos.`,
+        duration: 5000,
+      });
     } catch (err: any) {
       console.error("Error sending OTP:", err);
       setError(err?.message || "Error al enviar el código. Intentá de nuevo.");

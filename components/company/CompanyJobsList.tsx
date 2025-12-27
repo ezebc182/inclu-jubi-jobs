@@ -4,6 +4,7 @@ import { useState } from "react";
 import { formatDate, formatCurrency, JOB_STATUS_LABELS } from "@/lib/constants";
 import { updateJobStatus } from "@/app/actions/jobs";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 interface Job {
   id: string;
@@ -24,14 +25,17 @@ export function CompanyJobsList({ jobs }: { jobs: Job[] }) {
   const [updating, setUpdating] = useState<string | null>(null);
 
   const handleStatusChange = async (jobId: string, newStatus: "PUBLISHED" | "PAUSED" | "CLOSED") => {
-    if (!confirm(`¿Estás seguro de cambiar el estado del empleo?`)) return;
-
     setUpdating(jobId);
     try {
       await updateJobStatus(jobId, newStatus);
+      toast.success("Estado actualizado", {
+        description: `El empleo ahora está ${JOB_STATUS_LABELS[newStatus].toLowerCase()}`,
+      });
       router.refresh();
     } catch (error: any) {
-      alert(`Error: ${error.message}`);
+      toast.error("Error al actualizar estado", {
+        description: error.message || "Por favor, intentá nuevamente",
+      });
     } finally {
       setUpdating(null);
     }
