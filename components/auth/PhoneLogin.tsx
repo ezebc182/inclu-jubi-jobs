@@ -39,9 +39,9 @@ export function PhoneLogin() {
 
       if (!rateLimitResult.success) {
         setError(rateLimitResult.error!);
-        toast.error("Demasiados intentos", {
+        toast.error("⏸️ Esperá antes de intentar de nuevo", {
           description: rateLimitResult.error,
-          duration: 6000,
+          duration: 7000,
         });
         setLoading(false);
         return;
@@ -55,9 +55,9 @@ export function PhoneLogin() {
       setPhoneNumber(formattedPhone);
       setStep("otp");
 
-      toast.info("Código enviado", {
-        description: `Revisá tu teléfono. Tenés ${rateLimitResult.remaining} intentos más en los próximos 15 minutos.`,
-        duration: 5000,
+      toast.info("📱 Código enviado a tu teléfono", {
+        description: `Revisá tus mensajes SMS. El código tiene 6 dígitos. Tenés ${rateLimitResult.remaining} intentos más disponibles.`,
+        duration: 6000,
       });
     } catch (err: any) {
       console.error("Error sending OTP:", err);

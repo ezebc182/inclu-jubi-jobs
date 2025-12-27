@@ -175,16 +175,23 @@ export default async function EmpleoDetailPage({
         )}
 
         {hasApplied && (
-          <div className="rounded-lg border-2 border-green-300 bg-green-50 p-6 text-center transition-colors dark:border-green-700 dark:bg-green-950">
-            <p className="text-2xl font-bold text-green-800 dark:text-green-300">
-              ✓ Ya te postulaste a este empleo
+          <div className="rounded-xl border-4 border-green-400 bg-gradient-to-b from-green-50 to-green-100 p-10 text-center shadow-lg transition-colors dark:border-green-600 dark:from-green-950 dark:to-green-900">
+            <div className="mb-4 text-6xl" aria-hidden="true">✅</div>
+            <p className="mb-4 text-3xl font-bold text-green-900 dark:text-green-200">
+              ¡Postulación enviada exitosamente!
             </p>
-            <p className="mt-2 text-lg text-green-700 dark:text-green-400">
-              Revisá el estado en{" "}
-              <a href="/postulaciones" className="font-semibold underline">
-                Mis postulaciones
-              </a>
+            <p className="mb-2 text-xl text-green-800 dark:text-green-300">
+              La empresa va a revisar tu perfil y las 3 respuestas que enviaste.
             </p>
+            <p className="mb-6 text-lg text-green-700 dark:text-green-400">
+              Te vamos a notificar por email si hay novedades.
+            </p>
+            <a
+              href="/postulaciones"
+              className="inline-flex min-h-[56px] items-center justify-center rounded-lg bg-primary-600 px-8 py-4 text-lg font-semibold text-white shadow-sm transition-colors hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
+            >
+              Ver todas mis postulaciones
+            </a>
           </div>
         )}
 

@@ -144,9 +144,16 @@ export function ThreeQuestionsForm({
       <button
         type="submit"
         disabled={isSubmitting}
-        className="min-h-[52px] rounded-lg bg-primary-600 px-8 py-4 text-xl font-bold text-white hover:bg-primary-700 disabled:opacity-50 focus:outline-none focus:ring-4 focus:ring-primary-300"
+        className="flex min-h-[52px] items-center justify-center gap-3 rounded-lg bg-primary-600 px-8 py-4 text-xl font-bold text-white hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-70 focus:outline-none focus:ring-4 focus:ring-primary-300"
       >
-        {isSubmitting ? "Enviando..." : submitLabel}
+        {isSubmitting ? (
+          <>
+            <div className="h-6 w-6 animate-spin rounded-full border-3 border-white border-t-transparent" aria-hidden="true" />
+            <span>Enviando...</span>
+          </>
+        ) : (
+          submitLabel
+        )}
       </button>
     </form>
   );

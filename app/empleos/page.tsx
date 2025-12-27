@@ -1,6 +1,9 @@
 import { prisma } from "@/lib/db";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 import { JobCard } from "@/components/jobs/JobCard";
 import { JobFilters } from "@/components/jobs/JobFilters";
+import { SavedSearches } from "@/components/jobs/SavedSearches";
 import { EmptyState } from "@/components/ui/EmptyState";
 
 export const metadata = {
@@ -35,6 +38,24 @@ export default async function EmpleosPage({
     take: 50,
   });
 
+  // Obtener búsquedas guardadas del usuario si está autenticado
+  const session = await auth.api.getSession({ headers: await headers() });
+  let savedSearches: any[] = [];
+
+  if (session) {
+    const user = await prisma.user.findUnique({
+      where: { id: session.user.id },
+      select: { role: true },
+    });
+
+    if (user?.role === "CANDIDATE") {
+      savedSearches = await prisma.savedSearch.findMany({
+        where: { userId: session.user.id },
+        orderBy: { createdAt: "desc" },
+      });
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 py-12 transition-colors dark:bg-gray-900">
       <div className="mx-auto max-w-7xl px-4">
@@ -47,7 +68,19 @@ export default async function EmpleosPage({
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
         <aside className="lg:col-span-1">
-          <JobFilters />
+          <div className="flex flex-col gap-6">
+            <JobFilters />
+            {session && savedSearches && (
+              <SavedSearches
+                searches={savedSearches}
+                currentFilters={{
+                  province: params.provincia,
+                  modality: params.modalidad,
+                  schedule: params.jornada,
+                }}
+              />
+            )}
+          </div>
         </aside>
 
         <main className="lg:col-span-3">

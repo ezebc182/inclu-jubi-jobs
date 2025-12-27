@@ -16,15 +16,20 @@ export function RootClientWrapper({
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <Toaster
-        position="top-right"
+        position="top-center"
         richColors
         closeButton
+        expand={true}
         toastOptions={{
           style: {
-            fontSize: '16px',
-            minHeight: '60px',
+            fontSize: '18px',
+            minHeight: '80px',
+            padding: '20px',
+            fontWeight: '600',
+            maxWidth: '600px',
           },
-          className: 'text-lg',
+          className: 'text-xl',
+          duration: 5000,
         }}
       />
       <a href="#main-content" className="skip-to-content">

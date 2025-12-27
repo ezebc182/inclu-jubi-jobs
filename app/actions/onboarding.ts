@@ -51,6 +51,7 @@ export async function completeOnboardingCompany(formData: FormData) {
     website: (formData.get("website") as string) || "",
     about: (formData.get("about") as string) || undefined,
     location: (formData.get("location") as string) || undefined,
+    whatsappNumber: (formData.get("whatsappNumber") as string) || undefined,
   };
 
   const validated = companyProfileSchema.parse(data);
@@ -75,6 +76,7 @@ export async function completeOnboardingCompany(formData: FormData) {
           website: validated.website,
           about: validated.about,
           location: validated.location,
+          whatsappNumber: validated.whatsappNumber,
         },
       });
     });
@@ -93,6 +95,7 @@ export async function completeOnboardingCompany(formData: FormData) {
           website: validated.website,
           about: validated.about,
           location: validated.location,
+          whatsappNumber: validated.whatsappNumber,
         },
       });
     });

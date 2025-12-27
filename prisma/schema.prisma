@@ -26,6 +26,7 @@ model User {
   accessibilityNeeds String?
   phoneNumber        String?
   phoneNumberVerified Boolean?
+  whatsappNumber     String? // Número de WhatsApp (puede ser distinto al teléfono)
   location           String? // Ciudad/Provincia (ej: "CABA", "Córdoba")
   birthYear          Int? // Para validar 60+/65+
 
@@ -38,9 +39,26 @@ model User {
   applications Application[]
   sessions     Session[]
   accounts     Account[]
+  savedSearches SavedSearch[]
 
   @@index([email])
   @@index([role])
+}
+
+model SavedSearch {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String   // Nombre descriptivo de la búsqueda
+
+  // Filtros guardados
+  province  String?
+  modality  Modality?
+  schedule  Schedule?
+
+  @@index([userId])
 }
 
 model Session {
@@ -97,6 +115,7 @@ model Company {
   website    String?
   about      String?
   location   String? // Provincia/Ciudad
+  whatsappNumber String? // Número de WhatsApp de contacto
   isVerified Boolean  @default(false)
 
   jobs Job[]

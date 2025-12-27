@@ -17,6 +17,7 @@ interface Application {
     name: string | null;
     email: string;
     phoneNumber: string | null;
+    whatsappNumber: string | null;
     location: string | null;
     birthYear: number | null;
     isDisabled: boolean;
@@ -37,14 +38,16 @@ export function ApplicationsList({ applications }: { applications: Application[]
     setContacting(applicationId);
     try {
       await contactCandidate(applicationId);
-      toast.success("¡Solicitud de contacto enviada!", {
-        description: "El candidato recibirá un email con tus datos de contacto",
-        duration: 4000,
+      const candidateName = applications.find(a => a.id === applicationId)?.user.name || "El candidato";
+      toast.success("✅ ¡Solicitud enviada exitosamente!", {
+        description: `${candidateName} recibirá un email con tus datos de contacto y podrá comunicarse con vos`,
+        duration: 6000,
       });
       router.refresh();
     } catch (error: any) {
-      toast.error("Error al enviar contacto", {
-        description: error.message || "Por favor, intentá nuevamente",
+      toast.error("❌ No se pudo enviar la solicitud", {
+        description: error.message || "Por favor, intentá nuevamente en unos momentos",
+        duration: 6000,
       });
     } finally {
       setContacting(null);
@@ -149,6 +152,16 @@ export function ApplicationsList({ applications }: { applications: Application[]
           )}
 
           <div className="flex flex-wrap gap-3">
+            {app.user.whatsappNumber && (
+              <a
+                href={`https://wa.me/${app.user.whatsappNumber.replace(/\D/g, '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg bg-green-600 px-4 py-2 text-base font-semibold text-white hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300"
+              >
+                💬 WhatsApp
+              </a>
+            )}
             {app.user.phoneNumber && (
               <a
                 href={`tel:${app.user.phoneNumber}`}

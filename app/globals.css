@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Font size scaling for accessibility */
+html.font-size-large {
+  font-size: 112.5%; /* 18px base */
+}
+
+html.font-size-xl {
+  font-size: 125%; /* 20px base */
+}
+
 /* Variables según BRANDING.md */
 :root {
   --azure-trust: #2563EB;

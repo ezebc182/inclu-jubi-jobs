@@ -28,13 +28,15 @@ export function CompanyJobsList({ jobs }: { jobs: Job[] }) {
     setUpdating(jobId);
     try {
       await updateJobStatus(jobId, newStatus);
-      toast.success("Estado actualizado", {
-        description: `El empleo ahora está ${JOB_STATUS_LABELS[newStatus].toLowerCase()}`,
+      toast.success("✅ Estado actualizado correctamente", {
+        description: `Tu empleo "${jobs.find(j => j.id === jobId)?.title}" ahora está ${JOB_STATUS_LABELS[newStatus].toLowerCase()}`,
+        duration: 6000,
       });
       router.refresh();
     } catch (error: any) {
-      toast.error("Error al actualizar estado", {
-        description: error.message || "Por favor, intentá nuevamente",
+      toast.error("❌ No se pudo actualizar el estado", {
+        description: error.message || "Por favor, intentá nuevamente en unos momentos",
+        duration: 6000,
       });
     } finally {
       setUpdating(null);

@@ -37,6 +37,7 @@ export const companyProfileSchema = z.object({
   website: z.string().url("Ingresá una URL válida").optional().or(z.literal("")),
   about: z.string().max(1000, "Máximo 1000 caracteres").optional(),
   location: z.string().optional(),
+  whatsappNumber: z.string().optional(),
 });
 
 export const jobFormSchema = z.object({

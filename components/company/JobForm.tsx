@@ -33,9 +33,9 @@ export function JobForm() {
     try {
       const result = await createJob(formData);
       if (result.success) {
-        toast.success("¡Empleo publicado exitosamente!", {
-          description: "Los candidatos ya pueden ver tu oferta laboral",
-          duration: 4000,
+        toast.success("✅ ¡Empleo publicado exitosamente!", {
+          description: "Tu oferta laboral ya está visible para todos los candidatos. Vas a recibir notificaciones cuando alguien se postule",
+          duration: 7000,
         });
         (e.target as HTMLFormElement).reset();
         setTags([]);
@@ -44,9 +44,9 @@ export function JobForm() {
         router.refresh();
       }
     } catch (error: any) {
-      toast.error("Error al publicar empleo", {
-        description: error.message || "Por favor, intentá nuevamente",
-        duration: 5000,
+      toast.error("❌ No se pudo publicar el empleo", {
+        description: error.message || "Por favor, verificá los datos del formulario e intentá nuevamente",
+        duration: 6000,
       });
     } finally {
       setIsSubmitting(false);
@@ -265,9 +265,16 @@ export function JobForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="min-h-[52px] rounded-lg bg-primary-600 px-8 py-4 text-xl font-bold text-white hover:bg-primary-700 disabled:opacity-50 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
+        className="flex min-h-[52px] items-center justify-center gap-3 rounded-lg bg-primary-600 px-8 py-4 text-xl font-bold text-white hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-70 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
       >
-        {isSubmitting ? "Publicando..." : "Publicar empleo"}
+        {isSubmitting ? (
+          <>
+            <div className="h-6 w-6 animate-spin rounded-full border-3 border-white border-t-transparent" aria-hidden="true" />
+            <span>Publicando empleo...</span>
+          </>
+        ) : (
+          "Publicar empleo"
+        )}
       </button>
     </form>
   );

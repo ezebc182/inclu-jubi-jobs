@@ -70,6 +70,22 @@ export default async function OnboardingEmpresaPage() {
           </div>
 
           <div className="flex flex-col gap-2">
+            <label htmlFor="whatsappNumber" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+              WhatsApp de contacto (opcional)
+            </label>
+            <p className="text-base text-gray-600 dark:text-gray-400">
+              Los candidatos podrán contactarte por WhatsApp para consultas sobre el empleo
+            </p>
+            <input
+              type="tel"
+              id="whatsappNumber"
+              name="whatsappNumber"
+              className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+              placeholder="+54 11 1234-5678"
+            />
+          </div>
+
+          <div className="flex flex-col gap-2">
             <label htmlFor="location" className="text-lg font-bold text-gray-900 dark:text-gray-100">
               Ubicación principal (opcional)
             </label>

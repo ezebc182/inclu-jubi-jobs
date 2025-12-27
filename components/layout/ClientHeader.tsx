@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { FontSizeControl } from "@/components/ui/FontSizeControl";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -47,8 +48,15 @@ export function ClientHeader({ session }: ClientHeaderProps) {
             >
               Empresas
             </Link>
+            <Link
+              href="/ayuda"
+              className="min-h-[48px] rounded-lg px-5 py-3 text-lg font-semibold text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-gray-300 dark:hover:bg-gray-700"
+            >
+              Ayuda
+            </Link>
 
             <ThemeToggle />
+            <FontSizeControl />
 
             {session ? (
               <>
@@ -120,6 +128,13 @@ export function ClientHeader({ session }: ClientHeaderProps) {
               className="min-h-[48px] rounded-lg px-5 py-3 text-lg font-semibold text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-gray-300 dark:hover:bg-gray-700"
             >
               Empresas
+            </Link>
+            <Link
+              href="/ayuda"
+              onClick={() => setMobileMenuOpen(false)}
+              className="min-h-[48px] rounded-lg px-5 py-3 text-lg font-semibold text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-gray-300 dark:hover:bg-gray-700"
+            >
+              Ayuda
             </Link>
 
             <div className="flex items-center justify-between border-t-2 border-gray-200 pt-3 dark:border-gray-700">
