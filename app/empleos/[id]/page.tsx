@@ -1,10 +1,16 @@
+import type { Metadata } from "next";
 import { prisma } from "@/lib/db";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { formatCurrency, formatDate } from "@/lib/constants";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
+import {
+  getCurrentPortal,
+  getCurrentPortalConfig,
+  publicJobFilter,
+} from "@/lib/portal";
 import { ThreeQuestionsForm } from "@/components/forms/ThreeQuestionsForm";
-import { submitApplication } from "@/app/actions/applications";
+import { applyToJob } from "@/app/actions/applications";
 
 const MODALITY_LABELS: Record<string, string> = {
   PRESENCIAL: "Presencial",
@@ -18,22 +24,40 @@ const SCHEDULE_LABELS: Record<string, string> = {
   POR_DIA: "Por día",
 };
 
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
-  const job = await prisma.job.findUnique({
-    where: { id },
+/**
+ * Busca un aviso visible EN ESTE PORTAL. Un aviso de InclúJobs no debe ser
+ * accesible desde jubijobs.com ni con la URL directa.
+ */
+async function findVisibleJob(id: string) {
+  const portal = await getCurrentPortal();
+  return prisma.job.findFirst({
+    where: { id, ...publicJobFilter(portal) },
     include: { company: true },
   });
+}
 
-  if (!job) {
-    return {
-      title: "Empleo no encontrado - JubiJobs",
-    };
-  }
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const [job, portal] = await Promise.all([
+    findVisibleJob(id),
+    getCurrentPortalConfig(),
+  ]);
+
+  if (!job) return { title: "Empleo no encontrado" };
 
   return {
-    title: `${job.title} - ${job.company.name} - JubiJobs`,
-    description: job.description.substring(0, 160),
+    title: `${job.title} — ${job.company.name}`,
+    description: job.description.slice(0, 160),
+    openGraph: {
+      title: `${job.title} — ${job.company.name}`,
+      description: job.description.slice(0, 160),
+      siteName: portal.name,
+      type: "article",
+    },
   };
 }
 
@@ -43,17 +67,14 @@ export default async function EmpleoDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const job = await prisma.job.findUnique({
-    where: { id },
-    include: { company: true },
-  });
+  const job = await findVisibleJob(id);
 
-  if (!job || job.status !== "PUBLISHED") notFound();
+  if (!job) notFound();
 
   const session = await auth.api.getSession({ headers: await headers() });
 
   let hasApplied = false;
-  let user: any = null;
+  let user: Awaited<ReturnType<typeof prisma.user.findUnique>> = null;
   let isCandidate = false;
 
   if (session) {
@@ -62,34 +83,25 @@ export default async function EmpleoDetailPage({
 
     if (isCandidate) {
       const application = await prisma.application.findUnique({
-        where: {
-          jobId_userId: {
-            jobId: id,
-            userId: session.user.id,
-          },
-        },
+        where: { jobId_userId: { jobId: id, userId: session.user.id } },
       });
       hasApplied = !!application;
     }
   }
 
-  const handleSubmit = async (answers: {
-    did: string;
-    canDo: string;
-    wantToDo: string;
-  }) => {
-    "use server";
-    const result = await submitApplication(id, answers);
-    if (result.success) {
-      redirect(`/empleos/${id}?applied=true`);
-    }
-  };
+  const hasAccessibilityInfo =
+    job.hasAccessibleSite ||
+    job.supportsFlexHours ||
+    job.isRemoteFriendly ||
+    Boolean(job.accessibilityNotes);
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 transition-colors dark:bg-gray-900">
       <article>
         <header className="mb-8">
-          <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-gray-100">{job.title}</h1>
+          <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-gray-100">
+            {job.title}
+          </h1>
           <div className="flex flex-col gap-3 text-lg text-gray-700 dark:text-gray-300">
             <div>
               <strong>Empresa:</strong> {job.company.name}
@@ -120,7 +132,7 @@ export default async function EmpleoDetailPage({
               {job.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full bg-primary-100 px-4 py-2 text-base font-semibold text-primary-700 dark:bg-primary-950 dark:text-primary-300"
+                  className="dark:bg-primary-950 rounded-full bg-primary-100 px-4 py-2 text-base font-semibold text-primary-700 dark:text-primary-300"
                 >
                   {tag}
                 </span>
@@ -138,12 +150,57 @@ export default async function EmpleoDetailPage({
           </div>
         </section>
 
+        {hasAccessibilityInfo && (
+          <section
+            aria-labelledby="accesibilidad-puesto"
+            className="dark:bg-primary-950 mb-12 rounded-lg border-2 border-primary-200 bg-primary-50 p-6 dark:border-primary-800"
+          >
+            <h2
+              id="accesibilidad-puesto"
+              className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100"
+            >
+              Condiciones de accesibilidad
+            </h2>
+            <ul className="space-y-3 text-lg text-gray-800 dark:text-gray-200">
+              {job.hasAccessibleSite && (
+                <li className="flex items-start gap-3">
+                  <span aria-hidden="true">✓</span>
+                  <span>
+                    Instalaciones adaptadas (acceso, ascensor y baño accesible)
+                  </span>
+                </li>
+              )}
+              {job.supportsFlexHours && (
+                <li className="flex items-start gap-3">
+                  <span aria-hidden="true">✓</span>
+                  <span>
+                    Horarios flexibles, ajustables según tus necesidades
+                  </span>
+                </li>
+              )}
+              {job.isRemoteFriendly && (
+                <li className="flex items-start gap-3">
+                  <span aria-hidden="true">✓</span>
+                  <span>Se puede trabajar de forma remota</span>
+                </li>
+              )}
+            </ul>
+            {job.accessibilityNotes && (
+              <p className="mt-4 whitespace-pre-wrap text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                {job.accessibilityNotes}
+              </p>
+            )}
+          </section>
+        )}
+
         {job.company.about && (
           <section className="mb-12 rounded-lg bg-gray-50 p-6 transition-colors dark:bg-gray-800">
             <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
               Sobre {job.company.name}
             </h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300">{job.company.about}</p>
+            <p className="text-lg text-gray-700 dark:text-gray-300">
+              {job.company.about}
+            </p>
             {job.company.website && (
               <a
                 href={job.company.website}
@@ -158,7 +215,7 @@ export default async function EmpleoDetailPage({
         )}
 
         {isCandidate && !hasApplied && (
-          <section className="rounded-lg border-2 border-primary-300 bg-primary-50 p-8 transition-colors dark:border-primary-700 dark:bg-primary-950">
+          <section className="dark:bg-primary-950 rounded-lg border-2 border-primary-300 bg-primary-50 p-8 transition-colors dark:border-primary-700">
             <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">
               Postularme (3 preguntas)
             </h2>
@@ -168,7 +225,7 @@ export default async function EmpleoDetailPage({
                 canDo: user?.canDo || "",
                 wantToDo: user?.wantToDo || "",
               }}
-              onSubmit={handleSubmit}
+              action={applyToJob.bind(null, id)}
               submitLabel="Enviar postulación"
             />
           </section>
@@ -176,7 +233,9 @@ export default async function EmpleoDetailPage({
 
         {hasApplied && (
           <div className="rounded-xl border-4 border-green-400 bg-gradient-to-b from-green-50 to-green-100 p-10 text-center shadow-lg transition-colors dark:border-green-600 dark:from-green-950 dark:to-green-900">
-            <div className="mb-4 text-6xl" aria-hidden="true">✅</div>
+            <div className="mb-4 text-6xl" aria-hidden="true">
+              ✅
+            </div>
             <p className="mb-4 text-3xl font-bold text-green-900 dark:text-green-200">
               ¡Postulación enviada exitosamente!
             </p>
@@ -196,7 +255,7 @@ export default async function EmpleoDetailPage({
         )}
 
         {!session && (
-          <div className="rounded-lg border-2 border-primary-300 bg-primary-50 p-8 text-center transition-colors dark:border-primary-700 dark:bg-primary-950">
+          <div className="dark:bg-primary-950 rounded-lg border-2 border-primary-300 bg-primary-50 p-8 text-center transition-colors dark:border-primary-700">
             <p className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
               Para postularte, ingresá primero
             </p>

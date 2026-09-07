@@ -20,6 +20,14 @@ model User {
   name      String?
   image     String?
 
+  // Portal por el que se registró. Un candidato solo ve contenido de su portal.
+  portal    Portal   @default(JUBI)
+
+  // Moderación desde /admin
+  isActive        Boolean   @default(true)
+  suspendedAt     DateTime?
+  suspendedReason String?
+
   // Perfil candidato
   isDisabled         Boolean         @default(false)
   disabilityType     DisabilityType?
@@ -43,6 +51,8 @@ model User {
 
   @@index([email])
   @@index([role])
+  @@index([portal, role])
+  @@index([createdAt(sort: Desc)])
 }
 
 model SavedSearch {
@@ -53,12 +63,16 @@ model SavedSearch {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   name      String   // Nombre descriptivo de la búsqueda
 
+  // Portal en el que se guardó la búsqueda
+  portal    Portal   @default(JUBI)
+
   // Filtros guardados
   province  String?
   modality  Modality?
   schedule  Schedule?
 
   @@index([userId])
+  @@index([userId, portal])
 }
 
 model Session {
@@ -118,9 +132,19 @@ model Company {
   whatsappNumber String? // Número de WhatsApp de contacto
   isVerified Boolean  @default(false)
 
+  // Empresa verificada: sus avisos se auto-aprueban y saltan la cola de moderación.
+  autoApproveJobs Boolean @default(false)
+
+  // Moderación desde /admin
+  isActive        Boolean   @default(true)
+  suspendedAt     DateTime?
+  suspendedReason String?
+
   jobs Job[]
 
   @@index([ownerId])
+  @@index([isVerified])
+  @@index([createdAt(sort: Desc)])
 }
 
 model Job {
@@ -137,13 +161,33 @@ model Job {
   modality     Modality // PRESENCIAL, HIBRIDO, REMOTO
   salaryArsMin Int?
   salaryArsMax Int?
-  status       JobStatus @default(PUBLISHED)
+  status       JobStatus @default(DRAFT)
   tags         String[] // p. ej. ["Atención al cliente","Administración"]
+
+  // Portales donde se publica el aviso. La empresa elige uno, otro o ambos.
+  // Se filtra con `portals: { has: <portal> }` en toda query pública.
+  portals Portal[] @default([JUBI])
+
+  // Accesibilidad declarada del puesto. Clave para InclúJobs: el candidato
+  // necesita saber ANTES de postularse si el lugar está preparado.
+  accessibilityNotes String?
+  isRemoteFriendly   Boolean @default(false)
+  hasAccessibleSite  Boolean @default(false) // rampa, ascensor, baño adaptado
+  supportsFlexHours  Boolean @default(false)
+
+  // Moderación desde /admin
+  moderationStatus ModerationStatus @default(PENDING)
+  moderatedAt      DateTime?
+  moderatedById    String?
+  moderationNote   String?
 
   applicants Application[]
 
   @@index([status, province, modality, schedule])
   @@index([companyId])
+  @@index([moderationStatus, createdAt(sort: Desc)])
+  @@index([portals])
+  @@index([createdAt(sort: Desc)])
 }
 
 model Application {
@@ -166,6 +210,37 @@ model Application {
   @@unique([jobId, userId]) // Una postulación por usuario por empleo
   @@index([jobId, createdAt(sort: Desc)])
   @@index([userId])
+}
+
+/// Traza de acciones administrativas. Sin esto, "gestionar los portales" es
+/// un botón que borra cosas sin que nadie sepa quién ni por qué.
+model AuditLog {
+  id         String   @id @default(cuid())
+  createdAt  DateTime @default(now())
+  actorId    String // User.id del admin que ejecutó la acción
+  action     String // "job.approve", "company.suspend", "user.role_change", ...
+  targetType String // "Job" | "Company" | "User"
+  targetId   String
+  portal     Portal?
+  metadata   Json? // payload libre: valores previos, motivo, etc.
+
+  @@index([actorId, createdAt(sort: Desc)])
+  @@index([targetType, targetId])
+  @@index([createdAt(sort: Desc)])
+}
+
+/// Portales del producto. Son audiencias SEPARADAS, no intercambiables:
+/// un candidato de JUBI nunca ve contenido de INCLU y viceversa.
+/// El valor se resuelve por dominio en el middleware (ver lib/portal.ts).
+enum Portal {
+  JUBI // jubijobs.com  — personas jubiladas / 60+
+  INCLU // inclujobs.com — personas con discapacidad
+}
+
+enum ModerationStatus {
+  PENDING
+  APPROVED
+  REJECTED
 }
 
 enum UserRole {
