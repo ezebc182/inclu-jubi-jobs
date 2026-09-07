@@ -153,9 +153,27 @@ export function publicJobFilter(portal: PortalId) {
   } as const;
 }
 
-/** URL absoluta canónica del portal, para metadata, sitemap y Open Graph. */
+/**
+ * URL absoluta canónica del portal, para metadata, sitemap y Open Graph.
+ *
+ * Deriva del dominio de cada portal, NO de una variable de entorno. Motivo:
+ * `NEXT_PUBLIC_*` se congela en tiempo de build con un solo valor, y ambos
+ * dominios se sirven desde el mismo deployment — un override haría que
+ * InclúJobs publicara canonical y sitemap apuntando a jubijobs.com.
+ *
+ * El override solo se respeta cuando NO es un dominio productivo, para poder
+ * fijar una URL en previews de Vercel o en desarrollo local.
+ */
 export function portalBaseUrl(id: PortalId): string {
-  const override = process.env.NEXT_PUBLIC_BASE_URL;
-  if (override) return override.replace(/\/$/, "");
-  return `https://${getPortalConfig(id).domain}`;
+  const config = getPortalConfig(id);
+  const override = process.env.NEXT_PUBLIC_BASE_URL?.replace(/\/$/, "");
+
+  if (override) {
+    const isProductionDomain = allPortals().some((portal) =>
+      override.includes(portal.domain)
+    );
+    if (!isProductionDomain) return override;
+  }
+
+  return `https://${config.domain}`;
 }
