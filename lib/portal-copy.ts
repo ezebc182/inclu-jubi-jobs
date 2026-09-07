@@ -44,8 +44,12 @@ const JUBI: PortalCopy = {
     "Empresas argentinas buscan gente con oficio para trabajos part-time, por día y flexibles. Sin currículum y sin LinkedIn: contestás tres preguntas y te postulás.",
   heroFootnote: "Entrás con Google o con tu teléfono. No hay contraseñas.",
   heroImage: {
-    src: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&q=80&auto=format&fit=crop",
-    alt: "Mujer de unos sesenta años trabajando en una oficina luminosa",
+    // Elegida a mano: hombre de unos 70 años trabajando en su taller.
+    // Las búsquedas genéricas de banco de imágenes devuelven gente de
+    // 40-50 años, que no es esta audiencia — si el usuario no se ve
+    // representado en la portada, se va.
+    src: "https://images.unsplash.com/photo-1778077128668-9b8b24e1588a?w=1200&q=80&auto=format&fit=crop",
+    alt: "Hombre de unos setenta años trabajando con herramientas en su taller",
     credit: "Unsplash",
   },
   benefitsTitle: "Trabajar después de jubilarse cambia las cosas",

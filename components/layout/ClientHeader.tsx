@@ -165,9 +165,7 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
             </Link>
 
             <div className="flex items-center justify-between border-t border-rule pt-3">
-              <span className="text-lg font-medium text-ink">
-                Tema:
-              </span>
+              <span className="text-lg font-medium text-ink">Tema:</span>
               <ThemeToggle />
             </div>
 

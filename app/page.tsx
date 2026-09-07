@@ -17,7 +17,9 @@ import { formatCurrency } from "@/lib/constants";
  * convence a nadie. Estos números salen de la base: si hay diez avisos,
  * dice diez.
  */
-async function loadSnapshot(portal: Awaited<ReturnType<typeof getCurrentPortal>>) {
+async function loadSnapshot(
+  portal: Awaited<ReturnType<typeof getCurrentPortal>>
+) {
   const where = publicJobFilter(portal);
 
   const [jobCount, companyCount, latest] = await Promise.all([
@@ -66,7 +68,7 @@ export default async function HomePage() {
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
                 href="/empleos"
-                className="inline-flex min-h-[56px] items-center justify-center rounded-md bg-primary-600 px-8 text-lg font-semibold text-white transition-colors hover:bg-primary-700 focus:outline-none focus-visible:outline-3"
+                className="focus-visible:outline-3 inline-flex min-h-[56px] items-center justify-center rounded-md bg-primary-600 px-8 text-lg font-semibold text-white transition-colors hover:bg-primary-700 focus:outline-none"
               >
                 Ver empleos
               </Link>
@@ -118,7 +120,7 @@ export default async function HomePage() {
           <div className="lg:col-span-5 lg:self-stretch">
             {/* aspect-auto con altura completa en desktop: la foto acompaña
                 al bloque de texto en vez de flotar con su propio ritmo. */}
-            <figure className="relative aspect-[4/3] overflow-hidden rounded-lg bg-primary-50 sm:aspect-[16/10] lg:h-full lg:aspect-auto dark:bg-primary-900/30">
+            <figure className="relative aspect-[4/3] overflow-hidden rounded-lg bg-primary-50 dark:bg-primary-900/30 sm:aspect-[16/10] lg:aspect-auto lg:h-full">
               <Image
                 src={copy.heroImage.src}
                 alt={copy.heroImage.alt}
@@ -225,7 +227,10 @@ export default async function HomePage() {
 
           <ol className="mt-10 grid gap-8 md:grid-cols-3">
             {copy.steps.map((step, index) => (
-              <li key={step.title} className="border-t-2 border-primary-600 pt-5">
+              <li
+                key={step.title}
+                className="border-t-2 border-primary-600 pt-5"
+              >
                 <span className="font-display text-lg font-semibold text-primary-600 dark:text-primary-300">
                   Paso {index + 1}
                 </span>
