@@ -32,7 +32,10 @@ export default async function HomePage() {
       </section>
 
       {/* Beneficios */}
-      <section aria-labelledby="beneficios" className="px-4 py-20 dark:bg-gray-900">
+      <section
+        aria-labelledby="beneficios"
+        className="px-4 py-20 dark:bg-gray-900"
+      >
         <div className="mx-auto max-w-7xl">
           <h2
             id="beneficios"
@@ -103,7 +106,10 @@ export default async function HomePage() {
           No es marketing cruzado: si alguien llegó al portal equivocado,
           mandarlo al que le corresponde es el mejor servicio que le podemos
           hacer. Los avisos no se mezclan, pero las personas se orientan. */}
-      <section aria-labelledby="otro-portal" className="bg-white px-4 py-20 dark:bg-gray-900">
+      <section
+        aria-labelledby="otro-portal"
+        className="bg-white px-4 py-20 dark:bg-gray-900"
+      >
         <div className="mx-auto max-w-5xl text-center">
           {portalId === "JUBI" ? (
             <>

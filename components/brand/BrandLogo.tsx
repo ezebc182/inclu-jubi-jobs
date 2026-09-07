@@ -30,7 +30,9 @@ export function BrandLogo({
         dangerouslySetInnerHTML={{ __html: svg }}
       />
       {showWordmark ? (
-        <span className="text-3xl font-bold tracking-tight">{art.wordmark}</span>
+        <span className="text-3xl font-bold tracking-tight">
+          {art.wordmark}
+        </span>
       ) : (
         <span className="sr-only">{art.wordmark}</span>
       )}

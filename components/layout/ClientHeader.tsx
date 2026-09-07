@@ -35,7 +35,10 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
   const isAdmin = session?.user.role === "ADMIN";
 
   return (
-    <header role="banner" className="border-b-2 border-gray-200 bg-white shadow-sm transition-colors dark:border-gray-700 dark:bg-gray-800">
+    <header
+      role="banner"
+      className="border-b-2 border-gray-200 bg-white shadow-sm transition-colors dark:border-gray-700 dark:bg-gray-800"
+    >
       <div className="mx-auto max-w-7xl px-4 py-5">
         <div className="flex items-center justify-between">
           <Link
@@ -47,7 +50,11 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav role="navigation" aria-label="Navegación principal" className="hidden md:flex items-center gap-3">
+          <nav
+            role="navigation"
+            aria-label="Navegación principal"
+            className="hidden items-center gap-3 md:flex"
+          >
             <Link
               href="/empleos"
               className="min-h-[48px] rounded-lg px-5 py-3 text-lg font-semibold text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-gray-300 dark:hover:bg-gray-700"
@@ -116,7 +123,7 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden min-h-[48px] min-w-[48px] rounded-lg p-3 text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-gray-300 dark:hover:bg-gray-700"
+            className="min-h-[48px] min-w-[48px] rounded-lg p-3 text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-gray-300 dark:hover:bg-gray-700 md:hidden"
             aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={mobileMenuOpen}
           >
@@ -133,7 +140,7 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
           <nav
             role="navigation"
             aria-label="Navegación móvil"
-            className="mt-4 flex flex-col gap-3 border-t-2 border-gray-200 pt-4 md:hidden dark:border-gray-700"
+            className="mt-4 flex flex-col gap-3 border-t-2 border-gray-200 pt-4 dark:border-gray-700 md:hidden"
           >
             <Link
               href="/empleos"
@@ -158,7 +165,9 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
             </Link>
 
             <div className="flex items-center justify-between border-t-2 border-gray-200 pt-3 dark:border-gray-700">
-              <span className="text-lg font-semibold text-gray-700 dark:text-gray-300">Tema:</span>
+              <span className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                Tema:
+              </span>
               <ThemeToggle />
             </div>
 

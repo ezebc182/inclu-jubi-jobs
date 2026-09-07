@@ -153,7 +153,10 @@ export function JobForm() {
       </fieldset>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="title" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+        <label
+          htmlFor="title"
+          className="text-lg font-bold text-gray-900 dark:text-gray-100"
+        >
           Título del puesto
           <span className="ml-1 text-red-600 dark:text-red-400">*</span>
         </label>
@@ -191,7 +194,10 @@ export function JobForm() {
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="flex flex-col gap-2">
-          <label htmlFor="province" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+          <label
+            htmlFor="province"
+            className="text-lg font-bold text-gray-900 dark:text-gray-100"
+          >
             Provincia
             <span className="ml-1 text-red-600 dark:text-red-400">*</span>
           </label>
@@ -211,7 +217,10 @@ export function JobForm() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="city" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+          <label
+            htmlFor="city"
+            className="text-lg font-bold text-gray-900 dark:text-gray-100"
+          >
             Ciudad (opcional)
           </label>
           <input
@@ -421,7 +430,7 @@ export function JobForm() {
             type="button"
             onClick={handleAddTag}
             disabled={!tagInput.trim() || tags.length >= 10}
-            className="rounded-lg bg-gray-600 px-6 py-3 text-lg font-semibold text-white hover:bg-gray-700 disabled:opacity-50 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:bg-gray-500 dark:hover:bg-gray-600"
+            className="rounded-lg bg-gray-600 px-6 py-3 text-lg font-semibold text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:opacity-50 dark:bg-gray-500 dark:hover:bg-gray-600"
           >
             Agregar
           </button>
@@ -451,11 +460,14 @@ export function JobForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="flex min-h-[52px] items-center justify-center gap-3 rounded-lg bg-primary-600 px-8 py-4 text-xl font-bold text-white hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-70 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
+        className="flex min-h-[52px] items-center justify-center gap-3 rounded-lg bg-primary-600 px-8 py-4 text-xl font-bold text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 disabled:cursor-not-allowed disabled:opacity-70 dark:bg-primary-500 dark:hover:bg-primary-600"
       >
         {isSubmitting ? (
           <>
-            <div className="h-6 w-6 animate-spin rounded-full border-3 border-white border-t-transparent" aria-hidden="true" />
+            <div
+              className="border-3 h-6 w-6 animate-spin rounded-full border-white border-t-transparent"
+              aria-hidden="true"
+            />
             <span>Publicando empleo...</span>
           </>
         ) : (

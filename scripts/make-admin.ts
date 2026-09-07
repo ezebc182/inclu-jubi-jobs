@@ -28,7 +28,9 @@ async function main() {
 
   if (!user) {
     console.error(`\nNo existe una cuenta con el email "${email}".`);
-    console.error("Iniciá sesión en el sitio con ese email y volvé a intentar.\n");
+    console.error(
+      "Iniciá sesión en el sitio con ese email y volvé a intentar.\n"
+    );
     process.exit(1);
   }
 
@@ -42,7 +44,9 @@ async function main() {
     data: { role: "ADMIN", isActive: true },
   });
 
-  console.log(`\n✓ ${user.email} ahora es administrador (antes: ${user.role}).`);
+  console.log(
+    `\n✓ ${user.email} ahora es administrador (antes: ${user.role}).`
+  );
   console.log("  Entrá a /admin para usar el panel.\n");
 }
 

@@ -33,7 +33,8 @@ const JUBI: PortalCopy = {
   heroTitle: "Trabajos para jubilados.\nSimple, claro y sin vueltas.",
   heroSubtitle:
     "Conectamos tu experiencia con empresas que la valoran. Sin currículum, sin LinkedIn, sin formularios eternos. Tres preguntas y listo.",
-  heroNote: "Ingresás con Google o con tu teléfono. Sin contraseñas que recordar.",
+  heroNote:
+    "Ingresás con Google o con tu teléfono. Sin contraseñas que recordar.",
   benefitsTitle: "¿Por qué JubiJobs?",
   benefits: [
     {
@@ -79,7 +80,8 @@ const INCLU: PortalCopy = {
   heroTitle: "Trabajo real, con las condiciones que necesitás.",
   heroSubtitle:
     "Cada aviso dice de antemano si el lugar es accesible, si hay horarios flexibles y si se puede trabajar de forma remota. Te enterás antes de postularte, no después de la entrevista.",
-  heroNote: "Ingresás con Google o con tu teléfono. Compatible con lectores de pantalla.",
+  heroNote:
+    "Ingresás con Google o con tu teléfono. Compatible con lectores de pantalla.",
   benefitsTitle: "¿Por qué InclúJobs?",
   benefits: [
     {
@@ -118,7 +120,8 @@ const INCLU: PortalCopy = {
     },
   ],
   ctaTitle: "Empecemos",
-  ctaSubtitle: "Mirá los empleos disponibles y sus condiciones de accesibilidad.",
+  ctaSubtitle:
+    "Mirá los empleos disponibles y sus condiciones de accesibilidad.",
 };
 
 const COPY: Record<PortalId, PortalCopy> = { JUBI, INCLU };

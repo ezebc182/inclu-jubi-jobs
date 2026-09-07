@@ -10,13 +10,19 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
-import { brandIconSvg, brandSymbolSvg, type BrandSlug } from "../lib/brand-assets";
+import {
+  brandIconSvg,
+  brandSymbolSvg,
+  type BrandSlug,
+} from "../lib/brand-assets";
 
 const SLUGS: BrandSlug[] = ["jubi", "inclu"];
 const OUT_DIR = path.join(process.cwd(), "public", "icons");
 
 async function png(svg: string, name: string) {
-  await sharp(Buffer.from(svg)).png({ compressionLevel: 9 }).toFile(path.join(OUT_DIR, name));
+  await sharp(Buffer.from(svg))
+    .png({ compressionLevel: 9 })
+    .toFile(path.join(OUT_DIR, name));
   console.log(`  ✓ ${name}`);
 }
 

@@ -15,7 +15,10 @@ export function Footer({
   brand: BrandSlug;
 }) {
   return (
-    <footer role="contentinfo" className="border-t-2 border-gray-200 bg-white py-12 transition-colors dark:border-gray-700 dark:bg-gray-800">
+    <footer
+      role="contentinfo"
+      className="border-t-2 border-gray-200 bg-white py-12 transition-colors dark:border-gray-700 dark:bg-gray-800"
+    >
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
           <div>
@@ -28,7 +31,9 @@ export function Footer({
           </div>
 
           <div>
-            <h3 className="mb-4 text-xl font-bold text-gray-900 dark:text-gray-100">Enlaces</h3>
+            <h3 className="mb-4 text-xl font-bold text-gray-900 dark:text-gray-100">
+              Enlaces
+            </h3>
             <ul className="flex flex-col gap-3">
               <li>
                 <Link
@@ -70,7 +75,9 @@ export function Footer({
           </div>
 
           <div>
-            <h3 className="mb-4 text-xl font-bold text-gray-900 dark:text-gray-100">Legal</h3>
+            <h3 className="mb-4 text-xl font-bold text-gray-900 dark:text-gray-100">
+              Legal
+            </h3>
             <ul className="flex flex-col gap-3">
               <li>
                 <Link

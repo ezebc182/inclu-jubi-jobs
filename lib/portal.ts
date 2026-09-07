@@ -91,7 +91,9 @@ const HOST_MAP: ReadonlyArray<readonly [pattern: RegExp, portal: PortalId]> = [
  * Resuelve el portal a partir del `Host`. Pura y sincrónica: la usan tanto el
  * middleware (runtime edge) como el código de servidor.
  */
-export function resolvePortalFromHost(host: string | null | undefined): PortalId {
+export function resolvePortalFromHost(
+  host: string | null | undefined
+): PortalId {
   if (!host) return DEFAULT_PORTAL;
   // Descartamos el puerto: "inclu.localhost:3000" → "inclu.localhost"
   const hostname = host.split(":")[0]!.trim().toLowerCase();
@@ -102,7 +104,9 @@ export function resolvePortalFromHost(host: string | null | undefined): PortalId
   return DEFAULT_PORTAL;
 }
 
-export function isPortalId(value: string | null | undefined): value is PortalId {
+export function isPortalId(
+  value: string | null | undefined
+): value is PortalId {
   return value === "JUBI" || value === "INCLU";
 }
 

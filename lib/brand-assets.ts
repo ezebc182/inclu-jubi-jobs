@@ -77,7 +77,8 @@ export function brandSymbolSvg({
   onDark?: boolean;
 }): string {
   const art = BRAND_ART[slug];
-  const symbol = slug === "jubi" ? jubiSymbol(art, onDark) : incluSymbol(art, onDark);
+  const symbol =
+    slug === "jubi" ? jubiSymbol(art, onDark) : incluSymbol(art, onDark);
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 64 64" role="img" aria-label="${art.wordmark}">${symbol}</svg>`;
 }
@@ -101,7 +102,8 @@ export function brandIconSvg({
   rounded?: boolean;
 }): string {
   const art = BRAND_ART[slug];
-  const symbol = slug === "jubi" ? jubiSymbol(art, true) : incluSymbol(art, true);
+  const symbol =
+    slug === "jubi" ? jubiSymbol(art, true) : incluSymbol(art, true);
 
   const inner = size * safeRatio * 0.72;
   const offset = (size - inner) / 2;
