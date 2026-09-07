@@ -22,11 +22,16 @@ export function ServiceWorkerRegistrar() {
       window.location.reload();
     };
 
-    navigator.serviceWorker.addEventListener("controllerchange", onControllerChange);
+    navigator.serviceWorker.addEventListener(
+      "controllerchange",
+      onControllerChange
+    );
 
     const register = async () => {
       try {
-        const registration = await navigator.serviceWorker.register("/sw.js", { scope: "/" });
+        const registration = await navigator.serviceWorker.register("/sw.js", {
+          scope: "/",
+        });
 
         // Un SW nuevo ya instalado y en espera: activarlo.
         if (registration.waiting) {
@@ -38,7 +43,10 @@ export function ServiceWorkerRegistrar() {
           if (!installing) return;
 
           installing.addEventListener("statechange", () => {
-            if (installing.state === "installed" && navigator.serviceWorker.controller) {
+            if (
+              installing.state === "installed" &&
+              navigator.serviceWorker.controller
+            ) {
               installing.postMessage("SKIP_WAITING");
             }
           });
@@ -56,7 +64,10 @@ export function ServiceWorkerRegistrar() {
     }
 
     return () => {
-      navigator.serviceWorker.removeEventListener("controllerchange", onControllerChange);
+      navigator.serviceWorker.removeEventListener(
+        "controllerchange",
+        onControllerChange
+      );
     };
   }, []);
 

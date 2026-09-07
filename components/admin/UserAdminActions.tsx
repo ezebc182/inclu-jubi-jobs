@@ -35,12 +35,16 @@ export function UserAdminActions({
   if (isSelf) {
     return (
       <p className="border-t-2 border-gray-200 pt-4 text-base text-gray-600 dark:border-gray-700 dark:text-gray-400">
-        Esta es tu propia cuenta. Pedile a otro administrador que haga cambios sobre ella.
+        Esta es tu propia cuenta. Pedile a otro administrador que haga cambios
+        sobre ella.
       </p>
     );
   }
 
-  const run = (fn: () => Promise<{ success: boolean; error?: string }>, okMessage: string) => {
+  const run = (
+    fn: () => Promise<{ success: boolean; error?: string }>,
+    okMessage: string
+  ) => {
     startTransition(async () => {
       const result = await fn();
       if (result.success) toast.success(okMessage);
@@ -84,7 +88,7 @@ export function UserAdminActions({
             disabled={isPending}
             aria-expanded={showSuspend}
             onClick={() => setShowSuspend((v) => !v)}
-            className="min-h-[48px] rounded-lg border-2 border-red-600 px-5 py-3 text-lg font-semibold text-red-700 transition-colors hover:bg-red-50 disabled:opacity-60 focus:outline-none focus:ring-4 focus:ring-red-300 dark:text-red-400 dark:hover:bg-red-950"
+            className="min-h-[48px] rounded-lg border-2 border-red-600 px-5 py-3 text-lg font-semibold text-red-700 transition-colors hover:bg-red-50 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:opacity-60 dark:text-red-400 dark:hover:bg-red-950"
           >
             Suspender cuenta
           </button>
@@ -98,7 +102,7 @@ export function UserAdminActions({
                 `${userLabel} reactivado`
               )
             }
-            className="min-h-[48px] rounded-lg bg-success-600 px-5 py-3 text-lg font-bold text-white transition-colors hover:bg-success-700 disabled:opacity-60 focus:outline-none focus:ring-4 focus:ring-success-300"
+            className="min-h-[48px] rounded-lg bg-success-600 px-5 py-3 text-lg font-bold text-white transition-colors hover:bg-success-700 focus:outline-none focus:ring-4 focus:ring-success-300 disabled:opacity-60"
           >
             Reactivar cuenta
           </button>
@@ -128,7 +132,9 @@ export function UserAdminActions({
             disabled={isPending}
             onClick={() => {
               if (reason.trim().length < MIN_REASON) {
-                toast.error(`El motivo necesita al menos ${MIN_REASON} caracteres`);
+                toast.error(
+                  `El motivo necesita al menos ${MIN_REASON} caracteres`
+                );
                 return;
               }
               run(
@@ -138,7 +144,7 @@ export function UserAdminActions({
               setShowSuspend(false);
               setReason("");
             }}
-            className="mt-3 min-h-[48px] rounded-lg bg-red-600 px-6 py-3 text-lg font-bold text-white transition-colors hover:bg-red-700 disabled:opacity-60 focus:outline-none focus:ring-4 focus:ring-red-300"
+            className="mt-3 min-h-[48px] rounded-lg bg-red-600 px-6 py-3 text-lg font-bold text-white transition-colors hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:opacity-60"
           >
             Confirmar suspensión
           </button>

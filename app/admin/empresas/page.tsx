@@ -47,8 +47,8 @@ export default async function AdminEmpresasPage() {
                 </h3>
                 <p className="mt-1 text-base text-gray-600 dark:text-gray-400">
                   {company.owner.email} · {company._count.jobs}{" "}
-                  {company._count.jobs === 1 ? "aviso" : "avisos"} · Registrada el{" "}
-                  {formatDate(company.createdAt)}
+                  {company._count.jobs === 1 ? "aviso" : "avisos"} · Registrada
+                  el {formatDate(company.createdAt)}
                 </p>
                 {company.location && (
                   <p className="text-base text-gray-600 dark:text-gray-400">

@@ -10,7 +10,9 @@ export default async function ModeracionPage() {
 
   const jobs = await prisma.job.findMany({
     where: { moderationStatus: "PENDING" },
-    include: { company: { select: { id: true, name: true, isVerified: true } } },
+    include: {
+      company: { select: { id: true, name: true, isVerified: true } },
+    },
     orderBy: { createdAt: "asc" }, // Los más viejos primero: nadie espera de más.
     take: 50,
   });
@@ -29,7 +31,8 @@ export default async function ModeracionPage() {
   return (
     <div className="flex flex-col gap-6">
       <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-        {jobs.length} {jobs.length === 1 ? "aviso pendiente" : "avisos pendientes"}
+        {jobs.length}{" "}
+        {jobs.length === 1 ? "aviso pendiente" : "avisos pendientes"}
       </h2>
 
       <ul className="flex flex-col gap-6">
@@ -61,11 +64,15 @@ export default async function ModeracionPage() {
                 <div>
                   <dt className="text-gray-600 dark:text-gray-400">Portales</dt>
                   <dd className="font-semibold text-gray-900 dark:text-gray-100">
-                    {job.portals.map((p) => getPortalConfig(p).name).join(" + ")}
+                    {job.portals
+                      .map((p) => getPortalConfig(p).name)
+                      .join(" + ")}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-gray-600 dark:text-gray-400">Modalidad</dt>
+                  <dt className="text-gray-600 dark:text-gray-400">
+                    Modalidad
+                  </dt>
                   <dd className="font-semibold text-gray-900 dark:text-gray-100">
                     {job.modality}
                   </dd>

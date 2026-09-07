@@ -24,8 +24,8 @@ export default async function OfflinePage() {
         Te quedaste sin internet
       </h1>
       <p className="mb-8 text-xl leading-relaxed text-gray-700 dark:text-gray-300">
-        No pudimos conectarnos. Revisá el wifi o los datos del teléfono y volvé a
-        intentar. Las páginas que ya visitaste siguen disponibles.
+        No pudimos conectarnos. Revisá el wifi o los datos del teléfono y volvé
+        a intentar. Las páginas que ya visitaste siguen disponibles.
       </p>
 
       <a

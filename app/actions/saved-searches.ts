@@ -12,11 +12,15 @@ const SCHEDULES: Schedule[] = ["PART_TIME", "FLEX", "POR_DIA"];
 
 /** Descarta valores que no pertenezcan al enum antes de tocar la base. */
 function asModality(value: string | null): Modality | null {
-  return value && MODALITIES.includes(value as Modality) ? (value as Modality) : null;
+  return value && MODALITIES.includes(value as Modality)
+    ? (value as Modality)
+    : null;
 }
 
 function asSchedule(value: string | null): Schedule | null {
-  return value && SCHEDULES.includes(value as Schedule) ? (value as Schedule) : null;
+  return value && SCHEDULES.includes(value as Schedule)
+    ? (value as Schedule)
+    : null;
 }
 
 export async function saveSearch(formData: FormData) {
@@ -32,12 +36,18 @@ export async function saveSearch(formData: FormData) {
   const schedule = (formData.get("schedule") as string) || null;
 
   if (!name || name.trim().length < 3) {
-    return { success: false, error: "El nombre debe tener al menos 3 caracteres" };
+    return {
+      success: false,
+      error: "El nombre debe tener al menos 3 caracteres",
+    };
   }
 
   // Verificar que al menos un filtro esté seleccionado
   if (!province && !modality && !schedule) {
-    return { success: false, error: "Seleccioná al menos un filtro para guardar" };
+    return {
+      success: false,
+      error: "Seleccioná al menos un filtro para guardar",
+    };
   }
 
   try {

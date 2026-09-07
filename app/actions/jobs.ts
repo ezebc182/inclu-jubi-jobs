@@ -86,7 +86,9 @@ export async function createJob(formData: FormData) {
   }
 
   if (!company.isActive) {
-    throw new Error("Tu empresa está suspendida. Escribinos para regularizar la situación.");
+    throw new Error(
+      "Tu empresa está suspendida. Escribinos para regularizar la situación."
+    );
   }
 
   const parseOptionalInt = (value: FormDataEntryValue | null) => {
@@ -117,7 +119,8 @@ export async function createJob(formData: FormData) {
     salaryArsMax: parseOptionalInt(formData.get("salaryArsMax")),
     tags: parseJsonArray(formData.get("tags")),
     portals: parseJsonArray(formData.get("portals")),
-    accessibilityNotes: (formData.get("accessibilityNotes") as string) || undefined,
+    accessibilityNotes:
+      (formData.get("accessibilityNotes") as string) || undefined,
     isRemoteFriendly: formData.get("isRemoteFriendly") === "true",
     hasAccessibleSite: formData.get("hasAccessibleSite") === "true",
     supportsFlexHours: formData.get("supportsFlexHours") === "true",

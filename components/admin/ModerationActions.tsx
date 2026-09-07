@@ -33,7 +33,9 @@ export function ModerationActions({
     startTransition(async () => {
       const result = await rejectJob(jobId, reason);
       if (result.success) {
-        toast.success("Aviso rechazado. La empresa puede corregirlo y volver a enviarlo.");
+        toast.success(
+          "Aviso rechazado. La empresa puede corregirlo y volver a enviarlo."
+        );
         setShowReject(false);
         setReason("");
       } else {
@@ -49,7 +51,7 @@ export function ModerationActions({
           type="button"
           onClick={handleApprove}
           disabled={isPending}
-          className="min-h-[48px] rounded-lg bg-success-600 px-6 py-3 text-lg font-bold text-white transition-colors hover:bg-success-700 disabled:opacity-60 focus:outline-none focus:ring-4 focus:ring-success-300"
+          className="min-h-[48px] rounded-lg bg-success-600 px-6 py-3 text-lg font-bold text-white transition-colors hover:bg-success-700 focus:outline-none focus:ring-4 focus:ring-success-300 disabled:opacity-60"
         >
           Aprobar y publicar
         </button>
@@ -59,7 +61,7 @@ export function ModerationActions({
           disabled={isPending}
           aria-expanded={showReject}
           aria-controls={`reject-${jobId}`}
-          className="min-h-[48px] rounded-lg border-2 border-red-600 px-6 py-3 text-lg font-semibold text-red-700 transition-colors hover:bg-red-50 disabled:opacity-60 focus:outline-none focus:ring-4 focus:ring-red-300 dark:text-red-400 dark:hover:bg-red-950"
+          className="min-h-[48px] rounded-lg border-2 border-red-600 px-6 py-3 text-lg font-semibold text-red-700 transition-colors hover:bg-red-50 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:opacity-60 dark:text-red-400 dark:hover:bg-red-950"
         >
           Rechazar
         </button>
@@ -88,7 +90,7 @@ export function ModerationActions({
             type="button"
             onClick={handleReject}
             disabled={isPending}
-            className="mt-3 min-h-[48px] rounded-lg bg-red-600 px-6 py-3 text-lg font-bold text-white transition-colors hover:bg-red-700 disabled:opacity-60 focus:outline-none focus:ring-4 focus:ring-red-300"
+            className="mt-3 min-h-[48px] rounded-lg bg-red-600 px-6 py-3 text-lg font-bold text-white transition-colors hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:opacity-60"
           >
             Confirmar rechazo
           </button>

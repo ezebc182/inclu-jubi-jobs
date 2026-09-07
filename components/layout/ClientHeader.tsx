@@ -4,15 +4,24 @@ import Link from "next/link";
 import { useState } from "react";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { FontSizeControl } from "@/components/ui/FontSizeControl";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import type { BrandSlug } from "@/lib/brand-assets";
 
-interface ClientHeaderProps {
-  session: any;
+interface SessionUser {
+  id: string;
+  role?: "CANDIDATE" | "COMPANY" | "ADMIN";
 }
 
-export function ClientHeader({ session }: ClientHeaderProps) {
+interface ClientHeaderProps {
+  session: { user: SessionUser } | null;
+  /** Marca activa, resuelta por dominio en el servidor. */
+  brand: BrandSlug;
+}
+
+export function ClientHeader({ session, brand }: ClientHeaderProps) {
   const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -23,15 +32,18 @@ export function ClientHeader({ session }: ClientHeaderProps) {
     setMobileMenuOpen(false);
   };
 
+  const isAdmin = session?.user.role === "ADMIN";
+
   return (
     <header role="banner" className="border-b-2 border-gray-200 bg-white shadow-sm transition-colors dark:border-gray-700 dark:bg-gray-800">
       <div className="mx-auto max-w-7xl px-4 py-5">
         <div className="flex items-center justify-between">
           <Link
             href="/"
-            className="text-3xl font-bold text-primary-600 transition-colors hover:text-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-primary-400 dark:hover:text-primary-300"
+            aria-label="Ir al inicio"
+            className="rounded-lg text-primary-700 transition-colors hover:text-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-primary-300 dark:hover:text-primary-200"
           >
-            JubiJobs
+            <BrandLogo slug={brand} symbolSize={40} />
           </Link>
 
           {/* Desktop Navigation */}
@@ -60,6 +72,14 @@ export function ClientHeader({ session }: ClientHeaderProps) {
 
             {session ? (
               <>
+                {isAdmin && (
+                  <Link
+                    href="/admin"
+                    className="min-h-[48px] rounded-lg border-2 border-primary-600 px-5 py-3 text-lg font-semibold text-primary-700 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:border-primary-400 dark:text-primary-300 dark:hover:bg-gray-700"
+                  >
+                    Administración
+                  </Link>
+                )}
                 {session.user.role === "COMPANY" && (
                   <Link
                     href="/empresa"
@@ -144,6 +164,15 @@ export function ClientHeader({ session }: ClientHeaderProps) {
 
             {session ? (
               <>
+                {isAdmin && (
+                  <Link
+                    href="/admin"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="min-h-[48px] rounded-lg border-2 border-primary-600 px-6 py-3 text-center text-lg font-semibold text-primary-700 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:border-primary-400 dark:text-primary-300 dark:hover:bg-gray-700"
+                  >
+                    Administración
+                  </Link>
+                )}
                 {session.user.role === "COMPANY" && (
                   <Link
                     href="/empresa"

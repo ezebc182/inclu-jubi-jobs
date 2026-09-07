@@ -29,7 +29,11 @@ export default async function AdminUsuariosPage({
     ];
   }
   if (isPortalId(params.portal)) where.portal = params.portal;
-  if (params.rol === "CANDIDATE" || params.rol === "COMPANY" || params.rol === "ADMIN") {
+  if (
+    params.rol === "CANDIDATE" ||
+    params.rol === "COMPANY" ||
+    params.rol === "ADMIN"
+  ) {
     where.role = params.rol;
   }
 
@@ -51,7 +55,11 @@ export default async function AdminUsuariosPage({
 
   return (
     <div className="flex flex-col gap-6">
-      <form method="get" className="flex flex-wrap items-end gap-4" role="search">
+      <form
+        method="get"
+        className="flex flex-wrap items-end gap-4"
+        role="search"
+      >
         <div className="flex-1">
           <label
             htmlFor="q"

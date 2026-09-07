@@ -36,7 +36,13 @@ export async function generateMetadata(): Promise<Metadata> {
       statusBarStyle: "default",
     },
     icons: {
-      icon: [{ url: `/icons/${slug}-favicon.png`, sizes: "32x32", type: "image/png" }],
+      icon: [
+        {
+          url: `/icons/${slug}-favicon.png`,
+          sizes: "32x32",
+          type: "image/png",
+        },
+      ],
       apple: [{ url: `/icons/${slug}-apple-touch.png`, sizes: "180x180" }],
     },
     openGraph: {
@@ -104,7 +110,13 @@ export default async function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <RootClientWrapper session={session}>{children}</RootClientWrapper>
+        <RootClientWrapper
+          session={session}
+          brand={portal.dataAttr}
+          portalName={portal.name}
+        >
+          {children}
+        </RootClientWrapper>
         <ServiceWorkerRegistrar />
         <InstallPrompt appName={portal.name} />
         <UserWayWidget />

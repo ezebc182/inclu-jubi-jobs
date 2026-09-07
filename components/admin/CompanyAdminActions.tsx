@@ -2,7 +2,10 @@
 
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
-import { setCompanySuspension, setCompanyVerification } from "@/app/actions/admin";
+import {
+  setCompanySuspension,
+  setCompanyVerification,
+} from "@/app/actions/admin";
 
 const MIN_REASON = 10;
 
@@ -23,7 +26,10 @@ export function CompanyAdminActions({
   const [showSuspend, setShowSuspend] = useState(false);
   const [reason, setReason] = useState("");
 
-  const run = (fn: () => Promise<{ success: boolean; error?: string }>, okMessage: string) => {
+  const run = (
+    fn: () => Promise<{ success: boolean; error?: string }>,
+    okMessage: string
+  ) => {
     startTransition(async () => {
       const result = await fn();
       if (result.success) toast.success(okMessage);
@@ -47,7 +53,7 @@ export function CompanyAdminActions({
               isVerified ? "Verificación retirada" : `${companyName} verificada`
             )
           }
-          className="min-h-[48px] rounded-lg border-2 border-primary-600 px-5 py-3 text-lg font-semibold text-primary-700 transition-colors hover:bg-primary-50 disabled:opacity-60 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-primary-300 dark:hover:bg-gray-700"
+          className="min-h-[48px] rounded-lg border-2 border-primary-600 px-5 py-3 text-lg font-semibold text-primary-700 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-4 focus:ring-primary-300 disabled:opacity-60 dark:text-primary-300 dark:hover:bg-gray-700"
         >
           {isVerified ? "Quitar verificación" : "Verificar empresa"}
         </button>
@@ -68,9 +74,11 @@ export function CompanyAdminActions({
                   : "Sus avisos se publican sin moderación"
               )
             }
-            className="min-h-[48px] rounded-lg border-2 border-gray-400 px-5 py-3 text-lg font-semibold text-gray-800 transition-colors hover:bg-gray-100 disabled:opacity-60 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:border-gray-500 dark:text-gray-200 dark:hover:bg-gray-700"
+            className="min-h-[48px] rounded-lg border-2 border-gray-400 px-5 py-3 text-lg font-semibold text-gray-800 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:opacity-60 dark:border-gray-500 dark:text-gray-200 dark:hover:bg-gray-700"
           >
-            {autoApproveJobs ? "Exigir moderación" : "Permitir publicar directo"}
+            {autoApproveJobs
+              ? "Exigir moderación"
+              : "Permitir publicar directo"}
           </button>
         )}
 
@@ -80,7 +88,7 @@ export function CompanyAdminActions({
             disabled={isPending}
             aria-expanded={showSuspend}
             onClick={() => setShowSuspend((v) => !v)}
-            className="min-h-[48px] rounded-lg border-2 border-red-600 px-5 py-3 text-lg font-semibold text-red-700 transition-colors hover:bg-red-50 disabled:opacity-60 focus:outline-none focus:ring-4 focus:ring-red-300 dark:text-red-400 dark:hover:bg-red-950"
+            className="min-h-[48px] rounded-lg border-2 border-red-600 px-5 py-3 text-lg font-semibold text-red-700 transition-colors hover:bg-red-50 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:opacity-60 dark:text-red-400 dark:hover:bg-red-950"
           >
             Suspender
           </button>
@@ -94,7 +102,7 @@ export function CompanyAdminActions({
                 `${companyName} reactivada`
               )
             }
-            className="min-h-[48px] rounded-lg bg-success-600 px-5 py-3 text-lg font-bold text-white transition-colors hover:bg-success-700 disabled:opacity-60 focus:outline-none focus:ring-4 focus:ring-success-300"
+            className="min-h-[48px] rounded-lg bg-success-600 px-5 py-3 text-lg font-bold text-white transition-colors hover:bg-success-700 focus:outline-none focus:ring-4 focus:ring-success-300 disabled:opacity-60"
           >
             Reactivar
           </button>
@@ -124,14 +132,20 @@ export function CompanyAdminActions({
             disabled={isPending}
             onClick={() => {
               if (reason.trim().length < MIN_REASON) {
-                toast.error(`El motivo necesita al menos ${MIN_REASON} caracteres`);
+                toast.error(
+                  `El motivo necesita al menos ${MIN_REASON} caracteres`
+                );
                 return;
               }
-              run(() => setCompanySuspension(companyId, { suspend: true, reason }), "Empresa suspendida");
+              run(
+                () =>
+                  setCompanySuspension(companyId, { suspend: true, reason }),
+                "Empresa suspendida"
+              );
               setShowSuspend(false);
               setReason("");
             }}
-            className="mt-3 min-h-[48px] rounded-lg bg-red-600 px-6 py-3 text-lg font-bold text-white transition-colors hover:bg-red-700 disabled:opacity-60 focus:outline-none focus:ring-4 focus:ring-red-300"
+            className="mt-3 min-h-[48px] rounded-lg bg-red-600 px-6 py-3 text-lg font-bold text-white transition-colors hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:opacity-60"
           >
             Confirmar suspensión
           </button>

@@ -11,7 +11,10 @@ function fail(error: string): Result {
 }
 
 /** Aprueba un aviso y lo publica. */
-export async function approveJob(jobId: string, note?: string): Promise<Result> {
+export async function approveJob(
+  jobId: string,
+  note?: string
+): Promise<Result> {
   try {
     const actor = await requireAdminActor();
 
@@ -52,7 +55,10 @@ export async function approveJob(jobId: string, note?: string): Promise<Result> 
 }
 
 /** Rechaza un aviso. El motivo es obligatorio: la empresa merece saber por qué. */
-export async function rejectJob(jobId: string, reason: string): Promise<Result> {
+export async function rejectJob(
+  jobId: string,
+  reason: string
+): Promise<Result> {
   try {
     const actor = await requireAdminActor();
 

@@ -15,7 +15,11 @@ const NAV = [
   { href: "/admin/auditoria", label: "Auditoría" },
 ];
 
-export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+export default async function AdminLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const actor = await requireAdmin();
 
   return (

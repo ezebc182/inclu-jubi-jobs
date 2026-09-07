@@ -45,7 +45,11 @@ self.addEventListener("activate", (event) => {
     caches
       .keys()
       .then((names) =>
-        Promise.all(names.filter((name) => !keep.has(name)).map((name) => caches.delete(name)))
+        Promise.all(
+          names
+            .filter((name) => !keep.has(name))
+            .map((name) => caches.delete(name))
+        )
       )
       .then(() => self.clients.claim())
   );
@@ -61,11 +65,15 @@ async function trimCache(cacheName, maxEntries) {
   const cache = await caches.open(cacheName);
   const keys = await cache.keys();
   if (keys.length <= maxEntries) return;
-  await Promise.all(keys.slice(0, keys.length - maxEntries).map((key) => cache.delete(key)));
+  await Promise.all(
+    keys.slice(0, keys.length - maxEntries).map((key) => cache.delete(key))
+  );
 }
 
 function timeout(ms) {
-  return new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), ms));
+  return new Promise((_, reject) =>
+    setTimeout(() => reject(new Error("timeout")), ms)
+  );
 }
 
 /**
@@ -75,7 +83,10 @@ function timeout(ms) {
  */
 async function handleNavigation(request) {
   try {
-    const response = await Promise.race([fetch(request), timeout(NETWORK_TIMEOUT_MS)]);
+    const response = await Promise.race([
+      fetch(request),
+      timeout(NETWORK_TIMEOUT_MS),
+    ]);
 
     if (response && response.ok) {
       const copy = response.clone();
@@ -160,7 +171,10 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  if (request.destination === "image" || url.pathname.startsWith("/_next/image")) {
+  if (
+    request.destination === "image" ||
+    url.pathname.startsWith("/_next/image")
+  ) {
     event.respondWith(handleImage(request));
     return;
   }

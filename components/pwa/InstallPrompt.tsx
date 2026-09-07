@@ -26,7 +26,8 @@ function isStandalone() {
   return (
     window.matchMedia("(display-mode: standalone)").matches ||
     // iOS expone esto fuera del estándar.
-    (window.navigator as Navigator & { standalone?: boolean }).standalone === true
+    (window.navigator as Navigator & { standalone?: boolean }).standalone ===
+      true
   );
 }
 
@@ -38,7 +39,9 @@ function isStandalone() {
  * gestionado. Aparece solo cuando el navegador confirma que se puede instalar.
  */
 export function InstallPrompt({ appName }: { appName: string }) {
-  const [deferred, setDeferred] = useState<BeforeInstallPromptEvent | null>(null);
+  const [deferred, setDeferred] = useState<BeforeInstallPromptEvent | null>(
+    null
+  );
   const [visible, setVisible] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
@@ -106,10 +109,13 @@ export function InstallPrompt({ appName }: { appName: string }) {
       >
         Instalá {appName} en tu teléfono
       </h2>
-      <p id="install-prompt-desc" className="mb-6 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-        Vas a tener el acceso directo en la pantalla de inicio, como cualquier otra
-        aplicación. Abre más rápido y podés ver los empleos guardados aunque te
-        quedes sin internet.
+      <p
+        id="install-prompt-desc"
+        className="mb-6 text-lg leading-relaxed text-gray-700 dark:text-gray-300"
+      >
+        Vas a tener el acceso directo en la pantalla de inicio, como cualquier
+        otra aplicación. Abre más rápido y podés ver los empleos guardados
+        aunque te quedes sin internet.
       </p>
       <div className="flex flex-col gap-3 sm:flex-row">
         <button

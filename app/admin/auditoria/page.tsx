@@ -62,20 +62,33 @@ export default async function AdminAuditoriaPage() {
       <div className="overflow-x-auto">
         <table className="w-full border-collapse text-left">
           <caption className="sr-only">
-            Acciones administrativas ordenadas de la más reciente a la más antigua
+            Acciones administrativas ordenadas de la más reciente a la más
+            antigua
           </caption>
           <thead>
             <tr className="border-b-2 border-gray-300 dark:border-gray-600">
-              <th scope="col" className="py-3 pr-4 text-base font-bold text-gray-900 dark:text-gray-100">
+              <th
+                scope="col"
+                className="py-3 pr-4 text-base font-bold text-gray-900 dark:text-gray-100"
+              >
                 Fecha
               </th>
-              <th scope="col" className="py-3 pr-4 text-base font-bold text-gray-900 dark:text-gray-100">
+              <th
+                scope="col"
+                className="py-3 pr-4 text-base font-bold text-gray-900 dark:text-gray-100"
+              >
                 Administrador
               </th>
-              <th scope="col" className="py-3 pr-4 text-base font-bold text-gray-900 dark:text-gray-100">
+              <th
+                scope="col"
+                className="py-3 pr-4 text-base font-bold text-gray-900 dark:text-gray-100"
+              >
                 Acción
               </th>
-              <th scope="col" className="py-3 pr-4 text-base font-bold text-gray-900 dark:text-gray-100">
+              <th
+                scope="col"
+                className="py-3 pr-4 text-base font-bold text-gray-900 dark:text-gray-100"
+              >
                 Portal
               </th>
             </tr>

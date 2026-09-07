@@ -7,40 +7,65 @@ import { allPortals, type PortalId } from "@/lib/portal";
 async function loadStats() {
   const portalIds: PortalId[] = ["JUBI", "INCLU"];
 
-  const [pendingJobs, totalCompanies, unverifiedCompanies, applications, perPortal] =
-    await Promise.all([
-      prisma.job.count({ where: { moderationStatus: "PENDING" } }),
-      prisma.company.count(),
-      prisma.company.count({ where: { isVerified: false } }),
-      prisma.application.count(),
-      Promise.all(
-        portalIds.map(async (portal) => {
-          const [candidates, publishedJobs] = await Promise.all([
-            prisma.user.count({ where: { portal, role: "CANDIDATE" } }),
-            prisma.job.count({
-              where: {
-                portals: { has: portal },
-                status: "PUBLISHED",
-                moderationStatus: "APPROVED",
-              },
-            }),
-          ]);
-          return { portal, candidates, publishedJobs };
-        })
-      ),
-    ]);
+  const [
+    pendingJobs,
+    totalCompanies,
+    unverifiedCompanies,
+    applications,
+    perPortal,
+  ] = await Promise.all([
+    prisma.job.count({ where: { moderationStatus: "PENDING" } }),
+    prisma.company.count(),
+    prisma.company.count({ where: { isVerified: false } }),
+    prisma.application.count(),
+    Promise.all(
+      portalIds.map(async (portal) => {
+        const [candidates, publishedJobs] = await Promise.all([
+          prisma.user.count({ where: { portal, role: "CANDIDATE" } }),
+          prisma.job.count({
+            where: {
+              portals: { has: portal },
+              status: "PUBLISHED",
+              moderationStatus: "APPROVED",
+            },
+          }),
+        ]);
+        return { portal, candidates, publishedJobs };
+      })
+    ),
+  ]);
 
-  return { pendingJobs, totalCompanies, unverifiedCompanies, applications, perPortal };
+  return {
+    pendingJobs,
+    totalCompanies,
+    unverifiedCompanies,
+    applications,
+    perPortal,
+  };
 }
 
-function StatCard({ label, value, hint }: { label: string; value: number; hint?: string }) {
+function StatCard({
+  label,
+  value,
+  hint,
+}: {
+  label: string;
+  value: number;
+  hint?: string;
+}) {
   return (
     <div className="rounded-xl border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
-      <dt className="text-base font-medium text-gray-600 dark:text-gray-400">{label}</dt>
+      <dt className="text-base font-medium text-gray-600 dark:text-gray-400">
+        {label}
+      </dt>
       <dd className="mt-2 text-4xl font-bold text-gray-900 dark:text-gray-100">
         {value.toLocaleString("es-AR")}
       </dd>
-      {hint && <p className="mt-2 text-base text-gray-600 dark:text-gray-400">{hint}</p>}
+      {hint && (
+        <p className="mt-2 text-base text-gray-600 dark:text-gray-400">
+          {hint}
+        </p>
+      )}
     </div>
   );
 }
@@ -55,11 +80,12 @@ export default async function AdminDashboardPage() {
       {stats.pendingJobs > 0 && (
         <div
           role="status"
-          className="rounded-lg border-2 border-secondary-500 bg-secondary-50 p-6 dark:border-secondary-400 dark:bg-secondary-950"
+          className="dark:bg-secondary-950 rounded-lg border-2 border-secondary-500 bg-secondary-50 p-6 dark:border-secondary-400"
         >
           <p className="text-xl font-bold text-gray-900 dark:text-gray-100">
             {stats.pendingJobs}{" "}
-            {stats.pendingJobs === 1 ? "aviso espera" : "avisos esperan"} moderación
+            {stats.pendingJobs === 1 ? "aviso espera" : "avisos esperan"}{" "}
+            moderación
           </p>
           <Link
             href="/admin/moderacion"
@@ -71,7 +97,10 @@ export default async function AdminDashboardPage() {
       )}
 
       <section aria-labelledby="totales">
-        <h2 id="totales" className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
+        <h2
+          id="totales"
+          className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100"
+        >
           Totales
         </h2>
         <dl className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -87,7 +116,10 @@ export default async function AdminDashboardPage() {
       </section>
 
       <section aria-labelledby="por-portal">
-        <h2 id="por-portal" className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
+        <h2
+          id="por-portal"
+          className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100"
+        >
           Por portal
         </h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -106,7 +138,9 @@ export default async function AdminDashboardPage() {
                 </p>
                 <dl className="mt-5 grid grid-cols-2 gap-4">
                   <div>
-                    <dt className="text-base text-gray-600 dark:text-gray-400">Candidatos</dt>
+                    <dt className="text-base text-gray-600 dark:text-gray-400">
+                      Candidatos
+                    </dt>
                     <dd className="text-3xl font-bold text-gray-900 dark:text-gray-100">
                       {row.candidates.toLocaleString("es-AR")}
                     </dd>
