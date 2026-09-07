@@ -5,6 +5,7 @@
 Se han creado los siguientes archivos fundamentales:
 
 ### Configuración
+
 - ✅ `package.json` - Dependencias y scripts
 - ✅ `tsconfig.json` - Configuración TypeScript
 - ✅ `tailwind.config.ts` - Estilos Tailwind
@@ -13,6 +14,7 @@ Se han creado los siguientes archivos fundamentales:
 - ✅ `.gitignore` - Archivos ignorados por Git
 
 ### Base de Datos y Auth
+
 - ✅ `prisma/schema.prisma` - Modelos de datos
 - ✅ `prisma/seed.ts` - Datos de ejemplo
 - ✅ `lib/db.ts` - Cliente Prisma
@@ -23,6 +25,7 @@ Se han creado los siguientes archivos fundamentales:
 - ✅ `lib/validations.ts` - Esquemas Zod
 
 ### Componentes UI
+
 - ✅ `components/ui/BigCTAButton.tsx`
 - ✅ `components/ui/SectionTitle.tsx`
 - ✅ `components/ui/EmptyState.tsx`
@@ -36,16 +39,19 @@ Se han creado los siguientes archivos fundamentales:
 - ✅ `components/layout/Footer.tsx`
 
 ### Páginas Principales
+
 - ✅ `app/layout.tsx` - Layout raíz
 - ✅ `app/page.tsx` - Home
 - ✅ `app/globals.css` - Estilos globales
 - ✅ `app/api/auth/[...all]/route.ts` - API Better-Auth
 
 ### Documentación
+
 - ✅ `README.md` - Documentación completa del proyecto
 - ✅ `SETUP.md` - Esta guía
 
 ### Server Actions (base)
+
 - ✅ `app/actions/jobs.ts` - Acciones de empleos
 - ✅ `app/actions/applications.ts` - Acciones de postulaciones
 
@@ -66,7 +72,12 @@ import { EmptyState } from "@/components/ui/EmptyState";
 export default async function EmpleosPage({
   searchParams,
 }: {
-  searchParams: { provincia?: string; modalidad?: string; jornada?: string; q?: string };
+  searchParams: {
+    provincia?: string;
+    modalidad?: string;
+    jornada?: string;
+    q?: string;
+  };
 }) {
   const where: any = { status: "PUBLISHED" };
 
@@ -88,7 +99,9 @@ export default async function EmpleosPage({
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12">
-      <h1 className="mb-8 text-4xl font-bold text-gray-900">Empleos disponibles</h1>
+      <h1 className="mb-8 text-4xl font-bold text-gray-900">
+        Empleos disponibles
+      </h1>
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
         <aside className="lg:col-span-1">
           <JobFilters />
@@ -316,12 +329,15 @@ pnpm dev
 ## 🐛 Troubleshooting
 
 **Error: "Export GET doesn't exist in target module"**
+
 - Verificá que `app/api/auth/[...all]/route.ts` exista y esté correctamente importado
 
 **Error de Prisma Client**
+
 - Ejecutá `pnpm prisma generate` después de cada cambio en schema
 
 **OAuth no funciona**
+
 - Verificá que las URLs de callback estén correctamente configuradas en los providers
 
 ## 📚 Recursos Adicionales

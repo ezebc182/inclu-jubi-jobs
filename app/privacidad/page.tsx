@@ -22,16 +22,21 @@ export default function PrivacidadPage() {
         </p>
         <ul className="space-y-3 text-lg text-gray-700 dark:text-gray-300">
           <li>
-            <strong>Información de cuenta:</strong> Nombre, email (a través de OAuth de Google o Microsoft).
+            <strong>Información de cuenta:</strong> Nombre, email (a través de
+            OAuth de Google o Microsoft).
           </li>
           <li>
-            <strong>Perfil de candidato:</strong> Ubicación, año de nacimiento, teléfono (opcional), información de discapacidad (opcional), respuestas a las 3 preguntas.
+            <strong>Perfil de candidato:</strong> Ubicación, año de nacimiento,
+            teléfono (opcional), información de discapacidad (opcional),
+            respuestas a las 3 preguntas.
           </li>
           <li>
-            <strong>Perfil de empresa:</strong> Nombre de la empresa, sitio web (opcional), ubicación (opcional), descripción.
+            <strong>Perfil de empresa:</strong> Nombre de la empresa, sitio web
+            (opcional), ubicación (opcional), descripción.
           </li>
           <li>
-            <strong>Empleos y postulaciones:</strong> Datos de los empleos publicados y postulaciones realizadas.
+            <strong>Empleos y postulaciones:</strong> Datos de los empleos
+            publicados y postulaciones realizadas.
           </li>
         </ul>
       </section>
@@ -46,7 +51,9 @@ export default function PrivacidadPage() {
         <ul className="space-y-2 text-lg text-gray-700 dark:text-gray-300">
           <li>• Conectar candidatos con empresas</li>
           <li>• Mostrar empleos relevantes según ubicación y preferencias</li>
-          <li>• Enviar notificaciones sobre postulaciones (emails transaccionales)</li>
+          <li>
+            • Enviar notificaciones sobre postulaciones (emails transaccionales)
+          </li>
           <li>• Mejorar la plataforma y la experiencia del usuario</li>
           <li>• Cumplir con requisitos legales</li>
         </ul>
@@ -57,12 +64,21 @@ export default function PrivacidadPage() {
           Compartir información
         </h2>
         <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">
-          <strong>No vendemos tu información.</strong> Solo compartimos datos en estos casos:
+          <strong>No vendemos tu información.</strong> Solo compartimos datos en
+          estos casos:
         </p>
         <ul className="space-y-2 text-lg text-gray-700 dark:text-gray-300">
-          <li>• <strong>Con empresas:</strong> Tu perfil y respuestas cuando te postulás a un empleo.</li>
-          <li>• <strong>Con candidatos:</strong> Datos de contacto de la empresa cuando solicitan contactarte.</li>
-          <li>• <strong>Por ley:</strong> Si es requerido por autoridades legales.</li>
+          <li>
+            • <strong>Con empresas:</strong> Tu perfil y respuestas cuando te
+            postulás a un empleo.
+          </li>
+          <li>
+            • <strong>Con candidatos:</strong> Datos de contacto de la empresa
+            cuando solicitan contactarte.
+          </li>
+          <li>
+            • <strong>Por ley:</strong> Si es requerido por autoridades legales.
+          </li>
         </ul>
       </section>
 
@@ -102,7 +118,8 @@ export default function PrivacidadPage() {
           Cookies
         </h2>
         <p className="text-lg text-gray-700 dark:text-gray-300">
-          JubiJobs usa cookies esenciales para autenticación y funcionamiento básico. No usamos cookies de publicidad o seguimiento de terceros.
+          JubiJobs usa cookies esenciales para autenticación y funcionamiento
+          básico. No usamos cookies de publicidad o seguimiento de terceros.
         </p>
       </section>
 
@@ -111,7 +128,8 @@ export default function PrivacidadPage() {
           Cambios a esta política
         </h2>
         <p className="text-lg text-gray-700 dark:text-gray-300">
-          Podemos actualizar esta política de privacidad ocasionalmente. Te notificaremos por email sobre cambios significativos.
+          Podemos actualizar esta política de privacidad ocasionalmente. Te
+          notificaremos por email sobre cambios significativos.
         </p>
       </section>
 
@@ -120,7 +138,8 @@ export default function PrivacidadPage() {
           Contacto
         </h2>
         <p className="text-lg text-gray-700 dark:text-gray-300">
-          Para preguntas sobre esta política de privacidad o para ejercer tus derechos, contactanos a través de nuestro email de soporte.
+          Para preguntas sobre esta política de privacidad o para ejercer tus
+          derechos, contactanos a través de nuestro email de soporte.
         </p>
       </section>
     </div>

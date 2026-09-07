@@ -2,7 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Font size scaling for accessibility */
+/* ─────────────────────────────────────────────────────────────
+   Tokens de marca por portal.
+
+   El middleware resuelve el portal por dominio y el layout lo estampa
+   en <html data-portal="jubi|inclu">. Todo el color de marca sale de
+   estas variables: los componentes nunca hardcodean un hex.
+   ───────────────────────────────────────────────────────────── */
+
+:root,
+:root[data-portal="jubi"] {
+  --brand-50: 239 246 255;
+  --brand-100: 219 234 254;
+  --brand-200: 191 219 254;
+  --brand-300: 147 197 253;
+  --brand-400: 96 165 250;
+  --brand-500: 59 130 246;
+  --brand-600: 37 99 235;
+  --brand-700: 30 64 175;
+  --brand-800: 30 58 138;
+  --brand-900: 30 41 59;
+
+  --surface: 249 250 251;
+  --on-surface: 17 24 39;
+  --focus-ring: 37 99 235;
+}
+
+:root[data-portal="inclu"] {
+  --brand-50: 245 243 255;
+  --brand-100: 237 233 254;
+  --brand-200: 221 214 254;
+  --brand-300: 196 181 253;
+  --brand-400: 167 139 250;
+  --brand-500: 139 92 246;
+  --brand-600: 124 58 237;
+  --brand-700: 109 40 217;
+  --brand-800: 91 33 182;
+  --brand-900: 76 29 149;
+
+  --surface: 249 250 251;
+  --on-surface: 17 24 39;
+  --focus-ring: 109 40 217;
+}
+
+.dark {
+  --surface: 17 24 39;
+  --on-surface: 243 244 246;
+  /* En oscuro subimos la luminancia del anillo de foco para no perder
+     contraste contra el fondo. */
+  --focus-ring: 147 197 253;
+}
+
+.dark[data-portal="inclu"] {
+  --focus-ring: 196 181 253;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Escalado de tipografía (control propio, independiente de UserWay)
+   ───────────────────────────────────────────────────────────── */
+
 html.font-size-large {
   font-size: 112.5%; /* 18px base */
 }
@@ -11,41 +69,55 @@ html.font-size-xl {
   font-size: 125%; /* 20px base */
 }
 
-/* Variables según BRANDING.md */
-:root {
-  --azure-trust: #2563EB;
-  --gray-900: #111827;
-  --gray-50: #F9FAFB;
-}
-
 body {
-  color: var(--gray-900);
-  background-color: var(--gray-50);
-  font-size: 18px; /* Mínimo según BRANDING.md */
+  color: rgb(var(--on-surface));
+  background-color: rgb(var(--surface));
+  /* 18px mínimo: esta audiencia no debería tener que hacer zoom para leer. */
+  font-size: 18px;
   line-height: 1.7;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  /* Mejora la legibilidad de párrafos largos en pantallas chicas. */
+  text-wrap: pretty;
 }
 
-/* Dark mode colors */
-.dark body {
-  color: #f3f4f6; /* gray-100 */
-  background-color: #111827; /* gray-900 */
+h1,
+h2,
+h3 {
+  /* Evita huérfanas feas en títulos de dos líneas. */
+  text-wrap: balance;
 }
 
-/* Accesibilidad: focus visible con Azure Trust */
+/* ─────────────────────────────────────────────────────────────
+   Foco visible — WCAG 2.4.7 y 2.4.13 (Focus Appearance, 2.2)
+
+   Anillo grueso, con offset y en color de marca. Nunca `outline: none`
+   sin reemplazo: quien navega por teclado necesita saber dónde está.
+   ───────────────────────────────────────────────────────────── */
+
 *:focus-visible {
-  outline: 3px solid var(--azure-trust);
-  outline-offset: 2px;
+  outline: 3px solid rgb(var(--focus-ring));
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
-/* Skip to content link - accesibilidad WCAG */
+/* Targets táctiles: 44x44 CSS px es el mínimo de WCAG 2.5.8. */
+button,
+[role="button"],
+a.btn,
+input[type="submit"] {
+  min-height: 44px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Salto al contenido
+   ───────────────────────────────────────────────────────────── */
+
 .skip-to-content {
   position: absolute;
   left: -9999px;
   z-index: 999;
   padding: 1rem 1.5rem;
-  background-color: var(--azure-trust);
-  color: white;
+  background-color: rgb(var(--brand-700));
+  color: #fff;
   text-decoration: none;
   font-weight: 600;
   font-size: 18px;
@@ -56,4 +128,50 @@ body {
   left: 50%;
   transform: translateX(-50%);
   top: 1rem;
+}
+
+/* Contenido solo para lectores de pantalla. */
+.sr-only:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Movimiento reducido — WCAG 2.3.3
+
+   No es una preferencia estética: para parte de nuestros usuarios el
+   movimiento provoca mareo o desorientación. Si lo piden, se corta.
+   ───────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Modo de alto contraste del sistema operativo. */
+@media (forced-colors: active) {
+  *:focus-visible {
+    outline: 3px solid CanvasText;
+  }
+}
+
+@media print {
+  .skip-to-content,
+  header nav,
+  footer {
+    display: none !important;
+  }
 }

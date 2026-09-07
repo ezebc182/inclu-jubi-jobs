@@ -3,18 +3,20 @@ import { PublishJobButton } from "@/components/ui/PublishJobButton";
 
 export const metadata = {
   title: "Para Empresas - JubiJobs",
-  description: "Publicá empleos y conectá con profesionales jubilados experimentados",
+  description:
+    "Publicá empleos y conectá con profesionales jubilados experimentados",
 };
 
 export default function EmpresasPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 transition-colors dark:bg-gray-900">
       <section className="mb-16 text-center">
-        <h1 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl dark:text-gray-100">
+        <h1 className="mb-6 text-4xl font-bold text-gray-900 dark:text-gray-100 md:text-5xl">
           Contratá talento con experiencia
         </h1>
-        <p className="mb-8 text-xl text-gray-700 md:text-2xl dark:text-gray-300">
-          Personas jubiladas con conocimientos, responsabilidad y ganas de seguir activas.
+        <p className="mb-8 text-xl text-gray-700 dark:text-gray-300 md:text-2xl">
+          Personas jubiladas con conocimientos, responsabilidad y ganas de
+          seguir activas.
         </p>
         <PublishJobButton>Publicar un empleo</PublishJobButton>
       </section>
@@ -29,7 +31,8 @@ export default function EmpresasPage() {
               Experiencia comprobada
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-300">
-              Décadas de trayectoria profesional en diversos rubros. Saben resolver problemas y tomar decisiones.
+              Décadas de trayectoria profesional en diversos rubros. Saben
+              resolver problemas y tomar decisiones.
             </p>
           </div>
 
@@ -38,7 +41,8 @@ export default function EmpresasPage() {
               Responsabilidad y compromiso
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-300">
-              Alto nivel de compromiso con el trabajo. Puntualidad, dedicación y profesionalismo.
+              Alto nivel de compromiso con el trabajo. Puntualidad, dedicación y
+              profesionalismo.
             </p>
           </div>
 
@@ -47,7 +51,8 @@ export default function EmpresasPage() {
               Flexibilidad horaria
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-300">
-              Ideales para puestos part-time, por día o con horarios flexibles que se adapten a tu negocio.
+              Ideales para puestos part-time, por día o con horarios flexibles
+              que se adapten a tu negocio.
             </p>
           </div>
 
@@ -56,7 +61,8 @@ export default function EmpresasPage() {
               Trato con clientes
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-300">
-              Excelentes habilidades de comunicación y empatía. Generan confianza en clientes de todas las edades.
+              Excelentes habilidades de comunicación y empatía. Generan
+              confianza en clientes de todas las edades.
             </p>
           </div>
 
@@ -65,7 +71,8 @@ export default function EmpresasPage() {
               Transmiten conocimiento
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-300">
-              Pueden capacitar y guiar a empleados más jóvenes con su experiencia y sabiduría.
+              Pueden capacitar y guiar a empleados más jóvenes con su
+              experiencia y sabiduría.
             </p>
           </div>
 
@@ -74,7 +81,8 @@ export default function EmpresasPage() {
               Costo-beneficio
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-300">
-              Complementan su jubilación, permitiendo esquemas laborales flexibles y mutuamente beneficiosos.
+              Complementan su jubilación, permitiendo esquemas laborales
+              flexibles y mutuamente beneficiosos.
             </p>
           </div>
         </div>
@@ -91,7 +99,8 @@ export default function EmpresasPage() {
                 1
               </span>
               <div>
-                <strong>Creá tu perfil:</strong> Ingresá con Google, Facebook, Microsoft o tu teléfono y completá los datos de tu empresa.
+                <strong>Creá tu perfil:</strong> Ingresá con Google, Facebook,
+                Microsoft o tu teléfono y completá los datos de tu empresa.
               </div>
             </li>
             <li className="flex gap-4">
@@ -99,7 +108,8 @@ export default function EmpresasPage() {
                 2
               </span>
               <div>
-                <strong>Publicá empleos:</strong> Describí el puesto, ubicación, modalidad y jornada. En minutos.
+                <strong>Publicá empleos:</strong> Describí el puesto, ubicación,
+                modalidad y jornada. En minutos.
               </div>
             </li>
             <li className="flex gap-4">
@@ -107,7 +117,8 @@ export default function EmpresasPage() {
                 3
               </span>
               <div>
-                <strong>Recibí postulaciones:</strong> Los candidatos responden 3 preguntas simples sobre su experiencia.
+                <strong>Recibí postulaciones:</strong> Los candidatos responden
+                3 preguntas simples sobre su experiencia.
               </div>
             </li>
             <li className="flex gap-4">
@@ -115,7 +126,8 @@ export default function EmpresasPage() {
                 4
               </span>
               <div>
-                <strong>Contactá candidatos:</strong> Revisá los perfiles y solicitá contacto directo con un click.
+                <strong>Contactá candidatos:</strong> Revisá los perfiles y
+                solicitá contacto directo con un click.
               </div>
             </li>
           </ol>

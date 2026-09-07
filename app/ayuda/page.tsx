@@ -3,7 +3,8 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Ayuda - JubiJobs",
-  description: "Guía completa para usar JubiJobs paso a paso. Tutoriales y ayuda para encontrar empleo.",
+  description:
+    "Guía completa para usar JubiJobs paso a paso. Tutoriales y ayuda para encontrar empleo.",
 };
 
 export default function AyudaPage() {
@@ -32,23 +33,26 @@ export default function AyudaPage() {
             </h3>
             <div className="ml-15 space-y-3 text-lg text-gray-700 dark:text-gray-300">
               <p>
-                <strong>Opción 1 - Con Google:</strong> Hacé click en el botón "Continuar con Google".
-                Te va a pedir permiso para usar tu cuenta de Gmail. Hacé click en "Permitir".
+                <strong>Opción 1 - Con Google:</strong> Hacé click en el botón
+                "Continuar con Google". Te va a pedir permiso para usar tu
+                cuenta de Gmail. Hacé click en "Permitir".
               </p>
               <p>
-                <strong>Opción 2 - Con Microsoft:</strong> Si tenés cuenta de Outlook o Hotmail,
-                hacé click en "Continuar con Microsoft".
+                <strong>Opción 2 - Con Microsoft:</strong> Si tenés cuenta de
+                Outlook o Hotmail, hacé click en "Continuar con Microsoft".
               </p>
               <p>
-                <strong>Opción 3 - Con Facebook:</strong> Si preferís, podés ingresar con tu cuenta de Facebook.
+                <strong>Opción 3 - Con Facebook:</strong> Si preferís, podés
+                ingresar con tu cuenta de Facebook.
               </p>
               <p>
-                <strong>Opción 4 - Con tu teléfono:</strong> Ingresá tu número de celular (con código de área, sin el 0).
-                Te vamos a enviar un SMS con un código de 6 dígitos. Ingresá ese código y listo.
+                <strong>Opción 4 - Con tu teléfono:</strong> Ingresá tu número
+                de celular (con código de área, sin el 0). Te vamos a enviar un
+                SMS con un código de 6 dígitos. Ingresá ese código y listo.
               </p>
               <p className="rounded-lg bg-primary-100 p-4 text-base dark:bg-primary-900">
-                💡 <strong>No necesitás crear contraseña.</strong> Cada vez que quieras ingresar,
-                elegís una de estas opciones y entrás directo.
+                💡 <strong>No necesitás crear contraseña.</strong> Cada vez que
+                quieras ingresar, elegís una de estas opciones y entrás directo.
               </p>
             </div>
           </div>
@@ -62,16 +66,30 @@ export default function AyudaPage() {
             </h3>
             <div className="ml-15 space-y-3 text-lg text-gray-700 dark:text-gray-300">
               <p>
-                Después de ingresar por primera vez, te vamos a pedir que respondas <strong>3 preguntas simples:</strong>
+                Después de ingresar por primera vez, te vamos a pedir que
+                respondas <strong>3 preguntas simples:</strong>
               </p>
               <ul className="ml-6 list-disc space-y-2">
-                <li><strong>¿Qué hiciste?</strong> Contanos tu experiencia laboral. Por ejemplo: "Trabajé 30 años como contador en una empresa textil".</li>
-                <li><strong>¿Qué sabés hacer?</strong> Mencioná tus habilidades. Por ejemplo: "Sé usar Excel, atender clientes, manejar caja registradora".</li>
-                <li><strong>¿Qué te gustaría hacer?</strong> Decinos qué tipo de trabajo buscás. Por ejemplo: "Me gustaría trabajar part-time como recepcionista".</li>
+                <li>
+                  <strong>¿Qué hiciste?</strong> Contanos tu experiencia
+                  laboral. Por ejemplo: "Trabajé 30 años como contador en una
+                  empresa textil".
+                </li>
+                <li>
+                  <strong>¿Qué sabés hacer?</strong> Mencioná tus habilidades.
+                  Por ejemplo: "Sé usar Excel, atender clientes, manejar caja
+                  registradora".
+                </li>
+                <li>
+                  <strong>¿Qué te gustaría hacer?</strong> Decinos qué tipo de
+                  trabajo buscás. Por ejemplo: "Me gustaría trabajar part-time
+                  como recepcionista".
+                </li>
               </ul>
               <p className="rounded-lg bg-yellow-50 p-4 text-base dark:bg-yellow-900">
-                ⚠️ <strong>Importante:</strong> Escribí con tus propias palabras. No hace falta usar lenguaje técnico.
-                Sé honesto y claro. Las empresas valoran la sinceridad.
+                ⚠️ <strong>Importante:</strong> Escribí con tus propias
+                palabras. No hace falta usar lenguaje técnico. Sé honesto y
+                claro. Las empresas valoran la sinceridad.
               </p>
             </div>
           </div>
@@ -85,20 +103,27 @@ export default function AyudaPage() {
             </h3>
             <div className="ml-15 space-y-3 text-lg text-gray-700 dark:text-gray-300">
               <p>
-                Hacé click en el menú <strong>"Empleos"</strong> (arriba a la derecha).
-                Vas a ver todos los trabajos disponibles.
+                Hacé click en el menú <strong>"Empleos"</strong> (arriba a la
+                derecha). Vas a ver todos los trabajos disponibles.
               </p>
               <p>
                 <strong>Podés filtrar por:</strong>
               </p>
               <ul className="ml-6 list-disc space-y-2">
-                <li><strong>Provincia:</strong> Elegí dónde querés trabajar (CABA, Buenos Aires, Córdoba, etc.)</li>
-                <li><strong>Modalidad:</strong> Presencial, remoto o híbrido</li>
-                <li><strong>Jornada:</strong> Completa, part-time, por hora</li>
+                <li>
+                  <strong>Provincia:</strong> Elegí dónde querés trabajar (CABA,
+                  Buenos Aires, Córdoba, etc.)
+                </li>
+                <li>
+                  <strong>Modalidad:</strong> Presencial, remoto o híbrido
+                </li>
+                <li>
+                  <strong>Jornada:</strong> Completa, part-time, por hora
+                </li>
               </ul>
               <p className="rounded-lg bg-green-50 p-4 text-base dark:bg-green-900">
-                ✓ <strong>Tip:</strong> Si no sabés qué filtro usar, dejá todo sin seleccionar
-                y vas a ver todas las ofertas disponibles.
+                ✓ <strong>Tip:</strong> Si no sabés qué filtro usar, dejá todo
+                sin seleccionar y vas a ver todas las ofertas disponibles.
               </p>
             </div>
           </div>
@@ -111,19 +136,25 @@ export default function AyudaPage() {
               Postularte a un empleo
             </h3>
             <div className="ml-15 space-y-3 text-lg text-gray-700 dark:text-gray-300">
-              <p>
-                Cuando encuentres un empleo que te interesa:
-              </p>
+              <p>Cuando encuentres un empleo que te interesa:</p>
               <ol className="ml-6 list-decimal space-y-2">
-                <li>Hacé click en el título del empleo para ver todos los detalles</li>
-                <li>Leé la descripción completa, el salario y los requisitos</li>
-                <li>Si te interesa, hacé click en el botón <strong>"Postularme"</strong></li>
+                <li>
+                  Hacé click en el título del empleo para ver todos los detalles
+                </li>
+                <li>
+                  Leé la descripción completa, el salario y los requisitos
+                </li>
+                <li>
+                  Si te interesa, hacé click en el botón{" "}
+                  <strong>"Postularme"</strong>
+                </li>
                 <li>Confirmá tu postulación</li>
                 <li>¡Listo! La empresa va a ver tu perfil</li>
               </ol>
               <p className="rounded-lg bg-primary-100 p-4 text-base dark:bg-primary-900">
-                💡 <strong>Recordá:</strong> Podés postularte a todos los empleos que quieras.
-                No hay límite. Mientras más postulaciones, más chances de conseguir trabajo.
+                💡 <strong>Recordá:</strong> Podés postularte a todos los
+                empleos que quieras. No hay límite. Mientras más postulaciones,
+                más chances de conseguir trabajo.
               </p>
             </div>
           </div>
@@ -137,8 +168,8 @@ export default function AyudaPage() {
             </h3>
             <div className="ml-15 space-y-3 text-lg text-gray-700 dark:text-gray-300">
               <p>
-                Hacé click en <strong>"Mis postulaciones"</strong> en el menú superior.
-                Ahí vas a ver:
+                Hacé click en <strong>"Mis postulaciones"</strong> en el menú
+                superior. Ahí vas a ver:
               </p>
               <ul className="ml-6 list-disc space-y-2">
                 <li>Todos los empleos a los que te postulaste</li>
@@ -156,7 +187,9 @@ export default function AyudaPage() {
           2. Navegación por teclado
         </h2>
         <p className="mb-6 text-lg text-gray-700 dark:text-gray-300">
-          Podés usar JubiJobs completamente con el teclado, sin necesidad de mouse. Esto es útil si te resulta más cómodo o si usás tecnologías asistivas.
+          Podés usar JubiJobs completamente con el teclado, sin necesidad de
+          mouse. Esto es útil si te resulta más cómodo o si usás tecnologías
+          asistivas.
         </p>
 
         <div className="space-y-6">
@@ -226,8 +259,9 @@ export default function AyudaPage() {
               Indicador de foco
             </h3>
             <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">
-              Cuando navegás con el teclado, el elemento seleccionado se marca con un <strong>borde azul grueso</strong>.
-              Esto te indica dónde estás en la página.
+              Cuando navegás con el teclado, el elemento seleccionado se marca
+              con un <strong>borde azul grueso</strong>. Esto te indica dónde
+              estás en la página.
             </p>
             <div className="rounded-lg border-4 border-blue-600 bg-blue-50 p-4 transition-colors dark:border-blue-400 dark:bg-blue-950">
               <p className="text-lg font-semibold text-blue-900 dark:text-blue-200">
@@ -241,7 +275,11 @@ export default function AyudaPage() {
               Saltar al contenido principal
             </h3>
             <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">
-              Al cargar cualquier página, presioná <kbd className="rounded border-2 border-gray-300 bg-gray-100 px-2 py-1 font-mono dark:border-gray-600 dark:bg-gray-600">Tab</kbd> una vez y vas a ver un enlace especial:
+              Al cargar cualquier página, presioná{" "}
+              <kbd className="rounded border-2 border-gray-300 bg-gray-100 px-2 py-1 font-mono dark:border-gray-600 dark:bg-gray-600">
+                Tab
+              </kbd>{" "}
+              una vez y vas a ver un enlace especial:
             </p>
             <div className="rounded-lg bg-blue-600 p-4 text-center">
               <p className="text-lg font-semibold text-white">
@@ -249,7 +287,12 @@ export default function AyudaPage() {
               </p>
             </div>
             <p className="mt-4 text-lg text-gray-700 dark:text-gray-300">
-              Si presionás <kbd className="rounded border-2 border-gray-300 bg-gray-100 px-2 py-1 font-mono dark:border-gray-600 dark:bg-gray-600">Enter</kbd>, vas directo al contenido sin tener que pasar por todos los enlaces del menú.
+              Si presionás{" "}
+              <kbd className="rounded border-2 border-gray-300 bg-gray-100 px-2 py-1 font-mono dark:border-gray-600 dark:bg-gray-600">
+                Enter
+              </kbd>
+              , vas directo al contenido sin tener que pasar por todos los
+              enlaces del menú.
             </p>
           </div>
         </div>
@@ -268,17 +311,31 @@ export default function AyudaPage() {
             </h3>
             <div className="space-y-3 text-lg text-gray-700 dark:text-gray-300">
               <p>
-                Si las letras te parecen muy chicas o muy grandes, podés cambiar el tamaño:
+                Si las letras te parecen muy chicas o muy grandes, podés cambiar
+                el tamaño:
               </p>
               <ol className="ml-6 list-decimal space-y-2">
-                <li>Buscá el control <strong>"Texto:"</strong> en la parte superior derecha</li>
-                <li>Hacé click en el botón <strong>"-"</strong> para hacer las letras más chicas</li>
-                <li>Hacé click en el botón <strong>"+"</strong> para hacer las letras más grandes</li>
-                <li>Si querés volver al tamaño original, hacé click en el botón de reiniciar (flecha circular)</li>
+                <li>
+                  Buscá el control <strong>"Texto:"</strong> en la parte
+                  superior derecha
+                </li>
+                <li>
+                  Hacé click en el botón <strong>"-"</strong> para hacer las
+                  letras más chicas
+                </li>
+                <li>
+                  Hacé click en el botón <strong>"+"</strong> para hacer las
+                  letras más grandes
+                </li>
+                <li>
+                  Si querés volver al tamaño original, hacé click en el botón de
+                  reiniciar (flecha circular)
+                </li>
               </ol>
               <p className="rounded-lg bg-primary-100 p-4 text-base dark:bg-primary-900">
-                💡 <strong>Se guarda automáticamente:</strong> La próxima vez que ingreses,
-                el tamaño de texto va a quedar como lo configuraste.
+                💡 <strong>Se guarda automáticamente:</strong> La próxima vez
+                que ingreses, el tamaño de texto va a quedar como lo
+                configuraste.
               </p>
             </div>
           </div>
@@ -289,15 +346,23 @@ export default function AyudaPage() {
             </h3>
             <div className="space-y-3 text-lg text-gray-700 dark:text-gray-300">
               <p>
-                Si te molesta la luz de la pantalla o preferís colores más oscuros:
+                Si te molesta la luz de la pantalla o preferís colores más
+                oscuros:
               </p>
               <ol className="ml-6 list-decimal space-y-2">
-                <li>Buscá el botón de tema en la parte superior derecha (ícono de sol/luna)</li>
-                <li>Hacé click para cambiar entre modo claro (fondo blanco) y modo oscuro (fondo gris)</li>
+                <li>
+                  Buscá el botón de tema en la parte superior derecha (ícono de
+                  sol/luna)
+                </li>
+                <li>
+                  Hacé click para cambiar entre modo claro (fondo blanco) y modo
+                  oscuro (fondo gris)
+                </li>
               </ol>
               <p className="rounded-lg bg-gray-100 p-4 text-base dark:bg-gray-600">
-                ✓ <strong>Beneficios del modo oscuro:</strong> Cansa menos la vista,
-                especialmente si usás la computadora de noche. Ahorra batería en celulares con pantalla OLED.
+                ✓ <strong>Beneficios del modo oscuro:</strong> Cansa menos la
+                vista, especialmente si usás la computadora de noche. Ahorra
+                batería en celulares con pantalla OLED.
               </p>
             </div>
           </div>
@@ -311,10 +376,21 @@ export default function AyudaPage() {
                 Si te resulta más cómodo usar el teclado en lugar del mouse:
               </p>
               <ul className="ml-6 list-disc space-y-2">
-                <li>Presioná <strong>Tab</strong> para moverte entre botones y enlaces</li>
-                <li>Presioná <strong>Enter</strong> o <strong>Espacio</strong> para hacer click</li>
-                <li>Presioná <strong>Shift + Tab</strong> para retroceder</li>
-                <li>Los elementos seleccionados se marcan con un borde azul visible</li>
+                <li>
+                  Presioná <strong>Tab</strong> para moverte entre botones y
+                  enlaces
+                </li>
+                <li>
+                  Presioná <strong>Enter</strong> o <strong>Espacio</strong>{" "}
+                  para hacer click
+                </li>
+                <li>
+                  Presioná <strong>Shift + Tab</strong> para retroceder
+                </li>
+                <li>
+                  Los elementos seleccionados se marcan con un borde azul
+                  visible
+                </li>
               </ul>
             </div>
           </div>
@@ -333,8 +409,9 @@ export default function AyudaPage() {
               ❓ ¿Es gratis usar JubiJobs?
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-300">
-              Sí, es <strong>100% gratis</strong> para candidatos. No cobramos nada por postularte
-              ni por encontrar trabajo. Las empresas tampoco pagan por publicar empleos.
+              Sí, es <strong>100% gratis</strong> para candidatos. No cobramos
+              nada por postularte ni por encontrar trabajo. Las empresas tampoco
+              pagan por publicar empleos.
             </p>
           </div>
 
@@ -343,8 +420,9 @@ export default function AyudaPage() {
               ❓ ¿Por qué no necesito subir un CV?
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-300">
-              Porque queremos que sea más simple. Las 3 preguntas que respondés son suficientes
-              para que las empresas sepan quién sos y qué podés hacer. Sin PDFs, sin formatos complicados.
+              Porque queremos que sea más simple. Las 3 preguntas que respondés
+              son suficientes para que las empresas sepan quién sos y qué podés
+              hacer. Sin PDFs, sin formatos complicados.
             </p>
           </div>
 
@@ -353,8 +431,9 @@ export default function AyudaPage() {
               ❓ ¿Cuánto tiempo tarda en responder una empresa?
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-300">
-              Depende de cada empresa. Algunas responden en 1-2 días, otras pueden tardar una semana.
-              Si pasa más de una semana sin respuesta, podés postularte a otros empleos.
+              Depende de cada empresa. Algunas responden en 1-2 días, otras
+              pueden tardar una semana. Si pasa más de una semana sin respuesta,
+              podés postularte a otros empleos.
             </p>
           </div>
 
@@ -363,8 +442,8 @@ export default function AyudaPage() {
               ❓ ¿Puedo modificar mi perfil después de crearlo?
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-300">
-              Sí. En la sección "Mis postulaciones" vas a encontrar un botón para editar
-              tus respuestas. Podés cambiarlas cuando quieras.
+              Sí. En la sección "Mis postulaciones" vas a encontrar un botón
+              para editar tus respuestas. Podés cambiarlas cuando quieras.
             </p>
           </div>
 
@@ -373,9 +452,10 @@ export default function AyudaPage() {
               ❓ ¿Qué hago si no recibo el código por SMS?
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-300">
-              Primero, verificá que el número de teléfono esté bien escrito (con código de área, sin el 0).
-              Si esperaste más de 2 minutos, podés pedir que te envíen otro código.
-              Si seguís sin recibirlo, probá ingresar con Google o Microsoft.
+              Primero, verificá que el número de teléfono esté bien escrito (con
+              código de área, sin el 0). Si esperaste más de 2 minutos, podés
+              pedir que te envíen otro código. Si seguís sin recibirlo, probá
+              ingresar con Google o Microsoft.
             </p>
           </div>
 
@@ -384,9 +464,9 @@ export default function AyudaPage() {
               ❓ ¿Mis datos están seguros?
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-300">
-              Sí. Usamos los mismos sistemas de seguridad que los bancos. Tu información
-              solo la ven las empresas a las que te postulás. Nunca compartimos ni vendemos
-              tus datos a terceros.
+              Sí. Usamos los mismos sistemas de seguridad que los bancos. Tu
+              información solo la ven las empresas a las que te postulás. Nunca
+              compartimos ni vendemos tus datos a terceros.
             </p>
           </div>
 
@@ -395,8 +475,9 @@ export default function AyudaPage() {
               ❓ ¿Hay un límite de edad para usar JubiJobs?
             </h3>
             <p className="text-lg text-gray-700 dark:text-gray-300">
-              No. JubiJobs está diseñado especialmente para personas mayores de 60 años,
-              pero cualquier persona puede usarlo. No discriminamos por edad.
+              No. JubiJobs está diseñado especialmente para personas mayores de
+              60 años, pero cualquier persona puede usarlo. No discriminamos por
+              edad.
             </p>
           </div>
         </div>
@@ -417,9 +498,15 @@ export default function AyudaPage() {
               <strong>Solución:</strong>
             </p>
             <ul className="ml-6 list-disc space-y-2 text-lg text-gray-700 dark:text-gray-300">
-              <li>Asegurate de haber iniciado sesión (arriba a la derecha debería decir tu nombre)</li>
+              <li>
+                Asegurate de haber iniciado sesión (arriba a la derecha debería
+                decir tu nombre)
+              </li>
               <li>Verificá que completaste las 3 preguntas de tu perfil</li>
-              <li>Si ya te postulaste a ese empleo, el botón va a decir "Ya postulado"</li>
+              <li>
+                Si ya te postulaste a ese empleo, el botón va a decir "Ya
+                postulado"
+              </li>
             </ul>
           </div>
 
@@ -431,9 +518,15 @@ export default function AyudaPage() {
               <strong>Solución:</strong>
             </p>
             <ul className="ml-6 list-disc space-y-2 text-lg text-gray-700 dark:text-gray-300">
-              <li>Usá el control de tamaño de texto (arriba a la derecha, dice "Texto:")</li>
+              <li>
+                Usá el control de tamaño de texto (arriba a la derecha, dice
+                "Texto:")
+              </li>
               <li>Hacé click en el botón "+" para agrandar las letras</li>
-              <li>También podés acercar la página con Ctrl + "+" (Windows) o Cmd + "+" (Mac)</li>
+              <li>
+                También podés acercar la página con Ctrl + "+" (Windows) o Cmd +
+                "+" (Mac)
+              </li>
             </ul>
           </div>
 
@@ -445,9 +538,14 @@ export default function AyudaPage() {
               <strong>Solución:</strong>
             </p>
             <ul className="ml-6 list-disc space-y-2 text-lg text-gray-700 dark:text-gray-300">
-              <li>Buscá el ícono de las tres líneas (☰) arriba a la derecha</li>
+              <li>
+                Buscá el ícono de las tres líneas (☰) arriba a la derecha
+              </li>
               <li>Tocá ese ícono para abrir el menú</li>
-              <li>Ahí vas a ver todas las opciones: Empleos, Empresas, Mis postulaciones, etc.</li>
+              <li>
+                Ahí vas a ver todas las opciones: Empleos, Empresas, Mis
+                postulaciones, etc.
+              </li>
             </ul>
           </div>
 
@@ -459,10 +557,18 @@ export default function AyudaPage() {
               <strong>Solución:</strong>
             </p>
             <ul className="ml-6 list-disc space-y-2 text-lg text-gray-700 dark:text-gray-300">
-              <li>Probá recargar la página (botón de actualizar del navegador o F5)</li>
+              <li>
+                Probá recargar la página (botón de actualizar del navegador o
+                F5)
+              </li>
               <li>Cerrá el navegador y volvé a abrirlo</li>
-              <li>Limpiá el caché del navegador (buscá "borrar caché" en la ayuda de tu navegador)</li>
-              <li>Probá usar un navegador actualizado (Chrome, Firefox, Edge)</li>
+              <li>
+                Limpiá el caché del navegador (buscá "borrar caché" en la ayuda
+                de tu navegador)
+              </li>
+              <li>
+                Probá usar un navegador actualizado (Chrome, Firefox, Edge)
+              </li>
             </ul>
           </div>
         </div>
@@ -474,7 +580,8 @@ export default function AyudaPage() {
           ¿Seguís necesitando ayuda?
         </h2>
         <p className="mb-8 text-xl text-gray-700 dark:text-gray-300">
-          Si no encontraste la respuesta que buscabas, contactanos y te ayudamos.
+          Si no encontraste la respuesta que buscabas, contactanos y te
+          ayudamos.
         </p>
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a

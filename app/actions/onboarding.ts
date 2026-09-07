@@ -4,7 +4,11 @@ import { prisma } from "@/lib/db";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { candidateOnboardingSchema, companyProfileSchema } from "@/lib/validations";
+import {
+  candidateOnboardingSchema,
+  companyProfileSchema,
+} from "@/lib/validations";
+import { getCurrentPortal } from "@/lib/portal";
 
 export async function completeOnboardingCandidate(formData: FormData) {
   const session = await auth.api.getSession({ headers: await headers() });
@@ -17,10 +21,13 @@ export async function completeOnboardingCandidate(formData: FormData) {
     name: formData.get("name") as string,
     phoneNumber: (formData.get("phone") as string) || "",
     location: formData.get("location") as string,
-    birthYear: formData.get("birthYear") ? parseInt(formData.get("birthYear") as string) : undefined,
+    birthYear: formData.get("birthYear")
+      ? parseInt(formData.get("birthYear") as string)
+      : undefined,
     isDisabled: formData.get("isDisabled") === "true",
     disabilityType: (formData.get("disabilityType") as any) || undefined,
-    accessibilityNeeds: (formData.get("accessibilityNeeds") as string) || undefined,
+    accessibilityNeeds:
+      (formData.get("accessibilityNeeds") as string) || undefined,
     did: formData.get("did") as string,
     canDo: formData.get("canDo") as string,
     wantToDo: formData.get("wantToDo") as string,
@@ -28,11 +35,16 @@ export async function completeOnboardingCandidate(formData: FormData) {
 
   const validated = candidateOnboardingSchema.parse(data);
 
+  // El candidato queda asociado al portal por el que se registró: es lo que
+  // determina qué avisos ve de ahí en adelante.
+  const portal = await getCurrentPortal();
+
   await prisma.user.update({
     where: { id: session.user.id },
     data: {
       ...validated,
       role: "CANDIDATE",
+      portal,
     },
   });
 

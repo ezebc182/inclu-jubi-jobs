@@ -10,18 +10,26 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Paleta JubiJobs basada en BRANDING.md
+        /**
+         * `primary` sale de las CSS variables que define globals.css según
+         * `<html data-portal>`. Así el MISMO componente se ve azul en
+         * JubiJobs y violeta en InclúJobs, sin duplicar una sola clase.
+         *
+         * El formato `rgb(var(--x) / <alpha-value>)` es lo que permite que
+         * sigan funcionando los modificadores de opacidad (bg-primary-600/20).
+         */
         primary: {
-          50: "#eff6ff",
-          100: "#DBEAFE", // Azure Light
-          200: "#bfdbfe",
-          300: "#93c5fd",
-          400: "#60A5FA", // Azure Medium
-          500: "#3b82f6",
-          600: "#2563EB", // Azure Trust (Color principal)
-          700: "#1E40AF", // Azure Dark
-          800: "#1e3a8a",
-          900: "#1e293b",
+          50: "rgb(var(--brand-50) / <alpha-value>)",
+          100: "rgb(var(--brand-100) / <alpha-value>)",
+          200: "rgb(var(--brand-200) / <alpha-value>)",
+          300: "rgb(var(--brand-300) / <alpha-value>)",
+          400: "rgb(var(--brand-400) / <alpha-value>)",
+          500: "rgb(var(--brand-500) / <alpha-value>)",
+          600: "rgb(var(--brand-600) / <alpha-value>)",
+          700: "rgb(var(--brand-700) / <alpha-value>)",
+          800: "rgb(var(--brand-800) / <alpha-value>)",
+          900: "rgb(var(--brand-900) / <alpha-value>)",
+          950: "rgb(var(--brand-900) / <alpha-value>)",
         },
         secondary: {
           50: "#fffbeb",

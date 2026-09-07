@@ -78,14 +78,35 @@ export async function createJob(formData: FormData) {
   // Obtener la empresa del usuario
   const company = await prisma.company.findUnique({
     where: { ownerId: session.user.id },
+    select: { id: true, isActive: true, autoApproveJobs: true },
   });
 
   if (!company) {
     throw new Error("No se encontró la empresa");
   }
 
-  // Parsear y validar los datos del formulario
-  const tags = JSON.parse(formData.get("tags") as string);
+  if (!company.isActive) {
+    throw new Error(
+      "Tu empresa está suspendida. Escribinos para regularizar la situación."
+    );
+  }
+
+  const parseOptionalInt = (value: FormDataEntryValue | null) => {
+    if (typeof value !== "string" || value.trim() === "") return undefined;
+    const parsed = Number.parseInt(value, 10);
+    return Number.isNaN(parsed) ? undefined : parsed;
+  };
+
+  // `tags` y `portals` llegan como JSON desde el formulario.
+  const parseJsonArray = (value: FormDataEntryValue | null): unknown[] => {
+    if (typeof value !== "string" || value.trim() === "") return [];
+    try {
+      const parsed: unknown = JSON.parse(value);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  };
 
   const data = {
     title: formData.get("title") as string,
@@ -94,20 +115,24 @@ export async function createJob(formData: FormData) {
     city: (formData.get("city") as string) || undefined,
     schedule: formData.get("schedule") as "PART_TIME" | "FLEX" | "POR_DIA",
     modality: formData.get("modality") as "PRESENCIAL" | "REMOTO" | "HIBRIDO",
-    salaryArsMin: formData.get("salaryArsMin")
-      ? parseInt(formData.get("salaryArsMin") as string)
-      : undefined,
-    salaryArsMax: formData.get("salaryArsMax")
-      ? parseInt(formData.get("salaryArsMax") as string)
-      : undefined,
-    tags,
+    salaryArsMin: parseOptionalInt(formData.get("salaryArsMin")),
+    salaryArsMax: parseOptionalInt(formData.get("salaryArsMax")),
+    tags: parseJsonArray(formData.get("tags")),
+    portals: parseJsonArray(formData.get("portals")),
+    accessibilityNotes:
+      (formData.get("accessibilityNotes") as string) || undefined,
+    isRemoteFriendly: formData.get("isRemoteFriendly") === "true",
+    hasAccessibleSite: formData.get("hasAccessibleSite") === "true",
+    supportsFlexHours: formData.get("supportsFlexHours") === "true",
   };
 
-  // Validar con el schema
   const validated = jobFormSchema.parse(data);
 
-  // Crear el empleo
-  await prisma.job.create({
+  // Las empresas verificadas con auto-aprobación publican directo; el resto
+  // pasa por la cola de moderación.
+  const approved = company.autoApproveJobs;
+
+  const job = await prisma.job.create({
     data: {
       companyId: company.id,
       title: validated.title,
@@ -119,13 +144,26 @@ export async function createJob(formData: FormData) {
       salaryArsMin: validated.salaryArsMin,
       salaryArsMax: validated.salaryArsMax,
       tags: validated.tags,
-      status: "PUBLISHED",
+      portals: validated.portals,
+      accessibilityNotes: validated.accessibilityNotes,
+      isRemoteFriendly: validated.isRemoteFriendly,
+      hasAccessibleSite: validated.hasAccessibleSite,
+      supportsFlexHours: validated.supportsFlexHours,
+      status: approved ? "PUBLISHED" : "DRAFT",
+      moderationStatus: approved ? "APPROVED" : "PENDING",
+      moderatedAt: approved ? new Date() : null,
     },
+    select: { id: true },
   });
 
-  // Revalidar las páginas relevantes
   revalidatePath("/empresa");
   revalidatePath("/empleos");
+  revalidatePath("/admin/moderacion");
 
-  return { success: true };
+  return {
+    success: true,
+    jobId: job.id,
+    // La UI necesita saber si el aviso ya está visible o quedó en revisión.
+    pendingReview: !approved,
+  };
 }

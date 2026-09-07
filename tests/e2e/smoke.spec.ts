@@ -5,9 +5,7 @@ test.describe("Smoke Tests - JubiJobs", () => {
     await page.goto("/");
 
     // Verificar que el título principal esté presente
-    await expect(page.locator("h1")).toContainText(
-      "Trabajos para jubilados"
-    );
+    await expect(page.locator("h1")).toContainText("Trabajos para jubilados");
 
     // Verificar que los CTAs estén presentes
     await expect(
@@ -38,11 +36,17 @@ test.describe("Smoke Tests - JubiJobs", () => {
     await page.goto("/");
 
     // Navegar a empleos
-    await page.getByRole("link", { name: /empleos/i }).first().click();
+    await page
+      .getByRole("link", { name: /empleos/i })
+      .first()
+      .click();
     await expect(page).toHaveURL(/\/empleos/);
 
     // Navegar a empresas
-    await page.getByRole("link", { name: /empresas/i }).first().click();
+    await page
+      .getByRole("link", { name: /empresas/i })
+      .first()
+      .click();
     await expect(page).toHaveURL(/\/empresas/);
 
     // Navegar a página de discapacidad
@@ -83,9 +87,13 @@ test.describe("Smoke Tests - JubiJobs", () => {
 
     // Verificar que el footer tenga los links
     const footer = page.locator("footer");
-    await expect(footer.getByRole("link", { name: /Privacidad/i })).toBeVisible();
+    await expect(
+      footer.getByRole("link", { name: /Privacidad/i })
+    ).toBeVisible();
     await expect(footer.getByRole("link", { name: /Términos/i })).toBeVisible();
-    await expect(footer.getByRole("link", { name: /Accesibilidad/i })).toBeVisible();
+    await expect(
+      footer.getByRole("link", { name: /Accesibilidad/i })
+    ).toBeVisible();
   });
 
   test("skip to content link works", async ({ page }) => {
@@ -118,7 +126,8 @@ test.describe("Accessibility Tests", () => {
 
     const buttons = await page.locator("button, a[role='button']").all();
 
-    for (const button of buttons.slice(0, 5)) { // Verificar primeros 5
+    for (const button of buttons.slice(0, 5)) {
+      // Verificar primeros 5
       const box = await button.boundingBox();
       if (box) {
         // Botones deben tener al menos 44x44px (WCAG guideline)

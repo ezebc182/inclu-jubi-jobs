@@ -1,9 +1,27 @@
 "use server";
 
+import type { Modality, Schedule } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
+import { getCurrentPortal } from "@/lib/portal";
+
+const MODALITIES: Modality[] = ["PRESENCIAL", "HIBRIDO", "REMOTO"];
+const SCHEDULES: Schedule[] = ["PART_TIME", "FLEX", "POR_DIA"];
+
+/** Descarta valores que no pertenezcan al enum antes de tocar la base. */
+function asModality(value: string | null): Modality | null {
+  return value && MODALITIES.includes(value as Modality)
+    ? (value as Modality)
+    : null;
+}
+
+function asSchedule(value: string | null): Schedule | null {
+  return value && SCHEDULES.includes(value as Schedule)
+    ? (value as Schedule)
+    : null;
+}
 
 export async function saveSearch(formData: FormData) {
   const session = await auth.api.getSession({ headers: await headers() });
@@ -18,12 +36,18 @@ export async function saveSearch(formData: FormData) {
   const schedule = (formData.get("schedule") as string) || null;
 
   if (!name || name.trim().length < 3) {
-    return { success: false, error: "El nombre debe tener al menos 3 caracteres" };
+    return {
+      success: false,
+      error: "El nombre debe tener al menos 3 caracteres",
+    };
   }
 
   // Verificar que al menos un filtro esté seleccionado
   if (!province && !modality && !schedule) {
-    return { success: false, error: "Seleccioná al menos un filtro para guardar" };
+    return {
+      success: false,
+      error: "Seleccioná al menos un filtro para guardar",
+    };
   }
 
   try {
@@ -32,14 +56,17 @@ export async function saveSearch(formData: FormData) {
         userId: session.user.id,
         name: name.trim(),
         province,
-        modality: modality as any,
-        schedule: schedule as any,
+        modality: asModality(modality),
+        schedule: asSchedule(schedule),
+        // La búsqueda queda atada al portal donde se creó: sus filtros solo
+        // tienen sentido contra los avisos de ese portal.
+        portal: await getCurrentPortal(),
       },
     });
 
     revalidatePath("/empleos");
     return { success: true };
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error saving search:", error);
     return { success: false, error: "Error al guardar la búsqueda" };
   }
@@ -68,7 +95,7 @@ export async function deleteSavedSearch(searchId: string) {
 
     revalidatePath("/empleos");
     return { success: true };
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error deleting search:", error);
     return { success: false, error: "Error al eliminar la búsqueda" };
   }
@@ -82,12 +109,10 @@ export async function getSavedSearches() {
   }
 
   try {
-    const searches = await prisma.savedSearch.findMany({
-      where: { userId: session.user.id },
+    return await prisma.savedSearch.findMany({
+      where: { userId: session.user.id, portal: await getCurrentPortal() },
       orderBy: { createdAt: "desc" },
     });
-
-    return searches;
   } catch (error) {
     console.error("Error getting saved searches:", error);
     return [];

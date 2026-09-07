@@ -31,8 +31,8 @@ export function PhoneLogin() {
       const formattedPhone = cleanPhone.startsWith("54")
         ? `+${cleanPhone}`
         : cleanPhone.startsWith("0")
-        ? `+54${cleanPhone.substring(1)}`
-        : `+54${cleanPhone}`;
+          ? `+54${cleanPhone.substring(1)}`
+          : `+54${cleanPhone}`;
 
       // Check rate limit before sending OTP
       const rateLimitResult = await sendOTPWithRateLimit(formattedPhone);
@@ -142,7 +142,7 @@ export function PhoneLogin() {
           >
             {loading ? (
               <>
-                <div className="h-6 w-6 animate-spin rounded-full border-3 border-white border-t-transparent"></div>
+                <div className="border-3 h-6 w-6 animate-spin rounded-full border-white border-t-transparent"></div>
                 <span>Enviando código...</span>
               </>
             ) : (
@@ -179,7 +179,8 @@ export function PhoneLogin() {
                   🔧 MODO DESARROLLO
                 </p>
                 <p className="mt-2 text-center text-sm text-yellow-700 dark:text-yellow-400">
-                  El código OTP se muestra en la <strong>consola del servidor</strong>
+                  El código OTP se muestra en la{" "}
+                  <strong>consola del servidor</strong>
                 </p>
                 <p className="mt-1 text-center text-xs text-yellow-600 dark:text-yellow-500">
                   Buscá en la terminal donde corre <code>npm run dev</code>
@@ -203,7 +204,7 @@ export function PhoneLogin() {
           >
             {loading ? (
               <>
-                <div className="h-6 w-6 animate-spin rounded-full border-3 border-white border-t-transparent"></div>
+                <div className="border-3 h-6 w-6 animate-spin rounded-full border-white border-t-transparent"></div>
                 <span>Verificando...</span>
               </>
             ) : (

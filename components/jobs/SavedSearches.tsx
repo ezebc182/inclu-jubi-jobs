@@ -23,13 +23,19 @@ interface SavedSearchesProps {
   };
 }
 
-export function SavedSearches({ searches, currentFilters }: SavedSearchesProps) {
+export function SavedSearches({
+  searches,
+  currentFilters,
+}: SavedSearchesProps) {
   const router = useRouter();
   const [showSaveDialog, setShowSaveDialog] = useState(false);
   const [saveName, setSaveName] = useState("");
   const [saving, setSaving] = useState(false);
 
-  const hasActiveFilters = currentFilters.province || currentFilters.modality || currentFilters.schedule;
+  const hasActiveFilters =
+    currentFilters.province ||
+    currentFilters.modality ||
+    currentFilters.schedule;
 
   const handleSaveSearch = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,9 +43,12 @@ export function SavedSearches({ searches, currentFilters }: SavedSearchesProps) 
 
     const formData = new FormData();
     formData.set("name", saveName);
-    if (currentFilters.province) formData.set("province", currentFilters.province);
-    if (currentFilters.modality) formData.set("modality", currentFilters.modality);
-    if (currentFilters.schedule) formData.set("schedule", currentFilters.schedule);
+    if (currentFilters.province)
+      formData.set("province", currentFilters.province);
+    if (currentFilters.modality)
+      formData.set("modality", currentFilters.modality);
+    if (currentFilters.schedule)
+      formData.set("schedule", currentFilters.schedule);
 
     const result = await saveSearch(formData);
 
@@ -113,8 +122,14 @@ export function SavedSearches({ searches, currentFilters }: SavedSearchesProps) 
       </div>
 
       {showSaveDialog && (
-        <form onSubmit={handleSaveSearch} className="mb-6 rounded-lg bg-primary-50 p-4 transition-colors dark:bg-primary-950">
-          <label htmlFor="saveName" className="mb-2 block text-lg font-semibold text-gray-900 dark:text-gray-100">
+        <form
+          onSubmit={handleSaveSearch}
+          className="mb-6 rounded-lg bg-primary-50 p-4 transition-colors dark:bg-primary-950"
+        >
+          <label
+            htmlFor="saveName"
+            className="mb-2 block text-lg font-semibold text-gray-900 dark:text-gray-100"
+          >
             Nombre de la búsqueda
           </label>
           <input
@@ -131,7 +146,7 @@ export function SavedSearches({ searches, currentFilters }: SavedSearchesProps) 
           <button
             type="submit"
             disabled={saving}
-            className="w-full rounded-lg bg-primary-600 px-6 py-3 text-lg font-bold text-white hover:bg-primary-700 disabled:opacity-50 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
+            className="w-full rounded-lg bg-primary-600 px-6 py-3 text-lg font-bold text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 disabled:opacity-50 dark:bg-primary-500 dark:hover:bg-primary-600"
           >
             {saving ? "Guardando..." : "Guardar búsqueda"}
           </button>
@@ -144,7 +159,8 @@ export function SavedSearches({ searches, currentFilters }: SavedSearchesProps) 
             No tenés búsquedas guardadas
           </p>
           <p className="text-base text-gray-600 dark:text-gray-400">
-            Aplicá filtros y guardá tus búsquedas favoritas para acceder rápidamente
+            Aplicá filtros y guardá tus búsquedas favoritas para acceder
+            rápidamente
           </p>
         </div>
       ) : (
@@ -175,12 +191,22 @@ export function SavedSearches({ searches, currentFilters }: SavedSearchesProps) 
                 )}
                 {search.modality && (
                   <span className="rounded-full bg-green-100 px-3 py-1 text-base font-semibold text-green-800 dark:bg-green-950 dark:text-green-300">
-                    {search.modality === "PRESENCIAL" ? "🏢" : search.modality === "REMOTO" ? "🏠" : "🔄"} {search.modality}
+                    {search.modality === "PRESENCIAL"
+                      ? "🏢"
+                      : search.modality === "REMOTO"
+                        ? "🏠"
+                        : "🔄"}{" "}
+                    {search.modality}
                   </span>
                 )}
                 {search.schedule && (
                   <span className="rounded-full bg-purple-100 px-3 py-1 text-base font-semibold text-purple-800 dark:bg-purple-950 dark:text-purple-300">
-                    ⏰ {search.schedule === "PART_TIME" ? "Part-time" : search.schedule === "FLEX" ? "Flexible" : "Por día"}
+                    ⏰{" "}
+                    {search.schedule === "PART_TIME"
+                      ? "Part-time"
+                      : search.schedule === "FLEX"
+                        ? "Flexible"
+                        : "Por día"}
                   </span>
                 )}
               </div>
