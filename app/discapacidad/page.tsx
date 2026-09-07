@@ -2,18 +2,20 @@ import { BigCTAButton } from "@/components/ui/BigCTAButton";
 
 export const metadata = {
   title: "Trabajo Inclusivo - JubiJobs",
-  description: "Oportunidades laborales para personas con discapacidad en Argentina",
+  description:
+    "Oportunidades laborales para personas con discapacidad en Argentina",
 };
 
 export default function DiscapacidadPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 transition-colors dark:bg-gray-900">
       <section className="mb-16 text-center">
-        <h1 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl dark:text-gray-100">
+        <h1 className="mb-6 text-4xl font-bold text-gray-900 dark:text-gray-100 md:text-5xl">
           Trabajo inclusivo
         </h1>
-        <p className="mb-8 text-xl text-gray-700 md:text-2xl dark:text-gray-300">
-          Oportunidades laborales para personas con discapacidad. Tu experiencia y talento importan.
+        <p className="mb-8 text-xl text-gray-700 dark:text-gray-300 md:text-2xl">
+          Oportunidades laborales para personas con discapacidad. Tu experiencia
+          y talento importan.
         </p>
         <div className="flex flex-col justify-center gap-4 sm:flex-row">
           <BigCTAButton href="/empleos">Ver empleos inclusivos</BigCTAButton>
@@ -33,7 +35,8 @@ export default function DiscapacidadPage() {
               ♿ Campo específico en tu perfil
             </h3>
             <p className="text-lg text-purple-800 dark:text-purple-200">
-              Podés indicar tu tipo de discapacidad y necesidades de accesibilidad. Las empresas lo ven antes de contactarte.
+              Podés indicar tu tipo de discapacidad y necesidades de
+              accesibilidad. Las empresas lo ven antes de contactarte.
             </p>
           </div>
 
@@ -42,7 +45,8 @@ export default function DiscapacidadPage() {
               ♿ Diseño accesible
             </h3>
             <p className="text-lg text-purple-800 dark:text-purple-200">
-              Tipografía grande, alto contraste, navegación simple, compatible con lectores de pantalla.
+              Tipografía grande, alto contraste, navegación simple, compatible
+              con lectores de pantalla.
             </p>
           </div>
 
@@ -51,7 +55,8 @@ export default function DiscapacidadPage() {
               ♿ Empresas informadas
             </h3>
             <p className="text-lg text-purple-800 dark:text-purple-200">
-              Las empresas ven tu perfil completo y pueden preparar el espacio de trabajo según tus necesidades.
+              Las empresas ven tu perfil completo y pueden preparar el espacio
+              de trabajo según tus necesidades.
             </p>
           </div>
 
@@ -60,7 +65,8 @@ export default function DiscapacidadPage() {
               ♿ Sin discriminación
             </h3>
             <p className="text-lg text-purple-800 dark:text-purple-200">
-              Todas las postulaciones son revisadas. Tu experiencia y habilidades son lo más importante.
+              Todas las postulaciones son revisadas. Tu experiencia y
+              habilidades son lo más importante.
             </p>
           </div>
         </div>
@@ -77,7 +83,8 @@ export default function DiscapacidadPage() {
                 1
               </span>
               <div>
-                <strong>Creá tu perfil:</strong> Ingresá con Google o Microsoft. Indicá que sos una persona con discapacidad.
+                <strong>Creá tu perfil:</strong> Ingresá con Google o Microsoft.
+                Indicá que sos una persona con discapacidad.
               </div>
             </li>
             <li className="flex gap-4">
@@ -85,7 +92,8 @@ export default function DiscapacidadPage() {
                 2
               </span>
               <div>
-                <strong>Detallá tus necesidades:</strong> Tipo de discapacidad, necesidades de accesibilidad (rampas, baños adaptados, etc.).
+                <strong>Detallá tus necesidades:</strong> Tipo de discapacidad,
+                necesidades de accesibilidad (rampas, baños adaptados, etc.).
               </div>
             </li>
             <li className="flex gap-4">
@@ -93,7 +101,8 @@ export default function DiscapacidadPage() {
                 3
               </span>
               <div>
-                <strong>Respondé 3 preguntas:</strong> ¿Qué hiciste? ¿Qué sabés hacer? ¿Qué te gustaría hacer?
+                <strong>Respondé 3 preguntas:</strong> ¿Qué hiciste? ¿Qué sabés
+                hacer? ¿Qué te gustaría hacer?
               </div>
             </li>
             <li className="flex gap-4">
@@ -101,7 +110,8 @@ export default function DiscapacidadPage() {
                 4
               </span>
               <div>
-                <strong>Postulate y esperá contacto:</strong> Las empresas ven tu perfil completo y se comunican si hay match.
+                <strong>Postulate y esperá contacto:</strong> Las empresas ven
+                tu perfil completo y se comunican si hay match.
               </div>
             </li>
           </ol>
@@ -114,13 +124,18 @@ export default function DiscapacidadPage() {
         </h2>
         <div className="mx-auto max-w-3xl rounded-lg border-2 border-gray-300 bg-white p-8 transition-colors dark:border-gray-700 dark:bg-gray-800">
           <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">
-            En Argentina, la Ley 22.431 establece el sistema de protección integral de las personas con discapacidad.
+            En Argentina, la Ley 22.431 establece el sistema de protección
+            integral de las personas con discapacidad.
           </p>
           <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">
-            Las empresas y organismos públicos están obligados a contratar personas con discapacidad en un porcentaje mínimo de su planta de personal.
+            Las empresas y organismos públicos están obligados a contratar
+            personas con discapacidad en un porcentaje mínimo de su planta de
+            personal.
           </p>
           <p className="text-lg text-gray-700 dark:text-gray-300">
-            <strong>JubiJobs facilita esta conexión</strong> entre personas con discapacidad que buscan trabajo y empresas comprometidas con la inclusión.
+            <strong>JubiJobs facilita esta conexión</strong> entre personas con
+            discapacidad que buscan trabajo y empresas comprometidas con la
+            inclusión.
           </p>
         </div>
       </section>
@@ -129,7 +144,9 @@ export default function DiscapacidadPage() {
         <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">
           Empezá a buscar trabajo hoy
         </h2>
-        <BigCTAButton href="/onboarding">Crear mi perfil inclusivo</BigCTAButton>
+        <BigCTAButton href="/onboarding">
+          Crear mi perfil inclusivo
+        </BigCTAButton>
       </section>
     </div>
   );

@@ -51,7 +51,10 @@ export default function EmpleoDetailLoading() {
       </article>
 
       <div className="mt-8 text-center">
-        <p className="text-xl font-semibold text-gray-700 dark:text-gray-300" role="status">
+        <p
+          className="text-xl font-semibold text-gray-700 dark:text-gray-300"
+          role="status"
+        >
           Cargando información del empleo...
         </p>
       </div>

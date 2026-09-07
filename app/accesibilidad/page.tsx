@@ -2,7 +2,8 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Declaración de Accesibilidad - JubiJobs",
-  description: "Nuestro compromiso con la accesibilidad web y la inclusión digital para personas mayores y con discapacidad",
+  description:
+    "Nuestro compromiso con la accesibilidad web y la inclusión digital para personas mayores y con discapacidad",
 };
 
 export default function DeclaracionAccesibilidadPage() {
@@ -22,16 +23,22 @@ export default function DeclaracionAccesibilidadPage() {
         </h2>
         <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300">
           <p>
-            <strong className="text-gray-900 dark:text-gray-100">JubiJobs</strong> se compromete a garantizar que nuestra plataforma sea accesible
-            para todas las personas, incluyendo aquellas con discapacidades y personas mayores.
+            <strong className="text-gray-900 dark:text-gray-100">
+              JubiJobs
+            </strong>{" "}
+            se compromete a garantizar que nuestra plataforma sea accesible para
+            todas las personas, incluyendo aquellas con discapacidades y
+            personas mayores.
           </p>
           <p>
-            Creemos que el acceso al empleo es un derecho fundamental, y trabajamos constantemente
-            para mejorar la experiencia de todos nuestros usuarios, independientemente de sus
-            capacidades o la tecnología que utilicen.
+            Creemos que el acceso al empleo es un derecho fundamental, y
+            trabajamos constantemente para mejorar la experiencia de todos
+            nuestros usuarios, independientemente de sus capacidades o la
+            tecnología que utilicen.
           </p>
           <p>
-            Esta declaración fue actualizada el <strong>27 de diciembre de 2025</strong>.
+            Esta declaración fue actualizada el{" "}
+            <strong>27 de diciembre de 2025</strong>.
           </p>
         </div>
       </section>
@@ -44,24 +51,30 @@ export default function DeclaracionAccesibilidadPage() {
         <div className="space-y-6">
           <div className="rounded-lg bg-green-50 p-6 transition-colors dark:bg-green-950">
             <h3 className="mb-3 flex items-center gap-3 text-2xl font-bold text-green-900 dark:text-green-200">
-              <span className="text-3xl" aria-hidden="true">✓</span>
+              <span className="text-3xl" aria-hidden="true">
+                ✓
+              </span>
               WCAG 2.1 Nivel AA
             </h3>
             <p className="text-lg text-green-800 dark:text-green-300">
-              JubiJobs cumple con las Pautas de Accesibilidad para el Contenido Web (WCAG) 2.1
-              en el nivel AA. Estas pautas son reconocidas internacionalmente y garantizan que
-              nuestro sitio sea usable por la mayor cantidad de personas posible.
+              JubiJobs cumple con las Pautas de Accesibilidad para el Contenido
+              Web (WCAG) 2.1 en el nivel AA. Estas pautas son reconocidas
+              internacionalmente y garantizan que nuestro sitio sea usable por
+              la mayor cantidad de personas posible.
             </p>
           </div>
 
           <div className="rounded-lg bg-blue-50 p-6 transition-colors dark:bg-blue-950">
             <h3 className="mb-3 flex items-center gap-3 text-2xl font-bold text-blue-900 dark:text-blue-200">
-              <span className="text-3xl" aria-hidden="true">✓</span>
+              <span className="text-3xl" aria-hidden="true">
+                ✓
+              </span>
               Diseño inclusivo para mayores de 60 años
             </h3>
             <p className="text-lg text-blue-800 dark:text-blue-300">
-              Nuestra plataforma está diseñada específicamente pensando en personas mayores,
-              con tipografía grande, contraste alto, y una interfaz simple y clara.
+              Nuestra plataforma está diseñada específicamente pensando en
+              personas mayores, con tipografía grande, contraste alto, y una
+              interfaz simple y clara.
             </p>
           </div>
         </div>
@@ -81,20 +94,40 @@ export default function DeclaracionAccesibilidadPage() {
             </h3>
             <ul className="ml-6 space-y-3 text-lg text-gray-700 dark:text-gray-300">
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Tamaño de fuente base: 18px</strong> - Más grande que el estándar web (16px)</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Tamaño de fuente base: 18px</strong> - Más grande que
+                  el estándar web (16px)
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Control de tamaño de texto</strong> - Los usuarios pueden aumentar el tamaño del texto hasta un 25% más</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Control de tamaño de texto</strong> - Los usuarios
+                  pueden aumentar el tamaño del texto hasta un 25% más
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Altura de línea: 1.7</strong> - Espaciado generoso para mejor legibilidad</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Altura de línea: 1.7</strong> - Espaciado generoso
+                  para mejor legibilidad
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Fuente sans-serif</strong> - Más fácil de leer en pantallas</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Fuente sans-serif</strong> - Más fácil de leer en
+                  pantallas
+                </span>
               </li>
             </ul>
           </div>
@@ -106,16 +139,31 @@ export default function DeclaracionAccesibilidadPage() {
             </h3>
             <ul className="ml-6 space-y-3 text-lg text-gray-700 dark:text-gray-300">
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Relación de contraste mínima: 4.5:1</strong> - Cumple con WCAG AA para texto normal</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Relación de contraste mínima: 4.5:1</strong> - Cumple
+                  con WCAG AA para texto normal
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Modo oscuro completo</strong> - Reduce el cansancio visual en ambientes con poca luz</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Modo oscuro completo</strong> - Reduce el cansancio
+                  visual en ambientes con poca luz
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Sin dependencia del color</strong> - La información nunca se transmite solo mediante colores</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Sin dependencia del color</strong> - La información
+                  nunca se transmite solo mediante colores
+                </span>
               </li>
             </ul>
           </div>
@@ -127,24 +175,49 @@ export default function DeclaracionAccesibilidadPage() {
             </h3>
             <ul className="ml-6 space-y-3 text-lg text-gray-700 dark:text-gray-300">
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Enlace "Saltar al contenido"</strong> - Permite omitir la navegación repetitiva</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Enlace "Saltar al contenido"</strong> - Permite omitir
+                  la navegación repetitiva
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Landmarks semánticos</strong> - Estructura clara para lectores de pantalla (header, nav, main, footer)</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Landmarks semánticos</strong> - Estructura clara para
+                  lectores de pantalla (header, nav, main, footer)
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Navegación por teclado completa</strong> - Todas las funciones accesibles sin mouse</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Navegación por teclado completa</strong> - Todas las
+                  funciones accesibles sin mouse
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Indicador de foco visible</strong> - Borde azul de 3px en elementos activos</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Indicador de foco visible</strong> - Borde azul de 3px
+                  en elementos activos
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Menú móvil responsive</strong> - Accesible en dispositivos táctiles</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Menú móvil responsive</strong> - Accesible en
+                  dispositivos táctiles
+                </span>
               </li>
             </ul>
           </div>
@@ -156,20 +229,40 @@ export default function DeclaracionAccesibilidadPage() {
             </h3>
             <ul className="ml-6 space-y-3 text-lg text-gray-700 dark:text-gray-300">
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Etiquetas claras y descriptivas</strong> - Cada campo tiene una etiqueta visible</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Etiquetas claras y descriptivas</strong> - Cada campo
+                  tiene una etiqueta visible
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Mensajes de error accesibles</strong> - Asociados programáticamente con ARIA attributes</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Mensajes de error accesibles</strong> - Asociados
+                  programáticamente con ARIA attributes
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Tamaño de campos de entrada: mínimo 44px</strong> - Cumple con WCAG para objetivos táctiles</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Tamaño de campos de entrada: mínimo 44px</strong> -
+                  Cumple con WCAG para objetivos táctiles
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Validación en tiempo real</strong> - Feedback inmediato sobre errores</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Validación en tiempo real</strong> - Feedback
+                  inmediato sobre errores
+                </span>
               </li>
             </ul>
           </div>
@@ -181,20 +274,39 @@ export default function DeclaracionAccesibilidadPage() {
             </h3>
             <ul className="ml-6 space-y-3 text-lg text-gray-700 dark:text-gray-300">
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Tamaño mínimo de botones: 44x44px</strong> - Fáciles de tocar en dispositivos móviles</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Tamaño mínimo de botones: 44x44px</strong> - Fáciles
+                  de tocar en dispositivos móviles
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Espaciado generoso</strong> - Evita clics accidentales</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Espaciado generoso</strong> - Evita clics accidentales
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Estados hover y focus claros</strong> - Feedback visual al pasar el cursor o seleccionar</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Estados hover y focus claros</strong> - Feedback
+                  visual al pasar el cursor o seleccionar
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Textos descriptivos</strong> - Botones con etiquetas claras ("Postularme" en lugar de "Enviar")</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Textos descriptivos</strong> - Botones con etiquetas
+                  claras ("Postularme" en lugar de "Enviar")
+                </span>
               </li>
             </ul>
           </div>
@@ -206,20 +318,40 @@ export default function DeclaracionAccesibilidadPage() {
             </h3>
             <ul className="ml-6 space-y-3 text-lg text-gray-700 dark:text-gray-300">
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Toasts no bloqueantes</strong> - Mensajes de éxito/error que no interrumpen el flujo</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Toasts no bloqueantes</strong> - Mensajes de
+                  éxito/error que no interrumpen el flujo
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Tipografía grande en notificaciones: 18px</strong> - Fácil de leer</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Tipografía grande en notificaciones: 18px</strong> -
+                  Fácil de leer
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Duración extendida</strong> - 5-7 segundos para dar tiempo a leer</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Duración extendida</strong> - 5-7 segundos para dar
+                  tiempo a leer
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Anuncios para lectores de pantalla</strong> - Regiones ARIA live para cambios dinámicos</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Anuncios para lectores de pantalla</strong> - Regiones
+                  ARIA live para cambios dinámicos
+                </span>
               </li>
             </ul>
           </div>
@@ -231,16 +363,31 @@ export default function DeclaracionAccesibilidadPage() {
             </h3>
             <ul className="ml-6 space-y-3 text-lg text-gray-700 dark:text-gray-300">
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Sin contraseñas</strong> - Autenticación mediante Google, Microsoft, Facebook o SMS</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Sin contraseñas</strong> - Autenticación mediante
+                  Google, Microsoft, Facebook o SMS
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>Rate limiting en OTP</strong> - Protección contra abuso de códigos SMS (3 intentos / 15 minutos)</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>Rate limiting en OTP</strong> - Protección contra
+                  abuso de códigos SMS (3 intentos / 15 minutos)
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">•</span>
-                <span><strong>HTTPS obligatorio</strong> - Todas las conexiones cifradas</span>
+                <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+                  •
+                </span>
+                <span>
+                  <strong>HTTPS obligatorio</strong> - Todas las conexiones
+                  cifradas
+                </span>
               </li>
             </ul>
           </div>
@@ -253,28 +400,53 @@ export default function DeclaracionAccesibilidadPage() {
           Compatibilidad con tecnologías asistivas
         </h2>
         <p className="mb-6 text-lg text-gray-700 dark:text-gray-300">
-          JubiJobs está diseñado para funcionar con las siguientes tecnologías asistivas:
+          JubiJobs está diseñado para funcionar con las siguientes tecnologías
+          asistivas:
         </p>
         <ul className="ml-6 space-y-3 text-lg text-gray-700 dark:text-gray-300">
           <li className="flex items-start gap-3">
-            <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">✓</span>
-            <span><strong>Lectores de pantalla:</strong> NVDA, JAWS, VoiceOver, TalkBack</span>
+            <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+              ✓
+            </span>
+            <span>
+              <strong>Lectores de pantalla:</strong> NVDA, JAWS, VoiceOver,
+              TalkBack
+            </span>
           </li>
           <li className="flex items-start gap-3">
-            <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">✓</span>
-            <span><strong>Ampliadores de pantalla:</strong> ZoomText, Magnifier de Windows</span>
+            <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+              ✓
+            </span>
+            <span>
+              <strong>Ampliadores de pantalla:</strong> ZoomText, Magnifier de
+              Windows
+            </span>
           </li>
           <li className="flex items-start gap-3">
-            <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">✓</span>
-            <span><strong>Software de reconocimiento de voz:</strong> Dragon NaturallySpeaking</span>
+            <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+              ✓
+            </span>
+            <span>
+              <strong>Software de reconocimiento de voz:</strong> Dragon
+              NaturallySpeaking
+            </span>
           </li>
           <li className="flex items-start gap-3">
-            <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">✓</span>
-            <span><strong>Navegación por teclado</strong> - Sin necesidad de mouse</span>
+            <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+              ✓
+            </span>
+            <span>
+              <strong>Navegación por teclado</strong> - Sin necesidad de mouse
+            </span>
           </li>
           <li className="flex items-start gap-3">
-            <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">✓</span>
-            <span><strong>Navegadores modernos:</strong> Chrome, Firefox, Safari, Edge (últimas 2 versiones)</span>
+            <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
+              ✓
+            </span>
+            <span>
+              <strong>Navegadores modernos:</strong> Chrome, Firefox, Safari,
+              Edge (últimas 2 versiones)
+            </span>
           </li>
         </ul>
       </section>
@@ -285,19 +457,28 @@ export default function DeclaracionAccesibilidadPage() {
           Limitaciones conocidas y mejoras en progreso
         </h2>
         <p className="mb-4 text-lg text-gray-700 dark:text-yellow-300">
-          Estamos constantemente mejorando nuestra accesibilidad. Algunas áreas en las que seguimos trabajando:
+          Estamos constantemente mejorando nuestra accesibilidad. Algunas áreas
+          en las que seguimos trabajando:
         </p>
         <ul className="ml-6 space-y-3 text-lg text-gray-700 dark:text-yellow-300">
           <li className="flex items-start gap-3">
-            <span className="mt-1 font-bold text-yellow-600 dark:text-yellow-400">⚠️</span>
-            <span>Mejora continua de descripciones alternativas para imágenes</span>
+            <span className="mt-1 font-bold text-yellow-600 dark:text-yellow-400">
+              ⚠️
+            </span>
+            <span>
+              Mejora continua de descripciones alternativas para imágenes
+            </span>
           </li>
           <li className="flex items-start gap-3">
-            <span className="mt-1 font-bold text-yellow-600 dark:text-yellow-400">⚠️</span>
+            <span className="mt-1 font-bold text-yellow-600 dark:text-yellow-400">
+              ⚠️
+            </span>
             <span>Implementación de atajos de teclado personalizados</span>
           </li>
           <li className="flex items-start gap-3">
-            <span className="mt-1 font-bold text-yellow-600 dark:text-yellow-400">⚠️</span>
+            <span className="mt-1 font-bold text-yellow-600 dark:text-yellow-400">
+              ⚠️
+            </span>
             <span>Compatibilidad con más idiomas y dialectos regionales</span>
           </li>
         </ul>
@@ -309,8 +490,8 @@ export default function DeclaracionAccesibilidadPage() {
           Tu feedback es importante
         </h2>
         <p className="mb-8 text-xl text-gray-700 dark:text-gray-300">
-          Si encontrás alguna barrera de accesibilidad en nuestra plataforma, por favor
-          contanos para que podamos mejorar.
+          Si encontrás alguna barrera de accesibilidad en nuestra plataforma,
+          por favor contanos para que podamos mejorar.
         </p>
         <div className="space-y-4">
           <a

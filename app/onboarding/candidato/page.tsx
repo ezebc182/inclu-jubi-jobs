@@ -22,9 +22,15 @@ export default async function OnboardingCandidatoPage() {
           Solo necesitamos unos datos básicos y tus respuestas a 3 preguntas.
         </p>
 
-        <form action={completeOnboardingCandidate} className="flex flex-col gap-6">
+        <form
+          action={completeOnboardingCandidate}
+          className="flex flex-col gap-6"
+        >
           <div className="flex flex-col gap-2">
-            <label htmlFor="name" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+            <label
+              htmlFor="name"
+              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+            >
               Tu nombre completo
               <span className="ml-1 text-red-600 dark:text-red-400">*</span>
             </label>
@@ -39,7 +45,10 @@ export default async function OnboardingCandidatoPage() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="phone" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+            <label
+              htmlFor="phone"
+              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+            >
               Teléfono (opcional)
             </label>
             <input
@@ -52,7 +61,10 @@ export default async function OnboardingCandidatoPage() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="location" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+            <label
+              htmlFor="location"
+              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+            >
               ¿Dónde vivís?
               <span className="ml-1 text-red-600 dark:text-red-400">*</span>
             </label>
@@ -63,14 +75,43 @@ export default async function OnboardingCandidatoPage() {
               className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
             >
               <option value="">Seleccioná tu provincia</option>
-              {["CABA", "Buenos Aires", "Córdoba", "Santa Fe", "Mendoza", "Tucumán", "Entre Ríos", "Salta", "Misiones", "Chaco", "Chubut", "Corrientes", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Neuquén", "Río Negro", "San Juan", "San Luis", "Santa Cruz", "Santiago del Estero", "Tierra del Fuego"].map((p) => (
-                <option key={p} value={p}>{p}</option>
+              {[
+                "CABA",
+                "Buenos Aires",
+                "Córdoba",
+                "Santa Fe",
+                "Mendoza",
+                "Tucumán",
+                "Entre Ríos",
+                "Salta",
+                "Misiones",
+                "Chaco",
+                "Chubut",
+                "Corrientes",
+                "Formosa",
+                "Jujuy",
+                "La Pampa",
+                "La Rioja",
+                "Neuquén",
+                "Río Negro",
+                "San Juan",
+                "San Luis",
+                "Santa Cruz",
+                "Santiago del Estero",
+                "Tierra del Fuego",
+              ].map((p) => (
+                <option key={p} value={p}>
+                  {p}
+                </option>
               ))}
             </select>
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="birthYear" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+            <label
+              htmlFor="birthYear"
+              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+            >
               Año de nacimiento (opcional)
             </label>
             <input
@@ -96,13 +137,19 @@ export default async function OnboardingCandidatoPage() {
                 value="true"
                 className="h-6 w-6 rounded border-2 border-gray-300 focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700"
               />
-              <label htmlFor="isDisabled" className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+              <label
+                htmlFor="isDisabled"
+                className="text-lg font-semibold text-gray-900 dark:text-gray-100"
+              >
                 Soy una persona con discapacidad
               </label>
             </div>
 
             <div className="flex flex-col gap-2">
-              <label htmlFor="disabilityType" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+              <label
+                htmlFor="disabilityType"
+                className="text-lg font-bold text-gray-900 dark:text-gray-100"
+              >
                 Tipo de discapacidad (opcional)
               </label>
               <select
@@ -119,7 +166,10 @@ export default async function OnboardingCandidatoPage() {
             </div>
 
             <div className="mt-4 flex flex-col gap-2">
-              <label htmlFor="accessibilityNeeds" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+              <label
+                htmlFor="accessibilityNeeds"
+                className="text-lg font-bold text-gray-900 dark:text-gray-100"
+              >
                 Necesidades de accesibilidad (opcional)
               </label>
               <textarea
@@ -135,10 +185,15 @@ export default async function OnboardingCandidatoPage() {
 
           <hr className="my-4 dark:border-gray-700" />
 
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">3 preguntas simples</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+            3 preguntas simples
+          </h2>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="did" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+            <label
+              htmlFor="did"
+              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+            >
               ¿Qué hiciste?
               <span className="ml-1 text-red-600 dark:text-red-400">*</span>
             </label>
@@ -158,7 +213,10 @@ export default async function OnboardingCandidatoPage() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="canDo" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+            <label
+              htmlFor="canDo"
+              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+            >
               ¿Qué sabés hacer?
               <span className="ml-1 text-red-600 dark:text-red-400">*</span>
             </label>
@@ -178,7 +236,10 @@ export default async function OnboardingCandidatoPage() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="wantToDo" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+            <label
+              htmlFor="wantToDo"
+              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+            >
               ¿Qué te gustaría hacer?
               <span className="ml-1 text-red-600 dark:text-red-400">*</span>
             </label>

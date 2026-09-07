@@ -17,19 +17,23 @@ export function LoadingSpinner({ size = "md", message }: LoadingSpinnerProps) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4" role="status" aria-live="polite">
+    <div
+      className="flex flex-col items-center justify-center gap-4"
+      role="status"
+      aria-live="polite"
+    >
       <div
         className={`${sizeClasses[size]} animate-spin rounded-full border-primary-600 border-t-transparent dark:border-primary-400`}
         aria-hidden="true"
       />
       {message && (
-        <p className={`${textSizeClasses[size]} font-semibold text-gray-700 dark:text-gray-300`}>
+        <p
+          className={`${textSizeClasses[size]} font-semibold text-gray-700 dark:text-gray-300`}
+        >
           {message}
         </p>
       )}
-      <span className="sr-only">
-        {message || "Cargando..."}
-      </span>
+      <span className="sr-only">{message || "Cargando..."}</span>
     </div>
   );
 }

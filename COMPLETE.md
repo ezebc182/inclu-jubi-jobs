@@ -9,6 +9,7 @@ Todos los archivos han sido creados y el proyecto está completamente funcional.
 ## 📁 Inventario Completo de Archivos Creados (67 archivos)
 
 ### Configuración Raíz (10 archivos)
+
 - ✅ `package.json` - Dependencias Next.js 15, Prisma, Better-Auth, Radix UI
 - ✅ `tsconfig.json` - Configuración TypeScript
 - ✅ `tailwind.config.ts` - Configuración Tailwind con tipografía grande
@@ -21,10 +22,12 @@ Todos los archivos han sido creados y el proyecto está completamente funcional.
 - ✅ `middleware.ts` - Middleware de protección de rutas
 
 ### Prisma y Base de Datos (2 archivos)
+
 - ✅ `prisma/schema.prisma` - 4 modelos completos con índices
 - ✅ `prisma/seed.ts` - Seeds con 3 empresas, 6 empleos, 3 candidatos
 
 ### Librería Core (6 archivos)
+
 - ✅ `lib/db.ts` - Cliente Prisma con singleton
 - ✅ `lib/auth.ts` - Better-Auth config (servidor)
 - ✅ `lib/auth-client.ts` - Cliente auth (navegador)
@@ -33,58 +36,71 @@ Todos los archivos han sido creados y el proyecto está completamente funcional.
 - ✅ `lib/validations.ts` - 5 esquemas Zod
 
 ### Server Actions (3 archivos)
+
 - ✅ `app/actions/jobs.ts` - Crear/actualizar empleos
 - ✅ `app/actions/applications.ts` - Postular/contactar
 - ✅ `app/actions/onboarding.ts` - Onboarding candidato/empresa
 
 ### API Routes (1 archivo)
+
 - ✅ `app/api/auth/[...all]/route.ts` - Better-Auth OAuth
 
 ### Layouts y Estilos (3 archivos)
+
 - ✅ `app/layout.tsx` - Layout raíz con Header/Footer
 - ✅ `app/globals.css` - Estilos globales accesibles
 - ✅ `app/page.tsx` - Home completa
 
 ### Componentes de Layout (2 archivos)
+
 - ✅ `components/layout/Header.tsx` - Header con navegación
 - ✅ `components/layout/Footer.tsx` - Footer con links
 
 ### Componentes UI Base (3 archivos)
+
 - ✅ `components/ui/BigCTAButton.tsx` - Botón grande accesible
 - ✅ `components/ui/SectionTitle.tsx` - Títulos consistentes
 - ✅ `components/ui/EmptyState.tsx` - Estados vacíos
 
 ### Componentes de Formularios (3 archivos)
+
 - ✅ `components/forms/LargeToggleRole.tsx` - Toggle candidato/empresa
 - ✅ `components/forms/ProvinceSelect.tsx` - Selector de provincias
 - ✅ `components/forms/ThreeQuestionsForm.tsx` - Las 3 preguntas
 
 ### Componentes de Empleos (2 archivos)
+
 - ✅ `components/jobs/JobCard.tsx` - Tarjeta de empleo
 - ✅ `components/jobs/JobFilters.tsx` - Filtros de búsqueda
 
 ### Componentes de Aplicaciones (1 archivo)
+
 - ✅ `components/applications/ApplicationCard.tsx` - Tarjeta de postulación
 
 ### Componentes de Empresa (3 archivos)
+
 - ✅ `components/company/JobForm.tsx` - Formulario crear empleo
 - ✅ `components/company/CompanyJobsList.tsx` - Lista de empleos
 - ✅ `components/company/ApplicationsList.tsx` - Postulaciones recibidas
 
 ### Páginas Públicas - Empleos (2 archivos)
+
 - ✅ `app/empleos/page.tsx` - Listado con filtros
 - ✅ `app/empleos/[id]/page.tsx` - Detalle + postulación
 
 ### Páginas Privadas (2 archivos)
+
 - ✅ `app/empresa/page.tsx` - Dashboard empresa (4 tabs)
 - ✅ `app/postulaciones/page.tsx` - Mis postulaciones
 
 ### Páginas de Onboarding (3 archivos)
+
 - ✅ `app/onboarding/page.tsx` - Selector de rol
 - ✅ `app/onboarding/candidato/page.tsx` - Onboarding candidato
 - ✅ `app/onboarding/empresa/page.tsx` - Onboarding empresa
 
 ### Páginas Estáticas (6 archivos)
+
 - ✅ `app/empresas/page.tsx` - Landing empresas
 - ✅ `app/discapacidad/page.tsx` - Trabajo inclusivo
 - ✅ `app/como-funciona/page.tsx` - Cómo funciona
@@ -93,10 +109,12 @@ Todos los archivos han sido creados y el proyecto está completamente funcional.
 - ✅ `app/terminos/page.tsx` - Términos y condiciones
 
 ### Testing (2 archivos)
+
 - ✅ `playwright.config.ts` - Configuración Playwright
 - ✅ `tests/e2e/smoke.spec.ts` - 10 smoke tests + A11y
 
 ### Documentación (4 archivos)
+
 - ✅ `README.md` - Documentación completa (250+ líneas)
 - ✅ `SETUP.md` - Guía de setup con ejemplos
 - ✅ `COMPLETE.md` - Este archivo
@@ -107,22 +125,26 @@ Todos los archivos han sido creados y el proyecto está completamente funcional.
 ## 🚀 Comandos para Ejecutar el Proyecto
 
 ### 1. Instalar dependencias
+
 ```bash
 pnpm install
 ```
 
 ### 2. Configurar variables de entorno
+
 ```bash
 cp .env.example .env
 ```
 
 **Editar `.env` con:**
+
 - `DATABASE_URL`: PostgreSQL en Neon
 - `AUTH_SECRET`: Secreto de 32+ caracteres
 - `BETTER_AUTH_GOOGLE_ID/SECRET`: Credenciales OAuth
 - (Opcional) Credenciales SMTP para emails
 
 ### 3. Setup de base de datos
+
 ```bash
 # Generar cliente Prisma
 pnpm prisma generate
@@ -135,6 +157,7 @@ pnpm db:seed
 ```
 
 ### 4. Ejecutar en desarrollo
+
 ```bash
 pnpm dev
 ```
@@ -142,6 +165,7 @@ pnpm dev
 Abre [http://localhost:3000](http://localhost:3000)
 
 ### 5. Ejecutar tests (opcional)
+
 ```bash
 # Instalar Playwright
 pnpm playwright install
@@ -155,6 +179,7 @@ pnpm test:e2e
 ## 🌟 Funcionalidades Implementadas
 
 ### Para Candidatos
+
 - ✅ Login OAuth (Google, Microsoft, GitHub)
 - ✅ Onboarding con 3 preguntas
 - ✅ Perfil con discapacidad (opcional)
@@ -164,6 +189,7 @@ pnpm test:e2e
 - ✅ Recibir emails de confirmación
 
 ### Para Empresas
+
 - ✅ Login OAuth
 - ✅ Crear perfil de empresa
 - ✅ Publicar empleos ilimitados
@@ -173,6 +199,7 @@ pnpm test:e2e
 - ✅ Dashboard con 4 tabs (Radix UI)
 
 ### Características Especiales
+
 - ✅ Trabajo inclusivo (campo de discapacidad)
 - ✅ 23 provincias de Argentina
 - ✅ Formateo es-AR (fecha dd/mm/aaaa, ARS)
@@ -183,6 +210,7 @@ pnpm test:e2e
 - ✅ Compatible con lectores de pantalla
 
 ### Emails Transaccionales
+
 - ✅ Confirmación de postulación
 - ✅ Nueva postulación (empresa)
 - ✅ Solicitud de contacto
@@ -192,20 +220,24 @@ pnpm test:e2e
 ## 📊 Modelos de Datos
 
 ### User (rol: CANDIDATE | COMPANY | ADMIN)
+
 - Email, name (de OAuth)
 - Perfil candidato: 3 preguntas, ubicación, birthYear
 - Discapacidad: isDisabled, tipo, necesidades
 
 ### Company (1:1 con User)
+
 - Nombre, logo, website, about, ubicación
 
 ### Job (múltiples por Company)
+
 - Título, descripción, provincia, ciudad
 - Modalidad, jornada, salario (min/max ARS)
 - Estado: DRAFT | PUBLISHED | PAUSED | CLOSED
 - Tags (array de strings)
 
 ### Application (1 por User-Job)
+
 - Snapshot de 3 respuestas
 - Estado: SUBMITTED | REVIEWED | CONTACTED | REJECTED
 - Notas
@@ -232,30 +264,37 @@ pnpm test:e2e
 ## 🚢 Deploy a Producción (Vercel + Neon)
 
 ### 1. Crear proyecto en Vercel
+
 ```bash
 vercel
 ```
 
 ### 2. Configurar variables de entorno en Vercel
+
 Copiar todas las variables de `.env` al dashboard de Vercel.
 
 ### 3. Crear base de datos en Neon
+
 - Ir a [neon.tech](https://neon.tech)
 - Crear proyecto
 - Copiar `DATABASE_URL` a Vercel
 
 ### 4. Ejecutar migraciones en producción
+
 ```bash
 pnpm prisma migrate deploy
 ```
 
 ### 5. Configurar callbacks OAuth
+
 Actualizar URLs en Google/Microsoft/GitHub:
+
 - `https://tu-dominio.vercel.app/api/auth/callback/google`
 - `https://tu-dominio.vercel.app/api/auth/callback/microsoft`
 - `https://tu-dominio.vercel.app/api/auth/callback/github`
 
 ### 6. Deploy
+
 Vercel hace deploy automático en cada push a main.
 
 ---
@@ -348,6 +387,7 @@ Vercel hace deploy automático en cada push a main.
 ## 📞 Soporte
 
 Para preguntas sobre el código o la arquitectura, revisar:
+
 - `README.md` - Documentación completa
 - `SETUP.md` - Guía de setup
 - Código comentado en archivos críticos
@@ -359,6 +399,7 @@ Para preguntas sobre el código o la arquitectura, revisar:
 **MVP 100% completo, funcional y listo para deploy.**
 
 Todo el stack tecnológico solicitado está implementado:
+
 - ✅ Next.js 15 + App Router
 - ✅ React 19
 - ✅ Server Actions

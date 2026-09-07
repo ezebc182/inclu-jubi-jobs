@@ -92,7 +92,7 @@ export function FontSizeControl() {
       />
 
       {/* Desktop: Always visible controls */}
-      <div className="hidden md:flex items-center gap-2 rounded-lg border-2 border-gray-200 bg-white p-2 dark:border-gray-700 dark:bg-gray-800">
+      <div className="hidden items-center gap-2 rounded-lg border-2 border-gray-200 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 md:flex">
         <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
           Texto:
         </span>

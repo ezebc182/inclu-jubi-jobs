@@ -33,20 +33,20 @@ JubiJobs es una plataforma fullstack diseñada para conectar a personas jubilada
 
 ## 🚀 Stack Tecnológico
 
-| Categoría | Tecnología |
-|-----------|------------|
-| **Framework** | Next.js 16.1.0 (App Router, React Server Components) |
-| **UI Library** | React 19.2.3 |
-| **Lenguaje** | TypeScript 5.7 |
-| **Base de datos** | PostgreSQL (Neon) |
-| **ORM** | Prisma 6.1 |
-| **Autenticación** | Better-Auth (OAuth + Phone OTP) |
-| **Estilos** | Tailwind CSS 3.4 + Radix UI |
-| **Validación** | Zod 3.24 |
-| **Emails** | Nodemailer (dev) / Resend (prod) |
-| **Testing** | Playwright |
-| **Build Tool** | Turbopack |
-| **Deploy** | Vercel (recomendado) |
+| Categoría         | Tecnología                                           |
+| ----------------- | ---------------------------------------------------- |
+| **Framework**     | Next.js 16.1.0 (App Router, React Server Components) |
+| **UI Library**    | React 19.2.3                                         |
+| **Lenguaje**      | TypeScript 5.7                                       |
+| **Base de datos** | PostgreSQL (Neon)                                    |
+| **ORM**           | Prisma 6.1                                           |
+| **Autenticación** | Better-Auth (OAuth + Phone OTP)                      |
+| **Estilos**       | Tailwind CSS 3.4 + Radix UI                          |
+| **Validación**    | Zod 3.24                                             |
+| **Emails**        | Nodemailer (dev) / Resend (prod)                     |
+| **Testing**       | Playwright                                           |
+| **Build Tool**    | Turbopack                                            |
+| **Deploy**        | Vercel (recomendado)                                 |
 
 ## 📋 Requisitos Previos
 
@@ -217,11 +217,13 @@ jubijobs/
 ### Autenticación por Teléfono (SMS OTP)
 
 **En Desarrollo:**
+
 - El código OTP es **aleatorio de 6 dígitos**
 - Se muestra en la consola del servidor (terminal donde corre `npm run dev`)
 - La UI indica dónde buscar el código
 
 **En Producción:**
+
 - Configurar servicio de SMS (Twilio recomendado)
 - El código se envía por SMS real
 - Variables de entorno necesarias:
@@ -232,6 +234,7 @@ jubijobs/
   ```
 
 **Flujo:**
+
 1. Usuario ingresa número de teléfono (formato argentino: +54)
 2. Sistema genera y envía código OTP de 6 dígitos
 3. Usuario ingresa código para verificar

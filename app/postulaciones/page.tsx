@@ -75,37 +75,47 @@ export default async function PostulacionesPage() {
         </div>
       )}
 
-      <section className="mt-12 rounded-lg bg-primary-50 p-6 dark:bg-gray-800 dark:border dark:border-gray-700">
+      <section className="mt-12 rounded-lg bg-primary-50 p-6 dark:border dark:border-gray-700 dark:bg-gray-800">
         <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
           Estados de las postulaciones
         </h2>
         <ul className="space-y-3 text-lg text-gray-700 dark:text-gray-300">
           <li className="flex items-start gap-3">
-            <span className="text-2xl" aria-hidden="true">📤</span>
+            <span className="text-2xl" aria-hidden="true">
+              📤
+            </span>
             <div>
-              <strong className="dark:text-gray-100">Enviada:</strong> Tu postulación fue recibida y la
-              empresa la va a revisar.
+              <strong className="dark:text-gray-100">Enviada:</strong> Tu
+              postulación fue recibida y la empresa la va a revisar.
             </div>
           </li>
           <li className="flex items-start gap-3">
-            <span className="text-2xl" aria-hidden="true">👀</span>
+            <span className="text-2xl" aria-hidden="true">
+              👀
+            </span>
             <div>
-              <strong className="dark:text-gray-100">Revisada:</strong> La empresa vio tu postulación y está
-              evaluando tu perfil.
+              <strong className="dark:text-gray-100">Revisada:</strong> La
+              empresa vio tu postulación y está evaluando tu perfil.
             </div>
           </li>
           <li className="flex items-start gap-3">
-            <span className="text-2xl" aria-hidden="true">✅</span>
+            <span className="text-2xl" aria-hidden="true">
+              ✅
+            </span>
             <div>
-              <strong className="dark:text-gray-100">Contactado/a:</strong> ¡La empresa se interesó en tu
-              perfil! Deberías recibir un email con sus datos de contacto.
+              <strong className="dark:text-gray-100">Contactado/a:</strong> ¡La
+              empresa se interesó en tu perfil! Deberías recibir un email con
+              sus datos de contacto.
             </div>
           </li>
           <li className="flex items-start gap-3">
-            <span className="text-2xl" aria-hidden="true">❌</span>
+            <span className="text-2xl" aria-hidden="true">
+              ❌
+            </span>
             <div>
-              <strong className="dark:text-gray-100">Rechazada:</strong> La empresa decidió no continuar con
-              tu postulación esta vez. Seguí buscando otras oportunidades.
+              <strong className="dark:text-gray-100">Rechazada:</strong> La
+              empresa decidió no continuar con tu postulación esta vez. Seguí
+              buscando otras oportunidades.
             </div>
           </li>
         </ul>

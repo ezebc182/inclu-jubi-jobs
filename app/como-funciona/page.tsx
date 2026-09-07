@@ -26,7 +26,10 @@ export default function ComoFuncionaPage() {
                 1
               </span>
               <div>
-                <strong>Ingresá con Google, Facebook, Microsoft o tu teléfono:</strong> No necesitás crear usuario ni contraseña.
+                <strong>
+                  Ingresá con Google, Facebook, Microsoft o tu teléfono:
+                </strong>{" "}
+                No necesitás crear usuario ni contraseña.
               </div>
             </li>
             <li className="flex gap-4">
@@ -34,7 +37,8 @@ export default function ComoFuncionaPage() {
                 2
               </span>
               <div>
-                <strong>Completá 3 preguntas:</strong> ¿Qué hiciste? ¿Qué sabés hacer? ¿Qué te gustaría hacer? Eso es todo.
+                <strong>Completá 3 preguntas:</strong> ¿Qué hiciste? ¿Qué sabés
+                hacer? ¿Qué te gustaría hacer? Eso es todo.
               </div>
             </li>
             <li className="flex gap-4">
@@ -42,7 +46,8 @@ export default function ComoFuncionaPage() {
                 3
               </span>
               <div>
-                <strong>Buscá y postulate:</strong> Filtrá empleos por provincia, modalidad y jornada. Un click y estás postulado.
+                <strong>Buscá y postulate:</strong> Filtrá empleos por
+                provincia, modalidad y jornada. Un click y estás postulado.
               </div>
             </li>
           </ol>
@@ -58,7 +63,8 @@ export default function ComoFuncionaPage() {
                 1
               </span>
               <div>
-                <strong>Ingresá y creá tu perfil de empresa:</strong> OAuth rápido, datos básicos de tu empresa.
+                <strong>Ingresá y creá tu perfil de empresa:</strong> OAuth
+                rápido, datos básicos de tu empresa.
               </div>
             </li>
             <li className="flex gap-4">
@@ -66,7 +72,8 @@ export default function ComoFuncionaPage() {
                 2
               </span>
               <div>
-                <strong>Publicá empleos:</strong> Título, descripción, ubicación, modalidad, jornada, salario. 5 minutos.
+                <strong>Publicá empleos:</strong> Título, descripción,
+                ubicación, modalidad, jornada, salario. 5 minutos.
               </div>
             </li>
             <li className="flex gap-4">
@@ -74,7 +81,8 @@ export default function ComoFuncionaPage() {
                 3
               </span>
               <div>
-                <strong>Recibí postulaciones y contactá:</strong> Revisá las 3 respuestas de cada candidato. Un botón para solicitar contacto.
+                <strong>Recibí postulaciones y contactá:</strong> Revisá las 3
+                respuestas de cada candidato. Un botón para solicitar contacto.
               </div>
             </li>
           </ol>
@@ -104,7 +112,9 @@ export default function ComoFuncionaPage() {
               ✓ Lo que SÍ necesitás
             </h3>
             <ul className="space-y-2 text-base text-primary-800 dark:text-primary-200">
-              <li>• Cuenta de Google, Facebook, Microsoft o número de teléfono</li>
+              <li>
+                • Cuenta de Google, Facebook, Microsoft o número de teléfono
+              </li>
               <li>• 3 respuestas honestas y simples</li>
               <li>• Ganas de trabajar</li>
             </ul>

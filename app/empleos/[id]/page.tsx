@@ -132,7 +132,7 @@ export default async function EmpleoDetailPage({
               {job.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="dark:bg-primary-950 rounded-full bg-primary-100 px-4 py-2 text-base font-semibold text-primary-700 dark:text-primary-300"
+                  className="rounded-full bg-primary-100 px-4 py-2 text-base font-semibold text-primary-700 dark:bg-primary-950 dark:text-primary-300"
                 >
                   {tag}
                 </span>
@@ -153,7 +153,7 @@ export default async function EmpleoDetailPage({
         {hasAccessibilityInfo && (
           <section
             aria-labelledby="accesibilidad-puesto"
-            className="dark:bg-primary-950 mb-12 rounded-lg border-2 border-primary-200 bg-primary-50 p-6 dark:border-primary-800"
+            className="mb-12 rounded-lg border-2 border-primary-200 bg-primary-50 p-6 dark:border-primary-800 dark:bg-primary-950"
           >
             <h2
               id="accesibilidad-puesto"
@@ -215,7 +215,7 @@ export default async function EmpleoDetailPage({
         )}
 
         {isCandidate && !hasApplied && (
-          <section className="dark:bg-primary-950 rounded-lg border-2 border-primary-300 bg-primary-50 p-8 transition-colors dark:border-primary-700">
+          <section className="rounded-lg border-2 border-primary-300 bg-primary-50 p-8 transition-colors dark:border-primary-700 dark:bg-primary-950">
             <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">
               Postularme (3 preguntas)
             </h2>
@@ -255,7 +255,7 @@ export default async function EmpleoDetailPage({
         )}
 
         {!session && (
-          <div className="dark:bg-primary-950 rounded-lg border-2 border-primary-300 bg-primary-50 p-8 text-center transition-colors dark:border-primary-700">
+          <div className="rounded-lg border-2 border-primary-300 bg-primary-50 p-8 text-center transition-colors dark:border-primary-700 dark:bg-primary-950">
             <p className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
               Para postularte, ingresá primero
             </p>

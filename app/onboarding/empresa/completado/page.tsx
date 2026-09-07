@@ -44,8 +44,8 @@ export default function OnboardingEmpresaCompletadoPage() {
           </h1>
 
           <p className="mb-8 text-xl text-gray-700 dark:text-gray-300">
-            Tu empresa ya está registrada. En unos segundos te redirigiremos a tu dashboard
-            para que puedas publicar tu primer empleo.
+            Tu empresa ya está registrada. En unos segundos te redirigiremos a
+            tu dashboard para que puedas publicar tu primer empleo.
           </p>
 
           <div className="flex items-center justify-center gap-2">

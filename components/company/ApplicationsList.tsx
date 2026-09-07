@@ -29,7 +29,11 @@ interface Application {
   };
 }
 
-export function ApplicationsList({ applications }: { applications: Application[] }) {
+export function ApplicationsList({
+  applications,
+}: {
+  applications: Application[];
+}) {
   const router = useRouter();
   const [contacting, setContacting] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
@@ -38,7 +42,9 @@ export function ApplicationsList({ applications }: { applications: Application[]
     setContacting(applicationId);
     try {
       await contactCandidate(applicationId);
-      const candidateName = applications.find(a => a.id === applicationId)?.user.name || "El candidato";
+      const candidateName =
+        applications.find((a) => a.id === applicationId)?.user.name ||
+        "El candidato";
       toast.success("✅ ¡Solicitud enviada exitosamente!", {
         description: `${candidateName} recibirá un email con tus datos de contacto y podrá comunicarse con vos`,
         duration: 6000,
@@ -46,7 +52,8 @@ export function ApplicationsList({ applications }: { applications: Application[]
       router.refresh();
     } catch (error: any) {
       toast.error("❌ No se pudo enviar la solicitud", {
-        description: error.message || "Por favor, intentá nuevamente en unos momentos",
+        description:
+          error.message || "Por favor, intentá nuevamente en unos momentos",
         duration: 6000,
       });
     } finally {
@@ -85,7 +92,9 @@ export function ApplicationsList({ applications }: { applications: Application[]
               <div className="flex flex-wrap gap-4 text-base text-gray-600 dark:text-gray-400">
                 {app.user.location && <span>📍 {app.user.location}</span>}
                 {app.user.birthYear && (
-                  <span>👤 {new Date().getFullYear() - app.user.birthYear} años</span>
+                  <span>
+                    👤 {new Date().getFullYear() - app.user.birthYear} años
+                  </span>
                 )}
                 {app.user.isDisabled && (
                   <span className="font-semibold text-purple-700 dark:text-purple-400">
@@ -125,7 +134,9 @@ export function ApplicationsList({ applications }: { applications: Application[]
             onClick={() => setExpanded(expanded === app.id ? null : app.id)}
             className="mb-4 text-lg font-semibold text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
           >
-            {expanded === app.id ? "▼ Ocultar respuestas" : "▶ Ver respuestas (3 preguntas)"}
+            {expanded === app.id
+              ? "▼ Ocultar respuestas"
+              : "▶ Ver respuestas (3 preguntas)"}
           </button>
 
           {expanded === app.id && (
@@ -134,19 +145,25 @@ export function ApplicationsList({ applications }: { applications: Application[]
                 <p className="mb-2 text-base font-bold text-gray-900 dark:text-gray-100">
                   ¿Qué hiciste?
                 </p>
-                <p className="text-base text-gray-700 dark:text-gray-300">{app.did}</p>
+                <p className="text-base text-gray-700 dark:text-gray-300">
+                  {app.did}
+                </p>
               </div>
               <div>
                 <p className="mb-2 text-base font-bold text-gray-900 dark:text-gray-100">
                   ¿Qué sabés hacer?
                 </p>
-                <p className="text-base text-gray-700 dark:text-gray-300">{app.canDo}</p>
+                <p className="text-base text-gray-700 dark:text-gray-300">
+                  {app.canDo}
+                </p>
               </div>
               <div>
                 <p className="mb-2 text-base font-bold text-gray-900 dark:text-gray-100">
                   ¿Qué te gustaría hacer?
                 </p>
-                <p className="text-base text-gray-700 dark:text-gray-300">{app.wantToDo}</p>
+                <p className="text-base text-gray-700 dark:text-gray-300">
+                  {app.wantToDo}
+                </p>
               </div>
             </div>
           )}
@@ -154,7 +171,7 @@ export function ApplicationsList({ applications }: { applications: Application[]
           <div className="flex flex-wrap gap-3">
             {app.user.whatsappNumber && (
               <a
-                href={`https://wa.me/${app.user.whatsappNumber.replace(/\D/g, '')}`}
+                href={`https://wa.me/${app.user.whatsappNumber.replace(/\D/g, "")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-lg bg-green-600 px-4 py-2 text-base font-semibold text-white hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300"
@@ -181,7 +198,7 @@ export function ApplicationsList({ applications }: { applications: Application[]
               <button
                 onClick={() => handleContact(app.id)}
                 disabled={contacting === app.id}
-                className="rounded-lg bg-primary-600 px-4 py-2 text-base font-semibold text-white hover:bg-primary-700 disabled:opacity-50 focus:outline-none focus:ring-4 focus:ring-primary-300"
+                className="rounded-lg bg-primary-600 px-4 py-2 text-base font-semibold text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 disabled:opacity-50"
               >
                 {contacting === app.id
                   ? "Enviando..."

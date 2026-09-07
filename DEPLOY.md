@@ -47,15 +47,15 @@ Después de eso te aparece "Administración" en el header.
 
 ## 4. Variables de entorno en Vercel
 
-| Variable | Valor | Notas |
-|---|---|---|
-| `DATABASE_URL` | connection string de Postgres | |
-| `AUTH_SECRET` | 32+ caracteres aleatorios | `openssl rand -base64 32` |
-| `BETTER_AUTH_URL` | `https://jubijobs.com` | Por dominio, ver abajo |
-| `BETTER_AUTH_GOOGLE_ID` | client id de Google OAuth | |
-| `BETTER_AUTH_GOOGLE_SECRET` | client secret | |
-| `NEXT_PUBLIC_USERWAY_ACCOUNT_ID` | `6s9F7XAeLa` | Opcional: ya está por defecto |
-| `NEXT_PUBLIC_BASE_URL` | *(no setear en prod)* | Solo para previews |
+| Variable                         | Valor                         | Notas                         |
+| -------------------------------- | ----------------------------- | ----------------------------- |
+| `DATABASE_URL`                   | connection string de Postgres |                               |
+| `AUTH_SECRET`                    | 32+ caracteres aleatorios     | `openssl rand -base64 32`     |
+| `BETTER_AUTH_URL`                | `https://jubijobs.com`        | Por dominio, ver abajo        |
+| `BETTER_AUTH_GOOGLE_ID`          | client id de Google OAuth     |                               |
+| `BETTER_AUTH_GOOGLE_SECRET`      | client secret                 |                               |
+| `NEXT_PUBLIC_USERWAY_ACCOUNT_ID` | `6s9F7XAeLa`                  | Opcional: ya está por defecto |
+| `NEXT_PUBLIC_BASE_URL`           | _(no setear en prod)_         | Solo para previews            |
 
 ### Sobre `NEXT_PUBLIC_BASE_URL`
 

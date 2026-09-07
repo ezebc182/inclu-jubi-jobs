@@ -24,18 +24,22 @@ export function CompanyJobsList({ jobs }: { jobs: Job[] }) {
   const router = useRouter();
   const [updating, setUpdating] = useState<string | null>(null);
 
-  const handleStatusChange = async (jobId: string, newStatus: "PUBLISHED" | "PAUSED" | "CLOSED") => {
+  const handleStatusChange = async (
+    jobId: string,
+    newStatus: "PUBLISHED" | "PAUSED" | "CLOSED"
+  ) => {
     setUpdating(jobId);
     try {
       await updateJobStatus(jobId, newStatus);
       toast.success("✅ Estado actualizado correctamente", {
-        description: `Tu empleo "${jobs.find(j => j.id === jobId)?.title}" ahora está ${JOB_STATUS_LABELS[newStatus].toLowerCase()}`,
+        description: `Tu empleo "${jobs.find((j) => j.id === jobId)?.title}" ahora está ${JOB_STATUS_LABELS[newStatus].toLowerCase()}`,
         duration: 6000,
       });
       router.refresh();
     } catch (error: any) {
       toast.error("❌ No se pudo actualizar el estado", {
-        description: error.message || "Por favor, intentá nuevamente en unos momentos",
+        description:
+          error.message || "Por favor, intentá nuevamente en unos momentos",
         duration: 6000,
       });
     } finally {
@@ -50,7 +54,8 @@ export function CompanyJobsList({ jobs }: { jobs: Job[] }) {
           No tenés empleos publicados todavía
         </p>
         <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
-          Andá a la pestaña &quot;Crear empleo&quot; para publicar tu primer puesto.
+          Andá a la pestaña &quot;Crear empleo&quot; para publicar tu primer
+          puesto.
         </p>
       </div>
     );
@@ -113,7 +118,7 @@ export function CompanyJobsList({ jobs }: { jobs: Job[] }) {
               <button
                 onClick={() => handleStatusChange(job.id, "PAUSED")}
                 disabled={updating === job.id}
-                className="rounded-lg bg-yellow-600 px-4 py-2 text-base font-semibold text-white hover:bg-yellow-700 disabled:opacity-50 focus:outline-none focus:ring-4 focus:ring-yellow-300"
+                className="rounded-lg bg-yellow-600 px-4 py-2 text-base font-semibold text-white hover:bg-yellow-700 focus:outline-none focus:ring-4 focus:ring-yellow-300 disabled:opacity-50"
               >
                 Pausar
               </button>
@@ -123,7 +128,7 @@ export function CompanyJobsList({ jobs }: { jobs: Job[] }) {
               <button
                 onClick={() => handleStatusChange(job.id, "PUBLISHED")}
                 disabled={updating === job.id}
-                className="rounded-lg bg-green-600 px-4 py-2 text-base font-semibold text-white hover:bg-green-700 disabled:opacity-50 focus:outline-none focus:ring-4 focus:ring-green-300"
+                className="rounded-lg bg-green-600 px-4 py-2 text-base font-semibold text-white hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 disabled:opacity-50"
               >
                 Reactivar
               </button>
@@ -133,7 +138,7 @@ export function CompanyJobsList({ jobs }: { jobs: Job[] }) {
               <button
                 onClick={() => handleStatusChange(job.id, "CLOSED")}
                 disabled={updating === job.id}
-                className="rounded-lg bg-red-600 px-4 py-2 text-base font-semibold text-white hover:bg-red-700 disabled:opacity-50 focus:outline-none focus:ring-4 focus:ring-red-300"
+                className="rounded-lg bg-red-600 px-4 py-2 text-base font-semibold text-white hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 disabled:opacity-50"
               >
                 Cerrar
               </button>

@@ -39,9 +39,15 @@ export default async function OnboardingEmpresaPage() {
           Completá los datos de tu empresa para empezar a publicar empleos.
         </p>
 
-        <form action={completeOnboardingCompany} className="flex flex-col gap-6">
+        <form
+          action={completeOnboardingCompany}
+          className="flex flex-col gap-6"
+        >
           <div className="flex flex-col gap-2">
-            <label htmlFor="companyName" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+            <label
+              htmlFor="companyName"
+              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+            >
               Nombre de la empresa
               <span className="ml-1 text-red-600 dark:text-red-400">*</span>
             </label>
@@ -57,7 +63,10 @@ export default async function OnboardingEmpresaPage() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="website" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+            <label
+              htmlFor="website"
+              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+            >
               Sitio web (opcional)
             </label>
             <input
@@ -70,11 +79,15 @@ export default async function OnboardingEmpresaPage() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="whatsappNumber" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+            <label
+              htmlFor="whatsappNumber"
+              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+            >
               WhatsApp de contacto (opcional)
             </label>
             <p className="text-base text-gray-600 dark:text-gray-400">
-              Los candidatos podrán contactarte por WhatsApp para consultas sobre el empleo
+              Los candidatos podrán contactarte por WhatsApp para consultas
+              sobre el empleo
             </p>
             <input
               type="tel"
@@ -86,7 +99,10 @@ export default async function OnboardingEmpresaPage() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="location" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+            <label
+              htmlFor="location"
+              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+            >
               Ubicación principal (opcional)
             </label>
             <select
@@ -104,7 +120,10 @@ export default async function OnboardingEmpresaPage() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="about" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+            <label
+              htmlFor="about"
+              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+            >
               Sobre la empresa (opcional)
             </label>
             <p className="text-base text-gray-600 dark:text-gray-400">
@@ -126,20 +145,36 @@ export default async function OnboardingEmpresaPage() {
             </h3>
             <ul className="space-y-3 text-base">
               <li className="flex items-start gap-3">
-                <span className="mt-0.5 text-lg font-bold text-primary-600 dark:text-primary-400">✓</span>
-                <span className="text-gray-800 dark:text-gray-200">Experiencia y responsabilidad comprobada</span>
+                <span className="mt-0.5 text-lg font-bold text-primary-600 dark:text-primary-400">
+                  ✓
+                </span>
+                <span className="text-gray-800 dark:text-gray-200">
+                  Experiencia y responsabilidad comprobada
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-0.5 text-lg font-bold text-primary-600 dark:text-primary-400">✓</span>
-                <span className="text-gray-800 dark:text-gray-200">Estabilidad y compromiso con el trabajo</span>
+                <span className="mt-0.5 text-lg font-bold text-primary-600 dark:text-primary-400">
+                  ✓
+                </span>
+                <span className="text-gray-800 dark:text-gray-200">
+                  Estabilidad y compromiso con el trabajo
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-0.5 text-lg font-bold text-primary-600 dark:text-primary-400">✓</span>
-                <span className="text-gray-800 dark:text-gray-200">Flexibilidad en jornadas (part-time, por día)</span>
+                <span className="mt-0.5 text-lg font-bold text-primary-600 dark:text-primary-400">
+                  ✓
+                </span>
+                <span className="text-gray-800 dark:text-gray-200">
+                  Flexibilidad en jornadas (part-time, por día)
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-0.5 text-lg font-bold text-primary-600 dark:text-primary-400">✓</span>
-                <span className="text-gray-800 dark:text-gray-200">Conocimientos valiosos para transmitir</span>
+                <span className="mt-0.5 text-lg font-bold text-primary-600 dark:text-primary-400">
+                  ✓
+                </span>
+                <span className="text-gray-800 dark:text-gray-200">
+                  Conocimientos valiosos para transmitir
+                </span>
               </li>
             </ul>
           </div>

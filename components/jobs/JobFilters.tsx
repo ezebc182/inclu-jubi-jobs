@@ -38,7 +38,10 @@ export function JobFilters() {
       </h2>
 
       <div className="mb-4 flex flex-col gap-2">
-        <label htmlFor="search" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+        <label
+          htmlFor="search"
+          className="text-lg font-bold text-gray-900 dark:text-gray-100"
+        >
           Buscar por palabra clave
         </label>
         <input
@@ -52,7 +55,10 @@ export function JobFilters() {
       </div>
 
       <div className="mb-4 flex flex-col gap-2">
-        <label htmlFor="province" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+        <label
+          htmlFor="province"
+          className="text-lg font-bold text-gray-900 dark:text-gray-100"
+        >
           Provincia
         </label>
         <select
@@ -71,7 +77,10 @@ export function JobFilters() {
       </div>
 
       <div className="mb-4 flex flex-col gap-2">
-        <label htmlFor="modality" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+        <label
+          htmlFor="modality"
+          className="text-lg font-bold text-gray-900 dark:text-gray-100"
+        >
           Modalidad
         </label>
         <select
@@ -90,7 +99,10 @@ export function JobFilters() {
       </div>
 
       <div className="mb-6 flex flex-col gap-2">
-        <label htmlFor="schedule" className="text-lg font-bold text-gray-900 dark:text-gray-100">
+        <label
+          htmlFor="schedule"
+          className="text-lg font-bold text-gray-900 dark:text-gray-100"
+        >
           Jornada
         </label>
         <select

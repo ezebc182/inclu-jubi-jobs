@@ -7,6 +7,7 @@
 # 1. 🎨 Paleta de Colores
 
 ## Color Primario: Azul Confianza
+
 - **Nombre:** Azure Trust
 - **Hex:** `#2563EB` (Blue-600)
 - **RGB:** 37, 99, 235
@@ -15,11 +16,13 @@
 - **Contraste:** AAA sobre blanco
 
 ### Variantes Primarias
+
 - **Azure Light:** `#DBEAFE` (Blue-100) - Fondos suaves
 - **Azure Medium:** `#60A5FA` (Blue-400) - Hover states
 - **Azure Dark:** `#1E40AF` (Blue-700) - Textos importantes
 
 ## Color Secundario: Naranja Cálido
+
 - **Nombre:** Sunset Warm
 - **Hex:** `#F59E0B` (Amber-500)
 - **RGB:** 245, 158, 11
@@ -28,11 +31,13 @@
 - **Contraste:** AAA sobre blanco
 
 ### Variantes Secundarias
+
 - **Sunset Light:** `#FEF3C7` (Amber-100) - Backgrounds informativos
 - **Sunset Medium:** `#FBBF24` (Amber-400) - Elementos interactivos
 - **Sunset Dark:** `#D97706` (Amber-600) - Énfasis
 
 ## Color de Acción: Verde Éxito
+
 - **Nombre:** Success Green
 - **Hex:** `#10B981` (Emerald-500)
 - **RGB:** 16, 185, 129
@@ -41,21 +46,25 @@
 - **Contraste:** AA sobre blanco
 
 ### Variantes de Acción
+
 - **Success Light:** `#D1FAE5` (Emerald-100)
 - **Success Dark:** `#059669` (Emerald-600)
 
 ## Colores de Fondo
+
 - **Fondo Principal:** `#FFFFFF` - Blanco puro
 - **Fondo Secundario:** `#F9FAFB` (Gray-50) - Gris muy claro
 - **Fondo Contenedores:** `#F3F4F6` (Gray-100) - Gris suave
 
 ## Colores de Tipografía
+
 - **Texto Principal:** `#111827` (Gray-900) - Negro casi puro
 - **Texto Secundario:** `#4B5563` (Gray-600) - Gris medio
 - **Texto Terciario:** `#9CA3AF` (Gray-400) - Gris claro
 - **Texto sobre color:** `#FFFFFF` - Blanco
 
 ## Colores de Estado
+
 - **Error:** `#EF4444` (Red-500) - Errores, alertas críticas
 - **Warning:** `#F59E0B` (Amber-500) - Advertencias
 - **Info:** `#3B82F6` (Blue-500) - Información neutral
@@ -64,24 +73,28 @@
 ## Combinaciones Recomendadas
 
 ### Combinación 1: Profesional
+
 - Primario: Azure Trust `#2563EB`
 - Fondo: Blanco `#FFFFFF`
 - Texto: Gray-900 `#111827`
 - Uso: Dashboards, formularios importantes
 
 ### Combinación 2: Cálida
+
 - Primario: Sunset Warm `#F59E0B`
 - Secundario: Azure Medium `#60A5FA`
 - Fondo: Sunset Light `#FEF3C7`
 - Uso: Landing, secciones de bienvenida
 
 ### Combinación 3: Inclusiva
+
 - Primario: Success Green `#10B981`
 - Secundario: Azure Trust `#2563EB`
 - Fondo: Success Light `#D1FAE5`
 - Uso: Páginas de inclusión, logros
 
 ## Ratios de Contraste (WCAG 2.1 AAA)
+
 - Azure Trust sobre blanco: **9.3:1** ✅
 - Sunset Warm sobre blanco: **5.8:1** ✅
 - Gray-900 sobre blanco: **16.7:1** ✅
@@ -94,6 +107,7 @@
 ## Fuente Principal: Inter
 
 **Justificación:**
+
 - Diseñada específicamente para pantallas
 - Legibilidad excepcional en tamaños pequeños
 - Espaciado generoso entre caracteres
@@ -103,6 +117,7 @@
 - Gratis, open source, disponible en Google Fonts
 
 ### Pesos de Inter
+
 - **Regular (400):** Texto de cuerpo
 - **Medium (500):** Subtítulos, énfasis suave
 - **SemiBold (600):** Subtítulos importantes
@@ -111,6 +126,7 @@
 ## Fuente Alternativa: Lato
 
 **Justificación:**
+
 - Excelente legibilidad
 - Trazos redondos y amigables
 - Diseño humanista cálido
@@ -118,6 +134,7 @@
 - Gratis, open source
 
 ### Uso de Lato
+
 - Textos especiales
 - Headers alternativos
 - Material de marketing
@@ -242,23 +259,29 @@ Queremos que cada jubilado que desee seguir activo encuentre su lugar, y que cad
 ## Valores
 
 ### 1. 🤝 Inclusión Real
+
 No es un eslogan. Diseñamos cada detalle pensando en accesibilidad y simplicidad para todos.
 
 ### 2. 🎯 Simplicidad
+
 Sin vueltas, sin complicaciones. Tres preguntas, un click, y listo.
 
 ### 3. 💙 Respeto
+
 Valoramos la experiencia. Los jubilados no son "viejos buscando algo que hacer", son profesionales con décadas de conocimiento.
 
 ### 4. 🌱 Impacto Social
+
 Cada empleo publicado es una oportunidad de mantener a alguien activo, motivado y remunerado.
 
 ### 5. 🔍 Transparencia
+
 Sin costos ocultos. Sin algoritmos misteriosos. Todo es claro y humano.
 
 ## Tono de Voz
 
 ### Somos:
+
 - **Cercanos** (no distantes)
 - **Claros** (no confusos)
 - **Cálidos** (no fríos)
@@ -267,9 +290,11 @@ Sin costos ocultos. Sin algoritmos misteriosos. Todo es claro y humano.
 - **Profesionales** (no informales en exceso)
 
 ### Hablamos como:
+
 Un amigo que te ayuda a encontrar trabajo, no como una corporación que te "procesa".
 
 ### Ejemplos:
+
 ❌ "Su solicitud ha sido procesada exitosamente"
 ✅ "¡Listo! Tu postulación fue enviada"
 
@@ -295,56 +320,67 @@ Un amigo que te ayuda a encontrar trabajo, no como una corporación que te "proc
 **Arquetipo Principal: El Cuidador + El Sabio**
 
 **El Cuidador (70%):**
+
 - Protege y facilita
 - Quiere que todos se sientan incluidos
 - Empatía genuina
 - Crea espacios seguros
 
 **El Sabio (30%):**
+
 - Valora la experiencia
 - Conecta conocimiento con oportunidad
 - Aprende y mejora constantemente
 
 **No somos:**
+
 - El Héroe (no salvamos, facilitamos)
 - El Rebelde (no cuestionamos el sistema, mejoramos acceso)
 - El Bufón (no minimizamos con humor)
 
 ## Qué Somos / Qué NO Somos
 
-| ✅ Somos | ❌ NO Somos |
-|---------|------------|
-| Una plataforma accesible | Un sitio para "viejos" |
-| Facilitadores de conexión | Una fundación de caridad |
-| Profesionales y cálidos | Tecnólogos deshumanizados |
-| Simples por elección | Simples por subestimar |
-| Inclusivos de verdad | Una cuota de diversidad |
-| Para trabajar y crecer | Para "entretenerse" |
+| ✅ Somos                  | ❌ NO Somos               |
+| ------------------------- | ------------------------- |
+| Una plataforma accesible  | Un sitio para "viejos"    |
+| Facilitadores de conexión | Una fundación de caridad  |
+| Profesionales y cálidos   | Tecnólogos deshumanizados |
+| Simples por elección      | Simples por subestimar    |
+| Inclusivos de verdad      | Una cuota de diversidad   |
+| Para trabajar y crecer    | Para "entretenerse"       |
 
 ## Principios de Diseño
 
 ### 1. Claridad sobre Creatividad
+
 Si un diseño es bonito pero confunde, no sirve.
 
 ### 2. Grande, Legible, Contrastado
+
 Tipografía 18px mínimo. Botones 48px mínimo. Contraste AAA.
 
 ### 3. Un Camino Claro
+
 No múltiples opciones. Un flujo principal, obvio, sin distracciones.
 
 ### 4. Menos es Más
+
 Tres preguntas. Un click. Sin campos opcionales infinitos.
 
 ### 5. Mobile First, Always
+
 El 70% de nuestros usuarios están en mobile.
 
 ### 6. Cero Jerga
+
 Nada de "onboarding", "dashboard", "skills". Hablar en argentino simple.
 
 ### 7. Feedback Constante
+
 Cada acción tiene respuesta visual. Nada pasa en silencio.
 
 ### 8. Error Humano = Diseño Mejorable
+
 Si un usuario se confunde, es nuestro problema, no del usuario.
 
 ---
@@ -352,6 +388,7 @@ Si un usuario se confunde, es nuestro problema, no del usuario.
 # 4. 💬 Slogan - 5 Opciones
 
 ## Opción 1 (Recomendada)
+
 **"Tu experiencia vale"**
 
 - **Por qué:** Directo, empoderador, centrado en el candidato
@@ -360,6 +397,7 @@ Si un usuario se confunde, es nuestro problema, no del usuario.
 - **Argentino:** Vos argentino natural
 
 ## Opción 2
+
 **"Seguí activo, seguí creciendo"**
 
 - **Por qué:** Motivacional, inclusivo, doble beneficio
@@ -368,6 +406,7 @@ Si un usuario se confunde, es nuestro problema, no del usuario.
 - **Argentino:** Vos argentino
 
 ## Opción 3
+
 **"Trabajo simple para gente con experiencia"**
 
 - **Por qué:** Funcional, directo, explica el qué y para quién
@@ -376,6 +415,7 @@ Si un usuario se confunde, es nuestro problema, no del usuario.
 - **Argentino:** Neutro pero claro
 
 ## Opción 4
+
 **"Experiencia que conecta"**
 
 - **Por qué:** Corto, metafórico, bonito
@@ -384,6 +424,7 @@ Si un usuario se confunde, es nuestro problema, no del usuario.
 - **Argentino:** Universal
 
 ## Opción 5
+
 **"Donde la experiencia encuentra su lugar"**
 
 - **Por qué:** Emocional, inclusivo, promesa clara
@@ -398,28 +439,35 @@ Si un usuario se confunde, es nuestro problema, no del usuario.
 ## Hero Principal
 
 ### Título (H1)
+
 **"Trabajos para jubilados. Simple, claro y sin vueltas."**
 
 ### Subtítulo
+
 **"Conectamos tu experiencia con empresas que la valoran. Sin LinkedIn, sin complicaciones. Solo tres preguntas y un click."**
 
 ### CTA Primario
+
 **[Buscar empleos]**
 
 ### CTA Secundario
+
 **[Publicar empleo (para empresas)]**
 
 ### Texto de apoyo bajo CTAs
-*"🔒 Ingresá con Google o Microsoft. Sin contraseñas, sin formularios eternos."*
+
+_"🔒 Ingresá con Google o Microsoft. Sin contraseñas, sin formularios eternos."_
 
 ---
 
 ## Sección "Cómo Funciona"
 
 ### Título de Sección
+
 **"¿Cómo funciona JubiJobs?"**
 
 ### Subtítulo
+
 **"Simple, claro y sin vueltas. En 3 pasos estás listo."**
 
 ### Para Jubilados
@@ -450,6 +498,7 @@ Cada candidato responde las mismas 3 preguntas. Ves su experiencia de forma clar
 ## Sección "Por Qué JubiJobs"
 
 ### Título de Sección
+
 **"¿Por qué JubiJobs?"**
 
 ### Beneficios para Candidatos
@@ -491,9 +540,11 @@ Complementan su jubilación, permitiendo esquemas laborales flexibles y mutuamen
 ## Sección Inclusiva
 
 ### Título
+
 **"Trabajo inclusivo"**
 
 ### Texto Principal
+
 **"Oportunidades laborales para personas con discapacidad. Tu experiencia y talento importan."**
 
 En JubiJobs podés indicar tu tipo de discapacidad y necesidades de accesibilidad (rampas, baños adaptados, tecnología asistiva). Las empresas ven tu perfil completo antes de contactarte, para que el espacio de trabajo esté preparado según tus necesidades.
@@ -501,6 +552,7 @@ En JubiJobs podés indicar tu tipo de discapacidad y necesidades de accesibilida
 **La Ley 22.431 en Argentina establece que empresas y organismos públicos deben contratar personas con discapacidad.** JubiJobs facilita esta conexión entre candidatos y empresas comprometidas con la inclusión real.
 
 ### CTAs
+
 **[Ver empleos inclusivos]**
 **[Conocer más sobre inclusión]**
 
@@ -509,11 +561,13 @@ En JubiJobs podés indicar tu tipo de discapacidad y necesidades de accesibilida
 ## Footer Copy
 
 ### Texto Principal
+
 **"JubiJobs - Donde la experiencia encuentra su lugar"**
 
 **Conectamos experiencia con oportunidades. Trabajos para jubilados y personas con discapacidad en Argentina. Simple, claro y sin vueltas.**
 
 ### Links
+
 - Cómo funciona
 - Para empresas
 - Trabajo inclusivo
@@ -522,6 +576,7 @@ En JubiJobs podés indicar tu tipo de discapacidad y necesidades de accesibilida
 - Términos y condiciones
 
 ### Copyright
+
 **© 2025 JubiJobs. Todos los derechos reservados. Hecho en Argentina con 💙**
 
 ---
@@ -529,9 +584,11 @@ En JubiJobs podés indicar tu tipo de discapacidad y necesidades de accesibilida
 # 6. 📄 Página "Acerca de"
 
 ## Título Principal
+
 **"Sobre JubiJobs"**
 
 ## Subtítulo
+
 **"Conectamos experiencia con oportunidad. Sin vueltas, sin complicaciones."**
 
 ---
@@ -555,6 +612,7 @@ En 2025, creamos JubiJobs: una plataforma donde postularte a un empleo lleva men
 ### Para Jubilados
 
 **❌ Problema:**
+
 - Las plataformas tradicionales son complicadas y no están pensadas para personas mayores
 - Piden CVs en PDF, perfiles con fotos profesionales, conexiones en LinkedIn
 - Los procesos de postulación son largos y confusos
@@ -562,6 +620,7 @@ En 2025, creamos JubiJobs: una plataforma donde postularte a un empleo lleva men
 - Nadie valora décadas de experiencia, solo buscan "skills" y certificaciones recientes
 
 **✅ Solución:**
+
 - Sin CV. Solo 3 preguntas simples
 - Sin contraseñas. Ingresás con Google o Microsoft
 - Un click para postularte
@@ -571,12 +630,14 @@ En 2025, creamos JubiJobs: una plataforma donde postularte a un empleo lleva men
 ### Para Empresas
 
 **❌ Problema:**
+
 - Difícil encontrar empleados responsables y comprometidos
 - Los procesos de contratación son largos y costosos
 - Candidatos jóvenes cambian de trabajo constantemente
 - No saben dónde buscar talento senior
 
 **✅ Solución:**
+
 - Publicar empleos es gratis y toma 5 minutos
 - Recibís postulaciones claras con las mismas 3 preguntas
 - Acceso a candidatos con décadas de experiencia
@@ -585,11 +646,13 @@ En 2025, creamos JubiJobs: una plataforma donde postularte a un empleo lleva men
 ### Para Personas con Discapacidad
 
 **❌ Problema:**
+
 - Discriminación velada en procesos de selección
 - Empresas no saben cómo preparar espacios accesibles
 - Falta de información sobre necesidades específicas
 
 **✅ Solución:**
+
 - Campo específico para indicar tipo de discapacidad y necesidades
 - Empresas ven el perfil completo antes de contactar
 - Diseño accesible (WCAG 2.1 AA): tipografía grande, alto contraste, navegación simple
@@ -602,6 +665,7 @@ En 2025, creamos JubiJobs: una plataforma donde postularte a un empleo lleva men
 ### Datos de Contexto
 
 **🇦🇷 En Argentina:**
+
 - Más de 5 millones de personas jubiladas (ANSES, 2024)
 - El 30% de los jubilados trabaja o busca trabajo para complementar ingresos
 - La jubilación mínima no alcanza para cubrir gastos básicos
@@ -611,6 +675,7 @@ En 2025, creamos JubiJobs: una plataforma donde postularte a un empleo lleva men
 ### Impacto Social Real
 
 Cada empleo que se publica en JubiJobs es:
+
 - Un jubilado que puede pagar sus remedios
 - Una persona que se siente útil y motivada
 - Una familia que llega a fin de mes
@@ -624,6 +689,7 @@ Cada empleo que se publica en JubiJobs es:
 **Queremos que cada jubilado que quiera trabajar encuentre su lugar.**
 
 No se trata solo de dinero. Se trata de:
+
 - Propósito
 - Actividad mental
 - Conexión social
@@ -638,6 +704,7 @@ No se trata solo de dinero. Se trata de:
 ## Nuestra Promesa
 
 ### A los Candidatos
+
 ✅ Nunca vamos a complicar el proceso
 ✅ Nunca vamos a pedirte un CV en PDF
 ✅ Nunca vamos a subestimar tu experiencia
@@ -645,6 +712,7 @@ No se trata solo de dinero. Se trata de:
 ✅ Siempre vamos a valorar décadas de conocimiento
 
 ### A las Empresas
+
 ✅ Nunca vamos a cobrarte por publicar empleos
 ✅ Nunca vamos a inundarte con candidatos irrelevantes
 ✅ Siempre vamos a mostrarte postulaciones claras
@@ -657,6 +725,7 @@ No se trata solo de dinero. Se trata de:
 **Inclusión no es caridad. Es justicia.**
 
 Diseñamos cada pixel, cada palabra y cada flujo pensando en:
+
 - Personas con baja visión
 - Personas con poca experiencia digital
 - Personas con discapacidad motriz
@@ -670,18 +739,21 @@ Diseñamos cada pixel, cada palabra y cada flujo pensando en:
 ## Impacto Esperado (2025-2027)
 
 ### Año 1 (2025)
+
 - 1,000 jubilados registrados
 - 100 empresas publicando empleos
 - 500 postulaciones enviadas
 - 50 personas contratadas
 
 ### Año 2 (2026)
+
 - 10,000 jubilados registrados
 - 500 empresas
 - 5,000 postulaciones
 - 300 personas contratadas
 
 ### Año 3 (2027)
+
 - 50,000 jubilados registrados
 - 2,000 empresas
 - 25,000 postulaciones
@@ -693,16 +765,19 @@ Diseñamos cada pixel, cada palabra y cada flujo pensando en:
 ## Próximos Pasos
 
 ### Corto Plazo (3-6 meses)
+
 - Lanzamiento oficial en CABA y GBA
 - Alianzas con cámaras de comercio
 - Programa piloto con 10 empresas
 
 ### Mediano Plazo (6-12 meses)
+
 - Expansión a Córdoba, Rosario y Mendoza
 - Sistema de verificación de empresas
 - Programa de embajadores seniors
 
 ### Largo Plazo (12-24 meses)
+
 - Cobertura en las 23 provincias argentinas
 - App mobile nativa
 - Sistema de mensajería interna
@@ -731,21 +806,25 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ## Para Jubilados
 
 ### Insight del Usuario
-*"Me jubilé pero no me morí. Tengo ganas de seguir haciendo, de sentirme útil, de conocer gente. Y también necesito complementar mi jubilación, pero no sé cómo volver a buscar trabajo. Todo es digital, complicado, y siento que nadie valora mi experiencia."*
+
+_"Me jubilé pero no me morí. Tengo ganas de seguir haciendo, de sentirme útil, de conocer gente. Y también necesito complementar mi jubilación, pero no sé cómo volver a buscar trabajo. Todo es digital, complicado, y siento que nadie valora mi experiencia."_
 
 ### Necesidad Emocional
+
 - **Propósito:** Sentirse útil y valorado
 - **Conexión:** No quedarse aislado en casa
 - **Dignidad:** Trabajar por elección, no por lástima
 - **Respeto:** Que su experiencia sea reconocida
 
 ### Necesidad Funcional
+
 - **Dinero:** Complementar ingresos de jubilación
 - **Flexibilidad:** Trabajo part-time, por día, o flexible
 - **Simplicidad:** Proceso fácil, sin tecnicismos
 - **Accesibilidad:** Plataforma pensada para adultos mayores
 
 ### Qué los Frustra Hoy
+
 ❌ LinkedIn es complicado y no entienden cómo usarlo
 ❌ Los formularios de Bumeran/Computrabajo son eternos
 ❌ Piden "skills digitales" que no tienen
@@ -754,6 +833,7 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ❌ No saben cómo hacer un CV moderno
 
 ### Qué JubiJobs Soluciona
+
 ✅ **Sin CV.** Solo 3 preguntas simples que pueden responder en 2 minutos
 ✅ **Sin contraseñas.** Entran con Google/Microsoft que ya tienen
 ✅ **Un click para postularse.** Nada de formularios de 20 páginas
@@ -762,6 +842,7 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ✅ **Su experiencia es el foco principal**
 
 ### Motivador Clave para Adoptar JubiJobs
+
 **"Finalmente una plataforma que me trata como profesional, no como alguien que necesita ayuda."**
 
 ---
@@ -769,21 +850,25 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ## Para Personas con Discapacidad
 
 ### Insight del Usuario
-*"Quiero trabajar, tengo experiencia, pero las empresas me descartan apenas ven que tengo discapacidad. O peor, me contratan para cumplir con la ley pero no preparan el espacio. Me gustaría que el proceso fuera transparente desde el inicio."*
+
+_"Quiero trabajar, tengo experiencia, pero las empresas me descartan apenas ven que tengo discapacidad. O peor, me contratan para cumplir con la ley pero no preparan el espacio. Me gustaría que el proceso fuera transparente desde el inicio."_
 
 ### Necesidad Emocional
+
 - **Inclusión Real:** No ser una cuota, ser valorado por habilidades
 - **Transparencia:** Saber que la empresa está preparada
 - **Respeto:** No tener que esconder su discapacidad
 - **Normalidad:** Postularse sin sentir que es "especial"
 
 ### Necesidad Funcional
+
 - **Accesibilidad Digital:** Plataforma compatible con lectores de pantalla
 - **Información Clara:** Empresas que sepan qué necesitan (rampas, baños adaptados, etc.)
 - **Proceso Simple:** Sin barreras técnicas
 - **Trabajo Flexible:** Modalidad remota o híbrida si es necesario
 
 ### Qué los Frustra Hoy
+
 ❌ Discriminación velada en procesos de selección
 ❌ Empresas que dicen ser inclusivas pero no preparan el espacio
 ❌ Plataformas inaccesibles para lectores de pantalla
@@ -791,6 +876,7 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ❌ Sentir que tienen que "demostrar" más que otros candidatos
 
 ### Qué JubiJobs Soluciona
+
 ✅ **Campo específico para discapacidad y necesidades** desde el perfil
 ✅ **Empresas ven toda la información antes de contactar**
 ✅ **Diseño WCAG 2.1 AA:** Compatible con lectores de pantalla, alto contraste, navegación por teclado
@@ -798,6 +884,7 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ✅ **Proceso transparente y directo**
 
 ### Motivador Clave para Adoptar JubiJobs
+
 **"No tengo que esconder mi discapacidad ni sentir que es un problema. Acá puedo ser transparente desde el inicio."**
 
 ---
@@ -805,21 +892,25 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ## Para Empresas
 
 ### Insight del Usuario
-*"Necesito empleados responsables, comprometidos, que no se vayan a los 6 meses. Los candidatos jóvenes son inestables y buscan cambiar de trabajo constantemente. He escuchado que contratar seniors es buena idea, pero no sé dónde buscarlos ni cómo hacerlo sin complicarme."*
+
+_"Necesito empleados responsables, comprometidos, que no se vayan a los 6 meses. Los candidatos jóvenes son inestables y buscan cambiar de trabajo constantemente. He escuchado que contratar seniors es buena idea, pero no sé dónde buscarlos ni cómo hacerlo sin complicarme."_
 
 ### Necesidad Emocional
+
 - **Confianza:** Empleados responsables y comprometidos
 - **Estabilidad:** Personas que no cambien de trabajo cada 6 meses
 - **Tranquilidad:** Proceso de contratación simple y rápido
 - **Impacto Social:** Sentir que están haciendo algo bueno
 
 ### Necesidad Funcional
+
 - **Simplicidad:** Publicar empleos en minutos, sin costos
 - **Claridad:** Ver postulaciones organizadas y claras
 - **Contacto Directo:** Comunicarse rápido con candidatos
 - **Flexibilidad:** Ofrecer trabajos part-time, por día, remoto
 
 ### Qué los Frustra Hoy
+
 ❌ LinkedIn es caro (publicar empleos cuesta USD 300+)
 ❌ Bumeran/Computrabajo tienen candidatos irrelevantes
 ❌ Consultoras de RRHH cobran comisiones altísimas
@@ -827,6 +918,7 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ❌ No saben cómo cumplir con la Ley 22.431 de inclusión
 
 ### Qué JubiJobs Soluciona
+
 ✅ **Gratis.** Publicar empleos no cuesta nada
 ✅ **Rápido.** 5 minutos para publicar un empleo
 ✅ **Candidatos claros:** Todos responden las mismas 3 preguntas
@@ -834,6 +926,7 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ✅ **Inclusión simplificada:** Conexión con candidatos con discapacidad
 
 ### Motivador Clave para Adoptar JubiJobs
+
 **"Finalmente puedo contratar talento senior sin pagar comisiones ni lidiar con plataformas complicadas."**
 
 ---
@@ -845,12 +938,14 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ### Pilares de Contenido
 
 #### 1. Historias Reales (30% del contenido)
+
 - Testimonios de jubilados que consiguieron trabajo
 - Casos de empresas que contrataron seniors
 - Historias de personas con discapacidad que encontraron su lugar
 - Formato: Fotos + texto corto, videos de 30-60 segundos
 
 #### 2. Consejos Laborales Simples (25%)
+
 - Tips para jubilados que buscan trabajo
 - Cómo responder las 3 preguntas
 - Qué buscar en un empleo flexible
@@ -858,18 +953,21 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 - Formato: Carruseles, infografías simples
 
 #### 3. Explicaciones Fáciles (20%)
+
 - Tutoriales paso a paso de la plataforma
 - "Cómo postularse en JubiJobs en 2 minutos"
 - "Cómo crear una cuenta sin contraseña"
 - Formato: Videos cortos, capturas de pantalla
 
 #### 4. Inclusión y Diversidad Laboral (15%)
+
 - Beneficios de contratar talento senior
 - Datos sobre productividad de empleados mayores
 - Ley 22.431 y por qué es importante
 - Formato: Stats visuales, carruseles educativos
 
 #### 5. Contenido para Empresas (10%)
+
 - Casos de éxito de contratación
 - Por qué contratar seniors
 - Cómo publicar un empleo en 5 minutos
@@ -880,42 +978,49 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ## Calendario de Contenido (7 días de ejemplo)
 
 ### Lunes
+
 **Tipo:** Historia Real
 **Contenido:** "Conocé a Roberto, 68 años, contador jubilado que ahora trabaja 3 veces por semana ayudando a un emprendimiento local."
 **Red:** Instagram (carrusel) + Facebook (post largo)
 **Copy:** "Roberto se jubiló en 2020, pero seguía con ganas de trabajar..."
 
 ### Martes
+
 **Tipo:** Consejo Laboral
 **Contenido:** "Las 3 preguntas clave para postularte: qué hiciste, qué sabés hacer, qué te gustaría hacer. Consejos para responderlas bien."
 **Red:** Instagram (carrusel de 5 slides) + TikTok (video 45 seg)
 **Copy:** "¿No sabés qué poner en tus postulaciones? Te explicamos las 3 preguntas..."
 
 ### Miércoles
+
 **Tipo:** Tutorial
 **Contenido:** "Cómo postularte a un empleo en JubiJobs en menos de 2 minutos (paso a paso)."
 **Red:** Instagram Reel + YouTube Short + TikTok
 **Copy:** "¿Creías que postularte a un empleo era complicado? Mirá esto..."
 
 ### Jueves
+
 **Tipo:** Inclusión y Diversidad
 **Contenido:** Infografía "5 razones por las que contratar talento senior es bueno para tu empresa"
 **Red:** LinkedIn (post profesional) + Instagram (carrusel)
 **Copy:** "Los empleados mayores de 50 tienen 30% menos rotación que los menores de 30..."
 
 ### Viernes
+
 **Tipo:** Historia Real
 **Contenido:** Testimonio de empresa: "Por qué contratamos a María, 62 años, para atención al cliente."
 **Red:** Instagram (video testimonial) + LinkedIn
 **Copy:** "María tiene 62 años y es la mejor empleada que tuvimos en atención al cliente..."
 
 ### Sábado
+
 **Tipo:** Consejo Laboral
 **Contenido:** "Trabajos ideales para jubilados: atención al cliente, administración, cuidado, consultoría."
 **Red:** Facebook (post largo) + Instagram (carrusel)
 **Copy:** "Si sos jubilado y querés volver a trabajar, estos son los rubros más buscados..."
 
 ### Domingo
+
 **Tipo:** Motivacional
 **Contenido:** "Tu experiencia vale. No dejes que nadie te haga sentir que 'ya pasó tu momento'."
 **Red:** Instagram (imagen con frase) + Facebook
@@ -926,18 +1031,21 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ## Estilo Visual
 
 ### Para Instagram/Facebook
+
 - **Paleta:** Azure Trust + Sunset Warm sobre fondo blanco
 - **Tipografía:** Inter Bold para títulos, Regular para cuerpo
 - **Fotos:** Personas reales, no stock photos genéricas
 - **Formato:** 1080x1080px (cuadrado), 1080x1350px (vertical para Reels)
 
 ### Para TikTok
+
 - **Estilo:** Vertical 9:16, dinámico pero no frenético
 - **Música:** Ambiental, optimista, no viral/joven
 - **Duración:** 30-60 segundos
 - **Subtítulos:** SIEMPRE (muchos usuarios mayores ven sin sonido)
 
 ### Para LinkedIn
+
 - **Estilo:** Profesional pero humano
 - **Formato:** Carruseles en PDF, videos testimoniales
 - **Tono:** Más formal pero cálido
@@ -947,6 +1055,7 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ## Estilo de Copy
 
 ### Voz y Tono
+
 - **Vos argentino:** "Si querés trabajar...", "¿Sabías que...?"
 - **Directo:** Sin vueltas, al grano
 - **Cálido:** Empático pero no condescendiente
@@ -973,6 +1082,7 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ## Hashtags Recomendados
 
 ### Hashtags Primarios (usar siempre)
+
 ```
 #JubiJobs
 #TrabajoParaJubilados
@@ -982,6 +1092,7 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ```
 
 ### Hashtags Secundarios (rotar)
+
 ```
 #Jubilados
 #TrabajoFlexible
@@ -998,6 +1109,7 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ```
 
 ### Hashtags para Empresas
+
 ```
 #RecursosHumanos
 #RRHH
@@ -1011,12 +1123,14 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ## Ideas de Reels Simples
 
 ### Reel 1: "Cómo postularse en 2 minutos"
+
 - Grabación de pantalla del proceso completo
 - Música: Ambiental, optimista
 - Texto: "Pensabas que postularte era complicado? Mirá esto..."
 - Duración: 45 segundos
 
 ### Reel 2: "3 mitos sobre contratar seniors"
+
 - Formato: Texto sobre fondo con transiciones
 - Mito 1: "Son lentos" → Realidad: "Son más eficientes"
 - Mito 2: "No saben tecnología" → Realidad: "Aprenden rápido"
@@ -1024,18 +1138,21 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 - Duración: 30 segundos
 
 ### Reel 3: Testimonial rápido
+
 - Persona mayor hablando a cámara
 - Texto: "Conocé a Roberto, 68 años, trabajando y feliz"
 - 3 frases cortas: "Me jubilé hace 3 años... Me sentía inútil... Ahora trabajo part-time y estoy motivado"
 - Duración: 60 segundos
 
 ### Reel 4: "Antes vs Después"
+
 - Formato: División de pantalla
 - Antes: "Buscar trabajo a los 65 en LinkedIn" (confusión)
 - Después: "Buscar trabajo a los 65 en JubiJobs" (simple)
 - Duración: 15 segundos
 
 ### Reel 5: "Tutorial ultra rápido"
+
 - Paso 1: Entrá con Google
 - Paso 2: Respondé 3 preguntas
 - Paso 3: Postulate
@@ -1047,21 +1164,25 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ## Estrategia por Red Social
 
 ### Instagram
+
 - **Frecuencia:** 5 posts/semana + 3 stories/día + 2 reels/semana
 - **Mejores horarios:** 10am, 2pm, 7pm
 - **Tipo de contenido:** Historias, consejos, reels educativos
 
 ### Facebook
+
 - **Frecuencia:** 4 posts/semana + 1 video/semana
 - **Mejores horarios:** 12pm, 6pm
 - **Tipo de contenido:** Posts largos, historias detalladas, artículos
 
 ### TikTok
+
 - **Frecuencia:** 3 videos/semana
 - **Mejores horarios:** 11am, 5pm, 9pm
 - **Tipo de contenido:** Tutoriales cortos, testimonios, mitos vs realidad
 
 ### LinkedIn
+
 - **Frecuencia:** 3 posts/semana
 - **Mejores horarios:** 9am (martes/miércoles)
 - **Tipo de contenido:** Casos de estudio, beneficios para empresas, datos
@@ -1073,15 +1194,19 @@ Si querés sumarte, escribinos a: hola@jubijobs.com
 ## Portada
 
 ### Título Principal
+
 **"Contratá experiencia. Sin complicaciones."**
 
 ### Subtítulo
+
 **"Accedé a talento senior responsable, comprometido y con décadas de conocimiento."**
 
 ### Logo
+
 JubiJobs
 
 ### Imagen
+
 Persona mayor trabajando, sonriendo, en contexto profesional pero relajado.
 
 ---
@@ -1093,6 +1218,7 @@ Persona mayor trabajando, sonriendo, en contexto profesional pero relajado.
 Personas jubiladas y con discapacidad que buscan trabajos flexibles, y empresas que valoran experiencia, responsabilidad y compromiso.
 
 ### En Números
+
 - **5 minutos:** Para publicar un empleo
 - **Gratis:** Sin costos ni comisiones
 - **3 preguntas:** Cada candidato responde lo mismo
@@ -1103,21 +1229,27 @@ Personas jubiladas y con discapacidad que buscan trabajos flexibles, y empresas 
 ## Página 3: ¿Por qué contratar talento senior?
 
 ### 1. Experiencia Comprobada
+
 Décadas de trayectoria profesional. Saben resolver problemas, tomar decisiones y trabajar bajo presión.
 
 ### 2. Responsabilidad y Compromiso
+
 Los empleados mayores de 50 tienen **30% menos rotación** que los menores de 30. (Fuente: OIT, 2023)
 
 ### 3. Excelente Trato con Clientes
+
 Habilidades interpersonales superiores. Generan confianza en clientes de todas las edades.
 
 ### 4. Flexibilidad Horaria
+
 Ideales para trabajos part-time, por día o con horarios flexibles.
 
 ### 5. Transmiten Conocimiento
+
 Pueden capacitar y guiar a empleados más jóvenes con su experiencia.
 
 ### 6. Productividad Comprobada
+
 Los trabajadores mayores de 55 tienen **menor ausentismo** y **mayor productividad** en tareas que requieren precisión. (Fuente: Universidad de Harvard, 2022)
 
 ---
@@ -1125,18 +1257,23 @@ Los trabajadores mayores de 55 tienen **menor ausentismo** y **mayor productivid
 ## Página 4: Cómo funciona (para empresas)
 
 ### Paso 1: Creá tu cuenta
+
 Ingresá con Google, Microsoft o GitHub. Completás los datos de tu empresa en 2 minutos.
 
 ### Paso 2: Publicá empleos
+
 Título, descripción, ubicación, modalidad, jornada, salario (opcional). Publicar un empleo toma 5 minutos.
 
 ### Paso 3: Recibí postulaciones
+
 Cada candidato responde las mismas 3 preguntas:
+
 - ¿Qué hiciste?
 - ¿Qué sabés hacer?
 - ¿Qué te gustaría hacer?
 
 ### Paso 4: Contactá candidatos
+
 Un click y le enviás un email. Simple, directo, sin intermediarios.
 
 ---
@@ -1160,6 +1297,7 @@ Un click y le enviás un email. Simple, directo, sin intermediarios.
 ## Página 6: Casos de Éxito
 
 ### Caso 1: Café "La Esquina"
+
 **Necesidad:** Cajero/a part-time, 4 horas diarias.
 
 **Solución:** Contrataron a Marta, 64 años, 30 años de experiencia en retail.
@@ -1167,6 +1305,7 @@ Un click y le enviás un email. Simple, directo, sin intermediarios.
 **Resultado:** "Es la empleada más responsable que tuvimos. Nunca falta, siempre llega temprano, y los clientes la adoran." - Juan, dueño.
 
 ### Caso 2: Estudio Contable "Pérez & Asociados"
+
 **Necesidad:** Asistente administrativo, remoto, flexible.
 
 **Solución:** Contrataron a Roberto, 68 años, contador jubilado.
@@ -1178,18 +1317,22 @@ Un click y le enviás un email. Simple, directo, sin intermediarios.
 ## Página 7: Datos que importan
 
 ### Productividad
+
 **Los trabajadores mayores de 55 son tan productivos como los de 25-35 años, y más en tareas que requieren precisión y atención al detalle.**
 (Fuente: Universidad de Harvard, 2022)
 
 ### Rotación
+
 **Los empleados mayores de 50 tienen 30% menos rotación que los menores de 30.**
 (Fuente: OIT, 2023)
 
 ### Compromiso
+
 **El 82% de los empleados seniors califican su trabajo como "muy importante" en sus vidas, vs 54% en menores de 30.**
 (Fuente: Gallup, 2023)
 
 ### Experiencia
+
 **40 años de experiencia laboral = conocimiento que no se aprende en ninguna universidad.**
 
 ---
@@ -1224,10 +1367,12 @@ Ves su perfil completo, incluyendo necesidades de accesibilidad, antes de contac
 Sí. Los jubilados del Sistema Integrado Previsional Argentino (SIPA) pueden trabajar sin perder su jubilación.
 
 **Condiciones:**
+
 - **En relación de dependencia:** Pueden trabajar libremente. La empresa debe realizar aportes previsionales normales, pero el jubilado NO genera un segundo haber jubilatorio con esos aportes.
 - **Como monotributista o autónomo:** Pueden trabajar bajo estas modalidades sin perder su jubilación.
 
 **Importante:**
+
 - Los aportes que realicen como trabajadores activos NO se acumulan para una segunda jubilación.
 - El haber jubilatorio se mantiene intacto, no se reduce ni se suspende.
 
@@ -1237,6 +1382,7 @@ Sí. Los jubilados del Sistema Integrado Previsional Argentino (SIPA) pueden tra
 Depende de la caja previsional provincial. En **Córdoba (APROSS)**, por ejemplo:
 
 **Condiciones:**
+
 - Pueden trabajar en relación de dependencia en el sector privado sin perder su jubilación.
 - **NO pueden** trabajar en relación de dependencia en el sector público provincial (hay suspensión del haber).
 - Pueden trabajar como monotributistas o autónomos sin restricciones.
@@ -1255,18 +1401,20 @@ Generalmente puede trabajar sin restricciones, pero debe verificar las normas es
 ### 4. ¿Se descuenta algo de mi jubilación si trabajo?
 
 **Jubilados Nacionales (ANSES):**
+
 - **No se descuenta nada** del haber jubilatorio.
 - La empresa debe hacer aportes previsionales, pero esos aportes no generan un segundo beneficio.
 
 **Jubilados Provinciales:**
+
 - Varía según la provincia. En algunas, trabajar en el sector público provincial puede suspender temporalmente el haber.
 
 ### Resumen: ¿Puedo trabajar sin perder mi jubilación?
 
-| Tipo de Jubilación | Relación de dependencia (privado) | Relación de dependencia (público) | Monotributista/Autónomo |
-|-------------------|-----------------------------------|-----------------------------------|------------------------|
-| **Nacional (ANSES)** | ✅ Sí, sin restricciones | ✅ Sí, sin restricciones | ✅ Sí, sin restricciones |
-| **Provincial (Ej: Córdoba)** | ✅ Sí (sector privado) | ❌ Puede suspenderse (sector público provincial) | ✅ Sí, sin restricciones |
+| Tipo de Jubilación           | Relación de dependencia (privado) | Relación de dependencia (público)                | Monotributista/Autónomo  |
+| ---------------------------- | --------------------------------- | ------------------------------------------------ | ------------------------ |
+| **Nacional (ANSES)**         | ✅ Sí, sin restricciones          | ✅ Sí, sin restricciones                         | ✅ Sí, sin restricciones |
+| **Provincial (Ej: Córdoba)** | ✅ Sí (sector privado)            | ❌ Puede suspenderse (sector público provincial) | ✅ Sí, sin restricciones |
 
 **Conclusión:**
 La gran mayoría de los jubilados argentinos pueden trabajar sin perder su jubilación. Si tenés dudas sobre tu caso específico, consultá con ANSES (130) o con tu caja provincial.
@@ -1303,6 +1451,7 @@ Donde la experiencia encuentra su lugar.
 **"La plataforma más simple para que jubilados y personas con discapacidad encuentren trabajo, y para que empresas accedan a talento experimentado sin complicaciones."**
 
 ### Desglose
+
 - **Para Candidatos:** Simplicidad absoluta. 3 preguntas, 1 click, sin CV.
 - **Para Empresas:** Gratis, rápido, candidatos claros, sin intermediarios.
 - **Para Todos:** Inclusión real, no un eslogan.
@@ -1312,18 +1461,22 @@ Donde la experiencia encuentra su lugar.
 ## Diferenciales Reales
 
 ### vs LinkedIn
+
 - **LinkedIn:** Profesional, complejo, caro, diseñado para jóvenes
 - **JubiJobs:** Simple, gratis, diseñado para seniors
 
 ### vs Bumeran/Computrabajo
+
 - **Ellos:** Generalistas, formularios largos, spam de CVs
 - **JubiJobs:** Especializado, 3 preguntas, candidatos relevantes
 
 ### vs Consultoras de RRHH
+
 - **Ellos:** Cobran comisiones del 15-20%, procesos largos
 - **JubiJobs:** Gratis, contacto directo, rápido
 
 ### vs Grupos de Facebook/WhatsApp
+
 - **Ellos:** Desorganizado, informal, sin filtros
 - **JubiJobs:** Organizado, profesional, filtros claros
 
@@ -1338,6 +1491,7 @@ Donde la experiencia encuentra su lugar.
 5. **Fundaciones:** CILSA, Fundación Par - más enfoque social que laboral.
 
 **Ninguno combina:**
+
 - Especialización en seniors
 - Simplicidad extrema
 - Inclusión real para personas con discapacidad
@@ -1348,18 +1502,23 @@ Donde la experiencia encuentra su lugar.
 ## Cómo Distinguirnos
 
 ### 1. Diseño Accesible (No Opcional)
+
 WCAG 2.1 AA no es una feature, es la base. Tipografía 18px mínimo, alto contraste, navegación por teclado.
 
 ### 2. Simplicidad Real (No Simplificación)
+
 No es "hacerlo más fácil". Es rediseñar todo desde cero para que sea obvio.
 
 ### 3. Sin CV (Paradigma Diferente)
+
 Todos piden CVs. Nosotros pedimos experiencia en 3 preguntas.
 
 ### 4. Gratis (Sin Trampas)
+
 No "gratis pero luego pagás". Gratis de verdad. El modelo es ads y premium features opcionales, no gatekeeping.
 
 ### 5. Tono Humano (No Corporativo)
+
 Hablamos como personas, no como una empresa de tecnología.
 
 ---
@@ -1369,6 +1528,7 @@ Hablamos como personas, no como una empresa de tecnología.
 **"Tu experiencia vale. No dejes que una plataforma complicada te detenga."**
 
 ### Mensajes Secundarios
+
 - "Postulate en 2 minutos, sin CV, sin complicaciones."
 - "Experiencia comprobada, responsabilidad garantizada."
 - "Gratis para empresas. Simple para candidatos."
@@ -1378,12 +1538,15 @@ Hablamos como personas, no como una empresa de tecnología.
 ## Elevator Pitch
 
 ### Versión 1 Oración (10 segundos)
+
 **"JubiJobs conecta jubilados y personas con discapacidad con empresas que valoran experiencia, sin CVs, sin complicaciones."**
 
 ### Versión 15 Segundos
+
 **"JubiJobs es la plataforma donde jubilados y personas con discapacidad encuentran trabajos flexibles en segundos. Sin CV, solo 3 preguntas simples. Gratis para empresas, simple para candidatos."**
 
 ### Versión 45 Segundos (Pitch Completo)
+
 **"Las plataformas tradicionales como LinkedIn o Bumeran no están diseñadas para personas mayores. Son complicadas, piden CVs en PDF, y nadie valora décadas de experiencia. JubiJobs es diferente: postularte toma 2 minutos. Sin CV, sin contraseñas, solo 3 preguntas sobre tu experiencia. Para empresas, publicar empleos es gratis y contactar candidatos toma un click. Diseñamos todo pensando en accesibilidad real: tipografía grande, alto contraste, navegación simple. Ya conectamos a más de 500 personas con trabajos part-time, flexibles y remotos. Porque la experiencia tiene valor, y encontrar trabajo no debería ser complicado."**
 
 ---
@@ -1393,6 +1556,7 @@ Hablamos como personas, no como una empresa de tecnología.
 ## Cómo Hablamos
 
 ### Características
+
 - **Directo:** Sin rodeos. Al grano.
 - **Cálido:** Empático pero no condescendiente.
 - **Simple:** Sin tecnicismos ni jerga corporativa.
@@ -1405,6 +1569,7 @@ Hablamos como personas, no como una empresa de tecnología.
 ## Cómo NO Hablamos
 
 ### ❌ No somos:
+
 - **Paternalistas:** "Abuelos/as que buscan entretenerse"
 - **Corporativos:** "Optimice su perfil profesional"
 - **Técnicos:** "Onboarding", "dashboard", "skills"
@@ -1424,11 +1589,11 @@ Hablamos como personas, no como una empresa de tecnología.
 
 ### Ejemplos
 
-| Muy Formal (❌) | Muy Informal (❌) | Nosotros (✅) |
-|----------------|------------------|--------------|
-| "Su solicitud de empleo" | "Tu laburo" | "Tu postulación" |
-| "Optimizar su perfil" | "Arreglá tu perfil" | "Completá tu perfil" |
-| "Acceder al sistema" | "Entrá al chamuyo" | "Ingresá a tu cuenta" |
+| Muy Formal (❌)          | Muy Informal (❌)   | Nosotros (✅)         |
+| ------------------------ | ------------------- | --------------------- |
+| "Su solicitud de empleo" | "Tu laburo"         | "Tu postulación"      |
+| "Optimizar su perfil"    | "Arreglá tu perfil" | "Completá tu perfil"  |
+| "Acceder al sistema"     | "Entrá al chamuyo"  | "Ingresá a tu cuenta" |
 
 ---
 
@@ -1437,6 +1602,7 @@ Hablamos como personas, no como una empresa de tecnología.
 **Principio:** Entendemos que buscar trabajo después de los 60 es difícil, que la tecnología puede ser confusa, y que la autoestima se ve afectada cuando sentís que nadie te valora.
 
 ### Manifestación
+
 - No decimos "Es fácil" → Decimos "Nosotros te guiamos"
 - No decimos "Cualquiera puede" → Decimos "Vos podés"
 - No minimizamos frustraciones
@@ -1458,34 +1624,38 @@ Hablamos como personas, no como una empresa de tecnología.
 
 ### Reemplazos
 
-| ❌ Evitar | ✅ Usar |
-|----------|---------|
-| Optimizar | Mejorar |
-| Implementar | Hacer |
-| Utilizar | Usar |
-| Configuración | Ajustes |
-| Dashboard | Panel / Inicio |
-| Onboarding | Bienvenida / Registro |
-| Skills | Habilidades / Lo que sabés hacer |
-| Features | Funciones / Características |
-| Timeline | Línea de tiempo / Historial |
-| Feedback | Respuesta / Opinión |
+| ❌ Evitar     | ✅ Usar                          |
+| ------------- | -------------------------------- |
+| Optimizar     | Mejorar                          |
+| Implementar   | Hacer                            |
+| Utilizar      | Usar                             |
+| Configuración | Ajustes                          |
+| Dashboard     | Panel / Inicio                   |
+| Onboarding    | Bienvenida / Registro            |
+| Skills        | Habilidades / Lo que sabés hacer |
+| Features      | Funciones / Características      |
+| Timeline      | Línea de tiempo / Historial      |
+| Feedback      | Respuesta / Opinión              |
 
 ---
 
 ## Guía de Estilo
 
 ### Uso del "Vos"
+
 ✅ **Sí:**
+
 - "¿Querés trabajar?"
 - "Postulate ahora"
 - "Tu experiencia vale"
 
 ❌ **No:**
+
 - "¿Quiere trabajar?" (muy formal)
 - "¿Quieres trabajar?" (español de España)
 
 ### Exclamaciones
+
 ✅ **Usar con moderación**
 "¡Listo! Tu postulación fue enviada."
 
@@ -1493,6 +1663,7 @@ Hablamos como personas, no como una empresa de tecnología.
 "¡¡Hola!! ¡¡Bienvenido a JubiJobs!! ¡¡Postulate ya!!"
 
 ### Emojis
+
 ✅ **Usar 1-2 por mensaje en redes**
 "Tu experiencia vale 💙"
 
@@ -1500,6 +1671,7 @@ Hablamos como personas, no como una empresa de tecnología.
 "¡Hola! 👋 Bienvenido 🎉 a JubiJobs 💼"
 
 ### Puntuación
+
 ✅ **Punto final en oraciones largas**
 "Completá tu perfil en 3 pasos."
 
@@ -1550,6 +1722,7 @@ Hablamos como personas, no como una empresa de tecnología.
 ## Versión Principal: JubiJobs (Horizontal)
 
 ### Descripción
+
 **Nombre "JubiJobs" en tipografía Inter Bold**
 
 - **Estilo:** Sans-serif, moderno pero cálido
@@ -1559,12 +1732,14 @@ Hablamos como personas, no como una empresa de tecnología.
 - **Proporción:** 4:1 (ancho:alto)
 
 ### Icono Acompañante (Opcional)
+
 - **Símbolo:** Estrella de 4 puntas con centro redondeado (representa experiencia + estabilidad)
 - **Posición:** A la izquierda del texto
 - **Color:** Degradado sutil de Azure Trust a Sunset Warm
 - **Tamaño:** Igual al alto del texto
 
 ### Uso
+
 - Navbar / Header
 - Footer
 - Documentos oficiales
@@ -1575,6 +1750,7 @@ Hablamos como personas, no como una empresa de tecnología.
 ## Versión Minimal: "JJ" (Sigla)
 
 ### Descripción
+
 **Sigla "JJ" estilizada**
 
 - **Estilo:** Dos J's superpuestas formando un símbolo compacto
@@ -1583,6 +1759,7 @@ Hablamos como personas, no como una empresa de tecnología.
 - **Proporción:** 1:1 (cuadrado)
 
 ### Uso
+
 - Favicon
 - Avatar de redes sociales (cuando el nombre completo no entra)
 - App icon en mobile
@@ -1593,6 +1770,7 @@ Hablamos como personas, no como una empresa de tecnología.
 ## Icono App (Mobile/PWA)
 
 ### Descripción
+
 **Ícono circular con "JJ" o estrella**
 
 - **Fondo:** Degradado circular de Azure Trust `#2563EB` (centro) a Azure Dark `#1E40AF` (bordes)
@@ -1602,11 +1780,13 @@ Hablamos como personas, no como una empresa de tecnología.
 - **Proporción:** 1:1
 
 ### Variantes
+
 - **Android:** Formato adaptativo (1024x1024px)
 - **iOS:** Formato estándar (1024x1024px, sistema añade el redondeado)
 - **PWA:** 512x512px
 
 ### Uso
+
 - App mobile nativa (si la hay)
 - Progressive Web App
 - Notificaciones push
@@ -1616,6 +1796,7 @@ Hablamos como personas, no como una empresa de tecnología.
 ## Versión sobre Fondos Claros
 
 ### Descripción
+
 **Logo en colores plenos**
 
 - **Texto "JubiJobs":** Azure Trust `#2563EB` + Sunset Warm `#F59E0B`
@@ -1624,6 +1805,7 @@ Hablamos como personas, no como una empresa de tecnología.
 - **Contraste:** AAA garantizado
 
 ### Reglas
+
 - Nunca sobre fondos con colores saturados
 - Espacio mínimo alrededor: 20px
 - Tamaño mínimo: 120px de ancho (web), 80px de ancho (mobile)
@@ -1633,6 +1815,7 @@ Hablamos como personas, no como una empresa de tecnología.
 ## Versión sobre Fondos Oscuros
 
 ### Descripción
+
 **Logo en blanco con acento**
 
 - **Texto "JubiJobs":** Blanco `#FFFFFF` para "Jubi", Sunset Warm `#F59E0B` para "Jobs"
@@ -1641,6 +1824,7 @@ Hablamos como personas, no como una empresa de tecnología.
 - **Contraste:** AAA garantizado
 
 ### Reglas
+
 - Nunca sobre fondos con colores claros (usar versión para claros)
 - Si el fondo es Sunset Warm, cambiar el acento a Azure Trust
 
@@ -1649,6 +1833,7 @@ Hablamos como personas, no como una empresa de tecnología.
 ## Versión Monocromática (B/N)
 
 ### Descripción
+
 **Logo en un solo color**
 
 - **Blanco sobre oscuro:** Todo en `#FFFFFF`
@@ -1656,6 +1841,7 @@ Hablamos como personas, no como una empresa de tecnología.
 - **Gris:** Todo en `#4B5563` (solo para casos especiales)
 
 ### Uso
+
 - Impresión en blanco y negro
 - Fax (si alguien todavía usa)
 - Sellos
@@ -1666,23 +1852,28 @@ Hablamos como personas, no como una empresa de tecnología.
 ## Indicaciones de Proporciones
 
 ### Espaciado Mínimo (Clear Space)
+
 **Regla del "O":**
+
 - Usar la altura de la letra "O" en "JObs" como medida de espacio mínimo alrededor del logo
 - Nunca poner texto, bordes o elementos a menos de 1 "O" de distancia
 
 ### Tamaños Mínimos
 
 **Digital:**
+
 - Web Desktop: 140px de ancho mínimo
 - Web Mobile: 100px de ancho mínimo
 - Redes Sociales: 200x200px (avatar), 1200x630px (cover)
 
 **Impreso:**
+
 - Folletos: 30mm de ancho mínimo
 - Tarjetas: 20mm de ancho mínimo
 - Gigantografía: Sin límite superior, mantener proporciones
 
 ### Proporciones Fijas
+
 **Logo horizontal:** 4:1 (ancho:alto)
 **Icono cuadrado:** 1:1
 **Sigla "JJ":** 1:1
@@ -1703,16 +1894,19 @@ Hablamos como personas, no como una empresa de tecnología.
 ### Formatos Requeridos
 
 **Vectorial:**
+
 - `jubijobs-logo-horizontal.svg` (versión principal)
 - `jubijobs-logo-minimal.svg` (sigla JJ)
 - `jubijobs-icon.svg` (icono app)
 
 **Raster:**
+
 - `jubijobs-logo@1x.png`, `@2x.png`, `@3x.png` (72, 144, 216 DPI)
 - `jubijobs-icon-512.png` (para PWA)
 - `jubijobs-icon-1024.png` (para iOS/Android)
 
 **Fondos:**
+
 - `jubijobs-logo-light-bg.png` (sobre claro)
 - `jubijobs-logo-dark-bg.png` (sobre oscuro)
 - `jubijobs-logo-mono-black.png` (B/N)
@@ -1722,17 +1916,17 @@ Hablamos como personas, no como una empresa de tecnología.
 
 ## Guía de Uso por Contexto
 
-| Contexto | Versión a Usar |
-|----------|---------------|
-| Navbar/Header web | Horizontal + icono (opcional) |
-| Footer web | Horizontal sin icono |
-| Favicon | Icono cuadrado 32x32px |
-| Open Graph (redes) | Horizontal centrado en 1200x630px |
-| App mobile | Icono app 1024x1024px |
-| Email signature | Horizontal 200px ancho |
-| Documentos PDF | Horizontal 150px ancho |
-| Presentaciones | Horizontal en esquina superior izq |
-| Merch (remeras, etc) | Horizontal grande en pecho |
+| Contexto             | Versión a Usar                     |
+| -------------------- | ---------------------------------- |
+| Navbar/Header web    | Horizontal + icono (opcional)      |
+| Footer web           | Horizontal sin icono               |
+| Favicon              | Icono cuadrado 32x32px             |
+| Open Graph (redes)   | Horizontal centrado en 1200x630px  |
+| App mobile           | Icono app 1024x1024px              |
+| Email signature      | Horizontal 200px ancho             |
+| Documentos PDF       | Horizontal 150px ancho             |
+| Presentaciones       | Horizontal en esquina superior izq |
+| Merch (remeras, etc) | Horizontal grande en pecho         |
 
 ---
 

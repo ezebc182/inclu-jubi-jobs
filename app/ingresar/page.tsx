@@ -3,7 +3,8 @@ import { LoginOptions } from "@/components/auth/LoginOptions";
 
 export const metadata: Metadata = {
   title: "Ingresar - JubiJobs",
-  description: "Ingresá a tu cuenta de JubiJobs con Google, Facebook, Microsoft o tu número de teléfono",
+  description:
+    "Ingresá a tu cuenta de JubiJobs con Google, Facebook, Microsoft o tu número de teléfono",
 };
 
 export default function LoginPage() {
@@ -22,11 +23,14 @@ export default function LoginPage() {
 
           <div className="mt-10 rounded-lg bg-primary-50 p-6 transition-colors dark:bg-gray-700">
             <p className="text-center text-lg leading-relaxed text-gray-800 dark:text-gray-200">
-              <strong className="text-xl">¿Por qué no usamos contraseñas?</strong>
+              <strong className="text-xl">
+                ¿Por qué no usamos contraseñas?
+              </strong>
               <br />
               <span className="mt-2 block text-gray-700 dark:text-gray-300">
-                Para que sea más simple y seguro. Ingresás con tu cuenta de Google, Facebook o Microsoft,
-                o recibís un código por SMS, sin necesidad de recordar contraseñas.
+                Para que sea más simple y seguro. Ingresás con tu cuenta de
+                Google, Facebook o Microsoft, o recibís un código por SMS, sin
+                necesidad de recordar contraseñas.
               </span>
             </p>
           </div>
