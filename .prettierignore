@@ -1,0 +1,27 @@
+# Artefactos generados: Prettier no debe reformatearlos.
+#
+# El lockfile es especialmente importante: pnpm lo escribe con comillas
+# simples y Prettier las cambia a dobles, generando un diff de ~9000 líneas
+# que además puede romper `pnpm install --frozen-lockfile` en el deploy.
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Salidas de build y dependencias
+node_modules/
+.next/
+out/
+build/
+coverage/
+playwright-report/
+test-results/
+
+# Cliente de Prisma generado
+prisma/generated/
+
+# Iconos derivados de lib/brand-assets.ts (ver scripts/generate-icons.ts)
+public/icons/*.svg
+
+# Env
+.env
+.env.*
