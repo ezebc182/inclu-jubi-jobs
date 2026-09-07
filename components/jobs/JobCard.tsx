@@ -11,6 +11,10 @@ interface JobCardProps {
   schedule: string;
   salaryArsMin?: number | null;
   salaryArsMax?: number | null;
+  /** Condiciones de accesibilidad, relevantes sobre todo en InclúJobs. */
+  hasAccessibleSite?: boolean;
+  supportsFlexHours?: boolean;
+  isRemoteFriendly?: boolean;
 }
 
 const MODALITY_LABELS: Record<string, string> = {
@@ -21,7 +25,7 @@ const MODALITY_LABELS: Record<string, string> = {
 
 const SCHEDULE_LABELS: Record<string, string> = {
   PART_TIME: "Part-time",
-  FLEX: "Flexible",
+  FLEX: "Horario flexible",
   POR_DIA: "Por día",
 };
 
@@ -35,42 +39,74 @@ export function JobCard({
   schedule,
   salaryArsMin,
   salaryArsMax,
+  hasAccessibleSite,
+  supportsFlexHours,
+  isRemoteFriendly,
 }: JobCardProps) {
   const location = city ? `${city}, ${province}` : province;
+
   const salary =
     salaryArsMin && salaryArsMax
-      ? `${formatCurrency(salaryArsMin)} - ${formatCurrency(salaryArsMax)}`
-      : "A convenir";
+      ? `${formatCurrency(salaryArsMin)} a ${formatCurrency(salaryArsMax)}`
+      : salaryArsMin
+        ? `Desde ${formatCurrency(salaryArsMin)}`
+        : null;
+
+  const accessibility = [
+    hasAccessibleSite && "Instalaciones adaptadas",
+    supportsFlexHours && "Horario ajustable",
+    isRemoteFriendly && "Se puede remoto",
+  ].filter(Boolean) as string[];
 
   return (
-    <Link
-      href={`/empleos/${id}`}
-      className="block rounded-lg border-2 border-gray-300 bg-white p-6 transition-all hover:border-primary-600 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-primary-300 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-primary-400"
-    >
-      <h3 className="mb-2 text-2xl font-bold text-gray-900 dark:text-gray-100">
-        {title}
-      </h3>
-      <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">{company}</p>
-      <div className="flex flex-col gap-2 text-base text-gray-600 dark:text-gray-400">
-        <div className="flex items-center gap-2">
-          <span className="font-semibold">Ubicación:</span>
-          <span>{location}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="font-semibold">Modalidad:</span>
-          <span>{MODALITY_LABELS[modality]}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="font-semibold">Jornada:</span>
-          <span>{SCHEDULE_LABELS[schedule]}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="font-semibold">Salario:</span>
-          <span className="font-bold text-primary-700 dark:text-primary-400">
+    <article className="group relative h-full bg-surface transition-colors hover:bg-primary-50 dark:hover:bg-primary-900/20">
+      <div className="flex h-full flex-col p-6">
+        <h3 className="font-display text-xl font-semibold leading-snug">
+          {/* El enlace cubre toda la tarjeta vía ::after, pero el área
+              accesible sigue siendo el título: el lector de pantalla
+              anuncia el puesto, no "enlace, tarjeta". */}
+          <Link
+            href={`/empleos/${id}`}
+            className="after:absolute after:inset-0 after:content-[''] hover:text-primary-700 dark:hover:text-primary-200"
+          >
+            {title}
+          </Link>
+        </h3>
+
+        <p className="mt-1.5 text-base text-ink-soft">{company}</p>
+
+        {/* Los datos hablan solos: nadie necesita que le aclaren que
+            "Córdoba" es una ubicación. */}
+        <p className="mt-4 text-base text-ink">
+          {location}
+          <span className="mx-2 text-rule">|</span>
+          {MODALITY_LABELS[modality]}
+          <span className="mx-2 text-rule">|</span>
+          {SCHEDULE_LABELS[schedule]}
+        </p>
+
+        {accessibility.length > 0 && (
+          <ul className="mt-4 flex flex-wrap gap-2">
+            {accessibility.map((label) => (
+              <li
+                key={label}
+                className="rounded-sm bg-secondary-50 px-2.5 py-1 text-sm font-medium text-secondary-700 dark:bg-secondary-700/20 dark:text-secondary-300"
+              >
+                {label}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {salary && (
+          <p className="mt-auto border-t border-rule pt-4 text-lg font-semibold text-primary-700 dark:text-primary-200">
             {salary}
-          </span>
-        </div>
+            <span className="ml-1.5 text-base font-normal text-ink-soft">
+              por mes
+            </span>
+          </p>
+        )}
       </div>
-    </Link>
+    </article>
   );
 }

@@ -108,7 +108,7 @@ export function PhoneLogin() {
           <div>
             <label
               htmlFor="phoneNumber"
-              className="mb-2 block text-lg font-semibold text-gray-900 dark:text-gray-100"
+              className="mb-2 block text-lg font-semibold text-ink"
             >
               Número de teléfono
             </label>
@@ -118,11 +118,11 @@ export function PhoneLogin() {
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               placeholder="+54 11 1234-5678"
-              className="min-h-[56px] w-full rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+              className="min-h-[56px] w-full rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               required
               autoFocus
             />
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            <p className="mt-2 text-sm text-ink-soft">
               Incluí el código de área sin el 0. Ej: 11 para CABA
             </p>
           </div>
@@ -155,7 +155,7 @@ export function PhoneLogin() {
           <div>
             <label
               htmlFor="otpCode"
-              className="mb-2 block text-lg font-semibold text-gray-900 dark:text-gray-100"
+              className="mb-2 block text-lg font-semibold text-ink"
             >
               Código de verificación
             </label>
@@ -166,11 +166,11 @@ export function PhoneLogin() {
               onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, ""))}
               placeholder="123456"
               maxLength={6}
-              className="min-h-[56px] w-full rounded-lg border-2 border-gray-300 px-4 py-3 text-center text-2xl font-bold tracking-widest focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+              className="min-h-[56px] w-full rounded-lg border-2 border-rule px-4 py-3 text-center text-2xl font-bold tracking-widest focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               required
               autoFocus
             />
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            <p className="mt-2 text-sm text-ink-soft">
               Ingresá el código de 6 dígitos enviado a {phoneNumber}
             </p>
             {process.env.NODE_ENV !== "production" && (

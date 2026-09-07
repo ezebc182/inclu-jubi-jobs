@@ -63,11 +63,11 @@ export function ApplicationsList({
 
   if (applications.length === 0) {
     return (
-      <div className="rounded-xl border-2 border-dashed border-gray-300 bg-white p-12 text-center shadow-sm transition-colors dark:border-gray-700 dark:bg-gray-800">
-        <p className="text-xl font-semibold text-gray-700 dark:text-gray-300">
+      <div className="rounded-xl border-2 border-dashed border-rule bg-white p-12 text-center shadow-sm transition-colors">
+        <p className="text-xl font-semibold text-ink-soft">
           No hay postulaciones todavía
         </p>
-        <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
+        <p className="mt-2 text-lg text-ink-soft">
           Cuando alguien se postule a tus empleos, aparecerán acá.
         </p>
       </div>
@@ -79,17 +79,17 @@ export function ApplicationsList({
       {applications.map((app) => (
         <article
           key={app.id}
-          className="rounded-xl border-2 border-gray-200 bg-white p-6 shadow-sm transition-colors dark:border-gray-700 dark:bg-gray-800"
+          className="rounded-xl border-2 border-rule bg-white p-6 shadow-sm transition-colors"
         >
           <div className="mb-4 flex items-start justify-between">
             <div className="flex-1">
-              <h3 className="mb-2 text-2xl font-bold text-gray-900 dark:text-gray-100">
+              <h3 className="mb-2 text-2xl font-bold text-ink">
                 {app.user.name || "Candidato"}
               </h3>
-              <p className="mb-2 text-lg text-gray-700 dark:text-gray-300">
+              <p className="mb-2 text-lg text-ink-soft">
                 Postulación para: <strong>{app.job.title}</strong>
               </p>
-              <div className="flex flex-wrap gap-4 text-base text-gray-600 dark:text-gray-400">
+              <div className="flex flex-wrap gap-4 text-base text-ink-soft">
                 {app.user.location && <span>📍 {app.user.location}</span>}
                 {app.user.birthYear && (
                   <span>
@@ -140,28 +140,28 @@ export function ApplicationsList({
           </button>
 
           {expanded === app.id && (
-            <div className="mb-4 flex flex-col gap-4 rounded-lg bg-gray-50 p-6 transition-colors dark:bg-gray-900">
+            <div className="mb-4 flex flex-col gap-4 rounded-lg bg-paper p-6 transition-colors">
               <div>
-                <p className="mb-2 text-base font-bold text-gray-900 dark:text-gray-100">
+                <p className="mb-2 text-base font-bold text-ink">
                   ¿Qué hiciste?
                 </p>
-                <p className="text-base text-gray-700 dark:text-gray-300">
+                <p className="text-base text-ink-soft">
                   {app.did}
                 </p>
               </div>
               <div>
-                <p className="mb-2 text-base font-bold text-gray-900 dark:text-gray-100">
+                <p className="mb-2 text-base font-bold text-ink">
                   ¿Qué sabés hacer?
                 </p>
-                <p className="text-base text-gray-700 dark:text-gray-300">
+                <p className="text-base text-ink-soft">
                   {app.canDo}
                 </p>
               </div>
               <div>
-                <p className="mb-2 text-base font-bold text-gray-900 dark:text-gray-100">
+                <p className="mb-2 text-base font-bold text-ink">
                   ¿Qué te gustaría hacer?
                 </p>
-                <p className="text-base text-gray-700 dark:text-gray-300">
+                <p className="text-base text-ink-soft">
                   {app.wantToDo}
                 </p>
               </div>
@@ -182,14 +182,14 @@ export function ApplicationsList({
             {app.user.phoneNumber && (
               <a
                 href={`tel:${app.user.phoneNumber}`}
-                className="rounded-lg bg-gray-600 px-4 py-2 text-base font-semibold text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300"
+                className="rounded-lg bg-primary-700 px-4 py-2 text-base font-semibold text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300"
               >
                 📞 {app.user.phoneNumber}
               </a>
             )}
             <a
               href={`mailto:${app.user.email}`}
-              className="rounded-lg bg-gray-600 px-4 py-2 text-base font-semibold text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300"
+              className="rounded-lg bg-primary-700 px-4 py-2 text-base font-semibold text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300"
             >
               ✉️ {app.user.email}
             </a>

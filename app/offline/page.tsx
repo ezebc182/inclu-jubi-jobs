@@ -20,10 +20,10 @@ export default async function OfflinePage() {
       <div className="mb-6 text-6xl" aria-hidden="true">
         📡
       </div>
-      <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-gray-100">
+      <h1 className="mb-4 text-4xl font-bold text-ink">
         Te quedaste sin internet
       </h1>
-      <p className="mb-8 text-xl leading-relaxed text-gray-700 dark:text-gray-300">
+      <p className="mb-8 text-xl leading-relaxed text-ink-soft">
         No pudimos conectarnos. Revisá el wifi o los datos del teléfono y volvé
         a intentar. Las páginas que ya visitaste siguen disponibles.
       </p>
@@ -35,7 +35,7 @@ export default async function OfflinePage() {
         Reintentar
       </a>
 
-      <p className="mt-10 text-base text-gray-600 dark:text-gray-400">
+      <p className="mt-10 text-base text-ink-soft">
         {portal.name} · Si el problema sigue, escribinos a{" "}
         <a href={`mailto:${portal.contactEmail}`} className="underline">
           {portal.contactEmail}

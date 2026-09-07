@@ -117,6 +117,8 @@ async function main() {
       salaryArsMin: 250000,
       salaryArsMax: 350000,
       status: "PUBLISHED",
+      moderationStatus: "APPROVED",
+      portals: ["JUBI"],
       tags: ["Administración", "Archivo", "Atención telefónica"],
     },
   });
@@ -134,6 +136,8 @@ async function main() {
       salaryArsMin: 180000,
       salaryArsMax: 220000,
       status: "PUBLISHED",
+      moderationStatus: "APPROVED",
+      portals: ["JUBI"],
       tags: ["Atención al cliente", "Fines de semana"],
     },
   });
@@ -151,6 +155,12 @@ async function main() {
       salaryArsMin: 280000,
       salaryArsMax: 380000,
       status: "PUBLISHED",
+      moderationStatus: "APPROVED",
+      portals: ["JUBI", "INCLU"],
+      supportsFlexHours: true,
+      hasAccessibleSite: true,
+      accessibilityNotes:
+        "La oficina está en planta baja, con acceso sin escalones y baño adaptado. El horario se coordina según tus necesidades.",
       tags: ["Recepción", "Atención al público", "Administración"],
     },
   });
@@ -168,6 +178,12 @@ async function main() {
       salaryArsMin: 200000,
       salaryArsMax: 280000,
       status: "PUBLISHED",
+      moderationStatus: "APPROVED",
+      portals: ["JUBI", "INCLU"],
+      isRemoteFriendly: true,
+      supportsFlexHours: true,
+      accessibilityNotes:
+        "Trabajo íntegramente remoto. Entregamos el equipo y la conexión.",
       tags: ["Control de stock", "Remoto", "Digital"],
     },
   });
@@ -185,6 +201,12 @@ async function main() {
       salaryArsMin: 220000,
       salaryArsMax: 300000,
       status: "PUBLISHED",
+      moderationStatus: "APPROVED",
+      portals: ["INCLU"],
+      hasAccessibleSite: true,
+      isRemoteFriendly: true,
+      accessibilityNotes:
+        "Edificio con ascensor y rampa. Contamos con lector de pantalla instalado y el equipo maneja lengua de señas básica.",
       tags: ["Atención al público", "Cultura", "Educación"],
     },
   });
@@ -202,6 +224,11 @@ async function main() {
       salaryArsMin: 300000,
       salaryArsMax: 400000,
       status: "PUBLISHED",
+      moderationStatus: "APPROVED",
+      portals: ["INCLU"],
+      supportsFlexHours: true,
+      accessibilityNotes:
+        "Horarios totalmente flexibles, compatibles con tratamientos médicos.",
       tags: ["Mantenimiento", "Jardinería", "Servicios"],
     },
   });

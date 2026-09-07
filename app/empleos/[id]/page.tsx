@@ -96,13 +96,13 @@ export default async function EmpleoDetailPage({
     Boolean(job.accessibilityNotes);
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 transition-colors dark:bg-gray-900">
+    <div className="mx-auto max-w-4xl px-4 py-12 transition-colors">
       <article>
         <header className="mb-8">
-          <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-gray-100">
+          <h1 className="mb-4 text-4xl font-bold text-ink">
             {job.title}
           </h1>
-          <div className="flex flex-col gap-3 text-lg text-gray-700 dark:text-gray-300">
+          <div className="flex flex-col gap-3 text-lg text-ink-soft">
             <div>
               <strong>Empresa:</strong> {job.company.name}
             </div>
@@ -122,7 +122,7 @@ export default async function EmpleoDetailPage({
                 {formatCurrency(job.salaryArsMax)}
               </div>
             )}
-            <div className="text-base text-gray-600 dark:text-gray-400">
+            <div className="text-base text-ink-soft">
               Publicado el {formatDate(job.createdAt)}
             </div>
           </div>
@@ -142,10 +142,10 @@ export default async function EmpleoDetailPage({
         </header>
 
         <section className="mb-12">
-          <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
+          <h2 className="mb-4 text-2xl font-bold text-ink">
             Descripción del puesto
           </h2>
-          <div className="whitespace-pre-wrap text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+          <div className="whitespace-pre-wrap text-lg leading-relaxed text-ink-soft">
             {job.description}
           </div>
         </section>
@@ -157,11 +157,11 @@ export default async function EmpleoDetailPage({
           >
             <h2
               id="accesibilidad-puesto"
-              className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100"
+              className="mb-4 text-2xl font-bold text-ink"
             >
               Condiciones de accesibilidad
             </h2>
-            <ul className="space-y-3 text-lg text-gray-800 dark:text-gray-200">
+            <ul className="space-y-3 text-lg text-ink">
               {job.hasAccessibleSite && (
                 <li className="flex items-start gap-3">
                   <span aria-hidden="true">✓</span>
@@ -186,7 +186,7 @@ export default async function EmpleoDetailPage({
               )}
             </ul>
             {job.accessibilityNotes && (
-              <p className="mt-4 whitespace-pre-wrap text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+              <p className="mt-4 whitespace-pre-wrap text-lg leading-relaxed text-ink-soft">
                 {job.accessibilityNotes}
               </p>
             )}
@@ -194,11 +194,11 @@ export default async function EmpleoDetailPage({
         )}
 
         {job.company.about && (
-          <section className="mb-12 rounded-lg bg-gray-50 p-6 transition-colors dark:bg-gray-800">
-            <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
+          <section className="mb-12 rounded-lg bg-paper p-6 transition-colors">
+            <h2 className="mb-4 text-2xl font-bold text-ink">
               Sobre {job.company.name}
             </h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
+            <p className="text-lg text-ink-soft">
               {job.company.about}
             </p>
             {job.company.website && (
@@ -216,7 +216,7 @@ export default async function EmpleoDetailPage({
 
         {isCandidate && !hasApplied && (
           <section className="rounded-lg border-2 border-primary-300 bg-primary-50 p-8 transition-colors dark:border-primary-700 dark:bg-primary-950">
-            <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">
+            <h2 className="mb-6 text-3xl font-bold text-ink">
               Postularme (3 preguntas)
             </h2>
             <ThreeQuestionsForm
@@ -256,7 +256,7 @@ export default async function EmpleoDetailPage({
 
         {!session && (
           <div className="rounded-lg border-2 border-primary-300 bg-primary-50 p-8 text-center transition-colors dark:border-primary-700 dark:bg-primary-950">
-            <p className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
+            <p className="mb-4 text-2xl font-bold text-ink">
               Para postularte, ingresá primero
             </p>
             <a

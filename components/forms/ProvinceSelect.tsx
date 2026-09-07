@@ -19,7 +19,7 @@ export function ProvinceSelect({
 }: ProvinceSelectProps) {
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-lg font-bold text-gray-900">
+      <label className="text-lg font-bold text-ink">
         {label}
         {required && <span className="ml-1 text-red-600">*</span>}
       </label>
@@ -27,7 +27,7 @@ export function ProvinceSelect({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         required={required}
-        className="min-h-[48px] rounded-lg border-2 border-gray-300 bg-white px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
+        className="min-h-[48px] rounded-lg border-2 border-rule bg-white px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
       >
         <option value="">Seleccioná tu provincia</option>
         {PROVINCIAS_AR.map((provincia) => (

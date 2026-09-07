@@ -48,12 +48,18 @@ export function InstallPrompt({ appName }: { appName: string }) {
   useEffect(() => {
     if (isStandalone() || wasRecentlyDismissed()) return;
 
+    let showTimer: ReturnType<typeof setTimeout> | undefined;
+
     const onBeforeInstall = (event: Event) => {
       // Cortamos el mini-infobar del navegador para mostrar el nuestro,
       // que explica de qué se trata.
       event.preventDefault();
       setDeferred(event as BeforeInstallPromptEvent);
-      setVisible(true);
+
+      // Esperamos a que la persona haya visto de qué se trata el sitio.
+      // Interrumpir en el primer segundo, tapando el titular, es la
+      // forma más rápida de que cierren la pestaña.
+      showTimer = setTimeout(() => setVisible(true), 25_000);
     };
 
     const onInstalled = () => {
@@ -65,6 +71,7 @@ export function InstallPrompt({ appName }: { appName: string }) {
     window.addEventListener("appinstalled", onInstalled);
 
     return () => {
+      if (showTimer) clearTimeout(showTimer);
       window.removeEventListener("beforeinstallprompt", onBeforeInstall);
       window.removeEventListener("appinstalled", onInstalled);
     };
@@ -99,36 +106,36 @@ export function InstallPrompt({ appName }: { appName: string }) {
       aria-modal="false"
       aria-labelledby="install-prompt-title"
       aria-describedby="install-prompt-desc"
-      className="fixed inset-x-0 bottom-0 z-50 border-t-4 border-primary-600 bg-white p-6 shadow-2xl dark:border-primary-400 dark:bg-gray-800 sm:inset-x-auto sm:bottom-6 sm:right-6 sm:max-w-md sm:rounded-xl sm:border-4"
+      className="fixed inset-x-0 bottom-0 z-50 border-t-2 border-primary-600 bg-surface p-6 shadow-xl sm:inset-x-auto sm:bottom-6 sm:right-6 sm:max-w-sm sm:rounded-lg sm:border"
     >
       <h2
         id="install-prompt-title"
         ref={headingRef}
         tabIndex={-1}
-        className="mb-3 text-2xl font-bold text-gray-900 focus:outline-none dark:text-gray-100"
+        className="font-display text-xl font-semibold focus:outline-none"
       >
         Instalá {appName} en tu teléfono
       </h2>
       <p
         id="install-prompt-desc"
-        className="mb-6 text-lg leading-relaxed text-gray-700 dark:text-gray-300"
+        className="mt-2 text-base leading-relaxed text-ink-soft"
       >
-        Vas a tener el acceso directo en la pantalla de inicio, como cualquier
-        otra aplicación. Abre más rápido y podés ver los empleos guardados
-        aunque te quedes sin internet.
+        Queda el acceso directo en la pantalla de inicio, como cualquier otra
+        aplicación. Abre más rápido y los empleos que ya viste quedan
+        disponibles sin internet.
       </p>
-      <div className="flex flex-col gap-3 sm:flex-row">
+      <div className="mt-5 flex flex-col gap-2 sm:flex-row">
         <button
           type="button"
           onClick={install}
-          className="min-h-[56px] flex-1 rounded-lg bg-primary-600 px-6 py-4 text-lg font-bold text-white transition-colors hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
+          className="min-h-[48px] flex-1 rounded-md bg-primary-600 px-5 text-base font-semibold text-white transition-colors hover:bg-primary-700"
         >
-          Instalar la aplicación
+          Instalar
         </button>
         <button
           type="button"
           onClick={dismiss}
-          className="min-h-[56px] rounded-lg border-2 border-gray-400 px-6 py-4 text-lg font-semibold text-gray-800 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:border-gray-500 dark:text-gray-200 dark:hover:bg-gray-700"
+          className="min-h-[48px] rounded-md border border-rule px-5 text-base font-medium text-ink-soft transition-colors hover:bg-paper"
         >
           Ahora no
         </button>

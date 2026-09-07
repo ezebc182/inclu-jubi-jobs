@@ -49,11 +49,11 @@ export function CompanyJobsList({ jobs }: { jobs: Job[] }) {
 
   if (jobs.length === 0) {
     return (
-      <div className="rounded-xl border-2 border-dashed border-gray-300 bg-white p-12 text-center shadow-sm transition-colors dark:border-gray-700 dark:bg-gray-800">
-        <p className="text-xl font-semibold text-gray-700 dark:text-gray-300">
+      <div className="rounded-xl border-2 border-dashed border-rule bg-white p-12 text-center shadow-sm transition-colors">
+        <p className="text-xl font-semibold text-ink-soft">
           No tenés empleos publicados todavía
         </p>
-        <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
+        <p className="mt-2 text-lg text-ink-soft">
           Andá a la pestaña &quot;Crear empleo&quot; para publicar tu primer
           puesto.
         </p>
@@ -66,14 +66,14 @@ export function CompanyJobsList({ jobs }: { jobs: Job[] }) {
       {jobs.map((job) => (
         <article
           key={job.id}
-          className="rounded-xl border-2 border-gray-200 bg-white p-6 shadow-sm transition-colors dark:border-gray-700 dark:bg-gray-800"
+          className="rounded-xl border-2 border-rule bg-white p-6 shadow-sm transition-colors"
         >
           <div className="mb-4 flex items-start justify-between">
             <div className="flex-1">
-              <h3 className="mb-2 text-2xl font-bold text-gray-900 dark:text-gray-100">
+              <h3 className="mb-2 text-2xl font-bold text-ink">
                 {job.title}
               </h3>
-              <div className="flex flex-wrap gap-4 text-base text-gray-600 dark:text-gray-400">
+              <div className="flex flex-wrap gap-4 text-base text-ink-soft">
                 <span>
                   {job.city ? `${job.city}, ${job.province}` : job.province}
                 </span>
@@ -92,7 +92,7 @@ export function CompanyJobsList({ jobs }: { jobs: Job[] }) {
                   ? "bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-400"
                   : job.status === "PAUSED"
                     ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-950 dark:text-yellow-400"
-                    : "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300"
+                    : "bg-paper text-ink"
               }`}
             >
               {JOB_STATUS_LABELS[job.status]}
@@ -109,7 +109,7 @@ export function CompanyJobsList({ jobs }: { jobs: Job[] }) {
               href={`/empleos/${job.id}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg bg-gray-600 px-4 py-2 text-base font-semibold text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300"
+              className="rounded-lg bg-primary-700 px-4 py-2 text-base font-semibold text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300"
             >
               Ver empleo
             </a>

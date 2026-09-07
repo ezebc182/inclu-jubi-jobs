@@ -17,7 +17,7 @@ export function Footer({
   return (
     <footer
       role="contentinfo"
-      className="border-t-2 border-gray-200 bg-white py-12 transition-colors dark:border-gray-700 dark:bg-gray-800"
+      className="border-t-2 border-rule bg-white py-12 transition-colors"
     >
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
@@ -25,20 +25,20 @@ export function Footer({
             <h3 className="mb-4 text-2xl font-bold text-primary-700 dark:text-primary-300">
               {portalName}
             </h3>
-            <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+            <p className="text-lg leading-relaxed text-ink-soft">
               {BLURB[brand]}
             </p>
           </div>
 
           <div>
-            <h3 className="mb-4 text-xl font-bold text-gray-900 dark:text-gray-100">
+            <h3 className="mb-4 text-xl font-bold text-ink">
               Enlaces
             </h3>
             <ul className="flex flex-col gap-3">
               <li>
                 <Link
                   href="/como-funciona"
-                  className="text-lg text-gray-700 transition-colors hover:text-primary-600 hover:underline focus:outline-none focus:ring-2 focus:ring-primary-300 dark:text-gray-300 dark:hover:text-primary-400"
+                  className="text-lg text-ink-soft transition-colors hover:text-primary-600 hover:underline focus:outline-none focus:ring-2 focus:ring-primary-300 dark:hover:text-primary-400"
                 >
                   Cómo funciona
                 </Link>
@@ -46,7 +46,7 @@ export function Footer({
               <li>
                 <Link
                   href="/preguntas-frecuentes"
-                  className="text-lg text-gray-700 transition-colors hover:text-primary-600 hover:underline focus:outline-none focus:ring-2 focus:ring-primary-300 dark:text-gray-300 dark:hover:text-primary-400"
+                  className="text-lg text-ink-soft transition-colors hover:text-primary-600 hover:underline focus:outline-none focus:ring-2 focus:ring-primary-300 dark:hover:text-primary-400"
                 >
                   Preguntas Frecuentes
                 </Link>
@@ -57,7 +57,7 @@ export function Footer({
                 <li>
                   <Link
                     href="/discapacidad"
-                    className="text-lg text-gray-700 transition-colors hover:text-primary-600 hover:underline focus:outline-none focus:ring-2 focus:ring-primary-300 dark:text-gray-300 dark:hover:text-primary-400"
+                    className="text-lg text-ink-soft transition-colors hover:text-primary-600 hover:underline focus:outline-none focus:ring-2 focus:ring-primary-300 dark:hover:text-primary-400"
                   >
                     Trabajo inclusivo
                   </Link>
@@ -66,7 +66,7 @@ export function Footer({
               <li>
                 <Link
                   href="/accesibilidad"
-                  className="text-lg text-gray-700 transition-colors hover:text-primary-600 hover:underline focus:outline-none focus:ring-2 focus:ring-primary-300 dark:text-gray-300 dark:hover:text-primary-400"
+                  className="text-lg text-ink-soft transition-colors hover:text-primary-600 hover:underline focus:outline-none focus:ring-2 focus:ring-primary-300 dark:hover:text-primary-400"
                 >
                   Accesibilidad
                 </Link>
@@ -75,14 +75,14 @@ export function Footer({
           </div>
 
           <div>
-            <h3 className="mb-4 text-xl font-bold text-gray-900 dark:text-gray-100">
+            <h3 className="mb-4 text-xl font-bold text-ink">
               Legal
             </h3>
             <ul className="flex flex-col gap-3">
               <li>
                 <Link
                   href="/privacidad"
-                  className="text-lg text-gray-700 transition-colors hover:text-primary-600 hover:underline focus:outline-none focus:ring-2 focus:ring-primary-300 dark:text-gray-300 dark:hover:text-primary-400"
+                  className="text-lg text-ink-soft transition-colors hover:text-primary-600 hover:underline focus:outline-none focus:ring-2 focus:ring-primary-300 dark:hover:text-primary-400"
                 >
                   Privacidad
                 </Link>
@@ -90,7 +90,7 @@ export function Footer({
               <li>
                 <Link
                   href="/terminos"
-                  className="text-lg text-gray-700 transition-colors hover:text-primary-600 hover:underline focus:outline-none focus:ring-2 focus:ring-primary-300 dark:text-gray-300 dark:hover:text-primary-400"
+                  className="text-lg text-ink-soft transition-colors hover:text-primary-600 hover:underline focus:outline-none focus:ring-2 focus:ring-primary-300 dark:hover:text-primary-400"
                 >
                   Términos y condiciones
                 </Link>
@@ -99,12 +99,12 @@ export function Footer({
           </div>
         </div>
 
-        <div className="mt-12 border-t-2 border-gray-200 pt-8 text-center dark:border-gray-700">
-          <p className="text-lg text-gray-600 dark:text-gray-400">
+        <div className="mt-12 border-t-2 border-rule pt-8 text-center">
+          <p className="text-lg text-ink-soft">
             © {new Date().getFullYear()} {portalName}. Todos los derechos
             reservados.
           </p>
-          <p className="mt-2 text-lg text-gray-500 dark:text-gray-500">
+          <p className="mt-2 text-lg text-ink-soft">
             Hecho en Argentina con 💙
           </p>
         </div>

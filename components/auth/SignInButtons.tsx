@@ -35,9 +35,9 @@ export function SignInButtons() {
           />
         </svg>
       ),
-      bgColor: "bg-white hover:bg-gray-50",
-      textColor: "text-gray-900",
-      borderColor: "border-gray-300",
+      bgColor: "bg-white hover:bg-paper",
+      textColor: "text-ink",
+      borderColor: "border-rule",
     },
     {
       id: "microsoft",
@@ -50,9 +50,9 @@ export function SignInButtons() {
           />
         </svg>
       ),
-      bgColor: "bg-white hover:bg-gray-50",
-      textColor: "text-gray-900",
-      borderColor: "border-gray-300",
+      bgColor: "bg-white hover:bg-paper",
+      textColor: "text-ink",
+      borderColor: "border-rule",
     },
     {
       id: "facebook",
@@ -65,9 +65,9 @@ export function SignInButtons() {
           />
         </svg>
       ),
-      bgColor: "bg-white hover:bg-gray-50",
-      textColor: "text-gray-900",
-      borderColor: "border-gray-300",
+      bgColor: "bg-white hover:bg-paper",
+      textColor: "text-ink",
+      borderColor: "border-rule",
     },
   ];
 
@@ -78,10 +78,10 @@ export function SignInButtons() {
           key={provider.id}
           onClick={() => handleSignIn(provider.id)}
           disabled={loading !== null}
-          className={`flex min-h-[56px] w-full items-center justify-center gap-3 rounded-lg border-2 ${provider.borderColor} ${provider.bgColor} px-6 py-4 text-lg font-semibold ${provider.textColor} shadow-sm transition-all hover:shadow-md focus:outline-none focus:ring-4 focus:ring-primary-300 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600`}
+          className={`flex min-h-[56px] w-full items-center justify-center gap-3 rounded-lg border-2 ${provider.borderColor} ${provider.bgColor} px-6 py-4 text-lg font-semibold ${provider.textColor} shadow-sm transition-all hover:shadow-md focus:outline-none focus:ring-4 focus:ring-primary-300 disabled:cursor-not-allowed disabled:opacity-50`}
         >
           {loading === provider.id ? (
-            <div className="border-3 h-6 w-6 animate-spin rounded-full border-gray-300 border-t-gray-900 dark:border-gray-600 dark:border-t-gray-100"></div>
+            <div className="border-3 h-6 w-6 animate-spin rounded-full border-rule border-t-gray-900 dark:border-t-gray-100"></div>
           ) : (
             provider.icon
           )}
@@ -94,7 +94,7 @@ export function SignInButtons() {
       ))}
 
       <div className="pt-6 text-center">
-        <p className="text-base leading-relaxed text-gray-600 dark:text-gray-400">
+        <p className="text-base leading-relaxed text-ink-soft">
           Al ingresar, aceptás nuestros{" "}
           <a
             href="/terminos"

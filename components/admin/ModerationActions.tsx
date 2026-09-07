@@ -45,7 +45,7 @@ export function ModerationActions({
   };
 
   return (
-    <div className="border-t-2 border-gray-200 pt-4 dark:border-gray-700">
+    <div className="border-t-2 border-rule pt-4">
       <div className="flex flex-wrap gap-3">
         <button
           type="button"
@@ -71,11 +71,11 @@ export function ModerationActions({
         <div id={`reject-${jobId}`} className="mt-4">
           <label
             htmlFor={`reason-${jobId}`}
-            className="mb-2 block text-lg font-bold text-gray-900 dark:text-gray-100"
+            className="mb-2 block text-lg font-bold text-ink-soft"
           >
             Motivo del rechazo
           </label>
-          <p className="mb-2 text-base text-gray-600 dark:text-gray-400">
+          <p className="mb-2 text-base text-ink-soft">
             La empresa lo va a leer. Sé concreto para que pueda corregirlo.
           </p>
           <textarea
@@ -83,7 +83,7 @@ export function ModerationActions({
             value={reason}
             onChange={(e) => setReason(e.target.value)}
             rows={3}
-            className="w-full rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+            className="w-full rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:bg-primary-700"
             placeholder="Ejemplo: la descripción no indica las tareas del puesto."
           />
           <button

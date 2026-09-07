@@ -7,11 +7,11 @@ export const metadata = {
 
 export default function ComoFuncionaPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 transition-colors dark:bg-gray-900">
-      <h1 className="mb-8 text-center text-4xl font-bold text-gray-900 dark:text-gray-100">
+    <div className="mx-auto max-w-7xl px-4 py-12 transition-colors">
+      <h1 className="mb-8 text-center text-4xl font-bold text-ink">
         ¿Cómo funciona JubiJobs?
       </h1>
-      <p className="mb-12 text-center text-xl text-gray-700 dark:text-gray-300">
+      <p className="mb-12 text-center text-xl text-ink-soft">
         Simple, claro y sin vueltas. En 3 pasos estás listo.
       </p>
 
@@ -20,7 +20,7 @@ export default function ComoFuncionaPage() {
           <h2 className="mb-6 text-3xl font-bold text-primary-700 dark:text-primary-400">
             Para candidatos (jubilados)
           </h2>
-          <ol className="space-y-6 text-lg text-gray-700 dark:text-gray-300">
+          <ol className="space-y-6 text-lg text-ink-soft">
             <li className="flex gap-4">
               <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary-600 text-xl font-bold text-white dark:bg-primary-500">
                 1
@@ -57,7 +57,7 @@ export default function ComoFuncionaPage() {
           <h2 className="mb-6 text-3xl font-bold text-primary-700 dark:text-primary-400">
             Para empresas
           </h2>
-          <ol className="space-y-6 text-lg text-gray-700 dark:text-gray-300">
+          <ol className="space-y-6 text-lg text-ink-soft">
             <li className="flex gap-4">
               <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary-600 text-xl font-bold text-white dark:bg-primary-500">
                 1
@@ -89,16 +89,16 @@ export default function ComoFuncionaPage() {
         </section>
       </div>
 
-      <section className="mb-16 rounded-lg bg-gray-50 p-8 transition-colors dark:bg-gray-800">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">
+      <section className="mb-16 rounded-lg bg-paper p-8 transition-colors">
+        <h2 className="mb-6 text-3xl font-bold text-ink">
           Sin LinkedIn, sin vueltas
         </h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="rounded-lg bg-white p-6 transition-colors dark:bg-gray-700">
-            <h3 className="mb-3 text-xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg bg-white p-6 transition-colors">
+            <h3 className="mb-3 text-xl font-bold text-ink">
               ❌ Lo que NO necesitás
             </h3>
-            <ul className="space-y-2 text-base text-gray-700 dark:text-gray-300">
+            <ul className="space-y-2 text-base text-ink-soft">
               <li>• CV en PDF</li>
               <li>• Perfil de LinkedIn</li>
               <li>• Carta de presentación</li>
@@ -123,7 +123,7 @@ export default function ComoFuncionaPage() {
       </section>
 
       <section className="text-center">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">
+        <h2 className="mb-6 text-3xl font-bold text-ink">
           ¿Listo para empezar?
         </h2>
         <div className="flex flex-col justify-center gap-4 sm:flex-row">

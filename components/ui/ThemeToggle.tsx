@@ -13,14 +13,14 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="min-h-[48px] w-[48px] rounded-lg bg-gray-100 dark:bg-gray-700" />
+      <div className="min-h-[48px] w-[48px] rounded-lg bg-paper dark:bg-primary-700" />
     );
   }
 
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="min-h-[48px] rounded-lg px-4 py-2 text-lg font-semibold text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-gray-300 dark:hover:bg-gray-700"
+      className="min-h-[48px] rounded-lg px-4 py-2 text-lg font-semibold text-ink-soft transition-colors hover:bg-primary-50 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:hover:bg-primary-700"
       aria-label={
         theme === "light" ? "Cambiar a modo oscuro" : "Cambiar a modo claro"
       }

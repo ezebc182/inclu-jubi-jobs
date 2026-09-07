@@ -34,7 +34,7 @@ export function UserAdminActions({
   // Sobre la propia cuenta no se opera: evita que un admin se deje afuera.
   if (isSelf) {
     return (
-      <p className="border-t-2 border-gray-200 pt-4 text-base text-gray-600 dark:border-gray-700 dark:text-gray-400">
+      <p className="border-t-2 border-rule pt-4 text-base text-ink-soft">
         Esta es tu propia cuenta. Pedile a otro administrador que haga cambios
         sobre ella.
       </p>
@@ -53,12 +53,12 @@ export function UserAdminActions({
   };
 
   return (
-    <div className="flex flex-col gap-4 border-t-2 border-gray-200 pt-4 dark:border-gray-700">
+    <div className="flex flex-col gap-4 border-t-2 border-rule pt-4">
       <div className="flex flex-wrap items-end gap-3">
         <div>
           <label
             htmlFor={`role-${userId}`}
-            className="mb-1 block text-base font-semibold text-gray-900 dark:text-gray-100"
+            className="mb-1 block text-base font-semibold text-ink-soft"
           >
             Rol
           </label>
@@ -72,7 +72,7 @@ export function UserAdminActions({
                 `Rol actualizado para ${userLabel}`
               )
             }
-            className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg dark:bg-primary-700"
           >
             {ROLE_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>
@@ -113,11 +113,11 @@ export function UserAdminActions({
         <div>
           <label
             htmlFor={`user-reason-${userId}`}
-            className="mb-2 block text-lg font-bold text-gray-900 dark:text-gray-100"
+            className="mb-2 block text-lg font-bold text-ink-soft"
           >
             Motivo de la suspensión
           </label>
-          <p className="mb-2 text-base text-gray-600 dark:text-gray-400">
+          <p className="mb-2 text-base text-ink-soft">
             Se cierran todas sus sesiones abiertas.
           </p>
           <textarea
@@ -125,7 +125,7 @@ export function UserAdminActions({
             value={reason}
             onChange={(e) => setReason(e.target.value)}
             rows={3}
-            className="w-full rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+            className="w-full rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:bg-primary-700"
           />
           <button
             type="button"

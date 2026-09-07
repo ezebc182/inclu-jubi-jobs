@@ -30,12 +30,12 @@ export default async function OnboardingEmpresaPage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 transition-colors dark:bg-gray-900">
-      <div className="rounded-lg border-2 border-gray-300 bg-white p-8 transition-colors dark:border-gray-700 dark:bg-gray-800">
-        <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-gray-100">
+    <div className="mx-auto max-w-3xl px-4 py-12 transition-colors">
+      <div className="rounded-lg border-2 border-rule bg-white p-8 transition-colors">
+        <h1 className="mb-4 text-4xl font-bold text-ink">
           Creá tu perfil de empresa
         </h1>
-        <p className="mb-8 text-xl text-gray-700 dark:text-gray-300">
+        <p className="mb-8 text-xl text-ink-soft">
           Completá los datos de tu empresa para empezar a publicar empleos.
         </p>
 
@@ -46,7 +46,7 @@ export default async function OnboardingEmpresaPage() {
           <div className="flex flex-col gap-2">
             <label
               htmlFor="companyName"
-              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+              className="text-lg font-bold text-ink"
             >
               Nombre de la empresa
               <span className="ml-1 text-red-600 dark:text-red-400">*</span>
@@ -57,7 +57,7 @@ export default async function OnboardingEmpresaPage() {
               name="companyName"
               required
               minLength={2}
-              className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+              className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               placeholder="Supermercado Sur"
             />
           </div>
@@ -65,7 +65,7 @@ export default async function OnboardingEmpresaPage() {
           <div className="flex flex-col gap-2">
             <label
               htmlFor="website"
-              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+              className="text-lg font-bold text-ink"
             >
               Sitio web (opcional)
             </label>
@@ -73,7 +73,7 @@ export default async function OnboardingEmpresaPage() {
               type="url"
               id="website"
               name="website"
-              className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+              className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               placeholder="https://ejemplo.com"
             />
           </div>
@@ -81,11 +81,11 @@ export default async function OnboardingEmpresaPage() {
           <div className="flex flex-col gap-2">
             <label
               htmlFor="whatsappNumber"
-              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+              className="text-lg font-bold text-ink"
             >
               WhatsApp de contacto (opcional)
             </label>
-            <p className="text-base text-gray-600 dark:text-gray-400">
+            <p className="text-base text-ink-soft">
               Los candidatos podrán contactarte por WhatsApp para consultas
               sobre el empleo
             </p>
@@ -93,7 +93,7 @@ export default async function OnboardingEmpresaPage() {
               type="tel"
               id="whatsappNumber"
               name="whatsappNumber"
-              className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+              className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               placeholder="+54 11 1234-5678"
             />
           </div>
@@ -101,14 +101,14 @@ export default async function OnboardingEmpresaPage() {
           <div className="flex flex-col gap-2">
             <label
               htmlFor="location"
-              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+              className="text-lg font-bold text-ink"
             >
               Ubicación principal (opcional)
             </label>
             <select
               id="location"
               name="location"
-              className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+              className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
             >
               <option value="">Seleccioná una provincia</option>
               {PROVINCIAS_AR.map((p) => (
@@ -122,11 +122,11 @@ export default async function OnboardingEmpresaPage() {
           <div className="flex flex-col gap-2">
             <label
               htmlFor="about"
-              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+              className="text-lg font-bold text-ink"
             >
               Sobre la empresa (opcional)
             </label>
-            <p className="text-base text-gray-600 dark:text-gray-400">
+            <p className="text-base text-ink-soft">
               Describí brevemente tu empresa, su historia o valores.
             </p>
             <textarea
@@ -134,13 +134,13 @@ export default async function OnboardingEmpresaPage() {
               name="about"
               rows={5}
               maxLength={1000}
-              className="rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+              className="rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               placeholder="Somos una empresa familiar con más de 20 años en el mercado..."
             />
           </div>
 
           <div className="rounded-lg bg-primary-50 p-6 transition-colors dark:bg-primary-900/30">
-            <h3 className="mb-4 text-xl font-bold text-gray-900 dark:text-gray-100">
+            <h3 className="mb-4 text-xl font-bold text-ink">
               ¿Por qué contratar jubilados?
             </h3>
             <ul className="space-y-3 text-base">
@@ -148,7 +148,7 @@ export default async function OnboardingEmpresaPage() {
                 <span className="mt-0.5 text-lg font-bold text-primary-600 dark:text-primary-400">
                   ✓
                 </span>
-                <span className="text-gray-800 dark:text-gray-200">
+                <span className="text-ink">
                   Experiencia y responsabilidad comprobada
                 </span>
               </li>
@@ -156,7 +156,7 @@ export default async function OnboardingEmpresaPage() {
                 <span className="mt-0.5 text-lg font-bold text-primary-600 dark:text-primary-400">
                   ✓
                 </span>
-                <span className="text-gray-800 dark:text-gray-200">
+                <span className="text-ink">
                   Estabilidad y compromiso con el trabajo
                 </span>
               </li>
@@ -164,7 +164,7 @@ export default async function OnboardingEmpresaPage() {
                 <span className="mt-0.5 text-lg font-bold text-primary-600 dark:text-primary-400">
                   ✓
                 </span>
-                <span className="text-gray-800 dark:text-gray-200">
+                <span className="text-ink">
                   Flexibilidad en jornadas (part-time, por día)
                 </span>
               </li>
@@ -172,7 +172,7 @@ export default async function OnboardingEmpresaPage() {
                 <span className="mt-0.5 text-lg font-bold text-primary-600 dark:text-primary-400">
                   ✓
                 </span>
-                <span className="text-gray-800 dark:text-gray-200">
+                <span className="text-ink">
                   Conocimientos valiosos para transmitir
                 </span>
               </li>

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
 import { RootClientWrapper } from "@/components/layout/RootClientWrapper";
@@ -14,6 +14,23 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
   display: "swap",
   variable: "--font-inter",
+});
+
+/**
+ * Fraunces para títulos: serif contemporánea con carácter, elegida sobre
+ * las serif de siempre. Da autoridad institucional sin sonar a notaría.
+ *
+ * `SOFT` y `WONK` en 0 mantienen la forma sobria; el eje óptico se ajusta
+ * automáticamente al tamaño.
+ */
+const display = Fraunces({
+  subsets: ["latin"],
+  // Fuente variable: un solo archivo cubre todo el rango de pesos, así
+  // que pesa menos que dos cortes fijos. `axes` solo es válido en este
+  // modo, nunca junto a un `weight` concreto.
+  weight: "variable",
+  display: "swap",
+  variable: "--font-display",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -89,7 +106,7 @@ export default async function RootLayout({
       lang="es-AR"
       data-portal={portal.dataAttr}
       suppressHydrationWarning
-      className={inter.variable}
+      className={`${inter.variable} ${display.variable}`}
     >
       <head>
         {/* Aplicamos el tema antes del primer pintado para evitar el

@@ -13,12 +13,12 @@ export default async function OnboardingCandidatoPage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 transition-colors dark:bg-gray-900">
-      <div className="rounded-lg border-2 border-gray-300 bg-white p-8 transition-colors dark:border-gray-700 dark:bg-gray-800">
-        <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-gray-100">
+    <div className="mx-auto max-w-3xl px-4 py-12 transition-colors">
+      <div className="rounded-lg border-2 border-rule bg-white p-8 transition-colors">
+        <h1 className="mb-4 text-4xl font-bold text-ink">
           Completá tu perfil
         </h1>
-        <p className="mb-8 text-xl text-gray-700 dark:text-gray-300">
+        <p className="mb-8 text-xl text-ink-soft">
           Solo necesitamos unos datos básicos y tus respuestas a 3 preguntas.
         </p>
 
@@ -29,7 +29,7 @@ export default async function OnboardingCandidatoPage() {
           <div className="flex flex-col gap-2">
             <label
               htmlFor="name"
-              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+              className="text-lg font-bold text-ink"
             >
               Tu nombre completo
               <span className="ml-1 text-red-600 dark:text-red-400">*</span>
@@ -40,14 +40,14 @@ export default async function OnboardingCandidatoPage() {
               name="name"
               required
               defaultValue={session.user.name || ""}
-              className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+              className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
             />
           </div>
 
           <div className="flex flex-col gap-2">
             <label
               htmlFor="phone"
-              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+              className="text-lg font-bold text-ink"
             >
               Teléfono (opcional)
             </label>
@@ -55,7 +55,7 @@ export default async function OnboardingCandidatoPage() {
               type="tel"
               id="phone"
               name="phone"
-              className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+              className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               placeholder="11-1234-5678"
             />
           </div>
@@ -63,7 +63,7 @@ export default async function OnboardingCandidatoPage() {
           <div className="flex flex-col gap-2">
             <label
               htmlFor="location"
-              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+              className="text-lg font-bold text-ink"
             >
               ¿Dónde vivís?
               <span className="ml-1 text-red-600 dark:text-red-400">*</span>
@@ -72,7 +72,7 @@ export default async function OnboardingCandidatoPage() {
               id="location"
               name="location"
               required
-              className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+              className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
             >
               <option value="">Seleccioná tu provincia</option>
               {[
@@ -110,7 +110,7 @@ export default async function OnboardingCandidatoPage() {
           <div className="flex flex-col gap-2">
             <label
               htmlFor="birthYear"
-              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+              className="text-lg font-bold text-ink"
             >
               Año de nacimiento (opcional)
             </label>
@@ -120,13 +120,13 @@ export default async function OnboardingCandidatoPage() {
               name="birthYear"
               min="1920"
               max="2010"
-              className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+              className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               placeholder="1960"
             />
           </div>
 
           <div className="rounded-lg bg-purple-50 p-6 transition-colors dark:bg-purple-950">
-            <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
+            <h3 className="mb-4 text-2xl font-bold text-ink">
               Trabajo inclusivo
             </h3>
             <div className="mb-4 flex items-center gap-3">
@@ -135,11 +135,11 @@ export default async function OnboardingCandidatoPage() {
                 id="isDisabled"
                 name="isDisabled"
                 value="true"
-                className="h-6 w-6 rounded border-2 border-gray-300 focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700"
+                className="h-6 w-6 rounded border-2 border-rule focus:ring-2 focus:ring-primary-300"
               />
               <label
                 htmlFor="isDisabled"
-                className="text-lg font-semibold text-gray-900 dark:text-gray-100"
+                className="text-lg font-semibold text-ink"
               >
                 Soy una persona con discapacidad
               </label>
@@ -148,14 +148,14 @@ export default async function OnboardingCandidatoPage() {
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="disabilityType"
-                className="text-lg font-bold text-gray-900 dark:text-gray-100"
+                className="text-lg font-bold text-ink"
               >
                 Tipo de discapacidad (opcional)
               </label>
               <select
                 id="disabilityType"
                 name="disabilityType"
-                className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+                className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
               >
                 {DISABILITY_TYPES.map((d) => (
                   <option key={d.value} value={d.value}>
@@ -168,7 +168,7 @@ export default async function OnboardingCandidatoPage() {
             <div className="mt-4 flex flex-col gap-2">
               <label
                 htmlFor="accessibilityNeeds"
-                className="text-lg font-bold text-gray-900 dark:text-gray-100"
+                className="text-lg font-bold text-ink"
               >
                 Necesidades de accesibilidad (opcional)
               </label>
@@ -177,27 +177,27 @@ export default async function OnboardingCandidatoPage() {
                 name="accessibilityNeeds"
                 rows={3}
                 maxLength={500}
-                className="rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+                className="rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
                 placeholder="Ej: Necesito rampas de acceso, baños adaptados..."
               />
             </div>
           </div>
 
-          <hr className="my-4 dark:border-gray-700" />
+          <hr className="my-4" />
 
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+          <h2 className="text-3xl font-bold text-ink">
             3 preguntas simples
           </h2>
 
           <div className="flex flex-col gap-2">
             <label
               htmlFor="did"
-              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+              className="text-lg font-bold text-ink"
             >
               ¿Qué hiciste?
               <span className="ml-1 text-red-600 dark:text-red-400">*</span>
             </label>
-            <p className="text-base text-gray-600 dark:text-gray-400">
+            <p className="text-base text-ink-soft">
               Contanos sobre tu experiencia laboral o actividades anteriores.
             </p>
             <textarea
@@ -207,7 +207,7 @@ export default async function OnboardingCandidatoPage() {
               minLength={10}
               maxLength={1000}
               rows={4}
-              className="rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+              className="rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               placeholder="Ejemplo: Trabajé 30 años en el sector bancario..."
             />
           </div>
@@ -215,12 +215,12 @@ export default async function OnboardingCandidatoPage() {
           <div className="flex flex-col gap-2">
             <label
               htmlFor="canDo"
-              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+              className="text-lg font-bold text-ink"
             >
               ¿Qué sabés hacer?
               <span className="ml-1 text-red-600 dark:text-red-400">*</span>
             </label>
-            <p className="text-base text-gray-600 dark:text-gray-400">
+            <p className="text-base text-ink-soft">
               Contanos sobre tus habilidades y conocimientos.
             </p>
             <textarea
@@ -230,7 +230,7 @@ export default async function OnboardingCandidatoPage() {
               minLength={10}
               maxLength={1000}
               rows={4}
-              className="rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+              className="rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               placeholder="Ejemplo: Sé usar computadoras, atender teléfonos..."
             />
           </div>
@@ -238,12 +238,12 @@ export default async function OnboardingCandidatoPage() {
           <div className="flex flex-col gap-2">
             <label
               htmlFor="wantToDo"
-              className="text-lg font-bold text-gray-900 dark:text-gray-100"
+              className="text-lg font-bold text-ink"
             >
               ¿Qué te gustaría hacer?
               <span className="ml-1 text-red-600 dark:text-red-400">*</span>
             </label>
-            <p className="text-base text-gray-600 dark:text-gray-400">
+            <p className="text-base text-ink-soft">
               Contanos qué tipo de trabajo te gustaría realizar.
             </p>
             <textarea
@@ -253,7 +253,7 @@ export default async function OnboardingCandidatoPage() {
               minLength={10}
               maxLength={1000}
               rows={4}
-              className="rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+              className="rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               placeholder="Ejemplo: Me gustaría trabajar part-time atendiendo al público..."
             />
           </div>

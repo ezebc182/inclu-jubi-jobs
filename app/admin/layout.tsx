@@ -24,11 +24,11 @@ export default async function AdminLayout({
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
-      <header className="mb-8 border-b-2 border-gray-200 pb-6 dark:border-gray-700">
-        <p className="text-base text-gray-600 dark:text-gray-400">
+      <header className="mb-8 border-b-2 border-rule pb-6">
+        <p className="text-base text-ink-soft">
           Panel de administración — {actor.name || actor.email}
         </p>
-        <h1 className="mt-1 text-3xl font-bold text-gray-900 dark:text-gray-100">
+        <h1 className="mt-1 text-3xl font-bold text-ink">
           Gestión de portales
         </h1>
       </header>
@@ -40,7 +40,7 @@ export default async function AdminLayout({
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="flex min-h-[48px] items-center rounded-lg px-4 py-3 text-lg font-semibold text-gray-800 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-gray-200 dark:hover:bg-gray-800"
+                  className="flex min-h-[48px] items-center rounded-lg px-4 py-3 text-lg font-semibold text-ink transition-colors hover:bg-primary-50 focus:outline-none focus:ring-4 focus:ring-primary-300"
                 >
                   {item.label}
                 </Link>

@@ -28,7 +28,7 @@ export function LoadingSpinner({ size = "md", message }: LoadingSpinnerProps) {
       />
       {message && (
         <p
-          className={`${textSizeClasses[size]} font-semibold text-gray-700 dark:text-gray-300`}
+          className={`${textSizeClasses[size]} font-semibold text-ink-soft`}
         >
           {message}
         </p>

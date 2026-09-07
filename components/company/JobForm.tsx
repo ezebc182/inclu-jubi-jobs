@@ -119,11 +119,11 @@ export function JobForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6">
       <fieldset className="rounded-lg border-2 border-primary-300 p-5 dark:border-primary-700">
-        <legend className="px-2 text-lg font-bold text-gray-900 dark:text-gray-100">
+        <legend className="px-2 text-lg font-bold text-ink">
           ¿Dónde querés publicar este aviso?
           <span className="ml-1 text-red-600 dark:text-red-400">*</span>
         </legend>
-        <p className="mb-4 text-base text-gray-600 dark:text-gray-400">
+        <p className="mb-4 text-base text-ink-soft">
           Son dos portales con públicos distintos. Podés elegir uno o los dos,
           según a quién le sirva este puesto.
         </p>
@@ -131,19 +131,19 @@ export function JobForm() {
           {PORTAL_OPTIONS.map((option) => (
             <label
               key={option.value}
-              className="flex cursor-pointer items-start gap-3 rounded-lg p-3 hover:bg-primary-50 dark:hover:bg-gray-700"
+              className="flex cursor-pointer items-start gap-3 rounded-lg p-3 hover:bg-primary-50"
             >
               <input
                 type="checkbox"
                 checked={portals.includes(option.value)}
                 onChange={() => togglePortal(option.value)}
-                className="mt-1 h-6 w-6 rounded border-2 border-gray-400 text-primary-600 focus:ring-4 focus:ring-primary-300"
+                className="mt-1 h-6 w-6 rounded border-2 border-rule text-primary-600 focus:ring-4 focus:ring-primary-300"
               />
               <span>
-                <span className="block text-lg font-semibold text-gray-900 dark:text-gray-100">
+                <span className="block text-lg font-semibold text-ink">
                   {option.label}
                 </span>
-                <span className="block text-base text-gray-600 dark:text-gray-400">
+                <span className="block text-base text-ink-soft">
                   {option.hint}
                 </span>
               </span>
@@ -155,7 +155,7 @@ export function JobForm() {
       <div className="flex flex-col gap-2">
         <label
           htmlFor="title"
-          className="text-lg font-bold text-gray-900 dark:text-gray-100"
+          className="text-lg font-bold text-ink"
         >
           Título del puesto
           <span className="ml-1 text-red-600 dark:text-red-400">*</span>
@@ -167,7 +167,7 @@ export function JobForm() {
           required
           minLength={5}
           maxLength={100}
-          className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+          className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
           placeholder="Ej: Administrativo part-time"
         />
       </div>
@@ -175,7 +175,7 @@ export function JobForm() {
       <div className="flex flex-col gap-2">
         <label
           htmlFor="description"
-          className="text-lg font-bold text-gray-900 dark:text-gray-100"
+          className="text-lg font-bold text-ink"
         >
           Descripción del puesto
           <span className="ml-1 text-red-600 dark:text-red-400">*</span>
@@ -187,7 +187,7 @@ export function JobForm() {
           minLength={20}
           maxLength={3000}
           rows={6}
-          className="rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+          className="rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
           placeholder="Describí las tareas, requisitos y cualquier información relevante..."
         />
       </div>
@@ -196,7 +196,7 @@ export function JobForm() {
         <div className="flex flex-col gap-2">
           <label
             htmlFor="province"
-            className="text-lg font-bold text-gray-900 dark:text-gray-100"
+            className="text-lg font-bold text-ink"
           >
             Provincia
             <span className="ml-1 text-red-600 dark:text-red-400">*</span>
@@ -205,7 +205,7 @@ export function JobForm() {
             id="province"
             name="province"
             required
-            className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
           >
             <option value="">Seleccioná tu provincia</option>
             {PROVINCIAS_AR.map((p) => (
@@ -219,7 +219,7 @@ export function JobForm() {
         <div className="flex flex-col gap-2">
           <label
             htmlFor="city"
-            className="text-lg font-bold text-gray-900 dark:text-gray-100"
+            className="text-lg font-bold text-ink"
           >
             Ciudad (opcional)
           </label>
@@ -227,7 +227,7 @@ export function JobForm() {
             type="text"
             id="city"
             name="city"
-            className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
             placeholder="Ej: Córdoba Capital"
           />
         </div>
@@ -237,7 +237,7 @@ export function JobForm() {
         <div className="flex flex-col gap-2">
           <label
             htmlFor="modality"
-            className="text-lg font-bold text-gray-900 dark:text-gray-100"
+            className="text-lg font-bold text-ink"
           >
             Modalidad
             <span className="ml-1 text-red-600 dark:text-red-400">*</span>
@@ -246,7 +246,7 @@ export function JobForm() {
             id="modality"
             name="modality"
             required
-            className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
           >
             <option value="">Seleccioná modalidad</option>
             {MODALITIES.map((m) => (
@@ -260,7 +260,7 @@ export function JobForm() {
         <div className="flex flex-col gap-2">
           <label
             htmlFor="schedule"
-            className="text-lg font-bold text-gray-900 dark:text-gray-100"
+            className="text-lg font-bold text-ink"
           >
             Jornada
             <span className="ml-1 text-red-600 dark:text-red-400">*</span>
@@ -269,7 +269,7 @@ export function JobForm() {
             id="schedule"
             name="schedule"
             required
-            className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
           >
             <option value="">Seleccioná jornada</option>
             {SCHEDULES.map((s) => (
@@ -285,7 +285,7 @@ export function JobForm() {
         <div className="flex flex-col gap-2">
           <label
             htmlFor="salaryArsMin"
-            className="text-lg font-bold text-gray-900 dark:text-gray-100"
+            className="text-lg font-bold text-ink"
           >
             Salario mínimo (ARS, opcional)
           </label>
@@ -295,7 +295,7 @@ export function JobForm() {
             name="salaryArsMin"
             min="0"
             step="1000"
-            className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
             placeholder="250000"
           />
         </div>
@@ -303,7 +303,7 @@ export function JobForm() {
         <div className="flex flex-col gap-2">
           <label
             htmlFor="salaryArsMax"
-            className="text-lg font-bold text-gray-900 dark:text-gray-100"
+            className="text-lg font-bold text-ink"
           >
             Salario máximo (ARS, opcional)
           </label>
@@ -313,7 +313,7 @@ export function JobForm() {
             name="salaryArsMax"
             min="0"
             step="1000"
-            className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
             placeholder="350000"
           />
         </div>
@@ -323,16 +323,16 @@ export function JobForm() {
         className={`rounded-lg border-2 p-5 ${
           publishesToInclu
             ? "border-primary-400 bg-primary-50 dark:border-primary-600 dark:bg-primary-950"
-            : "border-gray-300 dark:border-gray-600"
+            : "border-rule"
         }`}
       >
-        <legend className="px-2 text-lg font-bold text-gray-900 dark:text-gray-100">
+        <legend className="px-2 text-lg font-bold text-ink">
           Condiciones de accesibilidad del puesto
           {publishesToInclu && (
             <span className="ml-1 text-red-600 dark:text-red-400">*</span>
           )}
         </legend>
-        <p className="mb-4 text-base text-gray-700 dark:text-gray-300">
+        <p className="mb-4 text-base text-ink-soft">
           {publishesToInclu
             ? "Publicás en InclúJobs, así que necesitamos al menos un dato acá. El candidato lo lee antes de postularse: sin esta información no puede saber si el puesto le sirve."
             : "Opcional, pero suma: ayuda a que más candidatos se animen a postularse."}
@@ -360,7 +360,7 @@ export function JobForm() {
           ).map((item) => (
             <label
               key={item.key}
-              className="flex cursor-pointer items-start gap-3 rounded-lg p-2 hover:bg-white/60 dark:hover:bg-gray-800/60"
+              className="flex cursor-pointer items-start gap-3 rounded-lg p-2 hover:bg-white/60/60"
             >
               <input
                 type="checkbox"
@@ -371,13 +371,13 @@ export function JobForm() {
                     [item.key]: e.target.checked,
                   }))
                 }
-                className="mt-1 h-6 w-6 rounded border-2 border-gray-400 text-primary-600 focus:ring-4 focus:ring-primary-300"
+                className="mt-1 h-6 w-6 rounded border-2 border-rule text-primary-600 focus:ring-4 focus:ring-primary-300"
               />
               <span>
-                <span className="block text-lg font-semibold text-gray-900 dark:text-gray-100">
+                <span className="block text-lg font-semibold text-ink">
                   {item.label}
                 </span>
-                <span className="block text-base text-gray-600 dark:text-gray-400">
+                <span className="block text-base text-ink-soft">
                   {item.hint}
                 </span>
               </span>
@@ -388,7 +388,7 @@ export function JobForm() {
         <div className="mt-4 flex flex-col gap-2">
           <label
             htmlFor="accessibilityNotes"
-            className="text-lg font-semibold text-gray-900 dark:text-gray-100"
+            className="text-lg font-semibold text-ink"
           >
             Detalles adicionales
           </label>
@@ -397,7 +397,7 @@ export function JobForm() {
             name="accessibilityNotes"
             rows={3}
             maxLength={1000}
-            className="rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+            className="rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
             placeholder="Ej: la oficina está en planta baja, tenemos lector de pantalla instalado y el equipo maneja lengua de señas básica."
           />
         </div>
@@ -406,7 +406,7 @@ export function JobForm() {
       <div className="flex flex-col gap-2">
         <label
           htmlFor="tag-input"
-          className="text-lg font-bold text-gray-900 dark:text-gray-100"
+          className="text-lg font-bold text-ink"
         >
           Etiquetas (opcional, máx 10)
         </label>
@@ -422,7 +422,7 @@ export function JobForm() {
                 handleAddTag();
               }
             }}
-            className="min-h-[48px] flex-1 rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+            className="min-h-[48px] flex-1 rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
             placeholder="Ej: Atención al cliente"
             disabled={tags.length >= 10}
           />
@@ -430,7 +430,7 @@ export function JobForm() {
             type="button"
             onClick={handleAddTag}
             disabled={!tagInput.trim() || tags.length >= 10}
-            className="rounded-lg bg-gray-600 px-6 py-3 text-lg font-semibold text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:opacity-50 dark:bg-gray-500 dark:hover:bg-gray-600"
+            className="rounded-lg bg-primary-700 px-6 py-3 text-lg font-semibold text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 disabled:opacity-50"
           >
             Agregar
           </button>

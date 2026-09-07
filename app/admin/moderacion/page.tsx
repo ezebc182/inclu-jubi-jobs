@@ -30,7 +30,7 @@ export default async function ModeracionPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+      <h2 className="text-2xl font-bold text-ink">
         {jobs.length}{" "}
         {jobs.length === 1 ? "aviso pendiente" : "avisos pendientes"}
       </h2>
@@ -39,14 +39,14 @@ export default async function ModeracionPage() {
         {jobs.map((job) => (
           <li
             key={job.id}
-            className="rounded-xl border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
+            className="rounded-xl border-2 border-rule bg-white p-6"
           >
             <article>
               <header className="mb-4">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+                <h3 className="text-xl font-bold text-ink">
                   {job.title}
                 </h3>
-                <p className="mt-1 text-base text-gray-600 dark:text-gray-400">
+                <p className="mt-1 text-base text-ink-soft">
                   {job.company.name}
                   {job.company.isVerified && (
                     <span className="ml-2 rounded bg-success-100 px-2 py-0.5 text-sm font-semibold text-success-700">
@@ -62,24 +62,24 @@ export default async function ModeracionPage() {
 
               <dl className="mb-4 grid grid-cols-2 gap-3 text-base sm:grid-cols-3">
                 <div>
-                  <dt className="text-gray-600 dark:text-gray-400">Portales</dt>
-                  <dd className="font-semibold text-gray-900 dark:text-gray-100">
+                  <dt className="text-ink-soft">Portales</dt>
+                  <dd className="font-semibold text-ink">
                     {job.portals
                       .map((p) => getPortalConfig(p).name)
                       .join(" + ")}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-gray-600 dark:text-gray-400">
+                  <dt className="text-ink-soft">
                     Modalidad
                   </dt>
-                  <dd className="font-semibold text-gray-900 dark:text-gray-100">
+                  <dd className="font-semibold text-ink">
                     {job.modality}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-gray-600 dark:text-gray-400">Salario</dt>
-                  <dd className="font-semibold text-gray-900 dark:text-gray-100">
+                  <dt className="text-ink-soft">Salario</dt>
+                  <dd className="font-semibold text-ink">
                     {job.salaryArsMin && job.salaryArsMax
                       ? `${formatCurrency(job.salaryArsMin)} – ${formatCurrency(job.salaryArsMax)}`
                       : "No informado"}
@@ -91,23 +91,23 @@ export default async function ModeracionPage() {
                 <summary className="cursor-pointer text-lg font-semibold text-primary-700 dark:text-primary-300">
                   Ver descripción completa
                 </summary>
-                <p className="mt-3 whitespace-pre-wrap text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                <p className="mt-3 whitespace-pre-wrap text-lg leading-relaxed text-ink-soft">
                   {job.description}
                 </p>
               </details>
 
               {job.portals.includes("INCLU") && (
                 <div className="mb-4 rounded-lg bg-primary-50 p-4 dark:bg-primary-950">
-                  <h4 className="mb-2 font-bold text-gray-900 dark:text-gray-100">
+                  <h4 className="mb-2 font-bold text-ink">
                     Accesibilidad declarada
                   </h4>
-                  <ul className="list-inside list-disc text-base text-gray-700 dark:text-gray-300">
+                  <ul className="list-inside list-disc text-base text-ink-soft">
                     {job.hasAccessibleSite && <li>Instalaciones adaptadas</li>}
                     {job.supportsFlexHours && <li>Horarios flexibles</li>}
                     {job.isRemoteFriendly && <li>Trabajo remoto posible</li>}
                   </ul>
                   {job.accessibilityNotes && (
-                    <p className="mt-2 text-base text-gray-700 dark:text-gray-300">
+                    <p className="mt-2 text-base text-ink-soft">
                       {job.accessibilityNotes}
                     </p>
                   )}

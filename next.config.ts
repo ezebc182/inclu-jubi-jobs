@@ -16,6 +16,12 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "avatars.githubusercontent.com",
       },
+      {
+        // Fotografía de archivo provisoria. Reemplazar por imágenes
+        // propias antes de una campaña: el stock se reconoce.
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
     ],
   },
   // Specify the root directory for Turbopack to avoid lockfile warnings

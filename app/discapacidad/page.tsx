@@ -8,12 +8,12 @@ export const metadata = {
 
 export default function DiscapacidadPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 transition-colors dark:bg-gray-900">
+    <div className="mx-auto max-w-7xl px-4 py-12 transition-colors">
       <section className="mb-16 text-center">
-        <h1 className="mb-6 text-4xl font-bold text-gray-900 dark:text-gray-100 md:text-5xl">
+        <h1 className="mb-6 text-4xl font-bold text-ink md:text-5xl">
           Trabajo inclusivo
         </h1>
-        <p className="mb-8 text-xl text-gray-700 dark:text-gray-300 md:text-2xl">
+        <p className="mb-8 text-xl text-ink-soft md:text-2xl">
           Oportunidades laborales para personas con discapacidad. Tu experiencia
           y talento importan.
         </p>
@@ -26,7 +26,7 @@ export default function DiscapacidadPage() {
       </section>
 
       <section className="mb-16">
-        <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 dark:text-gray-100">
+        <h2 className="mb-8 text-center text-3xl font-bold text-ink">
           ¿Por qué JubiJobs es inclusivo?
         </h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -72,12 +72,12 @@ export default function DiscapacidadPage() {
         </div>
       </section>
 
-      <section className="mb-16 rounded-lg bg-primary-50 p-8 transition-colors dark:bg-gray-800">
-        <h2 className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-gray-100">
+      <section className="mb-16 rounded-lg bg-primary-50 p-8 transition-colors">
+        <h2 className="mb-6 text-center text-3xl font-bold text-ink">
           Cómo funciona
         </h2>
         <div className="mx-auto max-w-3xl">
-          <ol className="space-y-6 text-lg text-gray-700 dark:text-gray-300">
+          <ol className="space-y-6 text-lg text-ink-soft">
             <li className="flex gap-4">
               <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-purple-600 text-xl font-bold text-white dark:bg-purple-500">
                 1
@@ -119,20 +119,20 @@ export default function DiscapacidadPage() {
       </section>
 
       <section className="mb-16">
-        <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 dark:text-gray-100">
+        <h2 className="mb-8 text-center text-3xl font-bold text-ink">
           Ley de inclusión laboral
         </h2>
-        <div className="mx-auto max-w-3xl rounded-lg border-2 border-gray-300 bg-white p-8 transition-colors dark:border-gray-700 dark:bg-gray-800">
-          <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">
+        <div className="mx-auto max-w-3xl rounded-lg border-2 border-rule bg-white p-8 transition-colors">
+          <p className="mb-4 text-lg text-ink-soft">
             En Argentina, la Ley 22.431 establece el sistema de protección
             integral de las personas con discapacidad.
           </p>
-          <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">
+          <p className="mb-4 text-lg text-ink-soft">
             Las empresas y organismos públicos están obligados a contratar
             personas con discapacidad en un porcentaje mínimo de su planta de
             personal.
           </p>
-          <p className="text-lg text-gray-700 dark:text-gray-300">
+          <p className="text-lg text-ink-soft">
             <strong>JubiJobs facilita esta conexión</strong> entre personas con
             discapacidad que buscan trabajo y empresas comprometidas con la
             inclusión.
@@ -141,7 +141,7 @@ export default function DiscapacidadPage() {
       </section>
 
       <section className="text-center">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">
+        <h2 className="mb-6 text-3xl font-bold text-ink">
           Empezá a buscar trabajo hoy
         </h2>
         <BigCTAButton href="/onboarding">

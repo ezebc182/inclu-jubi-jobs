@@ -77,22 +77,31 @@ export default async function EmpleosPage({
     }
   }
 
-  return (
-    <div className="min-h-screen bg-gray-50 py-12 transition-colors dark:bg-gray-900">
-      <div className="mx-auto max-w-7xl px-4">
-        <h1 className="mb-6 text-4xl font-bold text-gray-900 dark:text-gray-100 md:text-5xl">
-          Empleos disponibles
-        </h1>
-        <p className="mb-12 text-xl text-gray-700 dark:text-gray-300">
-          {jobs.length}{" "}
-          {jobs.length === 1 ? "empleo encontrado" : "empleos encontrados"}
-        </p>
+  const hasFilters = Boolean(
+    params.provincia || params.modalidad || params.jornada || params.q
+  );
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
-          <aside className="lg:col-span-1">
-            <div className="flex flex-col gap-6">
+  return (
+    <div className="bg-paper">
+      <header className="border-b border-rule bg-surface">
+        <div className="mx-auto max-w-7xl px-6 py-10">
+          <h1 className="text-3xl md:text-4xl">Empleos disponibles</h1>
+          <p className="mt-3 text-lg text-ink-soft" role="status">
+            {jobs.length === 0
+              ? "Ningún aviso coincide con tu búsqueda"
+              : `${jobs.length} ${jobs.length === 1 ? "aviso" : "avisos"}${
+                  hasFilters ? " con los filtros aplicados" : " publicados"
+                }`}
+          </p>
+        </div>
+      </header>
+
+      <div className="mx-auto max-w-7xl px-6 py-10">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
+          <aside className="lg:col-span-3">
+            <div className="flex flex-col gap-6 lg:sticky lg:top-24">
               <JobFilters />
-              {session && savedSearches && (
+              {session && savedSearches.length > 0 && (
                 <SavedSearches
                   searches={savedSearches}
                   currentFilters={{
@@ -105,31 +114,38 @@ export default async function EmpleosPage({
             </div>
           </aside>
 
-          <main className="lg:col-span-3">
+          <main className="lg:col-span-9">
             {jobs.length === 0 ? (
               <EmptyState
                 title="No se encontraron empleos"
-                description="Probá ajustando los filtros o buscando otras palabras clave."
+                description="Probá quitando algún filtro o buscando otra palabra."
                 actionLabel="Ver todos los empleos"
                 actionHref="/empleos"
               />
             ) : (
-              <div className="grid grid-cols-1 gap-6">
+              /* Grilla a hueco de 1px: las tarjetas comparten borde en vez
+                 de flotar cada una con su sombra. Lee como un listado, que
+                 es lo que es. */
+              <ul className="grid gap-px overflow-hidden rounded-lg border border-rule bg-rule sm:grid-cols-2">
                 {jobs.map((job) => (
-                  <JobCard
-                    key={job.id}
-                    id={job.id}
-                    title={job.title}
-                    company={job.company.name}
-                    province={job.province}
-                    city={job.city}
-                    modality={job.modality}
-                    schedule={job.schedule}
-                    salaryArsMin={job.salaryArsMin}
-                    salaryArsMax={job.salaryArsMax}
-                  />
+                  <li key={job.id}>
+                    <JobCard
+                      id={job.id}
+                      title={job.title}
+                      company={job.company.name}
+                      province={job.province}
+                      city={job.city}
+                      modality={job.modality}
+                      schedule={job.schedule}
+                      salaryArsMin={job.salaryArsMin}
+                      salaryArsMax={job.salaryArsMax}
+                      hasAccessibleSite={job.hasAccessibleSite}
+                      supportsFlexHours={job.supportsFlexHours}
+                      isRemoteFriendly={job.isRemoteFriendly}
+                    />
+                  </li>
                 ))}
-              </div>
+              </ul>
             )}
           </main>
         </div>
