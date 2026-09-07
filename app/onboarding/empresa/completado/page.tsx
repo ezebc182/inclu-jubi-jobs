@@ -18,9 +18,9 @@ export default function OnboardingEmpresaCompletadoPage() {
   }, [router]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-primary-50 to-white px-4 transition-colors dark:from-gray-800 dark:to-gray-900">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-primary-50 to-white px-4 transition-colors dark:from-paper dark:to-surface">
       <div className="w-full max-w-2xl">
-        <div className="rounded-xl border-2 border-gray-200 bg-white p-12 text-center shadow-lg transition-colors dark:border-gray-700 dark:bg-gray-800">
+        <div className="rounded-xl border-2 border-rule bg-white p-12 text-center shadow-lg transition-colors">
           <div className="mb-6 flex justify-center">
             <div className="flex h-20 w-20 items-center justify-center rounded-full bg-green-100 dark:bg-green-950">
               <svg
@@ -39,11 +39,11 @@ export default function OnboardingEmpresaCompletadoPage() {
             </div>
           </div>
 
-          <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-gray-100">
+          <h1 className="mb-4 text-4xl font-bold text-ink">
             ¡Perfil creado con éxito!
           </h1>
 
-          <p className="mb-8 text-xl text-gray-700 dark:text-gray-300">
+          <p className="mb-8 text-xl text-ink-soft">
             Tu empresa ya está registrada. En unos segundos te redirigiremos a
             tu dashboard para que puedas publicar tu primer empleo.
           </p>
@@ -54,7 +54,7 @@ export default function OnboardingEmpresaCompletadoPage() {
             <div className="h-3 w-3 animate-bounce rounded-full bg-primary-600 delay-200 dark:bg-primary-400"></div>
           </div>
 
-          <p className="mt-8 text-base text-gray-600 dark:text-gray-400">
+          <p className="mt-8 text-base text-ink-soft">
             Si no se redirige automáticamente,{" "}
             <a
               href="/empresa"

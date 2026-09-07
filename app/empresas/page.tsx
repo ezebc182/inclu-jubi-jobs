@@ -9,12 +9,12 @@ export const metadata = {
 
 export default function EmpresasPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 transition-colors dark:bg-gray-900">
+    <div className="mx-auto max-w-7xl px-4 py-12 transition-colors">
       <section className="mb-16 text-center">
-        <h1 className="mb-6 text-4xl font-bold text-gray-900 dark:text-gray-100 md:text-5xl">
+        <h1 className="mb-6 text-4xl font-bold text-ink md:text-5xl">
           Contratá talento con experiencia
         </h1>
-        <p className="mb-8 text-xl text-gray-700 dark:text-gray-300 md:text-2xl">
+        <p className="mb-8 text-xl text-ink-soft md:text-2xl">
           Personas jubiladas con conocimientos, responsabilidad y ganas de
           seguir activas.
         </p>
@@ -22,65 +22,65 @@ export default function EmpresasPage() {
       </section>
 
       <section className="mb-16">
-        <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 dark:text-gray-100">
+        <h2 className="mb-8 text-center text-3xl font-bold text-ink">
           ¿Por qué contratar jubilados?
         </h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-lg border-2 border-gray-300 bg-white p-6 transition-colors dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-lg border-2 border-rule bg-white p-6 transition-colors">
             <h3 className="mb-3 text-2xl font-bold text-primary-700 dark:text-primary-400">
               Experiencia comprobada
             </h3>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
+            <p className="text-lg text-ink-soft">
               Décadas de trayectoria profesional en diversos rubros. Saben
               resolver problemas y tomar decisiones.
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-gray-300 bg-white p-6 transition-colors dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-lg border-2 border-rule bg-white p-6 transition-colors">
             <h3 className="mb-3 text-2xl font-bold text-primary-700 dark:text-primary-400">
               Responsabilidad y compromiso
             </h3>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
+            <p className="text-lg text-ink-soft">
               Alto nivel de compromiso con el trabajo. Puntualidad, dedicación y
               profesionalismo.
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-gray-300 bg-white p-6 transition-colors dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-lg border-2 border-rule bg-white p-6 transition-colors">
             <h3 className="mb-3 text-2xl font-bold text-primary-700 dark:text-primary-400">
               Flexibilidad horaria
             </h3>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
+            <p className="text-lg text-ink-soft">
               Ideales para puestos part-time, por día o con horarios flexibles
               que se adapten a tu negocio.
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-gray-300 bg-white p-6 transition-colors dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-lg border-2 border-rule bg-white p-6 transition-colors">
             <h3 className="mb-3 text-2xl font-bold text-primary-700 dark:text-primary-400">
               Trato con clientes
             </h3>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
+            <p className="text-lg text-ink-soft">
               Excelentes habilidades de comunicación y empatía. Generan
               confianza en clientes de todas las edades.
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-gray-300 bg-white p-6 transition-colors dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-lg border-2 border-rule bg-white p-6 transition-colors">
             <h3 className="mb-3 text-2xl font-bold text-primary-700 dark:text-primary-400">
               Transmiten conocimiento
             </h3>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
+            <p className="text-lg text-ink-soft">
               Pueden capacitar y guiar a empleados más jóvenes con su
               experiencia y sabiduría.
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-gray-300 bg-white p-6 transition-colors dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-lg border-2 border-rule bg-white p-6 transition-colors">
             <h3 className="mb-3 text-2xl font-bold text-primary-700 dark:text-primary-400">
               Costo-beneficio
             </h3>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
+            <p className="text-lg text-ink-soft">
               Complementan su jubilación, permitiendo esquemas laborales
               flexibles y mutuamente beneficiosos.
             </p>
@@ -88,12 +88,12 @@ export default function EmpresasPage() {
         </div>
       </section>
 
-      <section className="mb-16 rounded-lg bg-primary-50 p-8 transition-colors dark:bg-gray-800">
-        <h2 className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-gray-100">
+      <section className="mb-16 rounded-lg bg-primary-50 p-8 transition-colors">
+        <h2 className="mb-6 text-center text-3xl font-bold text-ink">
           Cómo funciona para empresas
         </h2>
         <div className="mx-auto max-w-3xl">
-          <ol className="space-y-6 text-lg text-gray-700 dark:text-gray-300">
+          <ol className="space-y-6 text-lg text-ink-soft">
             <li className="flex gap-4">
               <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary-600 text-xl font-bold text-white dark:bg-primary-500">
                 1
@@ -135,10 +135,10 @@ export default function EmpresasPage() {
       </section>
 
       <section className="text-center">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">
+        <h2 className="mb-6 text-3xl font-bold text-ink">
           Empezá hoy mismo
         </h2>
-        <p className="mb-8 text-xl text-gray-700 dark:text-gray-300">
+        <p className="mb-8 text-xl text-ink-soft">
           Publicar empleos es gratis. Sin costos ocultos, sin planes premium.
         </p>
         <PublishJobButton>Publicar mi primer empleo</PublishJobButton>

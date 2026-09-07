@@ -17,12 +17,12 @@ export function OnboardingSelector() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-12 transition-colors dark:bg-gray-900">
-      <div className="rounded-lg border-2 border-gray-300 bg-white p-8 transition-colors dark:border-gray-700 dark:bg-gray-800">
-        <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-gray-100">
+    <div className="mx-auto max-w-2xl px-4 py-12 transition-colors">
+      <div className="rounded-lg border-2 border-rule bg-white p-8 transition-colors">
+        <h1 className="mb-4 text-4xl font-bold text-ink">
           ¡Bienvenido a JubiJobs!
         </h1>
-        <p className="mb-8 text-xl text-gray-700 dark:text-gray-300">
+        <p className="mb-8 text-xl text-ink-soft">
           Primero, contanos qué querés hacer:
         </p>
 

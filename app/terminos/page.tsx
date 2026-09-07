@@ -6,43 +6,43 @@ export const metadata = {
 export default function TerminosPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
-      <h1 className="mb-8 text-4xl font-bold text-gray-900">
+      <h1 className="mb-8 text-4xl font-bold text-ink">
         Términos y Condiciones
       </h1>
-      <p className="mb-8 text-base text-gray-600">
+      <p className="mb-8 text-base text-ink-soft">
         Última actualización: {new Date().toLocaleDateString("es-AR")}
       </p>
 
       <section className="mb-12">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900">
+        <h2 className="mb-4 text-2xl font-bold text-ink">
           Aceptación de los términos
         </h2>
-        <p className="text-lg text-gray-700">
+        <p className="text-lg text-ink-soft">
           Al acceder y usar JubiJobs, aceptás estos términos y condiciones. Si
           no estás de acuerdo, por favor no uses la plataforma.
         </p>
       </section>
 
       <section className="mb-12">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900">
+        <h2 className="mb-4 text-2xl font-bold text-ink">
           Descripción del servicio
         </h2>
-        <p className="mb-4 text-lg text-gray-700">
+        <p className="mb-4 text-lg text-ink-soft">
           JubiJobs es una plataforma que conecta personas jubiladas y con
           discapacidad que buscan trabajo con empresas que ofrecen empleos
           flexibles en Argentina.
         </p>
-        <p className="text-lg text-gray-700">
+        <p className="text-lg text-ink-soft">
           <strong>El servicio es gratuito</strong> tanto para candidatos como
           para empresas. No cobramos comisiones ni fees.
         </p>
       </section>
 
       <section className="mb-12">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900">
+        <h2 className="mb-4 text-2xl font-bold text-ink">
           Registro y cuenta
         </h2>
-        <ul className="space-y-3 text-lg text-gray-700">
+        <ul className="space-y-3 text-lg text-ink-soft">
           <li>• Debés tener al menos 18 años para usar JubiJobs.</li>
           <li>
             • La información que proporciones debe ser veraz y actualizada.
@@ -57,10 +57,10 @@ export default function TerminosPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900">
+        <h2 className="mb-4 text-2xl font-bold text-ink">
           Para candidatos
         </h2>
-        <ul className="space-y-3 text-lg text-gray-700">
+        <ul className="space-y-3 text-lg text-ink-soft">
           <li>
             • Debés proporcionar información honesta sobre tu experiencia y
             habilidades.
@@ -80,8 +80,8 @@ export default function TerminosPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900">Para empresas</h2>
-        <ul className="space-y-3 text-lg text-gray-700">
+        <h2 className="mb-4 text-2xl font-bold text-ink">Para empresas</h2>
+        <ul className="space-y-3 text-lg text-ink-soft">
           <li>
             • Debés tener autorización legal para publicar empleos en nombre de
             la empresa.
@@ -105,13 +105,13 @@ export default function TerminosPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900">
+        <h2 className="mb-4 text-2xl font-bold text-ink">
           Contenido prohibido
         </h2>
-        <p className="mb-4 text-lg text-gray-700">
+        <p className="mb-4 text-lg text-ink-soft">
           No está permitido publicar:
         </p>
-        <ul className="space-y-2 text-lg text-gray-700">
+        <ul className="space-y-2 text-lg text-ink-soft">
           <li>• Empleos falsos o fraudulentos</li>
           <li>• Contenido ofensivo, discriminatorio o ilegal</li>
           <li>• Spam o publicidad no relacionada</li>
@@ -121,10 +121,10 @@ export default function TerminosPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900">
+        <h2 className="mb-4 text-2xl font-bold text-ink">
           Propiedad intelectual
         </h2>
-        <p className="text-lg text-gray-700">
+        <p className="text-lg text-ink-soft">
           El contenido, diseño y código de JubiJobs están protegidos por
           derechos de autor. El código fuente está disponible bajo licencia MIT
           en GitHub.
@@ -132,14 +132,14 @@ export default function TerminosPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900">
+        <h2 className="mb-4 text-2xl font-bold text-ink">
           Limitación de responsabilidad
         </h2>
-        <p className="mb-4 text-lg text-gray-700">
+        <p className="mb-4 text-lg text-ink-soft">
           JubiJobs se proporciona &quot;tal cual&quot; sin garantías de ningún
           tipo:
         </p>
-        <ul className="space-y-2 text-lg text-gray-700">
+        <ul className="space-y-2 text-lg text-ink-soft">
           <li>
             • No garantizamos que encontrarás trabajo o candidatos ideales
           </li>
@@ -158,20 +158,20 @@ export default function TerminosPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900">
+        <h2 className="mb-4 text-2xl font-bold text-ink">
           Suspensión y terminación
         </h2>
-        <p className="text-lg text-gray-700">
+        <p className="text-lg text-ink-soft">
           Nos reservamos el derecho de suspender o eliminar cuentas que violen
           estos términos o hagan uso indebido de la plataforma.
         </p>
       </section>
 
       <section className="mb-12">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900">
+        <h2 className="mb-4 text-2xl font-bold text-ink">
           Modificaciones
         </h2>
-        <p className="text-lg text-gray-700">
+        <p className="text-lg text-ink-soft">
           Podemos modificar estos términos ocasionalmente. Los cambios
           significativos serán notificados por email. El uso continuado de la
           plataforma implica aceptación de los nuevos términos.
@@ -179,8 +179,8 @@ export default function TerminosPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900">Ley aplicable</h2>
-        <p className="text-lg text-gray-700">
+        <h2 className="mb-4 text-2xl font-bold text-ink">Ley aplicable</h2>
+        <p className="text-lg text-ink-soft">
           Estos términos se rigen por las leyes de la República Argentina.
           Cualquier disputa será resuelta en los tribunales competentes de
           Argentina.
@@ -188,8 +188,8 @@ export default function TerminosPage() {
       </section>
 
       <section className="rounded-lg bg-primary-50 p-6">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900">Contacto</h2>
-        <p className="text-lg text-gray-700">
+        <h2 className="mb-4 text-2xl font-bold text-ink">Contacto</h2>
+        <p className="text-lg text-ink-soft">
           Para preguntas sobre estos términos y condiciones, contactanos a
           través de nuestro email de soporte.
         </p>

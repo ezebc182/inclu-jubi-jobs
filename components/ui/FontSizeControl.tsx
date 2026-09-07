@@ -92,8 +92,8 @@ export function FontSizeControl() {
       />
 
       {/* Desktop: Always visible controls */}
-      <div className="hidden items-center gap-2 rounded-lg border-2 border-gray-200 bg-white p-2 dark:border-gray-700 dark:bg-gray-800 md:flex">
-        <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+      <div className="hidden items-center gap-2 rounded-lg border-2 border-rule bg-white p-2 dark:bg-primary-700 md:flex">
+        <span className="text-sm font-semibold text-ink-soft">
           Texto:
         </span>
         <Button
@@ -106,7 +106,7 @@ export function FontSizeControl() {
         >
           <Minus className="h-4 w-4" aria-hidden="true" />
         </Button>
-        <span className="min-w-[90px] text-center text-sm font-medium text-gray-900 dark:text-gray-100">
+        <span className="min-w-[90px] text-center text-sm font-medium text-ink-soft">
           {FONT_SIZE_CONFIG[fontSize].label}
         </span>
         <Button
@@ -145,8 +145,8 @@ export function FontSizeControl() {
         </Button>
 
         {isOpen && (
-          <div className="absolute right-4 top-16 z-50 rounded-lg border-2 border-gray-200 bg-white p-4 shadow-lg dark:border-gray-700 dark:bg-gray-800">
-            <p className="mb-3 text-sm font-semibold text-gray-700 dark:text-gray-300">
+          <div className="absolute right-4 top-16 z-50 rounded-lg border-2 border-rule bg-white p-4 shadow-lg dark:bg-primary-700">
+            <p className="mb-3 text-sm font-semibold text-ink-soft">
               Tamaño de texto
             </p>
             <div className="flex items-center gap-2">
@@ -162,7 +162,7 @@ export function FontSizeControl() {
               >
                 <Minus className="h-4 w-4" aria-hidden="true" />
               </Button>
-              <span className="min-w-[90px] text-center text-sm font-medium text-gray-900 dark:text-gray-100">
+              <span className="min-w-[90px] text-center text-sm font-medium text-ink-soft">
                 {FONT_SIZE_CONFIG[fontSize].label}
               </span>
               <Button

@@ -9,29 +9,29 @@ export const metadata = {
 
 export default function AyudaPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 transition-colors dark:bg-gray-900">
-      <h1 className="mb-6 text-center text-4xl font-bold text-gray-900 dark:text-gray-100">
+    <div className="mx-auto max-w-7xl px-4 py-12 transition-colors">
+      <h1 className="mb-6 text-center text-4xl font-bold text-ink">
         Centro de Ayuda
       </h1>
-      <p className="mb-12 text-center text-xl text-gray-700 dark:text-gray-300">
+      <p className="mb-12 text-center text-xl text-ink-soft">
         Guía paso a paso para usar JubiJobs. Todo lo que necesitás saber.
       </p>
 
       {/* Sección 1: Primeros Pasos */}
-      <section className="mb-16 rounded-xl border-2 border-primary-200 bg-gradient-to-b from-primary-50 to-white p-8 transition-colors dark:border-primary-800 dark:from-primary-950 dark:to-gray-800">
+      <section className="mb-16 rounded-xl border-2 border-primary-200 bg-gradient-to-b from-primary-50 to-white p-8 transition-colors dark:border-primary-800 dark:from-primary-950 dark:to-surface">
         <h2 className="mb-8 text-3xl font-bold text-primary-900 dark:text-primary-300">
           1. Primeros pasos
         </h2>
 
         <div className="space-y-8">
-          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors dark:bg-gray-700">
-            <h3 className="mb-4 flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors">
+            <h3 className="mb-4 flex items-center gap-3 text-2xl font-bold text-ink">
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-xl text-white dark:bg-primary-500">
                 1
               </span>
               Ingresar a la plataforma
             </h3>
-            <div className="ml-15 space-y-3 text-lg text-gray-700 dark:text-gray-300">
+            <div className="ml-15 space-y-3 text-lg text-ink-soft">
               <p>
                 <strong>Opción 1 - Con Google:</strong> Hacé click en el botón
                 "Continuar con Google". Te va a pedir permiso para usar tu
@@ -57,14 +57,14 @@ export default function AyudaPage() {
             </div>
           </div>
 
-          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors dark:bg-gray-700">
-            <h3 className="mb-4 flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors">
+            <h3 className="mb-4 flex items-center gap-3 text-2xl font-bold text-ink">
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-xl text-white dark:bg-primary-500">
                 2
               </span>
               Completar tu perfil
             </h3>
-            <div className="ml-15 space-y-3 text-lg text-gray-700 dark:text-gray-300">
+            <div className="ml-15 space-y-3 text-lg text-ink-soft">
               <p>
                 Después de ingresar por primera vez, te vamos a pedir que
                 respondas <strong>3 preguntas simples:</strong>
@@ -94,14 +94,14 @@ export default function AyudaPage() {
             </div>
           </div>
 
-          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors dark:bg-gray-700">
-            <h3 className="mb-4 flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors">
+            <h3 className="mb-4 flex items-center gap-3 text-2xl font-bold text-ink">
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-xl text-white dark:bg-primary-500">
                 3
               </span>
               Buscar empleos
             </h3>
-            <div className="ml-15 space-y-3 text-lg text-gray-700 dark:text-gray-300">
+            <div className="ml-15 space-y-3 text-lg text-ink-soft">
               <p>
                 Hacé click en el menú <strong>"Empleos"</strong> (arriba a la
                 derecha). Vas a ver todos los trabajos disponibles.
@@ -128,14 +128,14 @@ export default function AyudaPage() {
             </div>
           </div>
 
-          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors dark:bg-gray-700">
-            <h3 className="mb-4 flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors">
+            <h3 className="mb-4 flex items-center gap-3 text-2xl font-bold text-ink">
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-xl text-white dark:bg-primary-500">
                 4
               </span>
               Postularte a un empleo
             </h3>
-            <div className="ml-15 space-y-3 text-lg text-gray-700 dark:text-gray-300">
+            <div className="ml-15 space-y-3 text-lg text-ink-soft">
               <p>Cuando encuentres un empleo que te interesa:</p>
               <ol className="ml-6 list-decimal space-y-2">
                 <li>
@@ -159,14 +159,14 @@ export default function AyudaPage() {
             </div>
           </div>
 
-          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors dark:bg-gray-700">
-            <h3 className="mb-4 flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors">
+            <h3 className="mb-4 flex items-center gap-3 text-2xl font-bold text-ink">
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-xl text-white dark:bg-primary-500">
                 5
               </span>
               Ver tus postulaciones
             </h3>
-            <div className="ml-15 space-y-3 text-lg text-gray-700 dark:text-gray-300">
+            <div className="ml-15 space-y-3 text-lg text-ink-soft">
               <p>
                 Hacé click en <strong>"Mis postulaciones"</strong> en el menú
                 superior. Ahí vas a ver:
@@ -182,83 +182,83 @@ export default function AyudaPage() {
       </section>
 
       {/* Sección 2: Navegación por Teclado */}
-      <section className="mb-16 rounded-xl border-2 border-blue-200 bg-gradient-to-b from-blue-50 to-white p-8 transition-colors dark:border-blue-800 dark:from-blue-950 dark:to-gray-800">
-        <h2 className="mb-8 text-3xl font-bold text-gray-900 dark:text-gray-100">
+      <section className="mb-16 rounded-xl border-2 border-blue-200 bg-gradient-to-b from-blue-50 to-white p-8 transition-colors dark:border-blue-800 dark:from-blue-950 dark:to-surface">
+        <h2 className="mb-8 text-3xl font-bold text-ink">
           2. Navegación por teclado
         </h2>
-        <p className="mb-6 text-lg text-gray-700 dark:text-gray-300">
+        <p className="mb-6 text-lg text-ink-soft">
           Podés usar JubiJobs completamente con el teclado, sin necesidad de
           mouse. Esto es útil si te resulta más cómodo o si usás tecnologías
           asistivas.
         </p>
 
         <div className="space-y-6">
-          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors dark:bg-gray-700">
+          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors">
             <h3 className="mb-4 text-2xl font-bold text-blue-900 dark:text-blue-200">
               Teclas principales
             </h3>
             <div className="space-y-4">
               <div className="flex items-start gap-4">
-                <kbd className="min-w-[100px] rounded-lg border-2 border-gray-300 bg-gray-100 px-4 py-2 text-center text-lg font-bold text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-600 dark:text-gray-100">
+                <kbd className="min-w-[100px] rounded-lg border-2 border-rule bg-paper px-4 py-2 text-center text-lg font-bold text-ink shadow-sm">
                   Tab
                 </kbd>
-                <p className="flex-1 text-lg text-gray-700 dark:text-gray-300">
+                <p className="flex-1 text-lg text-ink-soft">
                   Moverse al siguiente elemento (botón, enlace, campo de texto)
                 </p>
               </div>
 
               <div className="flex items-start gap-4">
-                <kbd className="min-w-[100px] rounded-lg border-2 border-gray-300 bg-gray-100 px-4 py-2 text-center text-lg font-bold text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-600 dark:text-gray-100">
+                <kbd className="min-w-[100px] rounded-lg border-2 border-rule bg-paper px-4 py-2 text-center text-lg font-bold text-ink shadow-sm">
                   Shift + Tab
                 </kbd>
-                <p className="flex-1 text-lg text-gray-700 dark:text-gray-300">
+                <p className="flex-1 text-lg text-ink-soft">
                   Volver al elemento anterior
                 </p>
               </div>
 
               <div className="flex items-start gap-4">
-                <kbd className="min-w-[100px] rounded-lg border-2 border-gray-300 bg-gray-100 px-4 py-2 text-center text-lg font-bold text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-600 dark:text-gray-100">
+                <kbd className="min-w-[100px] rounded-lg border-2 border-rule bg-paper px-4 py-2 text-center text-lg font-bold text-ink shadow-sm">
                   Enter
                 </kbd>
-                <p className="flex-1 text-lg text-gray-700 dark:text-gray-300">
+                <p className="flex-1 text-lg text-ink-soft">
                   Activar un botón o enlace, enviar un formulario
                 </p>
               </div>
 
               <div className="flex items-start gap-4">
-                <kbd className="min-w-[100px] rounded-lg border-2 border-gray-300 bg-gray-100 px-4 py-2 text-center text-lg font-bold text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-600 dark:text-gray-100">
+                <kbd className="min-w-[100px] rounded-lg border-2 border-rule bg-paper px-4 py-2 text-center text-lg font-bold text-ink shadow-sm">
                   Espacio
                 </kbd>
-                <p className="flex-1 text-lg text-gray-700 dark:text-gray-300">
+                <p className="flex-1 text-lg text-ink-soft">
                   Activar un botón, marcar una casilla
                 </p>
               </div>
 
               <div className="flex items-start gap-4">
-                <kbd className="min-w-[100px] rounded-lg border-2 border-gray-300 bg-gray-100 px-4 py-2 text-center text-lg font-bold text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-600 dark:text-gray-100">
+                <kbd className="min-w-[100px] rounded-lg border-2 border-rule bg-paper px-4 py-2 text-center text-lg font-bold text-ink shadow-sm">
                   Esc
                 </kbd>
-                <p className="flex-1 text-lg text-gray-700 dark:text-gray-300">
+                <p className="flex-1 text-lg text-ink-soft">
                   Cerrar menús o diálogos
                 </p>
               </div>
 
               <div className="flex items-start gap-4">
-                <kbd className="min-w-[100px] rounded-lg border-2 border-gray-300 bg-gray-100 px-4 py-2 text-center text-lg font-bold text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-600 dark:text-gray-100">
+                <kbd className="min-w-[100px] rounded-lg border-2 border-rule bg-paper px-4 py-2 text-center text-lg font-bold text-ink shadow-sm">
                   ↑ ↓
                 </kbd>
-                <p className="flex-1 text-lg text-gray-700 dark:text-gray-300">
+                <p className="flex-1 text-lg text-ink-soft">
                   Navegar por opciones en menús desplegables
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors dark:bg-gray-700">
+          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors">
             <h3 className="mb-4 text-2xl font-bold text-blue-900 dark:text-blue-200">
               Indicador de foco
             </h3>
-            <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">
+            <p className="mb-4 text-lg text-ink-soft">
               Cuando navegás con el teclado, el elemento seleccionado se marca
               con un <strong>borde azul grueso</strong>. Esto te indica dónde
               estás en la página.
@@ -270,13 +270,13 @@ export default function AyudaPage() {
             </div>
           </div>
 
-          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors dark:bg-gray-700">
+          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors">
             <h3 className="mb-4 text-2xl font-bold text-blue-900 dark:text-blue-200">
               Saltar al contenido principal
             </h3>
-            <p className="mb-4 text-lg text-gray-700 dark:text-gray-300">
+            <p className="mb-4 text-lg text-ink-soft">
               Al cargar cualquier página, presioná{" "}
-              <kbd className="rounded border-2 border-gray-300 bg-gray-100 px-2 py-1 font-mono dark:border-gray-600 dark:bg-gray-600">
+              <kbd className="rounded border-2 border-rule bg-paper px-2 py-1 font-mono">
                 Tab
               </kbd>{" "}
               una vez y vas a ver un enlace especial:
@@ -286,9 +286,9 @@ export default function AyudaPage() {
                 "Saltar al contenido principal"
               </p>
             </div>
-            <p className="mt-4 text-lg text-gray-700 dark:text-gray-300">
+            <p className="mt-4 text-lg text-ink-soft">
               Si presionás{" "}
-              <kbd className="rounded border-2 border-gray-300 bg-gray-100 px-2 py-1 font-mono dark:border-gray-600 dark:bg-gray-600">
+              <kbd className="rounded border-2 border-rule bg-paper px-2 py-1 font-mono">
                 Enter
               </kbd>
               , vas directo al contenido sin tener que pasar por todos los
@@ -299,17 +299,17 @@ export default function AyudaPage() {
       </section>
 
       {/* Sección 3: Herramientas de Accesibilidad */}
-      <section className="mb-16 rounded-xl border-2 border-gray-200 bg-white p-8 transition-colors dark:border-gray-700 dark:bg-gray-800">
-        <h2 className="mb-8 text-3xl font-bold text-gray-900 dark:text-gray-100">
+      <section className="mb-16 rounded-xl border-2 border-rule bg-white p-8 transition-colors">
+        <h2 className="mb-8 text-3xl font-bold text-ink">
           3. Herramientas de accesibilidad
         </h2>
 
         <div className="space-y-8">
-          <div className="rounded-lg bg-gray-50 p-6 transition-colors dark:bg-gray-700">
-            <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg bg-paper p-6 transition-colors">
+            <h3 className="mb-4 text-2xl font-bold text-ink">
               Ajustar el tamaño del texto
             </h3>
-            <div className="space-y-3 text-lg text-gray-700 dark:text-gray-300">
+            <div className="space-y-3 text-lg text-ink-soft">
               <p>
                 Si las letras te parecen muy chicas o muy grandes, podés cambiar
                 el tamaño:
@@ -340,11 +340,11 @@ export default function AyudaPage() {
             </div>
           </div>
 
-          <div className="rounded-lg bg-gray-50 p-6 transition-colors dark:bg-gray-700">
-            <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg bg-paper p-6 transition-colors">
+            <h3 className="mb-4 text-2xl font-bold text-ink">
               Cambiar entre modo claro y oscuro
             </h3>
-            <div className="space-y-3 text-lg text-gray-700 dark:text-gray-300">
+            <div className="space-y-3 text-lg text-ink-soft">
               <p>
                 Si te molesta la luz de la pantalla o preferís colores más
                 oscuros:
@@ -359,7 +359,7 @@ export default function AyudaPage() {
                   oscuro (fondo gris)
                 </li>
               </ol>
-              <p className="rounded-lg bg-gray-100 p-4 text-base dark:bg-gray-600">
+              <p className="rounded-lg bg-paper p-4 text-base">
                 ✓ <strong>Beneficios del modo oscuro:</strong> Cansa menos la
                 vista, especialmente si usás la computadora de noche. Ahorra
                 batería en celulares con pantalla OLED.
@@ -367,11 +367,11 @@ export default function AyudaPage() {
             </div>
           </div>
 
-          <div className="rounded-lg bg-gray-50 p-6 transition-colors dark:bg-gray-700">
-            <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg bg-paper p-6 transition-colors">
+            <h3 className="mb-4 text-2xl font-bold text-ink">
               Navegación por teclado
             </h3>
-            <div className="space-y-3 text-lg text-gray-700 dark:text-gray-300">
+            <div className="space-y-3 text-lg text-ink-soft">
               <p>
                 Si te resulta más cómodo usar el teclado en lugar del mouse:
               </p>
@@ -398,60 +398,60 @@ export default function AyudaPage() {
       </section>
 
       {/* Sección 4: Preguntas Frecuentes */}
-      <section className="mb-16 rounded-xl border-2 border-gray-200 bg-white p-8 transition-colors dark:border-gray-700 dark:bg-gray-800">
-        <h2 className="mb-8 text-3xl font-bold text-gray-900 dark:text-gray-100">
+      <section className="mb-16 rounded-xl border-2 border-rule bg-white p-8 transition-colors">
+        <h2 className="mb-8 text-3xl font-bold text-ink">
           4. Preguntas frecuentes
         </h2>
 
         <div className="space-y-6">
-          <div className="rounded-lg border-2 border-gray-200 bg-gray-50 p-6 transition-colors dark:border-gray-600 dark:bg-gray-700">
-            <h3 className="mb-3 text-xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg border-2 border-rule bg-paper p-6 transition-colors">
+            <h3 className="mb-3 text-xl font-bold text-ink">
               ❓ ¿Es gratis usar JubiJobs?
             </h3>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
+            <p className="text-lg text-ink-soft">
               Sí, es <strong>100% gratis</strong> para candidatos. No cobramos
               nada por postularte ni por encontrar trabajo. Las empresas tampoco
               pagan por publicar empleos.
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-gray-200 bg-gray-50 p-6 transition-colors dark:border-gray-600 dark:bg-gray-700">
-            <h3 className="mb-3 text-xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg border-2 border-rule bg-paper p-6 transition-colors">
+            <h3 className="mb-3 text-xl font-bold text-ink">
               ❓ ¿Por qué no necesito subir un CV?
             </h3>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
+            <p className="text-lg text-ink-soft">
               Porque queremos que sea más simple. Las 3 preguntas que respondés
               son suficientes para que las empresas sepan quién sos y qué podés
               hacer. Sin PDFs, sin formatos complicados.
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-gray-200 bg-gray-50 p-6 transition-colors dark:border-gray-600 dark:bg-gray-700">
-            <h3 className="mb-3 text-xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg border-2 border-rule bg-paper p-6 transition-colors">
+            <h3 className="mb-3 text-xl font-bold text-ink">
               ❓ ¿Cuánto tiempo tarda en responder una empresa?
             </h3>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
+            <p className="text-lg text-ink-soft">
               Depende de cada empresa. Algunas responden en 1-2 días, otras
               pueden tardar una semana. Si pasa más de una semana sin respuesta,
               podés postularte a otros empleos.
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-gray-200 bg-gray-50 p-6 transition-colors dark:border-gray-600 dark:bg-gray-700">
-            <h3 className="mb-3 text-xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg border-2 border-rule bg-paper p-6 transition-colors">
+            <h3 className="mb-3 text-xl font-bold text-ink">
               ❓ ¿Puedo modificar mi perfil después de crearlo?
             </h3>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
+            <p className="text-lg text-ink-soft">
               Sí. En la sección "Mis postulaciones" vas a encontrar un botón
               para editar tus respuestas. Podés cambiarlas cuando quieras.
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-gray-200 bg-gray-50 p-6 transition-colors dark:border-gray-600 dark:bg-gray-700">
-            <h3 className="mb-3 text-xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg border-2 border-rule bg-paper p-6 transition-colors">
+            <h3 className="mb-3 text-xl font-bold text-ink">
               ❓ ¿Qué hago si no recibo el código por SMS?
             </h3>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
+            <p className="text-lg text-ink-soft">
               Primero, verificá que el número de teléfono esté bien escrito (con
               código de área, sin el 0). Si esperaste más de 2 minutos, podés
               pedir que te envíen otro código. Si seguís sin recibirlo, probá
@@ -459,22 +459,22 @@ export default function AyudaPage() {
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-gray-200 bg-gray-50 p-6 transition-colors dark:border-gray-600 dark:bg-gray-700">
-            <h3 className="mb-3 text-xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg border-2 border-rule bg-paper p-6 transition-colors">
+            <h3 className="mb-3 text-xl font-bold text-ink">
               ❓ ¿Mis datos están seguros?
             </h3>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
+            <p className="text-lg text-ink-soft">
               Sí. Usamos los mismos sistemas de seguridad que los bancos. Tu
               información solo la ven las empresas a las que te postulás. Nunca
               compartimos ni vendemos tus datos a terceros.
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-gray-200 bg-gray-50 p-6 transition-colors dark:border-gray-600 dark:bg-gray-700">
-            <h3 className="mb-3 text-xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg border-2 border-rule bg-paper p-6 transition-colors">
+            <h3 className="mb-3 text-xl font-bold text-ink">
               ❓ ¿Hay un límite de edad para usar JubiJobs?
             </h3>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
+            <p className="text-lg text-ink-soft">
               No. JubiJobs está diseñado especialmente para personas mayores de
               60 años, pero cualquier persona puede usarlo. No discriminamos por
               edad.
@@ -485,19 +485,19 @@ export default function AyudaPage() {
 
       {/* Sección 5: Problemas Comunes */}
       <section className="mb-16 rounded-xl border-2 border-yellow-200 bg-yellow-50 p-8 transition-colors dark:border-yellow-800 dark:bg-yellow-950">
-        <h2 className="mb-8 text-3xl font-bold text-gray-900 dark:text-yellow-200">
+        <h2 className="mb-8 text-3xl font-bold text-ink dark:text-yellow-200">
           5. Solución de problemas comunes
         </h2>
 
         <div className="space-y-6">
-          <div className="rounded-lg border-2 border-yellow-300 bg-white p-6 transition-colors dark:border-yellow-700 dark:bg-gray-800">
-            <h3 className="mb-3 text-xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg border-2 border-yellow-300 bg-white p-6 transition-colors dark:border-yellow-700">
+            <h3 className="mb-3 text-xl font-bold text-ink">
               🔧 No puedo ver el botón "Postularme"
             </h3>
-            <p className="mb-3 text-lg text-gray-700 dark:text-gray-300">
+            <p className="mb-3 text-lg text-ink-soft">
               <strong>Solución:</strong>
             </p>
-            <ul className="ml-6 list-disc space-y-2 text-lg text-gray-700 dark:text-gray-300">
+            <ul className="ml-6 list-disc space-y-2 text-lg text-ink-soft">
               <li>
                 Asegurate de haber iniciado sesión (arriba a la derecha debería
                 decir tu nombre)
@@ -510,14 +510,14 @@ export default function AyudaPage() {
             </ul>
           </div>
 
-          <div className="rounded-lg border-2 border-yellow-300 bg-white p-6 transition-colors dark:border-yellow-700 dark:bg-gray-800">
-            <h3 className="mb-3 text-xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg border-2 border-yellow-300 bg-white p-6 transition-colors dark:border-yellow-700">
+            <h3 className="mb-3 text-xl font-bold text-ink">
               🔧 Las letras se ven muy chicas
             </h3>
-            <p className="mb-3 text-lg text-gray-700 dark:text-gray-300">
+            <p className="mb-3 text-lg text-ink-soft">
               <strong>Solución:</strong>
             </p>
-            <ul className="ml-6 list-disc space-y-2 text-lg text-gray-700 dark:text-gray-300">
+            <ul className="ml-6 list-disc space-y-2 text-lg text-ink-soft">
               <li>
                 Usá el control de tamaño de texto (arriba a la derecha, dice
                 "Texto:")
@@ -530,14 +530,14 @@ export default function AyudaPage() {
             </ul>
           </div>
 
-          <div className="rounded-lg border-2 border-yellow-300 bg-white p-6 transition-colors dark:border-yellow-700 dark:bg-gray-800">
-            <h3 className="mb-3 text-xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg border-2 border-yellow-300 bg-white p-6 transition-colors dark:border-yellow-700">
+            <h3 className="mb-3 text-xl font-bold text-ink">
               🔧 No encuentro el menú en el celular
             </h3>
-            <p className="mb-3 text-lg text-gray-700 dark:text-gray-300">
+            <p className="mb-3 text-lg text-ink-soft">
               <strong>Solución:</strong>
             </p>
-            <ul className="ml-6 list-disc space-y-2 text-lg text-gray-700 dark:text-gray-300">
+            <ul className="ml-6 list-disc space-y-2 text-lg text-ink-soft">
               <li>
                 Buscá el ícono de las tres líneas (☰) arriba a la derecha
               </li>
@@ -549,14 +549,14 @@ export default function AyudaPage() {
             </ul>
           </div>
 
-          <div className="rounded-lg border-2 border-yellow-300 bg-white p-6 transition-colors dark:border-yellow-700 dark:bg-gray-800">
-            <h3 className="mb-3 text-xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg border-2 border-yellow-300 bg-white p-6 transition-colors dark:border-yellow-700">
+            <h3 className="mb-3 text-xl font-bold text-ink">
               🔧 La página se ve rara o no carga bien
             </h3>
-            <p className="mb-3 text-lg text-gray-700 dark:text-gray-300">
+            <p className="mb-3 text-lg text-ink-soft">
               <strong>Solución:</strong>
             </p>
-            <ul className="ml-6 list-disc space-y-2 text-lg text-gray-700 dark:text-gray-300">
+            <ul className="ml-6 list-disc space-y-2 text-lg text-ink-soft">
               <li>
                 Probá recargar la página (botón de actualizar del navegador o
                 F5)
@@ -576,10 +576,10 @@ export default function AyudaPage() {
 
       {/* Sección 6: Contacto */}
       <section className="mb-16 rounded-xl border-2 border-green-200 bg-green-50 p-8 text-center transition-colors dark:border-green-800 dark:bg-green-950">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-green-200">
+        <h2 className="mb-6 text-3xl font-bold text-ink dark:text-green-200">
           ¿Seguís necesitando ayuda?
         </h2>
-        <p className="mb-8 text-xl text-gray-700 dark:text-gray-300">
+        <p className="mb-8 text-xl text-ink-soft">
           Si no encontraste la respuesta que buscabas, contactanos y te
           ayudamos.
         </p>
@@ -592,7 +592,7 @@ export default function AyudaPage() {
           </a>
           <Link
             href="/accesibilidad"
-            className="inline-flex min-h-[56px] items-center justify-center gap-3 rounded-lg border-2 border-primary-600 bg-white px-8 py-4 text-lg font-semibold text-primary-600 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:border-primary-400 dark:bg-gray-800 dark:text-primary-400 dark:hover:bg-gray-700"
+            className="inline-flex min-h-[56px] items-center justify-center gap-3 rounded-lg border-2 border-primary-600 bg-white px-8 py-4 text-lg font-semibold text-primary-600 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:border-primary-400 dark:text-primary-400"
           >
             Ver compromiso de accesibilidad
           </Link>
@@ -601,10 +601,10 @@ export default function AyudaPage() {
 
       {/* CTA Final */}
       <section className="text-center">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">
+        <h2 className="mb-6 text-3xl font-bold text-ink">
           ¿Listo para buscar empleo?
         </h2>
-        <p className="mb-8 text-xl text-gray-700 dark:text-gray-300">
+        <p className="mb-8 text-xl text-ink-soft">
           Ahora que sabés cómo funciona, ¡empezá a buscar!
         </p>
         <div className="flex flex-col justify-center gap-4 sm:flex-row">

@@ -9,25 +9,25 @@ export const metadata: Metadata = {
 
 export default function LoginPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-primary-50 to-white px-4 py-12 transition-colors dark:from-gray-800 dark:to-gray-900">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-primary-50 to-white px-4 py-12 transition-colors dark:from-paper dark:to-surface">
       <div className="w-full max-w-md">
-        <div className="rounded-xl border-2 border-gray-200 bg-white p-10 shadow-lg transition-colors dark:border-gray-700 dark:bg-gray-800">
-          <h1 className="mb-3 text-center text-4xl font-bold text-gray-900 dark:text-gray-100">
+        <div className="rounded-xl border-2 border-rule bg-white p-10 shadow-lg transition-colors">
+          <h1 className="mb-3 text-center text-4xl font-bold text-ink">
             Ingresá a JubiJobs
           </h1>
-          <p className="mb-10 text-center text-xl text-gray-700 dark:text-gray-300">
+          <p className="mb-10 text-center text-xl text-ink-soft">
             Usá tu cuenta de Google, Facebook, Microsoft o tu número de teléfono
           </p>
 
           <LoginOptions />
 
-          <div className="mt-10 rounded-lg bg-primary-50 p-6 transition-colors dark:bg-gray-700">
-            <p className="text-center text-lg leading-relaxed text-gray-800 dark:text-gray-200">
+          <div className="mt-10 rounded-lg bg-primary-50 p-6 transition-colors">
+            <p className="text-center text-lg leading-relaxed text-ink">
               <strong className="text-xl">
                 ¿Por qué no usamos contraseñas?
               </strong>
               <br />
-              <span className="mt-2 block text-gray-700 dark:text-gray-300">
+              <span className="mt-2 block text-ink-soft">
                 Para que sea más simple y seguro. Ingresás con tu cuenta de
                 Google, Facebook o Microsoft, o recibís un código por SMS, sin
                 necesidad de recordar contraseñas.
@@ -36,7 +36,7 @@ export default function LoginPage() {
           </div>
 
           <div className="mt-8 text-center">
-            <p className="text-lg text-gray-700 dark:text-gray-300">
+            <p className="text-lg text-ink-soft">
               ¿Primera vez?{" "}
               <a
                 href="/como-funciona"

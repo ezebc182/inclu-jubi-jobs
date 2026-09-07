@@ -37,10 +37,10 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
   return (
     <header
       role="banner"
-      className="border-b-2 border-gray-200 bg-white shadow-sm transition-colors dark:border-gray-700 dark:bg-gray-800"
+      className="sticky top-0 z-40 border-b border-rule bg-surface/95 backdrop-blur supports-[backdrop-filter]:bg-surface/80"
     >
-      <div className="mx-auto max-w-7xl px-4 py-5">
-        <div className="flex items-center justify-between">
+      <div className="mx-auto max-w-7xl px-6 py-4">
+        <div className="flex items-center justify-between gap-6">
           <Link
             href="/"
             aria-label="Ir al inicio"
@@ -57,19 +57,19 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
           >
             <Link
               href="/empleos"
-              className="min-h-[48px] rounded-lg px-5 py-3 text-lg font-semibold text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-gray-300 dark:hover:bg-gray-700"
+              className="min-h-[44px] rounded-md px-4 py-2.5 text-lg font-medium text-ink transition-colors hover:bg-primary-50 dark:hover:bg-primary-900/30"
             >
               Empleos
             </Link>
             <Link
               href="/empresas"
-              className="min-h-[48px] rounded-lg px-5 py-3 text-lg font-semibold text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-gray-300 dark:hover:bg-gray-700"
+              className="min-h-[44px] rounded-md px-4 py-2.5 text-lg font-medium text-ink transition-colors hover:bg-primary-50 dark:hover:bg-primary-900/30"
             >
               Empresas
             </Link>
             <Link
               href="/ayuda"
-              className="min-h-[48px] rounded-lg px-5 py-3 text-lg font-semibold text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-gray-300 dark:hover:bg-gray-700"
+              className="min-h-[44px] rounded-md px-4 py-2.5 text-lg font-medium text-ink transition-colors hover:bg-primary-50 dark:hover:bg-primary-900/30"
             >
               Ayuda
             </Link>
@@ -82,7 +82,7 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
                 {isAdmin && (
                   <Link
                     href="/admin"
-                    className="min-h-[48px] rounded-lg border-2 border-primary-600 px-5 py-3 text-lg font-semibold text-primary-700 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:border-primary-400 dark:text-primary-300 dark:hover:bg-gray-700"
+                    className="min-h-[44px] rounded-md border border-primary-600 px-4 py-2.5 text-lg font-medium text-primary-700 transition-colors hover:bg-primary-50 dark:border-primary-300 dark:text-primary-200 dark:hover:bg-primary-900/30"
                   >
                     Administración
                   </Link>
@@ -90,7 +90,7 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
                 {session.user.role === "COMPANY" && (
                   <Link
                     href="/empresa"
-                    className="min-h-[48px] rounded-lg bg-primary-600 px-6 py-3 text-lg font-semibold text-white shadow-sm transition-colors hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
+                    className="min-h-[44px] rounded-md bg-primary-600 px-5 py-2.5 text-lg font-semibold text-white transition-colors hover:bg-primary-700"
                   >
                     Mi empresa
                   </Link>
@@ -98,14 +98,14 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
                 {session.user.role === "CANDIDATE" && (
                   <Link
                     href="/postulaciones"
-                    className="min-h-[48px] rounded-lg bg-primary-600 px-6 py-3 text-lg font-semibold text-white shadow-sm transition-colors hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
+                    className="min-h-[44px] rounded-md bg-primary-600 px-5 py-2.5 text-lg font-semibold text-white transition-colors hover:bg-primary-700"
                   >
                     Mis postulaciones
                   </Link>
                 )}
                 <button
                   onClick={handleLogout}
-                  className="min-h-[48px] rounded-lg px-5 py-3 text-lg font-semibold text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-gray-300 dark:hover:bg-gray-700"
+                  className="min-h-[44px] rounded-md px-4 py-2.5 text-lg font-medium text-ink transition-colors hover:bg-primary-50 dark:hover:bg-primary-900/30"
                 >
                   Salir
                 </button>
@@ -113,7 +113,7 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
             ) : (
               <Link
                 href="/ingresar"
-                className="min-h-[48px] rounded-lg bg-primary-600 px-6 py-3 text-lg font-semibold text-white shadow-sm transition-colors hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
+                className="min-h-[44px] rounded-md bg-primary-600 px-5 py-2.5 text-lg font-semibold text-white transition-colors hover:bg-primary-700"
               >
                 Ingresar
               </Link>
@@ -123,7 +123,7 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="min-h-[48px] min-w-[48px] rounded-lg p-3 text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-gray-300 dark:hover:bg-gray-700 md:hidden"
+            className="min-h-[44px] min-w-[44px] rounded-md p-2.5 text-ink transition-colors hover:bg-primary-50 dark:hover:bg-primary-900/30 md:hidden"
             aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={mobileMenuOpen}
           >
@@ -140,34 +140,32 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
           <nav
             role="navigation"
             aria-label="Navegación móvil"
-            className="mt-4 flex flex-col gap-3 border-t-2 border-gray-200 pt-4 dark:border-gray-700 md:hidden"
+            className="mt-4 flex flex-col gap-3 border-t border-rule pt-4 md:hidden"
           >
             <Link
               href="/empleos"
               onClick={() => setMobileMenuOpen(false)}
-              className="min-h-[48px] rounded-lg px-5 py-3 text-lg font-semibold text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-gray-300 dark:hover:bg-gray-700"
+              className="min-h-[44px] rounded-md px-4 py-2.5 text-lg font-medium text-ink transition-colors hover:bg-primary-50 dark:hover:bg-primary-900/30"
             >
               Empleos
             </Link>
             <Link
               href="/empresas"
               onClick={() => setMobileMenuOpen(false)}
-              className="min-h-[48px] rounded-lg px-5 py-3 text-lg font-semibold text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-gray-300 dark:hover:bg-gray-700"
+              className="min-h-[44px] rounded-md px-4 py-2.5 text-lg font-medium text-ink transition-colors hover:bg-primary-50 dark:hover:bg-primary-900/30"
             >
               Empresas
             </Link>
             <Link
               href="/ayuda"
               onClick={() => setMobileMenuOpen(false)}
-              className="min-h-[48px] rounded-lg px-5 py-3 text-lg font-semibold text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-gray-300 dark:hover:bg-gray-700"
+              className="min-h-[44px] rounded-md px-4 py-2.5 text-lg font-medium text-ink transition-colors hover:bg-primary-50 dark:hover:bg-primary-900/30"
             >
               Ayuda
             </Link>
 
-            <div className="flex items-center justify-between border-t-2 border-gray-200 pt-3 dark:border-gray-700">
-              <span className="text-lg font-semibold text-gray-700 dark:text-gray-300">
-                Tema:
-              </span>
+            <div className="flex items-center justify-between border-t border-rule pt-3">
+              <span className="text-lg font-medium text-ink">Tema:</span>
               <ThemeToggle />
             </div>
 
@@ -177,7 +175,7 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
                   <Link
                     href="/admin"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="min-h-[48px] rounded-lg border-2 border-primary-600 px-6 py-3 text-center text-lg font-semibold text-primary-700 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:border-primary-400 dark:text-primary-300 dark:hover:bg-gray-700"
+                    className="min-h-[44px] rounded-md border border-primary-600 px-5 py-2.5 text-center text-lg font-medium text-primary-700 transition-colors hover:bg-primary-50 dark:border-primary-300 dark:text-primary-200 dark:hover:bg-primary-900/30"
                   >
                     Administración
                   </Link>
@@ -186,7 +184,7 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
                   <Link
                     href="/empresa"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="min-h-[48px] rounded-lg bg-primary-600 px-6 py-3 text-center text-lg font-semibold text-white shadow-sm transition-colors hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
+                    className="min-h-[44px] rounded-md bg-primary-600 px-5 py-2.5 text-center text-lg font-semibold text-white transition-colors hover:bg-primary-700"
                   >
                     Mi empresa
                   </Link>
@@ -195,14 +193,14 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
                   <Link
                     href="/postulaciones"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="min-h-[48px] rounded-lg bg-primary-600 px-6 py-3 text-center text-lg font-semibold text-white shadow-sm transition-colors hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
+                    className="min-h-[44px] rounded-md bg-primary-600 px-5 py-2.5 text-center text-lg font-semibold text-white transition-colors hover:bg-primary-700"
                   >
                     Mis postulaciones
                   </Link>
                 )}
                 <button
                   onClick={handleLogout}
-                  className="min-h-[48px] rounded-lg px-5 py-3 text-lg font-semibold text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:text-gray-300 dark:hover:bg-gray-700"
+                  className="min-h-[44px] rounded-md px-4 py-2.5 text-lg font-medium text-ink transition-colors hover:bg-primary-50 dark:hover:bg-primary-900/30"
                 >
                   Salir
                 </button>
@@ -211,7 +209,7 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
               <Link
                 href="/ingresar"
                 onClick={() => setMobileMenuOpen(false)}
-                className="min-h-[48px] rounded-lg bg-primary-600 px-6 py-3 text-center text-lg font-semibold text-white shadow-sm transition-colors hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
+                className="min-h-[44px] rounded-md bg-primary-600 px-5 py-2.5 text-center text-lg font-semibold text-white transition-colors hover:bg-primary-700"
               >
                 Ingresar
               </Link>

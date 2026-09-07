@@ -63,7 +63,7 @@ export default async function AdminUsuariosPage({
         <div className="flex-1">
           <label
             htmlFor="q"
-            className="mb-1 block text-base font-semibold text-gray-900 dark:text-gray-100"
+            className="mb-1 block text-base font-semibold text-ink"
           >
             Buscar por nombre o email
           </label>
@@ -72,14 +72,14 @@ export default async function AdminUsuariosPage({
             name="q"
             type="search"
             defaultValue={params.q ?? ""}
-            className="min-h-[48px] w-full rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+            className="min-h-[48px] w-full rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
           />
         </div>
 
         <div>
           <label
             htmlFor="portal"
-            className="mb-1 block text-base font-semibold text-gray-900 dark:text-gray-100"
+            className="mb-1 block text-base font-semibold text-ink"
           >
             Portal
           </label>
@@ -87,7 +87,7 @@ export default async function AdminUsuariosPage({
             id="portal"
             name="portal"
             defaultValue={params.portal ?? ""}
-            className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg"
           >
             <option value="">Todos</option>
             <option value="JUBI">JubiJobs</option>
@@ -98,7 +98,7 @@ export default async function AdminUsuariosPage({
         <div>
           <label
             htmlFor="rol"
-            className="mb-1 block text-base font-semibold text-gray-900 dark:text-gray-100"
+            className="mb-1 block text-base font-semibold text-ink"
           >
             Rol
           </label>
@@ -106,7 +106,7 @@ export default async function AdminUsuariosPage({
             id="rol"
             name="rol"
             defaultValue={params.rol ?? ""}
-            className="min-h-[48px] rounded-lg border-2 border-gray-300 px-4 py-3 text-lg dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg"
           >
             <option value="">Todos</option>
             <option value="CANDIDATE">Candidatos</option>
@@ -132,7 +132,7 @@ export default async function AdminUsuariosPage({
         />
       ) : (
         <>
-          <p className="text-lg text-gray-700 dark:text-gray-300" role="status">
+          <p className="text-lg text-ink-soft" role="status">
             {users.length} {users.length === 1 ? "usuario" : "usuarios"}
           </p>
 
@@ -140,14 +140,14 @@ export default async function AdminUsuariosPage({
             {users.map((user) => (
               <li
                 key={user.id}
-                className="rounded-xl border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
+                className="rounded-xl border-2 border-rule bg-white p-6"
               >
                 <div className="mb-3 flex flex-wrap items-start justify-between gap-3">
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+                    <h3 className="text-xl font-bold text-ink">
                       {user.name || "Sin nombre"}
                     </h3>
-                    <p className="mt-1 text-base text-gray-600 dark:text-gray-400">
+                    <p className="mt-1 text-base text-ink-soft">
                       {user.email} · {ROLE_LABELS[user.role]} ·{" "}
                       {getPortalConfig(user.portal).name} · Alta el{" "}
                       {formatDate(user.createdAt)}

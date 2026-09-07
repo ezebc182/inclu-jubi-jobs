@@ -30,7 +30,7 @@ export default async function AdminEmpresasPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+      <h2 className="text-2xl font-bold text-ink">
         {companies.length} {companies.length === 1 ? "empresa" : "empresas"}
       </h2>
 
@@ -38,20 +38,20 @@ export default async function AdminEmpresasPage() {
         {companies.map((company) => (
           <li
             key={company.id}
-            className="rounded-xl border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
+            className="rounded-xl border-2 border-rule bg-white p-6"
           >
             <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
               <div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+                <h3 className="text-xl font-bold text-ink">
                   {company.name}
                 </h3>
-                <p className="mt-1 text-base text-gray-600 dark:text-gray-400">
+                <p className="mt-1 text-base text-ink-soft">
                   {company.owner.email} · {company._count.jobs}{" "}
                   {company._count.jobs === 1 ? "aviso" : "avisos"} · Registrada
                   el {formatDate(company.createdAt)}
                 </p>
                 {company.location && (
-                  <p className="text-base text-gray-600 dark:text-gray-400">
+                  <p className="text-base text-ink-soft">
                     {company.location}
                   </p>
                 )}

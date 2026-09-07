@@ -51,10 +51,10 @@ export default async function AdminAuditoriaPage() {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+        <h2 className="text-2xl font-bold text-ink">
           Registro de auditoría
         </h2>
-        <p className="mt-1 text-lg text-gray-700 dark:text-gray-300">
+        <p className="mt-1 text-lg text-ink-soft">
           Últimas {entries.length} acciones administrativas.
         </p>
       </div>
@@ -66,28 +66,28 @@ export default async function AdminAuditoriaPage() {
             antigua
           </caption>
           <thead>
-            <tr className="border-b-2 border-gray-300 dark:border-gray-600">
+            <tr className="border-b-2 border-rule">
               <th
                 scope="col"
-                className="py-3 pr-4 text-base font-bold text-gray-900 dark:text-gray-100"
+                className="py-3 pr-4 text-base font-bold text-ink"
               >
                 Fecha
               </th>
               <th
                 scope="col"
-                className="py-3 pr-4 text-base font-bold text-gray-900 dark:text-gray-100"
+                className="py-3 pr-4 text-base font-bold text-ink"
               >
                 Administrador
               </th>
               <th
                 scope="col"
-                className="py-3 pr-4 text-base font-bold text-gray-900 dark:text-gray-100"
+                className="py-3 pr-4 text-base font-bold text-ink"
               >
                 Acción
               </th>
               <th
                 scope="col"
-                className="py-3 pr-4 text-base font-bold text-gray-900 dark:text-gray-100"
+                className="py-3 pr-4 text-base font-bold text-ink"
               >
                 Portal
               </th>
@@ -99,18 +99,18 @@ export default async function AdminAuditoriaPage() {
               return (
                 <tr
                   key={entry.id}
-                  className="border-b border-gray-200 dark:border-gray-700"
+                  className="border-b border-rule"
                 >
-                  <td className="py-3 pr-4 text-base text-gray-700 dark:text-gray-300">
+                  <td className="py-3 pr-4 text-base text-ink-soft">
                     {dateTimeFormatter.format(entry.createdAt)}
                   </td>
-                  <td className="py-3 pr-4 text-base text-gray-700 dark:text-gray-300">
+                  <td className="py-3 pr-4 text-base text-ink-soft">
                     {actor?.name || actor?.email || "Cuenta eliminada"}
                   </td>
-                  <td className="py-3 pr-4 text-base text-gray-900 dark:text-gray-100">
+                  <td className="py-3 pr-4 text-base text-ink">
                     {ACTION_LABELS[entry.action] ?? entry.action}
                   </td>
-                  <td className="py-3 pr-4 text-base text-gray-700 dark:text-gray-300">
+                  <td className="py-3 pr-4 text-base text-ink-soft">
                     {entry.portal ? getPortalConfig(entry.portal).name : "—"}
                   </td>
                 </tr>

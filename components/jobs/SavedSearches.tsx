@@ -106,9 +106,9 @@ export function SavedSearches({
   };
 
   return (
-    <div className="rounded-lg border-2 border-gray-300 bg-white p-6 transition-colors dark:border-gray-700 dark:bg-gray-800">
+    <div className="rounded-lg border-2 border-rule bg-white p-6 transition-colors">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+        <h2 className="text-2xl font-bold text-ink">
           Búsquedas guardadas
         </h2>
         {hasActiveFilters && (
@@ -128,7 +128,7 @@ export function SavedSearches({
         >
           <label
             htmlFor="saveName"
-            className="mb-2 block text-lg font-semibold text-gray-900 dark:text-gray-100"
+            className="mb-2 block text-lg font-semibold text-ink"
           >
             Nombre de la búsqueda
           </label>
@@ -138,7 +138,7 @@ export function SavedSearches({
             value={saveName}
             onChange={(e) => setSaveName(e.target.value)}
             placeholder="Ej: Empleos en CABA part-time"
-            className="mb-3 min-h-[48px] w-full rounded-lg border-2 border-gray-300 px-4 py-2 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400"
+            className="mb-3 min-h-[48px] w-full rounded-lg border-2 border-rule px-4 py-2 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
             required
             minLength={3}
             autoFocus
@@ -154,11 +154,11 @@ export function SavedSearches({
       )}
 
       {searches.length === 0 ? (
-        <div className="rounded-lg bg-gray-100 p-6 text-center transition-colors dark:bg-gray-700">
-          <p className="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-300">
+        <div className="rounded-lg bg-paper p-6 text-center transition-colors">
+          <p className="mb-2 text-lg font-semibold text-ink-soft">
             No tenés búsquedas guardadas
           </p>
-          <p className="text-base text-gray-600 dark:text-gray-400">
+          <p className="text-base text-ink-soft">
             Aplicá filtros y guardá tus búsquedas favoritas para acceder
             rápidamente
           </p>
@@ -168,10 +168,10 @@ export function SavedSearches({
           {searches.map((search) => (
             <div
               key={search.id}
-              className="group rounded-lg border-2 border-gray-200 bg-gray-50 p-4 transition-colors hover:border-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-primary-400"
+              className="group rounded-lg border-2 border-rule bg-paper p-4 transition-colors hover:border-primary-500 dark:hover:border-primary-400"
             >
               <div className="mb-2 flex items-start justify-between">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                <h3 className="text-lg font-bold text-ink">
                   {search.name}
                 </h3>
                 <button

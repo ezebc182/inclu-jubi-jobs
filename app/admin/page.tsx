@@ -54,15 +54,15 @@ function StatCard({
   hint?: string;
 }) {
   return (
-    <div className="rounded-xl border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
-      <dt className="text-base font-medium text-gray-600 dark:text-gray-400">
+    <div className="rounded-xl border-2 border-rule bg-white p-6">
+      <dt className="text-base font-medium text-ink-soft">
         {label}
       </dt>
-      <dd className="mt-2 text-4xl font-bold text-gray-900 dark:text-gray-100">
+      <dd className="mt-2 text-4xl font-bold text-ink">
         {value.toLocaleString("es-AR")}
       </dd>
       {hint && (
-        <p className="mt-2 text-base text-gray-600 dark:text-gray-400">
+        <p className="mt-2 text-base text-ink-soft">
           {hint}
         </p>
       )}
@@ -82,7 +82,7 @@ export default async function AdminDashboardPage() {
           role="status"
           className="dark:bg-secondary-950 rounded-lg border-2 border-secondary-500 bg-secondary-50 p-6 dark:border-secondary-400"
         >
-          <p className="text-xl font-bold text-gray-900 dark:text-gray-100">
+          <p className="text-xl font-bold text-ink">
             {stats.pendingJobs}{" "}
             {stats.pendingJobs === 1 ? "aviso espera" : "avisos esperan"}{" "}
             moderación
@@ -99,7 +99,7 @@ export default async function AdminDashboardPage() {
       <section aria-labelledby="totales">
         <h2
           id="totales"
-          className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100"
+          className="mb-4 text-2xl font-bold text-ink"
         >
           Totales
         </h2>
@@ -118,7 +118,7 @@ export default async function AdminDashboardPage() {
       <section aria-labelledby="por-portal">
         <h2
           id="por-portal"
-          className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100"
+          className="mb-4 text-2xl font-bold text-ink"
         >
           Por portal
         </h2>
@@ -128,28 +128,28 @@ export default async function AdminDashboardPage() {
             return (
               <article
                 key={row.portal}
-                className="rounded-xl border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
+                className="rounded-xl border-2 border-rule bg-white p-6"
               >
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                <h3 className="text-2xl font-bold text-ink">
                   {config.name}
                 </h3>
-                <p className="mt-1 text-base text-gray-600 dark:text-gray-400">
+                <p className="mt-1 text-base text-ink-soft">
                   {config.audience} · {config.domain}
                 </p>
                 <dl className="mt-5 grid grid-cols-2 gap-4">
                   <div>
-                    <dt className="text-base text-gray-600 dark:text-gray-400">
+                    <dt className="text-base text-ink-soft">
                       Candidatos
                     </dt>
-                    <dd className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+                    <dd className="text-3xl font-bold text-ink">
                       {row.candidates.toLocaleString("es-AR")}
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-base text-gray-600 dark:text-gray-400">
+                    <dt className="text-base text-ink-soft">
                       Avisos publicados
                     </dt>
-                    <dd className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+                    <dd className="text-3xl font-bold text-ink">
                       {row.publishedJobs.toLocaleString("es-AR")}
                     </dd>
                   </div>

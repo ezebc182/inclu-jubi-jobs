@@ -38,7 +38,7 @@ export function CompanyAdminActions({
   };
 
   return (
-    <div className="flex flex-col gap-4 border-t-2 border-gray-200 pt-4 dark:border-gray-700">
+    <div className="flex flex-col gap-4 border-t-2 border-rule pt-4">
       <div className="flex flex-wrap gap-3">
         <button
           type="button"
@@ -53,7 +53,7 @@ export function CompanyAdminActions({
               isVerified ? "Verificación retirada" : `${companyName} verificada`
             )
           }
-          className="min-h-[48px] rounded-lg border-2 border-primary-600 px-5 py-3 text-lg font-semibold text-primary-700 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-4 focus:ring-primary-300 disabled:opacity-60 dark:text-primary-300 dark:hover:bg-gray-700"
+          className="min-h-[48px] rounded-lg border-2 border-primary-600 px-5 py-3 text-lg font-semibold text-primary-700 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-4 focus:ring-primary-300 disabled:opacity-60 dark:text-primary-300 dark:hover:bg-primary-700"
         >
           {isVerified ? "Quitar verificación" : "Verificar empresa"}
         </button>
@@ -74,7 +74,7 @@ export function CompanyAdminActions({
                   : "Sus avisos se publican sin moderación"
               )
             }
-            className="min-h-[48px] rounded-lg border-2 border-gray-400 px-5 py-3 text-lg font-semibold text-gray-800 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:opacity-60 dark:border-gray-500 dark:text-gray-200 dark:hover:bg-gray-700"
+            className="min-h-[48px] rounded-lg border-2 border-rule px-5 py-3 text-lg font-semibold text-ink-soft transition-colors hover:bg-paper focus:outline-none focus:ring-4 focus:ring-primary-300 disabled:opacity-60 dark:hover:bg-primary-700"
           >
             {autoApproveJobs
               ? "Exigir moderación"
@@ -113,11 +113,11 @@ export function CompanyAdminActions({
         <div>
           <label
             htmlFor={`suspend-reason-${companyId}`}
-            className="mb-2 block text-lg font-bold text-gray-900 dark:text-gray-100"
+            className="mb-2 block text-lg font-bold text-ink-soft"
           >
             Motivo de la suspensión
           </label>
-          <p className="mb-2 text-base text-gray-600 dark:text-gray-400">
+          <p className="mb-2 text-base text-ink-soft">
             Al suspender, sus avisos publicados se pausan automáticamente.
           </p>
           <textarea
@@ -125,7 +125,7 @@ export function CompanyAdminActions({
             value={reason}
             onChange={(e) => setReason(e.target.value)}
             rows={3}
-            className="w-full rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+            className="w-full rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:bg-primary-700"
           />
           <button
             type="button"

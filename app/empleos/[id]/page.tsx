@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
@@ -95,179 +96,209 @@ export default async function EmpleoDetailPage({
     job.isRemoteFriendly ||
     Boolean(job.accessibilityNotes);
 
-  return (
-    <div className="mx-auto max-w-4xl px-4 py-12 transition-colors dark:bg-gray-900">
-      <article>
-        <header className="mb-8">
-          <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-gray-100">
-            {job.title}
-          </h1>
-          <div className="flex flex-col gap-3 text-lg text-gray-700 dark:text-gray-300">
-            <div>
-              <strong>Empresa:</strong> {job.company.name}
-            </div>
-            <div>
-              <strong>Ubicación:</strong>{" "}
-              {job.city ? `${job.city}, ${job.province}` : job.province}
-            </div>
-            <div>
-              <strong>Modalidad:</strong> {MODALITY_LABELS[job.modality]}
-            </div>
-            <div>
-              <strong>Jornada:</strong> {SCHEDULE_LABELS[job.schedule]}
-            </div>
-            {job.salaryArsMin && job.salaryArsMax && (
-              <div>
-                <strong>Salario:</strong> {formatCurrency(job.salaryArsMin)} -{" "}
-                {formatCurrency(job.salaryArsMax)}
-              </div>
-            )}
-            <div className="text-base text-gray-600 dark:text-gray-400">
-              Publicado el {formatDate(job.createdAt)}
-            </div>
-          </div>
+  const salary =
+    job.salaryArsMin && job.salaryArsMax
+      ? `${formatCurrency(job.salaryArsMin)} a ${formatCurrency(job.salaryArsMax)}`
+      : job.salaryArsMin
+        ? `Desde ${formatCurrency(job.salaryArsMin)}`
+        : "A convenir";
 
-          {job.tags && job.tags.length > 0 && (
-            <div className="mt-4 flex flex-wrap gap-2">
+  return (
+    <div className="bg-paper">
+      {/* Encabezado sobre superficie clara: separa el "qué es este puesto"
+          del "de qué se trata". */}
+      <header className="border-b border-rule bg-surface">
+        <div className="mx-auto max-w-5xl px-6 py-10">
+          <nav aria-label="Volver" className="mb-6">
+            <Link
+              href="/empleos"
+              className="text-base text-ink-soft underline underline-offset-4 hover:text-ink"
+            >
+              Volver a los empleos
+            </Link>
+          </nav>
+
+          <p className="text-lg text-ink-soft">{job.company.name}</p>
+          <h1 className="mt-1 text-3xl md:text-4xl">{job.title}</h1>
+
+          {/* Los datos en grilla, sin repetir la etiqueta en cada línea:
+              el encabezado de la definición ya dice qué es cada cosa. */}
+          <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-5 border-t border-rule pt-6 sm:grid-cols-4">
+            <div>
+              <dt className="text-base text-ink-soft">Ubicación</dt>
+              <dd className="mt-0.5 text-lg font-medium">
+                {job.city ? `${job.city}, ${job.province}` : job.province}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-base text-ink-soft">Modalidad</dt>
+              <dd className="mt-0.5 text-lg font-medium">
+                {MODALITY_LABELS[job.modality]}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-base text-ink-soft">Jornada</dt>
+              <dd className="mt-0.5 text-lg font-medium">
+                {SCHEDULE_LABELS[job.schedule]}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-base text-ink-soft">Salario</dt>
+              <dd className="mt-0.5 text-lg font-semibold text-primary-700 dark:text-primary-200">
+                {salary}
+              </dd>
+            </div>
+          </dl>
+
+          {job.tags.length > 0 && (
+            <ul className="mt-6 flex flex-wrap gap-2">
               {job.tags.map((tag) => (
-                <span
+                <li
                   key={tag}
-                  className="rounded-full bg-primary-100 px-4 py-2 text-base font-semibold text-primary-700 dark:bg-primary-950 dark:text-primary-300"
+                  className="rounded-sm border border-rule px-2.5 py-1 text-sm text-ink-soft"
                 >
                   {tag}
-                </span>
+                </li>
               ))}
+            </ul>
+          )}
+
+          <p className="mt-6 text-base text-ink-soft">
+            Publicado el {formatDate(job.createdAt)}
+          </p>
+        </div>
+      </header>
+
+      <div className="mx-auto max-w-5xl px-6 py-12">
+        <article>
+          <section className="mb-12">
+            <h2 className="mb-4 text-2xl font-bold text-ink">
+              Descripción del puesto
+            </h2>
+            <div className="whitespace-pre-wrap text-lg leading-relaxed text-ink-soft">
+              {job.description}
+            </div>
+          </section>
+
+          {hasAccessibilityInfo && (
+            <section
+              aria-labelledby="accesibilidad-puesto"
+              className="mb-12 rounded-lg border-2 border-primary-200 bg-primary-50 p-6 dark:border-primary-800 dark:bg-primary-950"
+            >
+              <h2
+                id="accesibilidad-puesto"
+                className="mb-4 text-2xl font-bold text-ink"
+              >
+                Condiciones de accesibilidad
+              </h2>
+              <ul className="space-y-3 text-lg text-ink">
+                {job.hasAccessibleSite && (
+                  <li className="flex items-start gap-3">
+                    <span aria-hidden="true">✓</span>
+                    <span>
+                      Instalaciones adaptadas (acceso, ascensor y baño
+                      accesible)
+                    </span>
+                  </li>
+                )}
+                {job.supportsFlexHours && (
+                  <li className="flex items-start gap-3">
+                    <span aria-hidden="true">✓</span>
+                    <span>
+                      Horarios flexibles, ajustables según tus necesidades
+                    </span>
+                  </li>
+                )}
+                {job.isRemoteFriendly && (
+                  <li className="flex items-start gap-3">
+                    <span aria-hidden="true">✓</span>
+                    <span>Se puede trabajar de forma remota</span>
+                  </li>
+                )}
+              </ul>
+              {job.accessibilityNotes && (
+                <p className="mt-4 whitespace-pre-wrap text-lg leading-relaxed text-ink-soft">
+                  {job.accessibilityNotes}
+                </p>
+              )}
+            </section>
+          )}
+
+          {job.company.about && (
+            <section className="mb-12 rounded-lg bg-paper p-6 transition-colors">
+              <h2 className="mb-4 text-2xl font-bold text-ink">
+                Sobre {job.company.name}
+              </h2>
+              <p className="text-lg text-ink-soft">{job.company.about}</p>
+              {job.company.website && (
+                <a
+                  href={job.company.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-block text-lg font-semibold text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
+                >
+                  Visitar sitio web →
+                </a>
+              )}
+            </section>
+          )}
+
+          {isCandidate && !hasApplied && (
+            <section className="rounded-lg border-2 border-primary-300 bg-primary-50 p-8 transition-colors dark:border-primary-700 dark:bg-primary-950">
+              <h2 className="mb-6 text-3xl font-bold text-ink">
+                Postularme (3 preguntas)
+              </h2>
+              <ThreeQuestionsForm
+                initialValues={{
+                  did: user?.did || "",
+                  canDo: user?.canDo || "",
+                  wantToDo: user?.wantToDo || "",
+                }}
+                action={applyToJob.bind(null, id)}
+                submitLabel="Enviar postulación"
+              />
+            </section>
+          )}
+
+          {hasApplied && (
+            <div className="rounded-xl border-4 border-green-400 bg-gradient-to-b from-green-50 to-green-100 p-10 text-center shadow-lg transition-colors dark:border-green-600 dark:from-green-950 dark:to-green-900">
+              <div className="mb-4 text-6xl" aria-hidden="true">
+                ✅
+              </div>
+              <p className="mb-4 text-3xl font-bold text-green-900 dark:text-green-200">
+                ¡Postulación enviada exitosamente!
+              </p>
+              <p className="mb-2 text-xl text-green-800 dark:text-green-300">
+                La empresa va a revisar tu perfil y las 3 respuestas que
+                enviaste.
+              </p>
+              <p className="mb-6 text-lg text-green-700 dark:text-green-400">
+                Te vamos a notificar por email si hay novedades.
+              </p>
+              <a
+                href="/postulaciones"
+                className="inline-flex min-h-[56px] items-center justify-center rounded-lg bg-primary-600 px-8 py-4 text-lg font-semibold text-white shadow-sm transition-colors hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
+              >
+                Ver todas mis postulaciones
+              </a>
             </div>
           )}
-        </header>
 
-        <section className="mb-12">
-          <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
-            Descripción del puesto
-          </h2>
-          <div className="whitespace-pre-wrap text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-            {job.description}
-          </div>
-        </section>
-
-        {hasAccessibilityInfo && (
-          <section
-            aria-labelledby="accesibilidad-puesto"
-            className="mb-12 rounded-lg border-2 border-primary-200 bg-primary-50 p-6 dark:border-primary-800 dark:bg-primary-950"
-          >
-            <h2
-              id="accesibilidad-puesto"
-              className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100"
-            >
-              Condiciones de accesibilidad
-            </h2>
-            <ul className="space-y-3 text-lg text-gray-800 dark:text-gray-200">
-              {job.hasAccessibleSite && (
-                <li className="flex items-start gap-3">
-                  <span aria-hidden="true">✓</span>
-                  <span>
-                    Instalaciones adaptadas (acceso, ascensor y baño accesible)
-                  </span>
-                </li>
-              )}
-              {job.supportsFlexHours && (
-                <li className="flex items-start gap-3">
-                  <span aria-hidden="true">✓</span>
-                  <span>
-                    Horarios flexibles, ajustables según tus necesidades
-                  </span>
-                </li>
-              )}
-              {job.isRemoteFriendly && (
-                <li className="flex items-start gap-3">
-                  <span aria-hidden="true">✓</span>
-                  <span>Se puede trabajar de forma remota</span>
-                </li>
-              )}
-            </ul>
-            {job.accessibilityNotes && (
-              <p className="mt-4 whitespace-pre-wrap text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                {job.accessibilityNotes}
+          {!session && (
+            <div className="rounded-lg border-2 border-primary-300 bg-primary-50 p-8 text-center transition-colors dark:border-primary-700 dark:bg-primary-950">
+              <p className="mb-4 text-2xl font-bold text-ink">
+                Para postularte, ingresá primero
               </p>
-            )}
-          </section>
-        )}
-
-        {job.company.about && (
-          <section className="mb-12 rounded-lg bg-gray-50 p-6 transition-colors dark:bg-gray-800">
-            <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
-              Sobre {job.company.name}
-            </h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
-              {job.company.about}
-            </p>
-            {job.company.website && (
               <a
-                href={job.company.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-block text-lg font-semibold text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
+                href="/ingresar"
+                className="inline-block rounded-lg bg-primary-600 px-8 py-4 text-xl font-bold text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
               >
-                Visitar sitio web →
+                Ingresar
               </a>
-            )}
-          </section>
-        )}
-
-        {isCandidate && !hasApplied && (
-          <section className="rounded-lg border-2 border-primary-300 bg-primary-50 p-8 transition-colors dark:border-primary-700 dark:bg-primary-950">
-            <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">
-              Postularme (3 preguntas)
-            </h2>
-            <ThreeQuestionsForm
-              initialValues={{
-                did: user?.did || "",
-                canDo: user?.canDo || "",
-                wantToDo: user?.wantToDo || "",
-              }}
-              action={applyToJob.bind(null, id)}
-              submitLabel="Enviar postulación"
-            />
-          </section>
-        )}
-
-        {hasApplied && (
-          <div className="rounded-xl border-4 border-green-400 bg-gradient-to-b from-green-50 to-green-100 p-10 text-center shadow-lg transition-colors dark:border-green-600 dark:from-green-950 dark:to-green-900">
-            <div className="mb-4 text-6xl" aria-hidden="true">
-              ✅
             </div>
-            <p className="mb-4 text-3xl font-bold text-green-900 dark:text-green-200">
-              ¡Postulación enviada exitosamente!
-            </p>
-            <p className="mb-2 text-xl text-green-800 dark:text-green-300">
-              La empresa va a revisar tu perfil y las 3 respuestas que enviaste.
-            </p>
-            <p className="mb-6 text-lg text-green-700 dark:text-green-400">
-              Te vamos a notificar por email si hay novedades.
-            </p>
-            <a
-              href="/postulaciones"
-              className="inline-flex min-h-[56px] items-center justify-center rounded-lg bg-primary-600 px-8 py-4 text-lg font-semibold text-white shadow-sm transition-colors hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
-            >
-              Ver todas mis postulaciones
-            </a>
-          </div>
-        )}
-
-        {!session && (
-          <div className="rounded-lg border-2 border-primary-300 bg-primary-50 p-8 text-center transition-colors dark:border-primary-700 dark:bg-primary-950">
-            <p className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
-              Para postularte, ingresá primero
-            </p>
-            <a
-              href="/ingresar"
-              className="inline-block rounded-lg bg-primary-600 px-8 py-4 text-xl font-bold text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
-            >
-              Ingresar
-            </a>
-          </div>
-        )}
-      </article>
+          )}
+        </article>
+      </div>
     </div>
   );
 }

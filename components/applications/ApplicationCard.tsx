@@ -24,11 +24,11 @@ export function ApplicationCard({
   createdAt,
 }: ApplicationCardProps) {
   return (
-    <div className="rounded-lg border-2 border-gray-300 bg-white p-6">
+    <div className="rounded-lg border-2 border-rule bg-white p-6">
       <div className="mb-3 flex items-start justify-between gap-4">
         <div className="flex-1">
-          <h3 className="mb-1 text-xl font-bold text-gray-900">{jobTitle}</h3>
-          <p className="text-lg text-gray-700">{companyName}</p>
+          <h3 className="mb-1 text-xl font-bold text-ink">{jobTitle}</h3>
+          <p className="text-lg text-ink-soft">{companyName}</p>
         </div>
         <span
           className={`rounded-full px-4 py-2 text-base font-bold ${STATUS_COLORS[status]}`}
@@ -36,7 +36,7 @@ export function ApplicationCard({
           {APP_STATUS_LABELS[status]}
         </span>
       </div>
-      <p className="mb-4 text-base text-gray-600">
+      <p className="mb-4 text-base text-ink-soft">
         Postulado el {formatDate(createdAt)}
       </p>
       <Link

@@ -67,16 +67,16 @@ export default async function EmpresaDashboardPage() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50 transition-colors dark:bg-gray-900">
+    <div className="min-h-screen bg-paper transition-colors">
       <div className="mx-auto max-w-7xl px-4 py-8">
         {/* Header mejorado */}
-        <header className="mb-8 rounded-xl bg-white p-8 shadow-sm transition-colors dark:bg-gray-800">
+        <header className="mb-8 rounded-xl bg-white p-8 shadow-sm transition-colors">
           <div className="flex items-start justify-between">
             <div>
-              <h1 className="mb-2 text-4xl font-bold text-gray-900 dark:text-gray-100">
+              <h1 className="mb-2 text-4xl font-bold text-ink">
                 {company.name}
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-400">
+              <p className="text-xl text-ink-soft">
                 Dashboard de empresa
               </p>
             </div>
@@ -130,28 +130,28 @@ export default async function EmpresaDashboardPage() {
         </header>
 
         <Tabs.Root defaultValue="empleos" className="w-full">
-          <Tabs.List className="mb-6 flex flex-wrap gap-2 rounded-lg bg-white p-2 shadow-sm transition-colors dark:bg-gray-800">
+          <Tabs.List className="mb-6 flex flex-wrap gap-2 rounded-lg bg-white p-2 shadow-sm transition-colors">
             <Tabs.Trigger
               value="empleos"
-              className="rounded-lg px-6 py-3 text-base font-semibold text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-300 data-[state=active]:bg-primary-600 data-[state=active]:text-white dark:text-gray-300 dark:hover:bg-gray-700 dark:data-[state=active]:bg-primary-500"
+              className="rounded-lg px-6 py-3 text-base font-semibold text-ink-soft transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-300 data-[state=active]:bg-primary-600 data-[state=active]:text-white dark:data-[state=active]:bg-primary-500"
             >
               Mis empleos ({jobs.length})
             </Tabs.Trigger>
             <Tabs.Trigger
               value="crear"
-              className="rounded-lg px-6 py-3 text-base font-semibold text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-300 data-[state=active]:bg-primary-600 data-[state=active]:text-white dark:text-gray-300 dark:hover:bg-gray-700 dark:data-[state=active]:bg-primary-500"
+              className="rounded-lg px-6 py-3 text-base font-semibold text-ink-soft transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-300 data-[state=active]:bg-primary-600 data-[state=active]:text-white dark:data-[state=active]:bg-primary-500"
             >
               Crear empleo
             </Tabs.Trigger>
             <Tabs.Trigger
               value="postulaciones"
-              className="rounded-lg px-6 py-3 text-base font-semibold text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-300 data-[state=active]:bg-primary-600 data-[state=active]:text-white dark:text-gray-300 dark:hover:bg-gray-700 dark:data-[state=active]:bg-primary-500"
+              className="rounded-lg px-6 py-3 text-base font-semibold text-ink-soft transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-300 data-[state=active]:bg-primary-600 data-[state=active]:text-white dark:data-[state=active]:bg-primary-500"
             >
               Postulaciones ({applications.length})
             </Tabs.Trigger>
             <Tabs.Trigger
               value="perfil"
-              className="rounded-lg px-6 py-3 text-base font-semibold text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-300 data-[state=active]:bg-primary-600 data-[state=active]:text-white dark:text-gray-300 dark:hover:bg-gray-700 dark:data-[state=active]:bg-primary-500"
+              className="rounded-lg px-6 py-3 text-base font-semibold text-ink-soft transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-300 data-[state=active]:bg-primary-600 data-[state=active]:text-white dark:data-[state=active]:bg-primary-500"
             >
               Perfil de empresa
             </Tabs.Trigger>
@@ -162,8 +162,8 @@ export default async function EmpresaDashboardPage() {
           </Tabs.Content>
 
           <Tabs.Content value="crear">
-            <div className="rounded-xl bg-white p-8 shadow-sm transition-colors dark:bg-gray-800">
-              <h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-gray-100">
+            <div className="rounded-xl bg-white p-8 shadow-sm transition-colors">
+              <h2 className="mb-6 text-2xl font-bold text-ink">
                 Publicar un nuevo empleo
               </h2>
               <JobForm />
@@ -175,23 +175,23 @@ export default async function EmpresaDashboardPage() {
           </Tabs.Content>
 
           <Tabs.Content value="perfil">
-            <div className="rounded-xl bg-white p-8 shadow-sm transition-colors dark:bg-gray-800">
-              <h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-gray-100">
+            <div className="rounded-xl bg-white p-8 shadow-sm transition-colors">
+              <h2 className="mb-6 text-2xl font-bold text-ink">
                 Perfil de {company.name}
               </h2>
               <div className="flex flex-col gap-6">
                 <div>
-                  <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-gray-100">
+                  <h3 className="mb-2 text-lg font-bold text-ink">
                     Nombre de la empresa
                   </h3>
-                  <p className="text-base text-gray-700 dark:text-gray-300">
+                  <p className="text-base text-ink-soft">
                     {company.name}
                   </p>
                 </div>
 
                 {company.website && (
                   <div>
-                    <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-gray-100">
+                    <h3 className="mb-2 text-lg font-bold text-ink">
                       Sitio web
                     </h3>
                     <a
@@ -207,10 +207,10 @@ export default async function EmpresaDashboardPage() {
 
                 {company.location && (
                   <div>
-                    <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-gray-100">
+                    <h3 className="mb-2 text-lg font-bold text-ink">
                       Ubicación
                     </h3>
-                    <p className="text-base text-gray-700 dark:text-gray-300">
+                    <p className="text-base text-ink-soft">
                       {company.location}
                     </p>
                   </div>
@@ -218,17 +218,17 @@ export default async function EmpresaDashboardPage() {
 
                 {company.about && (
                   <div>
-                    <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-gray-100">
+                    <h3 className="mb-2 text-lg font-bold text-ink">
                       Sobre la empresa
                     </h3>
-                    <p className="text-base text-gray-700 dark:text-gray-300">
+                    <p className="text-base text-ink-soft">
                       {company.about}
                     </p>
                   </div>
                 )}
 
-                <div className="mt-4 rounded-lg border-2 border-gray-200 bg-gray-50 p-4 transition-colors dark:border-gray-700 dark:bg-gray-900">
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                <div className="mt-4 rounded-lg border-2 border-rule bg-paper p-4 transition-colors">
+                  <p className="text-sm text-ink-soft">
                     💡 Para editar el perfil de tu empresa, contactanos a través
                     de nuestro email de soporte.
                   </p>

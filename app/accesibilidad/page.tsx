@@ -8,22 +8,22 @@ export const metadata = {
 
 export default function DeclaracionAccesibilidadPage() {
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12 transition-colors dark:bg-gray-900">
-      <h1 className="mb-6 text-center text-4xl font-bold text-gray-900 dark:text-gray-100">
+    <div className="mx-auto max-w-5xl px-4 py-12 transition-colors">
+      <h1 className="mb-6 text-center text-4xl font-bold text-ink">
         Declaración de Accesibilidad
       </h1>
-      <p className="mb-12 text-center text-xl text-gray-700 dark:text-gray-300">
+      <p className="mb-12 text-center text-xl text-ink-soft">
         Nuestro compromiso con la accesibilidad e inclusión digital
       </p>
 
       {/* Sección 1: Nuestro Compromiso */}
-      <section className="mb-16 rounded-xl border-2 border-primary-200 bg-gradient-to-b from-primary-50 to-white p-8 transition-colors dark:border-primary-800 dark:from-primary-950 dark:to-gray-800">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">
+      <section className="mb-16 rounded-xl border-2 border-primary-200 bg-gradient-to-b from-primary-50 to-white p-8 transition-colors dark:border-primary-800 dark:from-primary-950 dark:to-surface">
+        <h2 className="mb-6 text-3xl font-bold text-ink">
           Nuestro compromiso
         </h2>
-        <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300">
+        <div className="space-y-4 text-lg text-ink-soft">
           <p>
-            <strong className="text-gray-900 dark:text-gray-100">
+            <strong className="text-ink">
               JubiJobs
             </strong>{" "}
             se compromete a garantizar que nuestra plataforma sea accesible para
@@ -44,8 +44,8 @@ export default function DeclaracionAccesibilidadPage() {
       </section>
 
       {/* Sección 2: Estándares de Cumplimiento */}
-      <section className="mb-16 rounded-xl border-2 border-gray-200 bg-white p-8 transition-colors dark:border-gray-700 dark:bg-gray-800">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">
+      <section className="mb-16 rounded-xl border-2 border-rule bg-white p-8 transition-colors">
+        <h2 className="mb-6 text-3xl font-bold text-ink">
           Estándares de cumplimiento
         </h2>
         <div className="space-y-6">
@@ -81,8 +81,8 @@ export default function DeclaracionAccesibilidadPage() {
       </section>
 
       {/* Sección 3: Características de Accesibilidad */}
-      <section className="mb-16 rounded-xl border-2 border-gray-200 bg-white p-8 transition-colors dark:border-gray-700 dark:bg-gray-800">
-        <h2 className="mb-8 text-3xl font-bold text-gray-900 dark:text-gray-100">
+      <section className="mb-16 rounded-xl border-2 border-rule bg-white p-8 transition-colors">
+        <h2 className="mb-8 text-3xl font-bold text-ink">
           Características de accesibilidad implementadas
         </h2>
 
@@ -92,7 +92,7 @@ export default function DeclaracionAccesibilidadPage() {
             <h3 className="mb-4 text-2xl font-bold text-primary-700 dark:text-primary-400">
               📖 Tipografía y Legibilidad
             </h3>
-            <ul className="ml-6 space-y-3 text-lg text-gray-700 dark:text-gray-300">
+            <ul className="ml-6 space-y-3 text-lg text-ink-soft">
               <li className="flex items-start gap-3">
                 <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
                   •
@@ -137,7 +137,7 @@ export default function DeclaracionAccesibilidadPage() {
             <h3 className="mb-4 text-2xl font-bold text-primary-700 dark:text-primary-400">
               🎨 Contraste y Colores
             </h3>
-            <ul className="ml-6 space-y-3 text-lg text-gray-700 dark:text-gray-300">
+            <ul className="ml-6 space-y-3 text-lg text-ink-soft">
               <li className="flex items-start gap-3">
                 <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
                   •
@@ -173,7 +173,7 @@ export default function DeclaracionAccesibilidadPage() {
             <h3 className="mb-4 text-2xl font-bold text-primary-700 dark:text-primary-400">
               🧭 Navegación
             </h3>
-            <ul className="ml-6 space-y-3 text-lg text-gray-700 dark:text-gray-300">
+            <ul className="ml-6 space-y-3 text-lg text-ink-soft">
               <li className="flex items-start gap-3">
                 <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
                   •
@@ -227,7 +227,7 @@ export default function DeclaracionAccesibilidadPage() {
             <h3 className="mb-4 text-2xl font-bold text-primary-700 dark:text-primary-400">
               📝 Formularios
             </h3>
-            <ul className="ml-6 space-y-3 text-lg text-gray-700 dark:text-gray-300">
+            <ul className="ml-6 space-y-3 text-lg text-ink-soft">
               <li className="flex items-start gap-3">
                 <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
                   •
@@ -272,7 +272,7 @@ export default function DeclaracionAccesibilidadPage() {
             <h3 className="mb-4 text-2xl font-bold text-primary-700 dark:text-primary-400">
               🔘 Botones e Interacción
             </h3>
-            <ul className="ml-6 space-y-3 text-lg text-gray-700 dark:text-gray-300">
+            <ul className="ml-6 space-y-3 text-lg text-ink-soft">
               <li className="flex items-start gap-3">
                 <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
                   •
@@ -316,7 +316,7 @@ export default function DeclaracionAccesibilidadPage() {
             <h3 className="mb-4 text-2xl font-bold text-primary-700 dark:text-primary-400">
               🔔 Notificaciones y Feedback
             </h3>
-            <ul className="ml-6 space-y-3 text-lg text-gray-700 dark:text-gray-300">
+            <ul className="ml-6 space-y-3 text-lg text-ink-soft">
               <li className="flex items-start gap-3">
                 <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
                   •
@@ -361,7 +361,7 @@ export default function DeclaracionAccesibilidadPage() {
             <h3 className="mb-4 text-2xl font-bold text-primary-700 dark:text-primary-400">
               🔒 Seguridad y Privacidad
             </h3>
-            <ul className="ml-6 space-y-3 text-lg text-gray-700 dark:text-gray-300">
+            <ul className="ml-6 space-y-3 text-lg text-ink-soft">
               <li className="flex items-start gap-3">
                 <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
                   •
@@ -395,15 +395,15 @@ export default function DeclaracionAccesibilidadPage() {
       </section>
 
       {/* Sección 4: Tecnologías Asistivas */}
-      <section className="mb-16 rounded-xl border-2 border-gray-200 bg-white p-8 transition-colors dark:border-gray-700 dark:bg-gray-800">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">
+      <section className="mb-16 rounded-xl border-2 border-rule bg-white p-8 transition-colors">
+        <h2 className="mb-6 text-3xl font-bold text-ink">
           Compatibilidad con tecnologías asistivas
         </h2>
-        <p className="mb-6 text-lg text-gray-700 dark:text-gray-300">
+        <p className="mb-6 text-lg text-ink-soft">
           JubiJobs está diseñado para funcionar con las siguientes tecnologías
           asistivas:
         </p>
-        <ul className="ml-6 space-y-3 text-lg text-gray-700 dark:text-gray-300">
+        <ul className="ml-6 space-y-3 text-lg text-ink-soft">
           <li className="flex items-start gap-3">
             <span className="mt-1 font-bold text-primary-600 dark:text-primary-400">
               ✓
@@ -453,14 +453,14 @@ export default function DeclaracionAccesibilidadPage() {
 
       {/* Sección 5: Limitaciones Conocidas */}
       <section className="mb-16 rounded-xl border-2 border-yellow-200 bg-yellow-50 p-8 transition-colors dark:border-yellow-800 dark:bg-yellow-950">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-yellow-200">
+        <h2 className="mb-6 text-3xl font-bold text-ink dark:text-yellow-200">
           Limitaciones conocidas y mejoras en progreso
         </h2>
-        <p className="mb-4 text-lg text-gray-700 dark:text-yellow-300">
+        <p className="mb-4 text-lg text-ink-soft dark:text-yellow-300">
           Estamos constantemente mejorando nuestra accesibilidad. Algunas áreas
           en las que seguimos trabajando:
         </p>
-        <ul className="ml-6 space-y-3 text-lg text-gray-700 dark:text-yellow-300">
+        <ul className="ml-6 space-y-3 text-lg text-ink-soft dark:text-yellow-300">
           <li className="flex items-start gap-3">
             <span className="mt-1 font-bold text-yellow-600 dark:text-yellow-400">
               ⚠️
@@ -485,11 +485,11 @@ export default function DeclaracionAccesibilidadPage() {
       </section>
 
       {/* Sección 6: Feedback */}
-      <section className="mb-16 rounded-xl border-4 border-primary-300 bg-gradient-to-b from-primary-50 to-white p-10 text-center shadow-lg transition-colors dark:border-primary-700 dark:from-primary-950 dark:to-gray-800">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">
+      <section className="mb-16 rounded-xl border-4 border-primary-300 bg-gradient-to-b from-primary-50 to-white p-10 text-center shadow-lg transition-colors dark:border-primary-700 dark:from-primary-950 dark:to-surface">
+        <h2 className="mb-6 text-3xl font-bold text-ink">
           Tu feedback es importante
         </h2>
-        <p className="mb-8 text-xl text-gray-700 dark:text-gray-300">
+        <p className="mb-8 text-xl text-ink-soft">
           Si encontrás alguna barrera de accesibilidad en nuestra plataforma,
           por favor contanos para que podamos mejorar.
         </p>
@@ -500,38 +500,38 @@ export default function DeclaracionAccesibilidadPage() {
           >
             📧 Reportar problema de accesibilidad
           </a>
-          <p className="text-base text-gray-600 dark:text-gray-400">
+          <p className="text-base text-ink-soft">
             Nos comprometemos a responder en un plazo de 5 días hábiles
           </p>
         </div>
       </section>
 
       {/* Sección 7: Recursos */}
-      <section className="rounded-xl border-2 border-gray-200 bg-white p-8 transition-colors dark:border-gray-700 dark:bg-gray-800">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">
+      <section className="rounded-xl border-2 border-rule bg-white p-8 transition-colors">
+        <h2 className="mb-6 text-3xl font-bold text-ink">
           Recursos de ayuda
         </h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <Link
             href="/ayuda"
-            className="group rounded-lg border-2 border-gray-200 bg-gray-50 p-6 transition-all hover:border-primary-500 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-primary-300 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-primary-400"
+            className="group rounded-lg border-2 border-rule bg-paper p-6 transition-all hover:border-primary-500 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-primary-300 dark:hover:border-primary-400"
           >
-            <h3 className="mb-2 text-xl font-bold text-gray-900 group-hover:text-primary-600 dark:text-gray-100 dark:group-hover:text-primary-400">
+            <h3 className="mb-2 text-xl font-bold text-ink group-hover:text-primary-600 dark:group-hover:text-primary-400">
               📚 Centro de Ayuda
             </h3>
-            <p className="text-base text-gray-700 dark:text-gray-300">
+            <p className="text-base text-ink-soft">
               Guías paso a paso para usar JubiJobs
             </p>
           </Link>
 
           <Link
             href="/como-funciona"
-            className="group rounded-lg border-2 border-gray-200 bg-gray-50 p-6 transition-all hover:border-primary-500 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-primary-300 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-primary-400"
+            className="group rounded-lg border-2 border-rule bg-paper p-6 transition-all hover:border-primary-500 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-primary-300 dark:hover:border-primary-400"
           >
-            <h3 className="mb-2 text-xl font-bold text-gray-900 group-hover:text-primary-600 dark:text-gray-100 dark:group-hover:text-primary-400">
+            <h3 className="mb-2 text-xl font-bold text-ink group-hover:text-primary-600 dark:group-hover:text-primary-400">
               💡 Cómo Funciona
             </h3>
-            <p className="text-base text-gray-700 dark:text-gray-300">
+            <p className="text-base text-ink-soft">
               Resumen rápido de la plataforma
             </p>
           </Link>

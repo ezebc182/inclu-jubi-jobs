@@ -106,12 +106,12 @@ export function ThreeQuestionsForm({
       <div className="flex flex-col gap-2">
         <label
           htmlFor="did"
-          className="text-lg font-bold text-gray-900 dark:text-gray-100"
+          className="text-lg font-bold text-ink"
         >
           ¿Qué hiciste?
           <span className="ml-1 text-red-600">*</span>
         </label>
-        <p className="text-base text-gray-600 dark:text-gray-400">
+        <p className="text-base text-ink-soft">
           Contanos sobre tu experiencia laboral o actividades anteriores.
         </p>
         <textarea
@@ -119,7 +119,7 @@ export function ThreeQuestionsForm({
           value={values.did}
           onChange={(e) => setValues({ ...values, did: e.target.value })}
           rows={4}
-          className="rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+          className="rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
           placeholder="Ejemplo: Trabajé 30 años en el sector bancario..."
           aria-invalid={!!errors.did}
           aria-describedby={errors.did ? "did-error" : undefined}
@@ -140,12 +140,12 @@ export function ThreeQuestionsForm({
       <div className="flex flex-col gap-2">
         <label
           htmlFor="canDo"
-          className="text-lg font-bold text-gray-900 dark:text-gray-100"
+          className="text-lg font-bold text-ink"
         >
           ¿Qué sabés hacer?
           <span className="ml-1 text-red-600">*</span>
         </label>
-        <p className="text-base text-gray-600 dark:text-gray-400">
+        <p className="text-base text-ink-soft">
           Contanos sobre tus habilidades y conocimientos.
         </p>
         <textarea
@@ -153,7 +153,7 @@ export function ThreeQuestionsForm({
           value={values.canDo}
           onChange={(e) => setValues({ ...values, canDo: e.target.value })}
           rows={4}
-          className="rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+          className="rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
           placeholder="Ejemplo: Sé usar computadoras, atender teléfonos..."
           aria-invalid={!!errors.canDo}
           aria-describedby={errors.canDo ? "canDo-error" : undefined}
@@ -174,12 +174,12 @@ export function ThreeQuestionsForm({
       <div className="flex flex-col gap-2">
         <label
           htmlFor="wantToDo"
-          className="text-lg font-bold text-gray-900 dark:text-gray-100"
+          className="text-lg font-bold text-ink"
         >
           ¿Qué te gustaría hacer?
           <span className="ml-1 text-red-600">*</span>
         </label>
-        <p className="text-base text-gray-600 dark:text-gray-400">
+        <p className="text-base text-ink-soft">
           Contanos qué tipo de trabajo te gustaría realizar.
         </p>
         <textarea
@@ -187,7 +187,7 @@ export function ThreeQuestionsForm({
           value={values.wantToDo}
           onChange={(e) => setValues({ ...values, wantToDo: e.target.value })}
           rows={4}
-          className="rounded-lg border-2 border-gray-300 px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+          className="rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
           placeholder="Ejemplo: Me gustaría trabajar part-time atendiendo al público..."
           aria-invalid={!!errors.wantToDo}
           aria-describedby={errors.wantToDo ? "wantToDo-error" : undefined}

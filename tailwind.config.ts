@@ -31,18 +31,31 @@ const config: Config = {
           900: "rgb(var(--brand-900) / <alpha-value>)",
           950: "rgb(var(--brand-900) / <alpha-value>)",
         },
+        /**
+         * Acento de marca. Reemplaza el naranja anterior, que competía
+         * con el azul primario en vez de complementarlo.
+         */
         secondary: {
-          50: "#fffbeb",
-          100: "#FEF3C7", // Sunset Light
-          200: "#fde68a",
-          300: "#fcd34d",
-          400: "#FBBF24", // Sunset Medium
-          500: "#F59E0B", // Sunset Warm (Color secundario)
-          600: "#D97706", // Sunset Dark
-          700: "#b45309",
-          800: "#92400e",
-          900: "#78350f",
+          50: "rgb(var(--accent-50) / <alpha-value>)",
+          100: "rgb(var(--accent-100) / <alpha-value>)",
+          200: "rgb(var(--accent-100) / <alpha-value>)",
+          300: "rgb(var(--accent-500) / <alpha-value>)",
+          400: "rgb(var(--accent-500) / <alpha-value>)",
+          500: "rgb(var(--accent-500) / <alpha-value>)",
+          600: "rgb(var(--accent-600) / <alpha-value>)",
+          700: "rgb(var(--accent-700) / <alpha-value>)",
+          800: "rgb(var(--accent-700) / <alpha-value>)",
+          900: "rgb(var(--accent-700) / <alpha-value>)",
         },
+
+        /** Tokens semánticos: usar estos antes que gray-* fijos. */
+        paper: "rgb(var(--paper) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        ink: {
+          DEFAULT: "rgb(var(--ink) / <alpha-value>)",
+          soft: "rgb(var(--ink-soft) / <alpha-value>)",
+        },
+        rule: "rgb(var(--rule) / <alpha-value>)",
         success: {
           50: "#ecfdf5",
           100: "#D1FAE5", // Success Light
@@ -57,21 +70,47 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        /** Fraunces: serif con carácter para títulos. */
+        display: ["var(--font-display)", "Georgia", "serif"],
       },
       fontSize: {
-        // Tamaños según BRANDING.md
-        sm: ["16px", { lineHeight: "1.6" }], // Body Small
-        base: ["18px", { lineHeight: "1.7" }], // Body Regular - MÍNIMO
-        lg: ["20px", { lineHeight: "1.7" }], // Body Large
-        xl: ["24px", { lineHeight: "1.4" }], // H3
-        "2xl": ["28px", { lineHeight: "1.3" }], // Mobile H2
-        "3xl": ["36px", { lineHeight: "1.3" }], // H2
-        "4xl": ["48px", { lineHeight: "1.2" }], // H1
+        /**
+         * Escala tipográfica en proporción ~1.25 (tercera mayor), con el
+         * cuerpo en 18px. No es "letra grande para gente mayor": es el
+         * tamaño en que un texto largo se lee cómodo a cualquier edad.
+         */
+        xs: ["14px", { lineHeight: "1.5" }],
+        sm: ["16px", { lineHeight: "1.6" }],
+        base: ["18px", { lineHeight: "1.65" }],
+        lg: ["20px", { lineHeight: "1.6" }],
+        xl: ["24px", { lineHeight: "1.4" }],
+        "2xl": ["30px", { lineHeight: "1.25" }],
+        "3xl": ["38px", { lineHeight: "1.18" }],
+        "4xl": ["48px", { lineHeight: "1.1" }],
+        "5xl": ["60px", { lineHeight: "1.05" }],
+        "6xl": ["72px", { lineHeight: "1" }],
       },
       spacing: {
-        18: "4.5rem", // 72px
-        22: "5.5rem", // 88px
+        18: "4.5rem",
+        22: "5.5rem",
+        30: "7.5rem",
+      },
+      borderRadius: {
+        /**
+         * Radios diferenciados por jerarquía. Un solo border-radius en
+         * todo el sitio aplana la información: el botón y el panel no
+         * son la misma clase de objeto.
+         */
+        sm: "3px",
+        DEFAULT: "5px",
+        md: "6px",
+        lg: "8px",
+        xl: "12px",
+      },
+      maxWidth: {
+        measure: "62ch",
+        "measure-tight": "46ch",
       },
     },
   },
