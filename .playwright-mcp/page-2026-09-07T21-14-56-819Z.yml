@@ -1,0 +1,153 @@
+- generic [active] [ref=f26e1]:
+  - region "Notifications alt+T"
+  - link "Saltar al contenido principal" [ref=f26e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f26e3]:
+    - generic [ref=f26e5]:
+      - link "Ir al inicio" [ref=f26e6] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f26e7]: JubiJobs
+      - button "Abrir menú" [ref=f26e16] [cursor=pointer]
+  - main [ref=f26e18]:
+    - generic [ref=f26e20]:
+      - generic [ref=f26e21]:
+        - heading "Tu experiencia no se jubila." [level=1] [ref=f26e22]
+        - paragraph [ref=f26e23]: "Empresas argentinas buscan gente con oficio para trabajos part-time, por día y flexibles. Sin currículum y sin LinkedIn: contestás tres preguntas y te postulás."
+        - generic [ref=f26e24]:
+          - link "Ver empleos" [ref=f26e25] [cursor=pointer]:
+            - /url: /empleos
+          - link "Publicar un empleo" [ref=f26e26] [cursor=pointer]:
+            - /url: /empresas
+        - paragraph [ref=f26e27]: Entrás con Google o con tu teléfono. No hay contraseñas.
+        - generic [ref=f26e28]:
+          - generic [ref=f26e29]:
+            - definition [ref=f26e30]: "4"
+            - term [ref=f26e31]: empleos publicados
+          - generic [ref=f26e32]:
+            - definition [ref=f26e33]: "2"
+            - term [ref=f26e34]: empresas buscando
+          - generic [ref=f26e35]:
+            - definition [ref=f26e36]: "3"
+            - term [ref=f26e37]: preguntas para postularse
+      - figure [ref=f26e39]:
+        - img "Mujer de unos sesenta años trabajando en una oficina luminosa" [ref=f26e40]
+    - region [ref=f26e41]:
+      - generic [ref=f26e42]:
+        - generic [ref=f26e43]:
+          - heading "Publicados esta semana" [level=2] [ref=f26e44]
+          - link "Ver los 4 avisos" [ref=f26e45] [cursor=pointer]:
+            - /url: /empleos
+        - list [ref=f26e46]:
+          - listitem [ref=f26e47]:
+            - link [ref=f26e48] [cursor=pointer]:
+              - /url: /empleos/cmtrq574p000g6vaiayl0kiol
+              - heading "Control de stock - Remoto" [level=3] [ref=f26e49]
+              - paragraph [ref=f26e50]: Consultoría Plus
+              - paragraph [ref=f26e51]: Mendoza
+              - paragraph [ref=f26e52]: Desde $ 200.000
+          - listitem [ref=f26e53]:
+            - link [ref=f26e54] [cursor=pointer]:
+              - /url: /empleos/cmtrq5716000e6vai3sw5czdf
+              - heading "Recepcionista - Jornada flexible" [level=3] [ref=f26e55]
+              - paragraph [ref=f26e56]: Consultoría Plus
+              - paragraph [ref=f26e57]: Córdoba Capital, Córdoba
+              - paragraph [ref=f26e58]: Desde $ 280.000
+          - listitem [ref=f26e59]:
+            - link [ref=f26e60] [cursor=pointer]:
+              - /url: /empleos/cmtrq56zc000c6vaip6faxw84
+              - heading "Atención al cliente - Fines de semana" [level=3] [ref=f26e61]
+              - paragraph [ref=f26e62]: Supermercado Sur
+              - paragraph [ref=f26e63]: La Plata, Buenos Aires
+              - paragraph [ref=f26e64]: Desde $ 180.000
+    - region [ref=f26e65]:
+      - generic [ref=f26e66]:
+        - generic [ref=f26e67]:
+          - heading "Trabajar después de jubilarse cambia las cosas" [level=2] [ref=f26e68]
+          - paragraph [ref=f26e69]: No es solo el ingreso. Es tener adónde ir, con quién hablar y qué contar.
+        - list [ref=f26e70]:
+          - listitem [ref=f26e71]:
+            - heading "Un ingreso que se suma" [level=3] [ref=f26e75]
+            - paragraph [ref=f26e76]: Trabajos part-time, por día o con horario flexible. Elegís cuánto trabajar según lo que necesités este mes.
+          - listitem [ref=f26e77]:
+            - heading "Rutina y gente alrededor" [level=3] [ref=f26e82]
+            - paragraph [ref=f26e83]: Un lugar adonde ir, compañeros de trabajo y algo para contar a la noche. Eso no aparece en el recibo de sueldo.
+          - listitem [ref=f26e84]:
+            - heading "Cuarenta años de oficio" [level=3] [ref=f26e90]
+            - paragraph [ref=f26e91]: Puntualidad, criterio y saber tratar a la gente. Es exactamente lo que las empresas dicen que no encuentran.
+    - region [ref=f26e92]:
+      - generic [ref=f26e93]:
+        - heading "Cómo postularse" [level=2] [ref=f26e94]
+        - list [ref=f26e95]:
+          - listitem [ref=f26e96]:
+            - generic [ref=f26e97]: Paso 1
+            - heading "Entrás con Google o con tu teléfono" [level=3] [ref=f26e98]
+            - paragraph [ref=f26e99]: Sin crear contraseña ni completar formularios largos. Si tenés Gmail, ya está.
+          - listitem [ref=f26e100]:
+            - generic [ref=f26e101]: Paso 2
+            - heading "Contestás tres preguntas" [level=3] [ref=f26e102]
+            - paragraph [ref=f26e103]: Qué hiciste, qué sabés hacer y qué te gustaría hacer. En tus palabras, como se lo contarías a un conocido.
+          - listitem [ref=f26e104]:
+            - generic [ref=f26e105]: Paso 3
+            - heading "Te postulás con un clic" [level=3] [ref=f26e106]
+            - paragraph [ref=f26e107]: Tus tres respuestas quedan guardadas. Para el siguiente aviso no las escribís de nuevo.
+    - region [ref=f26e108]:
+      - generic [ref=f26e109]:
+        - heading "Antes de que nos dejés tus datos" [level=2] [ref=f26e110]
+        - list [ref=f26e111]:
+          - listitem [ref=f26e112]:
+            - generic [ref=f26e117]:
+              - heading "No vendemos tus datos" [level=3] [ref=f26e118]
+              - paragraph [ref=f26e119]: Solo la empresa a la que te postulás ve tu perfil. A nadie más.
+          - listitem [ref=f26e120]:
+            - generic [ref=f26e124]:
+              - heading "Publicar es gratis para las empresas" [level=3] [ref=f26e125]
+              - paragraph [ref=f26e126]: No cobramos comisión ni por postularte ni por conseguir el puesto.
+          - listitem [ref=f26e127]:
+            - generic [ref=f26e131]:
+              - heading "Hay alguien del otro lado" [level=3] [ref=f26e132]
+              - paragraph [ref=f26e133]: Escribís a hola@jubijobs.com y te contesta una persona.
+    - generic [ref=f26e135]:
+      - generic [ref=f26e136]:
+        - heading "Mirá qué hay disponible" [level=2] [ref=f26e137]
+        - paragraph [ref=f26e138]: No hace falta registrarse para ver los avisos. Entrás, mirás y decidís después.
+        - link "Ver empleos disponibles" [ref=f26e139] [cursor=pointer]:
+          - /url: /empleos
+      - paragraph [ref=f26e141]:
+        - text: ¿Tenés una discapacidad? En
+        - link "InclúJobs" [ref=f26e142] [cursor=pointer]:
+          - /url: https://inclujobs.com
+        - text: cada aviso declara sus condiciones de accesibilidad antes de que te postules.
+  - contentinfo [ref=f26e143]:
+    - generic [ref=f26e144]:
+      - generic [ref=f26e145]:
+        - generic [ref=f26e146]:
+          - heading "JubiJobs" [level=3] [ref=f26e147]
+          - paragraph [ref=f26e148]: Conectamos tu experiencia con empresas que la valoran. Trabajos part-time, flexibles y por día en toda la Argentina.
+        - generic [ref=f26e149]:
+          - heading "Enlaces" [level=3] [ref=f26e150]
+          - list [ref=f26e151]:
+            - listitem [ref=f26e152]:
+              - link "Cómo funciona" [ref=f26e153] [cursor=pointer]:
+                - /url: /como-funciona
+            - listitem [ref=f26e154]:
+              - link "Preguntas Frecuentes" [ref=f26e155] [cursor=pointer]:
+                - /url: /preguntas-frecuentes
+            - listitem [ref=f26e156]:
+              - link "Trabajo inclusivo" [ref=f26e157] [cursor=pointer]:
+                - /url: /discapacidad
+            - listitem [ref=f26e158]:
+              - link "Accesibilidad" [ref=f26e159] [cursor=pointer]:
+                - /url: /accesibilidad
+        - generic [ref=f26e160]:
+          - heading "Legal" [level=3] [ref=f26e161]
+          - list [ref=f26e162]:
+            - listitem [ref=f26e163]:
+              - link "Privacidad" [ref=f26e164] [cursor=pointer]:
+                - /url: /privacidad
+            - listitem [ref=f26e165]:
+              - link "Términos y condiciones" [ref=f26e166] [cursor=pointer]:
+                - /url: /terminos
+      - generic [ref=f26e167]:
+        - paragraph [ref=f26e168]: © 2026 JubiJobs. Todos los derechos reservados.
+        - paragraph [ref=f26e169]: Hecho en Argentina con 💙
+  - button "Open Next.js Dev Tools" [ref=f26e175] [cursor=pointer]

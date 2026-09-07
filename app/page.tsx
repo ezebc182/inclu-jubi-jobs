@@ -80,9 +80,11 @@ export default async function HomePage() {
 
             <p className="mt-5 text-base text-ink-soft">{copy.heroFootnote}</p>
 
-            {/* Cifras reales de la base, no promesas. */}
+            {/* Cifras reales de la base, no promesas.
+                Dos columnas en móvil: a 390px las tres quedan tan angostas
+                que las etiquetas se parten en tres líneas. */}
             {jobCount > 0 && (
-              <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-rule pt-8">
+              <dl className="mt-10 grid grid-cols-2 gap-6 border-t border-rule pt-8 sm:grid-cols-3">
                 <div>
                   <dd className="font-display text-3xl font-semibold text-primary-700 dark:text-primary-200">
                     {jobCount.toLocaleString("es-AR")}

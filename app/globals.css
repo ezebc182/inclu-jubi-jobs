@@ -72,19 +72,43 @@
   --focus-ring: 88 51 102;
 }
 
-.dark {
+/**
+ * Modo oscuro.
+ *
+ * El selector lleva `:root` a propósito: los bloques claros de arriba usan
+ * `:root[data-portal="jubi"]`, que tiene especificidad (0,1,1). Un `.dark`
+ * suelto es (0,1,0) y perdía siempre — el fondo se quedaba claro mientras
+ * los textos se aclaraban, dejando texto casi invisible sobre papel.
+ */
+:root.dark,
+:root.dark[data-portal="jubi"] {
   --paper: 14 18 24;
   --surface: 22 28 36;
   --ink: 240 242 245;
-  --ink-soft: 165 175 188;
+  --ink-soft: 168 178 190;
   --rule: 44 54 66;
   --focus-ring: 138 168 196;
+
+  /* Sobre fondo oscuro los tonos de marca deben aclararse: el azul 600
+     sobre casi negro no llega al contraste mínimo. */
+  --brand-50: 20 32 46;
+  --brand-100: 27 45 66;
+  --brand-600: 138 168 196;
+  --brand-700: 175 199 221;
 }
 
-.dark[data-portal="inclu"] {
+:root.dark[data-portal="inclu"] {
   --paper: 20 14 22;
   --surface: 31 22 34;
+  --ink: 243 238 245;
+  --ink-soft: 180 168 186;
+  --rule: 58 44 62;
   --focus-ring: 184 155 194;
+
+  --brand-50: 32 20 36;
+  --brand-100: 48 30 54;
+  --brand-600: 184 155 194;
+  --brand-700: 212 192 220;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -171,6 +195,20 @@ input[type="submit"] {
   /* Regla fina que separa secciones sin el peso de un borde. */
   .rule-top {
     border-top: 1px solid rgb(var(--rule));
+  }
+
+  /**
+   * En oscuro el relleno de marca se aclara, así que el texto blanco de
+   * los botones primarios pierde contraste. Se invierte a tinta.
+   */
+  :root.dark .bg-primary-600,
+  :root.dark .bg-primary-700 {
+    color: rgb(14 18 24);
+  }
+
+  :root.dark .bg-primary-600:hover,
+  :root.dark .bg-primary-700:hover {
+    background-color: rgb(var(--brand-700));
   }
 
   /* Superficie de contenido. Sombra casi imperceptible: la jerarquía

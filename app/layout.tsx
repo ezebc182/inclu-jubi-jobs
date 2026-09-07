@@ -109,16 +109,14 @@ export default async function RootLayout({
       className={`${inter.variable} ${display.variable}`}
     >
       <head>
-        {/* Aplicamos el tema antes del primer pintado para evitar el
-            destello de fondo claro. Va inline por necesidad: cualquier
-            script externo llegaría tarde. */}
+        {/* Solo la escala tipográfica: el tema lo maneja next-themes, que
+            inyecta su propio script anti-parpadeo. Aplicar `dark` acá
+            también dejaba `light dark` a la vez en el <html> y rompía el
+            modo oscuro entero. */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                var t = localStorage.getItem('theme');
-                var dark = t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches);
-                if (dark) document.documentElement.classList.add('dark');
                 var f = localStorage.getItem('font-size');
                 if (f) document.documentElement.classList.add('font-size-' + f);
               } catch (e) {}

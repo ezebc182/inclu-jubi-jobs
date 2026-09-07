@@ -1,0 +1,110 @@
+- generic [active] [ref=f24e1]:
+  - region "Notifications alt+T"
+  - link "Saltar al contenido principal" [ref=f24e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f24e3]:
+    - generic [ref=f24e5]:
+      - link "Ir al inicio" [ref=f24e6] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f24e7]: JubiJobs
+      - navigation "Navegación principal" [ref=f24e16]:
+        - link "Empleos" [ref=f24e17] [cursor=pointer]:
+          - /url: /empleos
+        - link "Empresas" [ref=f24e18] [cursor=pointer]:
+          - /url: /empresas
+        - link "Ayuda" [ref=f24e19] [cursor=pointer]:
+          - /url: /ayuda
+        - button "Cambiar a modo claro" [ref=f24e20] [cursor=pointer]
+        - status [ref=f24e23]
+        - generic [ref=f24e24]:
+          - generic [ref=f24e25]: "Texto:"
+          - button "Disminuir tamaño de texto" [disabled]
+          - generic [ref=f24e26]: Normal
+          - button "Aumentar tamaño de texto" [ref=f24e27] [cursor=pointer]
+          - button "Restablecer tamaño de texto" [disabled]
+        - link "Ingresar" [ref=f24e28] [cursor=pointer]:
+          - /url: /ingresar
+  - main [ref=f24e29]:
+    - generic [ref=f24e30]:
+      - generic [ref=f24e32]:
+        - navigation "Volver" [ref=f24e33]:
+          - link "Volver a los empleos" [ref=f24e34] [cursor=pointer]:
+            - /url: /empleos
+        - paragraph [ref=f24e35]: Consultoría Plus
+        - heading "Recepcionista - Jornada flexible" [level=1] [ref=f24e36]
+        - generic [ref=f24e37]:
+          - generic [ref=f24e38]:
+            - term [ref=f24e39]: Ubicación
+            - definition [ref=f24e40]: Córdoba Capital, Córdoba
+          - generic [ref=f24e41]:
+            - term [ref=f24e42]: Modalidad
+            - definition [ref=f24e43]: Presencial
+          - generic [ref=f24e44]:
+            - term [ref=f24e45]: Jornada
+            - definition [ref=f24e46]: Flexible
+          - generic [ref=f24e47]:
+            - term [ref=f24e48]: Salario
+            - definition [ref=f24e49]: $ 280.000 a $ 380.000
+        - list [ref=f24e50]:
+          - listitem [ref=f24e51]: Recepción
+          - listitem [ref=f24e52]: Atención al público
+          - listitem [ref=f24e53]: Administración
+        - paragraph [ref=f24e54]: Publicado el 07/09/2026
+      - article [ref=f24e56]:
+        - generic [ref=f24e57]:
+          - heading "Descripción del puesto" [level=2] [ref=f24e58]
+          - generic [ref=f24e59]: "Buscamos recepcionista para nuestra oficina. Jornada flexible, se puede coordinar horario según disponibilidad. Tareas: recepción de visitas, gestión de llamadas, agenda."
+        - region [ref=f24e60]:
+          - heading "Condiciones de accesibilidad" [level=2] [ref=f24e61]
+          - list [ref=f24e62]:
+            - listitem [ref=f24e63]:
+              - generic [aria-hidden] [ref=f24e64]: ✓
+              - generic [ref=f24e65]: Instalaciones adaptadas (acceso, ascensor y baño accesible)
+            - listitem [ref=f24e66]:
+              - generic [aria-hidden] [ref=f24e67]: ✓
+              - generic [ref=f24e68]: Horarios flexibles, ajustables según tus necesidades
+          - paragraph [ref=f24e69]: La oficina está en planta baja, con acceso sin escalones y baño adaptado. El horario se coordina según tus necesidades.
+        - generic [ref=f24e70]:
+          - heading "Sobre Consultoría Plus" [level=2] [ref=f24e71]
+          - paragraph [ref=f24e72]: Empresa de consultoría especializada en gestión administrativa. Buscamos personas con experiencia para sumarse a nuestro equipo.
+          - link "Visitar sitio web →" [ref=f24e73] [cursor=pointer]:
+            - /url: https://consultoriaplus.com.ar
+        - generic [ref=f24e74]:
+          - paragraph [ref=f24e75]: Para postularte, ingresá primero
+          - link "Ingresar" [ref=f24e76] [cursor=pointer]:
+            - /url: /ingresar
+  - contentinfo [ref=f24e77]:
+    - generic [ref=f24e78]:
+      - generic [ref=f24e79]:
+        - generic [ref=f24e80]:
+          - heading "JubiJobs" [level=3] [ref=f24e81]
+          - paragraph [ref=f24e82]: Conectamos tu experiencia con empresas que la valoran. Trabajos part-time, flexibles y por día en toda la Argentina.
+        - generic [ref=f24e83]:
+          - heading "Enlaces" [level=3] [ref=f24e84]
+          - list [ref=f24e85]:
+            - listitem [ref=f24e86]:
+              - link "Cómo funciona" [ref=f24e87] [cursor=pointer]:
+                - /url: /como-funciona
+            - listitem [ref=f24e88]:
+              - link "Preguntas Frecuentes" [ref=f24e89] [cursor=pointer]:
+                - /url: /preguntas-frecuentes
+            - listitem [ref=f24e90]:
+              - link "Trabajo inclusivo" [ref=f24e91] [cursor=pointer]:
+                - /url: /discapacidad
+            - listitem [ref=f24e92]:
+              - link "Accesibilidad" [ref=f24e93] [cursor=pointer]:
+                - /url: /accesibilidad
+        - generic [ref=f24e94]:
+          - heading "Legal" [level=3] [ref=f24e95]
+          - list [ref=f24e96]:
+            - listitem [ref=f24e97]:
+              - link "Privacidad" [ref=f24e98] [cursor=pointer]:
+                - /url: /privacidad
+            - listitem [ref=f24e99]:
+              - link "Términos y condiciones" [ref=f24e100] [cursor=pointer]:
+                - /url: /terminos
+      - generic [ref=f24e101]:
+        - paragraph [ref=f24e102]: © 2026 JubiJobs. Todos los derechos reservados.
+        - paragraph [ref=f24e103]: Hecho en Argentina con 💙
+  - button "Open Next.js Dev Tools" [ref=f24e109] [cursor=pointer]
+  - alert [ref=f24e113]

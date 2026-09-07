@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
@@ -95,51 +96,81 @@ export default async function EmpleoDetailPage({
     job.isRemoteFriendly ||
     Boolean(job.accessibilityNotes);
 
-  return (
-    <div className="mx-auto max-w-4xl px-4 py-12 transition-colors">
-      <article>
-        <header className="mb-8">
-          <h1 className="mb-4 text-4xl font-bold text-ink">
-            {job.title}
-          </h1>
-          <div className="flex flex-col gap-3 text-lg text-ink-soft">
-            <div>
-              <strong>Empresa:</strong> {job.company.name}
-            </div>
-            <div>
-              <strong>Ubicación:</strong>{" "}
-              {job.city ? `${job.city}, ${job.province}` : job.province}
-            </div>
-            <div>
-              <strong>Modalidad:</strong> {MODALITY_LABELS[job.modality]}
-            </div>
-            <div>
-              <strong>Jornada:</strong> {SCHEDULE_LABELS[job.schedule]}
-            </div>
-            {job.salaryArsMin && job.salaryArsMax && (
-              <div>
-                <strong>Salario:</strong> {formatCurrency(job.salaryArsMin)} -{" "}
-                {formatCurrency(job.salaryArsMax)}
-              </div>
-            )}
-            <div className="text-base text-ink-soft">
-              Publicado el {formatDate(job.createdAt)}
-            </div>
-          </div>
+  const salary =
+    job.salaryArsMin && job.salaryArsMax
+      ? `${formatCurrency(job.salaryArsMin)} a ${formatCurrency(job.salaryArsMax)}`
+      : job.salaryArsMin
+        ? `Desde ${formatCurrency(job.salaryArsMin)}`
+        : "A convenir";
 
-          {job.tags && job.tags.length > 0 && (
-            <div className="mt-4 flex flex-wrap gap-2">
+  return (
+    <div className="bg-paper">
+      {/* Encabezado sobre superficie clara: separa el "qué es este puesto"
+          del "de qué se trata". */}
+      <header className="border-b border-rule bg-surface">
+        <div className="mx-auto max-w-5xl px-6 py-10">
+          <nav aria-label="Volver" className="mb-6">
+            <Link
+              href="/empleos"
+              className="text-base text-ink-soft underline underline-offset-4 hover:text-ink"
+            >
+              Volver a los empleos
+            </Link>
+          </nav>
+
+          <p className="text-lg text-ink-soft">{job.company.name}</p>
+          <h1 className="mt-1 text-3xl md:text-4xl">{job.title}</h1>
+
+          {/* Los datos en grilla, sin repetir la etiqueta en cada línea:
+              el encabezado de la definición ya dice qué es cada cosa. */}
+          <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-5 border-t border-rule pt-6 sm:grid-cols-4">
+            <div>
+              <dt className="text-base text-ink-soft">Ubicación</dt>
+              <dd className="mt-0.5 text-lg font-medium">
+                {job.city ? `${job.city}, ${job.province}` : job.province}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-base text-ink-soft">Modalidad</dt>
+              <dd className="mt-0.5 text-lg font-medium">
+                {MODALITY_LABELS[job.modality]}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-base text-ink-soft">Jornada</dt>
+              <dd className="mt-0.5 text-lg font-medium">
+                {SCHEDULE_LABELS[job.schedule]}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-base text-ink-soft">Salario</dt>
+              <dd className="mt-0.5 text-lg font-semibold text-primary-700 dark:text-primary-200">
+                {salary}
+              </dd>
+            </div>
+          </dl>
+
+          {job.tags.length > 0 && (
+            <ul className="mt-6 flex flex-wrap gap-2">
               {job.tags.map((tag) => (
-                <span
+                <li
                   key={tag}
-                  className="rounded-full bg-primary-100 px-4 py-2 text-base font-semibold text-primary-700 dark:bg-primary-950 dark:text-primary-300"
+                  className="rounded-sm border border-rule px-2.5 py-1 text-sm text-ink-soft"
                 >
                   {tag}
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
-        </header>
+
+          <p className="mt-6 text-base text-ink-soft">
+            Publicado el {formatDate(job.createdAt)}
+          </p>
+        </div>
+      </header>
+
+      <div className="mx-auto max-w-5xl px-6 py-12">
+      <article>
 
         <section className="mb-12">
           <h2 className="mb-4 text-2xl font-bold text-ink">
@@ -268,6 +299,7 @@ export default async function EmpleoDetailPage({
           </div>
         )}
       </article>
+      </div>
     </div>
   );
 }
