@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { authClient } from "@/lib/auth-client";
 import type { SocialProviderId } from "@/lib/auth-providers";
 
 /**
@@ -103,49 +104,89 @@ export function SignInButtons({
   providers: SocialProviderId[];
 }) {
   const [loading, setLoading] = useState<SocialProviderId | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   if (providers.length === 0) return null;
 
-  const handleSignIn = (provider: SocialProviderId) => {
+  const handleSignIn = async (provider: SocialProviderId) => {
     setLoading(provider);
-    // Origen actual, no una env var: los dos dominios comparten deployment y
-    // el callback tiene que volver al portal por el que entró el usuario.
-    window.location.href = `/api/auth/sign-in/${provider}`;
+    setError(null);
+
+    /**
+     * `signIn.social` del cliente de Better-Auth, no una navegación a mano.
+     *
+     * Antes esto hacía `window.location.href = "/api/auth/sign-in/" + provider`,
+     * que da 404: esa ruta no existe. Better-Auth expone `/sign-in/social` y
+     * espera un POST con el provider en el body, no un GET con el provider en
+     * la URL. El botón llevaba a una pantalla de error del navegador.
+     *
+     * El cliente resuelve su base contra el origen actual (ver
+     * `lib/auth-client.ts`), así que el callback vuelve al portal por el que
+     * entró la persona.
+     */
+    const { error: signInError } = await authClient.signIn.social({
+      provider,
+      callbackURL: "/",
+    });
+
+    // Si falla, el botón tiene que soltarse. Antes, ante cualquier error,
+    // quedaba girando en "Llevándote a Google" para siempre.
+    if (signInError) {
+      setError(
+        "No pudimos abrir el ingreso con " +
+          PROVIDERS[provider].name +
+          ". Probá de nuevo en un momento."
+      );
+      setLoading(null);
+    }
   };
 
   return (
-    <ul className="space-y-3">
-      {providers.map((id) => {
-        const provider = PROVIDERS[id];
-        const isLoading = loading === id;
+    <>
+      {/* role="alert" para que un lector de pantalla lo anuncie sin que la
+          persona tenga que ir a buscarlo. */}
+      {error && (
+        <p
+          role="alert"
+          className="mb-3 rounded-md border border-rule bg-paper p-3 text-base text-ink"
+        >
+          {error}
+        </p>
+      )}
 
-        return (
-          <li key={id}>
-            <button
-              type="button"
-              onClick={() => handleSignIn(id)}
-              disabled={loading !== null}
-              // aria-busy en vez de solo el texto: el lector de pantalla
-              // anuncia el estado sin depender de leer "Redirigiendo".
-              aria-busy={isLoading}
-              className="flex min-h-[56px] w-full cursor-pointer items-center justify-center gap-3 rounded-lg border border-rule bg-surface px-6 text-lg font-semibold text-ink transition-colors hover:border-primary-300 hover:bg-primary-50 disabled:cursor-wait disabled:opacity-60 dark:hover:bg-primary-900/25"
-            >
-              {isLoading ? (
-                <span
-                  className="h-6 w-6 shrink-0 animate-spin rounded-full border-2 border-rule border-t-primary-600"
-                  aria-hidden="true"
-                />
-              ) : (
-                provider.icon
-              )}
-              <span>
-                {isLoading ? "Llevándote a " : "Continuar con "}
-                {provider.name}
-              </span>
-            </button>
-          </li>
-        );
-      })}
-    </ul>
+      <ul className="space-y-3">
+        {providers.map((id) => {
+          const provider = PROVIDERS[id];
+          const isLoading = loading === id;
+
+          return (
+            <li key={id}>
+              <button
+                type="button"
+                onClick={() => handleSignIn(id)}
+                disabled={loading !== null}
+                // aria-busy en vez de solo el texto: el lector de pantalla
+                // anuncia el estado sin depender de leer "Redirigiendo".
+                aria-busy={isLoading}
+                className="flex min-h-[56px] w-full cursor-pointer items-center justify-center gap-3 rounded-lg border border-rule bg-surface px-6 text-lg font-semibold text-ink transition-colors hover:border-primary-300 hover:bg-primary-50 disabled:cursor-wait disabled:opacity-60 dark:hover:bg-primary-900/25"
+              >
+                {isLoading ? (
+                  <span
+                    className="h-6 w-6 shrink-0 animate-spin rounded-full border-2 border-rule border-t-primary-600"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  provider.icon
+                )}
+                <span>
+                  {isLoading ? "Llevándote a " : "Continuar con "}
+                  {provider.name}
+                </span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </>
   );
 }
