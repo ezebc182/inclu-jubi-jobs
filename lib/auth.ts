@@ -64,6 +64,19 @@ export const auth = betterAuth({
   ],
   secret: process.env.AUTH_SECRET || "development-secret-min-32-chars-long",
   baseURL: process.env.BETTER_AUTH_URL || "http://localhost:3000",
+
+  /**
+   * Los dos portales se sirven desde el mismo deploy, pero `baseURL` es un
+   * solo valor. Sin declarar los orígenes de confianza, el login funciona
+   * en el dominio de `BETTER_AUTH_URL` y falla en el otro.
+   */
+  trustedOrigins: [
+    "https://jubijobs.com",
+    "https://www.jubijobs.com",
+    "https://inclujobs.com",
+    "https://www.inclujobs.com",
+    ...(process.env.NODE_ENV !== "production" ? ["http://localhost:3000"] : []),
+  ],
 });
 
 export type Session = typeof auth.$Infer.Session;
