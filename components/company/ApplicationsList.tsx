@@ -6,6 +6,7 @@ import { contactCandidate } from "@/app/actions/applications";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { LineIcon } from "@/components/ui/LineIcon";
+import { EmptyState } from "@/components/ui/EmptyState";
 
 interface Application {
   id: string;
@@ -64,14 +65,13 @@ export function ApplicationsList({
 
   if (applications.length === 0) {
     return (
-      <div className="rounded-xl border border-dashed border-rule bg-surface p-12 text-center shadow-sm">
-        <p className="text-xl font-semibold text-ink-soft">
-          No hay postulaciones todavía
-        </p>
-        <p className="mt-2 text-lg text-ink-soft">
-          Cuando alguien se postule a tus empleos, aparecerán acá.
-        </p>
-      </div>
+      <EmptyState
+        icon="chat"
+        title="Todavía no recibiste postulaciones"
+        description="Cuando alguien se postule a alguno de tus avisos, va a aparecer acá con sus tres respuestas."
+        actionLabel="Ver mis avisos"
+        actionHref="/empresa"
+      />
     );
   }
 

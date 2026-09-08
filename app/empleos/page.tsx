@@ -116,12 +116,28 @@ export default async function EmpleosPage({
 
           <main className="lg:col-span-9">
             {jobs.length === 0 ? (
-              <EmptyState
-                title="No se encontraron empleos"
-                description="Probá quitando algún filtro o buscando otra palabra."
-                actionLabel="Ver todos los empleos"
-                actionHref="/empleos"
-              />
+              /* Dos situaciones distintas que antes daban el mismo mensaje.
+                 Sin filtros no hay nada que quitar, y "Ver todos los empleos"
+                 devolvia a la misma pagina vacia: un callejon sin salida. */
+              hasFilters ? (
+                <EmptyState
+                  icon="route"
+                  title="Ningún empleo coincide con esa búsqueda"
+                  description="Probá con menos filtros, o mirá todo lo que hay publicado."
+                  actionLabel="Ver todos los empleos"
+                  actionHref="/empleos"
+                />
+              ) : (
+                <EmptyState
+                  icon="clock"
+                  title="Todavía no hay empleos publicados"
+                  description="Estamos sumando empresas. Dejanos tu contacto y te avisamos apenas se publique el primero."
+                  actionLabel="Quiero que me avisen"
+                  actionHref="/ingresar"
+                  secondaryLabel="Cómo funciona"
+                  secondaryHref="/como-funciona"
+                />
+              )
             ) : (
               /* Grilla a hueco de 1px: las tarjetas comparten borde en vez
                  de flotar cada una con su sombra. Lee como un listado, que
