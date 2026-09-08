@@ -5,6 +5,7 @@ import { APP_STATUS_LABELS, formatDate } from "@/lib/constants";
 import { contactCandidate } from "@/app/actions/applications";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { LineIcon } from "@/components/ui/LineIcon";
 
 interface Application {
   id: string;
@@ -45,13 +46,13 @@ export function ApplicationsList({
       const candidateName =
         applications.find((a) => a.id === applicationId)?.user.name ||
         "El candidato";
-      toast.success("✅ ¡Solicitud enviada exitosamente!", {
+      toast.success("Le avisamos al candidato", {
         description: `${candidateName} recibirá un email con tus datos de contacto y podrá comunicarse con vos`,
         duration: 6000,
       });
       router.refresh();
     } catch (error: any) {
-      toast.error("❌ No se pudo enviar la solicitud", {
+      toast.error("No se pudo enviar el aviso", {
         description:
           error.message || "Por favor, intentá nuevamente en unos momentos",
         duration: 6000,
@@ -89,19 +90,21 @@ export function ApplicationsList({
               <p className="mb-2 text-lg text-ink-soft">
                 Postulación para: <strong>{app.job.title}</strong>
               </p>
-              <div className="flex flex-wrap gap-4 text-base text-ink-soft">
-                {app.user.location && <span>📍 {app.user.location}</span>}
-                {app.user.birthYear && (
-                  <span>
-                    👤 {new Date().getFullYear() - app.user.birthYear} años
-                  </span>
-                )}
-                {app.user.isDisabled && (
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">
-                    ♿ Persona con discapacidad
-                  </span>
-                )}
-                <span>📅 {formatDate(app.createdAt)}</span>
+              {/* Ubicación y fecha, nada más.
+                  La condición de discapacidad NO va acá. Estaba junto a la
+                  edad, en violeta y negrita, o sea que era lo primero que veía
+                  la empresa: la condición antes que la persona. Es un dato
+                  sensible de salud, y mostrarlo destacado en la pantalla donde
+                  se decide a quién contactar es el mecanismo de una
+                  discriminación — no hace falta mala intención, alcanza con
+                  que el ojo lo vea primero.
+
+                  Lo que la empresa sí necesita saber son las condiciones de
+                  trabajo a garantizar, y eso se muestra abajo, junto al resto
+                  de los datos del puesto. */}
+              <div className="flex flex-wrap gap-x-5 gap-y-1 text-base text-ink-soft">
+                {app.user.location && <span>{app.user.location}</span>}
+                <span>Se postuló el {formatDate(app.createdAt)}</span>
               </div>
             </div>
             <span
@@ -119,28 +122,53 @@ export function ApplicationsList({
             </span>
           </div>
 
-          {app.user.isDisabled && app.user.accessibilityNeeds && (
-            <div className="mb-4 rounded-lg bg-purple-50 p-4 transition-colors dark:bg-purple-950">
-              <p className="text-base font-semibold text-purple-900 dark:text-purple-400">
-                Necesidades de accesibilidad:
-              </p>
-              <p className="text-base text-purple-800 dark:text-purple-300">
+          {/* Condiciones de trabajo, no "necesidades" de la persona.
+              El encuadre importa: "necesidades de accesibilidad" pone la carga
+              en el candidato, como si pidiera un favor. Son condiciones que el
+              puesto tiene que dar, igual que un horario o una herramienta.
+
+              Se muestra solo si la persona escribió algo: cuando no hay nada
+              que garantizar, no hay nada que decir. El flag `isDisabled` por sí
+              solo ya no pinta ninguna etiqueta.
+
+              Sale de los tokens de marca y no de un violeta fijo, que ademas
+              en modo oscuro quedaba ilegible. */}
+          {app.user.accessibilityNeeds && (
+            <div className="mb-4 rounded-lg border border-rule bg-paper p-4">
+              <h4 className="text-base font-semibold text-ink">
+                Condiciones a garantizar en el puesto
+              </h4>
+              <p className="mt-1 text-base text-ink-soft">
                 {app.user.accessibilityNeeds}
               </p>
             </div>
           )}
 
+          {/* aria-expanded y aria-controls: el boton controla una region que
+              aparece y desaparece, y un lector de pantalla necesita saberlo.
+              Antes eran flechas de texto (▼ ▶) sin ninguna semantica. */}
           <button
+            type="button"
             onClick={() => setExpanded(expanded === app.id ? null : app.id)}
-            className="mb-4 text-lg font-semibold text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
+            aria-expanded={expanded === app.id}
+            aria-controls={`respuestas-${app.id}`}
+            className="mb-4 inline-flex items-center gap-2 text-lg font-semibold text-primary-700 transition-colors hover:text-primary-800 dark:text-primary-200"
           >
+            <LineIcon
+              name={expanded === app.id ? "chevron-down" : "chevron-right"}
+              size={20}
+              strokeWidth={2}
+            />
             {expanded === app.id
-              ? "▼ Ocultar respuestas"
-              : "▶ Ver respuestas (3 preguntas)"}
+              ? "Ocultar respuestas"
+              : "Ver las 3 respuestas"}
           </button>
 
           {expanded === app.id && (
-            <div className="mb-4 flex flex-col gap-4 rounded-lg bg-paper p-6">
+            <div
+              id={`respuestas-${app.id}`}
+              className="mb-4 flex flex-col gap-4 rounded-lg border border-rule bg-paper p-6"
+            >
               <div>
                 <p className="mb-2 text-base font-bold text-ink">
                   ¿Qué hiciste?
@@ -169,29 +197,43 @@ export function ApplicationsList({
           )}
 
           <div className="flex flex-wrap gap-3">
+            {/* Contacto: acciones secundarias, con borde en vez de relleno.
+                Antes los tres iban en solido —uno verde, dos azules— y competian
+                con "Marcar como contactado", que es la accion real de esta
+                pantalla. El verde ademas estaba fuera de los tokens.
+
+                Los botones abren el canal; el dato (numero, mail) no hace falta
+                repetirlo dentro del boton. */}
             {app.user.whatsappNumber && (
               <a
                 href={`https://wa.me/${app.user.whatsappNumber.replace(/\D/g, "")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-lg bg-green-600 px-4 py-2 text-base font-semibold text-white hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300"
+                className="press inline-flex min-h-[48px] items-center gap-2 rounded-md border border-rule px-4 text-base font-semibold text-ink transition-colors hover:border-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/25"
               >
-                💬 WhatsApp
+                <LineIcon name="whatsapp" size={20} />
+                WhatsApp
+                <span className="sr-only">
+                  {" "}
+                  a {app.user.name || "el candidato"} (se abre en otra pestaña)
+                </span>
               </a>
             )}
             {app.user.phoneNumber && (
               <a
                 href={`tel:${app.user.phoneNumber}`}
-                className="rounded-lg bg-primary-700 px-4 py-2 text-base font-semibold text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300"
+                className="press inline-flex min-h-[48px] items-center gap-2 rounded-md border border-rule px-4 text-base font-semibold text-ink transition-colors hover:border-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/25"
               >
-                📞 {app.user.phoneNumber}
+                <LineIcon name="phone" size={20} />
+                {app.user.phoneNumber}
               </a>
             )}
             <a
               href={`mailto:${app.user.email}`}
-              className="rounded-lg bg-primary-700 px-4 py-2 text-base font-semibold text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300"
+              className="press inline-flex min-h-[48px] items-center gap-2 rounded-md border border-rule px-4 text-base font-semibold text-ink transition-colors hover:border-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/25"
             >
-              ✉️ {app.user.email}
+              <LineIcon name="mail" size={20} />
+              Escribir un correo
             </a>
 
             {app.status !== "CONTACTED" && (
