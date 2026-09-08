@@ -1,53 +1,81 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { LoginOptions } from "@/components/auth/LoginOptions";
+import { availableLoginMethods } from "@/lib/auth-providers";
+import { getCurrentPortal, getCurrentPortalConfig } from "@/lib/portal";
 
-export const metadata: Metadata = {
-  title: "Ingresar - JubiJobs",
-  description:
-    "Ingresá a tu cuenta de JubiJobs con Google, Facebook, Microsoft o tu número de teléfono",
-};
+/**
+ * La metadata sale del portal del request, no de una constante.
+ *
+ * Antes decía "Ingresar - JubiJobs" fijo: en inclujobs.com la pestaña del
+ * navegador mostraba la marca equivocada, y el `<h1>` también.
+ */
+export async function generateMetadata(): Promise<Metadata> {
+  const portal = await getCurrentPortalConfig();
 
-export default function LoginPage() {
+  return {
+    title: "Ingresar",
+    description: `Ingresá a tu cuenta de ${portal.name} sin contraseñas.`,
+    // Una pantalla de login no aporta nada en un buscador y sí puede confundir.
+    robots: { index: false, follow: true },
+  };
+}
+
+export default async function LoginPage() {
+  const portalId = await getCurrentPortal();
+  const portal = await getCurrentPortalConfig();
+  const { social, phone } = availableLoginMethods(portalId);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-primary-50 to-white px-4 py-12 transition-colors dark:from-paper dark:to-surface">
-      <div className="w-full max-w-md">
-        <div className="rounded-xl border border-rule bg-surface p-10 shadow-lg">
-          <h1 className="mb-3 text-center text-4xl font-bold text-ink">
-            Ingresá a JubiJobs
-          </h1>
-          <p className="mb-10 text-center text-xl text-ink-soft">
-            Usá tu cuenta de Google, Facebook, Microsoft o tu número de teléfono
-          </p>
+    <div className="mx-auto flex w-full max-w-lg flex-col justify-center px-6 py-16 lg:py-24">
+      <div className="surface-raised rounded-xl p-8 sm:p-10">
+        <h1 className="text-3xl md:text-4xl">Ingresá a {portal.name}</h1>
+        <p className="mt-3 text-lg text-ink-soft">
+          Sin contraseñas: usás una cuenta que ya tenés, o un código que te
+          llega por WhatsApp.
+        </p>
 
-          <LoginOptions />
-
-          <div className="mt-10 rounded-lg bg-primary-50 p-6">
-            <p className="text-center text-lg leading-relaxed text-ink">
-              <strong className="text-xl">
-                ¿Por qué no usamos contraseñas?
-              </strong>
-              <br />
-              <span className="mt-2 block text-ink-soft">
-                Para que sea más simple y seguro. Ingresás con tu cuenta de
-                Google, Facebook o Microsoft, o recibís un código por SMS, sin
-                necesidad de recordar contraseñas.
-              </span>
-            </p>
-          </div>
-
-          <div className="mt-8 text-center">
-            <p className="text-lg text-ink-soft">
-              ¿Primera vez?{" "}
-              <a
-                href="/como-funciona"
-                className="font-semibold text-primary-600 underline-offset-4 hover:text-primary-700 hover:underline focus:outline-none focus:ring-2 focus:ring-primary-500 dark:text-primary-400 dark:hover:text-primary-300"
-              >
-                Mirá cómo funciona
-              </a>
-            </p>
-          </div>
+        <div className="mt-8">
+          <LoginOptions providers={social} phoneEnabled={phone} />
         </div>
+
+        <p className="mt-8 border-t border-rule pt-6 text-base leading-relaxed text-ink-soft">
+          Al ingresar aceptás los{" "}
+          <a
+            href="/terminos"
+            className="font-semibold text-primary-700 underline underline-offset-4 hover:text-primary-800 dark:text-primary-200"
+          >
+            Términos y condiciones
+          </a>{" "}
+          y la{" "}
+          <a
+            href="/privacidad"
+            className="font-semibold text-primary-700 underline underline-offset-4 hover:text-primary-800 dark:text-primary-200"
+          >
+            Política de privacidad
+          </a>
+          .
+        </p>
       </div>
+
+      {/* Explicar la ausencia de contraseña, no solo omitirla: para parte de
+          esta audiencia "no hay contraseña" suena a que el sitio es menos
+          seguro, cuando es exactamente lo contrario. */}
+      <aside className="mt-8 rounded-lg border border-rule bg-paper p-6">
+        <h2 className="font-display text-lg font-semibold">
+          ¿Por qué no pedimos una contraseña?
+        </h2>
+        <p className="mt-2 text-base leading-relaxed text-ink-soft">
+          Porque es una contraseña más que recordar, y las que se olvidan se
+          terminan anotando en un papel. Entrás con una cuenta que ya usás todos
+          los días, o con un código que te mandamos por WhatsApp en el momento.
+        </p>
+        <a
+          href="/como-funciona"
+          className="mt-4 inline-block font-semibold text-primary-700 underline underline-offset-4 hover:text-primary-800 dark:text-primary-200"
+        >
+          Cómo funciona {portal.name}
+        </a>
+      </aside>
     </div>
   );
 }
