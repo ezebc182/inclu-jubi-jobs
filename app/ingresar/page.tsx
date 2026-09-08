@@ -28,10 +28,17 @@ export default async function LoginPage() {
   return (
     <div className="mx-auto flex w-full max-w-lg flex-col justify-center px-6 py-16 lg:py-24">
       <div className="surface-raised rounded-xl p-8 sm:p-10">
+        {/* El texto describe los métodos que REALMENTE están disponibles.
+            Antes decía "o un código que te llega por WhatsApp" siempre, aunque
+            el ingreso por teléfono estuviera apagado — y lo está mientras no se
+            integre el envío (ver `lib/auth-providers.ts`). Alguien leía la
+            promesa y después buscaba dónde poner su número, sin encontrarlo.
+            Prometer un método que no existe es peor que no mencionarlo. */}
         <h1 className="text-3xl md:text-4xl">Ingresá a {portal.name}</h1>
         <p className="mt-3 text-lg text-ink-soft">
-          Sin contraseñas: usás una cuenta que ya tenés, o un código que te
-          llega por WhatsApp.
+          {phone
+            ? "Sin contraseñas: usás una cuenta que ya tenés, o un código que te llega por WhatsApp."
+            : "Sin contraseñas: entrás con una cuenta que ya usás todos los días."}
         </p>
 
         <div className="mt-8">
@@ -67,7 +74,10 @@ export default async function LoginPage() {
         <p className="mt-2 text-base leading-relaxed text-ink-soft">
           Porque es una contraseña más que recordar, y las que se olvidan se
           terminan anotando en un papel. Entrás con una cuenta que ya usás todos
-          los días, o con un código que te mandamos por WhatsApp en el momento.
+          los días
+          {phone
+            ? ", o con un código que te mandamos por WhatsApp en el momento."
+            : ": la misma que usás para el correo."}
         </p>
         <a
           href="/como-funciona"

@@ -99,8 +99,8 @@ export default function EmpresasPage() {
                 1
               </span>
               <div>
-                <strong>Creá tu perfil:</strong> Ingresá con Google, Facebook,
-                Microsoft o tu teléfono y completá los datos de tu empresa.
+                <strong>Creá tu perfil:</strong> Ingresá con tu cuenta de Google
+                y completá los datos de tu empresa.
               </div>
             </li>
             <li className="flex gap-4">
@@ -135,9 +135,7 @@ export default function EmpresasPage() {
       </section>
 
       <section className="text-center">
-        <h2 className="mb-6 text-3xl font-bold text-ink">
-          Empezá hoy mismo
-        </h2>
+        <h2 className="mb-6 text-3xl font-bold text-ink">Empezá hoy mismo</h2>
         <p className="mb-8 text-xl text-ink-soft">
           Publicar empleos es gratis. Sin costos ocultos, sin planes premium.
         </p>
