@@ -202,9 +202,7 @@ export default function FAQsPage() {
                 </div>
 
                 <div className="mt-6 rounded-lg bg-green-50 p-4 dark:bg-green-950">
-                  <p className="text-lg font-semibold text-ink">
-                    Conclusión:
-                  </p>
+                  <p className="text-lg font-semibold text-ink">Conclusión:</p>
                   <p className="text-lg leading-relaxed text-ink-soft">
                     La gran mayoría de los jubilados argentinos pueden trabajar
                     sin perder su jubilación. Si tenés dudas sobre tu caso
@@ -219,10 +217,9 @@ export default function FAQsPage() {
                   ¿Cómo me postulo a un empleo?
                 </h3>
                 <p className="text-lg leading-relaxed text-ink-soft">
-                  Ingresá con tu cuenta de Google, Facebook, Microsoft o tu
-                  número de teléfono. Luego, buscá empleos que te interesen y
-                  hacé click en &quot;Postularme&quot;. Respondé 3 preguntas
-                  simples y listo. Tu postulación será enviada.
+                  Ingresá con tu cuenta de Google. Luego, buscá empleos que te
+                  interesen y hacé click en &quot;Postularme&quot;. Respondé 3
+                  preguntas simples y listo. Tu postulación será enviada.
                 </p>
               </div>
 

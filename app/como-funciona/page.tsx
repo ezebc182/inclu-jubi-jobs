@@ -26,10 +26,8 @@ export default function ComoFuncionaPage() {
                 1
               </span>
               <div>
-                <strong>
-                  Ingresá con Google, Facebook, Microsoft o tu teléfono:
-                </strong>{" "}
-                No necesitás crear usuario ni contraseña.
+                <strong>Ingresá con tu cuenta de Google:</strong> No necesitás
+                crear usuario ni contraseña.
               </div>
             </li>
             <li className="flex gap-4">
@@ -111,12 +109,14 @@ export default function ComoFuncionaPage() {
             <h3 className="mb-3 text-xl font-bold text-primary-900 dark:text-primary-300">
               ✓ Lo que SÍ necesitás
             </h3>
+            {/* "Cuenta de Google" a secas: decía "Google, Facebook, Microsoft
+                o número de teléfono" y tres de esos cuatro no están
+                disponibles. Enumerar métodos que no existen manda a la persona
+                a buscar un botón que no va a encontrar. */}
             <ul className="space-y-2 text-base text-primary-800 dark:text-primary-200">
-              <li>
-                • Cuenta de Google, Facebook, Microsoft o número de teléfono
-              </li>
-              <li>• 3 respuestas honestas y simples</li>
-              <li>• Ganas de trabajar</li>
+              <li>Una cuenta de Google</li>
+              <li>3 respuestas honestas y simples</li>
+              <li>Ganas de trabajar</li>
             </ul>
           </div>
         </div>

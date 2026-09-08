@@ -448,14 +448,18 @@ export default function AyudaPage() {
           </div>
 
           <div className="rounded-lg border border-rule bg-paper p-6">
+            {/* Antes esta pregunta era "¿si no recibo el código por SMS?", que
+                describe algo que hoy no puede pasar —no hay ingreso por
+                teléfono— y remataba mandando a Microsoft, que tampoco está.
+                La reemplaza la duda real de quien no tiene cuenta de Google. */}
             <h3 className="mb-3 text-xl font-bold text-ink">
-              ❓ ¿Qué hago si no recibo el código por SMS?
+              ¿Y si no tengo cuenta de Google?
             </h3>
             <p className="text-lg text-ink-soft">
-              Primero, verificá que el número de teléfono esté bien escrito (con
-              código de área, sin el 0). Si esperaste más de 2 minutos, podés
-              pedir que te envíen otro código. Si seguís sin recibirlo, probá
-              ingresar con Google o Microsoft.
+              Si usás Gmail en el celular, ya tenés una: es la misma dirección
+              de correo. Si no, se crea gratis desde el mismo botón de ingreso,
+              en un par de minutos. Estamos sumando el ingreso con un código al
+              celular para quien prefiera no usar correo.
             </p>
           </div>
 
