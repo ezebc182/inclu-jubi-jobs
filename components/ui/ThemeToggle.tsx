@@ -11,10 +11,12 @@ export function ThemeToggle() {
     setMounted(true);
   }, []);
 
+  // Hueco del botón mientras monta. Va en `bg-paper` y no en
+  // `dark:bg-primary-700`: ese token en oscuro es un celeste claro, así que el
+  // placeholder aparecía como un recuadro brillante. `bg-paper` ya cambia con
+  // el tema por sí solo.
   if (!mounted) {
-    return (
-      <div className="min-h-[48px] w-[48px] rounded-lg bg-paper dark:bg-primary-700" />
-    );
+    return <div className="min-h-[48px] w-[48px] rounded-lg bg-paper" />;
   }
 
   return (

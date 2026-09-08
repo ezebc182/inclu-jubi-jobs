@@ -72,7 +72,7 @@ export function UserAdminActions({
                 `Rol actualizado para ${userLabel}`
               )
             }
-            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg dark:bg-primary-700"
+            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg dark:bg-surface"
           >
             {ROLE_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>
@@ -125,7 +125,7 @@ export function UserAdminActions({
             value={reason}
             onChange={(e) => setReason(e.target.value)}
             rows={3}
-            className="w-full rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:bg-primary-700"
+            className="w-full rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 dark:bg-surface"
           />
           <button
             type="button"

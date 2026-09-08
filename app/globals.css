@@ -41,6 +41,13 @@
   --ink-soft: 82 92 105;
   --rule: 227 224 216;
   --focus-ring: 27 58 92;
+
+  /* Panel de marca. Deliberadamente NO se redefine en oscuro: el fondo ya es
+     oscuro y el texto va encima, así que invertirlo rompería el contraste en
+     vez de arreglarlo. Blanco 15.79:1, texto suave 9.49:1 — ambos AAA. */
+  --panel-bg: 15 36 56;
+  --panel-ink: 255 255 255;
+  --panel-ink-soft: 184 203 221;
 }
 
 :root[data-portal="inclu"] {
@@ -72,6 +79,11 @@
   --ink-soft: 92 82 97;
   --rule: 228 221 230;
   --focus-ring: 88 51 102;
+
+  /* Ciruela profunda. Blanco 14.77:1, texto suave 8.99:1 — ambos AAA. */
+  --panel-bg: 55 30 64;
+  --panel-ink: 255 255 255;
+  --panel-ink-soft: 214 196 220;
 }
 
 /**
@@ -358,13 +370,27 @@ input[type="submit"] {
    * En oscuro el relleno de marca se aclara, así que el texto blanco de
    * los botones primarios pierde contraste. Se invierte a tinta.
    */
-  :root.dark .bg-primary-600,
-  :root.dark .bg-primary-700 {
+  /**
+   * SOLO elementos interactivos.
+   *
+   * Antes el selector era `.bg-primary-600, .bg-primary-700` a secas, y esas
+   * clases también las usa la sección de cierre de la portada. Resultado en
+   * modo oscuro: la sección entera heredaba `color: tinta` y, al pasar el
+   * mouse, `:hover` le pintaba el fondo con `--brand-700` —que en oscuro es
+   * celeste claro—. Título, párrafo y botón quedaban ilegibles de golpe:
+   * blanco sobre celeste da 1.74:1, cuando WCAG AA pide 4.5:1.
+   *
+   * Una regla pensada para botones no puede apuntar a una clase de fondo:
+   * cualquier contenedor que la use se la come. Por eso ahora exige
+   * `a`, `button` o `[role="button"]`.
+   */
+  :root.dark :is(a, button, [role="button"]).bg-primary-600,
+  :root.dark :is(a, button, [role="button"]).bg-primary-700 {
     color: rgb(14 18 24);
   }
 
-  :root.dark .bg-primary-600:hover,
-  :root.dark .bg-primary-700:hover {
+  :root.dark :is(a, button, [role="button"]).bg-primary-600:hover,
+  :root.dark :is(a, button, [role="button"]).bg-primary-700:hover {
     background-color: rgb(var(--brand-700));
   }
 
@@ -385,6 +411,31 @@ input[type="submit"] {
   /* Ancla el desplazamiento: sin esto el transform no aplica en <a>. */
   .press {
     transition: transform 80ms ease-out;
+  }
+
+  /**
+   * Panel de marca: fondo saturado con texto claro encima.
+   *
+   * Existe porque `bg-primary-700 + text-white + text-primary-100` no
+   * sobrevive al modo oscuro. Ahí los tonos de marca se aclaran para que los
+   * botones contrasten sobre fondo negro, así que un fondo `brand-700` pasa a
+   * ser celeste y el texto blanco encima queda en 1.74:1. El párrafo era peor:
+   * `primary-100` sobre `brand-900` daba 1.10:1.
+   *
+   * Estos tokens son propios del panel y no se tocan al invertir el tema: el
+   * fondo se mantiene oscuro en ambos modos y el texto siempre encima.
+   */
+  .brand-panel {
+    background-color: rgb(var(--panel-bg));
+    color: rgb(var(--panel-ink));
+  }
+
+  .brand-panel :is(h1, h2, h3) {
+    color: rgb(var(--panel-ink));
+  }
+
+  .brand-panel .panel-soft {
+    color: rgb(var(--panel-ink-soft));
   }
 
   /* Superficie de contenido. Sombra casi imperceptible: la jerarquía
