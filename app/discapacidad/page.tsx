@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function DiscapacidadPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 transition-colors">
+    <div className="mx-auto max-w-7xl px-4 py-12">
       <section className="mb-16 text-center">
         <h1 className="mb-6 text-4xl font-bold text-ink md:text-5xl">
           Trabajo inclusivo
@@ -72,7 +72,7 @@ export default function DiscapacidadPage() {
         </div>
       </section>
 
-      <section className="mb-16 rounded-lg bg-primary-50 p-8 transition-colors">
+      <section className="mb-16 rounded-lg bg-primary-50 p-8">
         <h2 className="mb-6 text-center text-3xl font-bold text-ink">
           Cómo funciona
         </h2>
@@ -122,7 +122,7 @@ export default function DiscapacidadPage() {
         <h2 className="mb-8 text-center text-3xl font-bold text-ink">
           Ley de inclusión laboral
         </h2>
-        <div className="mx-auto max-w-3xl rounded-lg border-2 border-rule bg-white p-8 transition-colors">
+        <div className="mx-auto max-w-3xl rounded-lg border border-rule bg-surface p-8">
           <p className="mb-4 text-lg text-ink-soft">
             En Argentina, la Ley 22.431 establece el sistema de protección
             integral de las personas con discapacidad.

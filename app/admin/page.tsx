@@ -54,7 +54,7 @@ function StatCard({
   hint?: string;
 }) {
   return (
-    <div className="rounded-xl border-2 border-rule bg-white p-6">
+    <div className="rounded-xl border border-rule bg-surface p-6">
       <dt className="text-base font-medium text-ink-soft">
         {label}
       </dt>
@@ -128,7 +128,7 @@ export default async function AdminDashboardPage() {
             return (
               <article
                 key={row.portal}
-                className="rounded-xl border-2 border-rule bg-white p-6"
+                className="rounded-xl border border-rule bg-surface p-6"
               >
                 <h3 className="text-2xl font-bold text-ink">
                   {config.name}

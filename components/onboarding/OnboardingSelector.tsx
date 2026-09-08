@@ -17,8 +17,8 @@ export function OnboardingSelector() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-12 transition-colors">
-      <div className="rounded-lg border-2 border-rule bg-white p-8 transition-colors">
+    <div className="mx-auto max-w-2xl px-4 py-12">
+      <div className="rounded-lg border border-rule bg-surface p-8">
         <h1 className="mb-4 text-4xl font-bold text-ink">
           ¡Bienvenido a JubiJobs!
         </h1>

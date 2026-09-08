@@ -30,8 +30,8 @@ export default async function OnboardingEmpresaPage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 transition-colors">
-      <div className="rounded-lg border-2 border-rule bg-white p-8 transition-colors">
+    <div className="mx-auto max-w-3xl px-4 py-12">
+      <div className="rounded-lg border border-rule bg-surface p-8">
         <h1 className="mb-4 text-4xl font-bold text-ink">
           Creá tu perfil de empresa
         </h1>
@@ -57,7 +57,7 @@ export default async function OnboardingEmpresaPage() {
               name="companyName"
               required
               minLength={2}
-              className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+              className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               placeholder="Supermercado Sur"
             />
           </div>
@@ -73,7 +73,7 @@ export default async function OnboardingEmpresaPage() {
               type="url"
               id="website"
               name="website"
-              className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+              className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               placeholder="https://ejemplo.com"
             />
           </div>
@@ -93,7 +93,7 @@ export default async function OnboardingEmpresaPage() {
               type="tel"
               id="whatsappNumber"
               name="whatsappNumber"
-              className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+              className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               placeholder="+54 11 1234-5678"
             />
           </div>
@@ -108,7 +108,7 @@ export default async function OnboardingEmpresaPage() {
             <select
               id="location"
               name="location"
-              className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
+              className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
             >
               <option value="">Seleccioná una provincia</option>
               {PROVINCIAS_AR.map((p) => (
@@ -134,7 +134,7 @@ export default async function OnboardingEmpresaPage() {
               name="about"
               rows={5}
               maxLength={1000}
-              className="rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+              className="rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               placeholder="Somos una empresa familiar con más de 20 años en el mercado..."
             />
           </div>

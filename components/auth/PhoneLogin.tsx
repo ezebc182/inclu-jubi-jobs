@@ -56,7 +56,7 @@ export function PhoneLogin() {
       setStep("otp");
 
       toast.info("📱 Código enviado a tu teléfono", {
-        description: `Revisá tus mensajes SMS. El código tiene 6 dígitos. Tenés ${rateLimitResult.remaining} intentos más disponibles.`,
+        description: `Revisá WhatsApp. El código tiene 6 dígitos. Tenés ${rateLimitResult.remaining} intentos más disponibles.`,
         duration: 6000,
       });
     } catch (err: any) {

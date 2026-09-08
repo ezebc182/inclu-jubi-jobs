@@ -24,7 +24,7 @@ export function ApplicationCard({
   createdAt,
 }: ApplicationCardProps) {
   return (
-    <div className="rounded-lg border-2 border-rule bg-white p-6">
+    <div className="rounded-lg border border-rule bg-surface p-6">
       <div className="mb-3 flex items-start justify-between gap-4">
         <div className="flex-1">
           <h3 className="mb-1 text-xl font-bold text-ink">{jobTitle}</h3>

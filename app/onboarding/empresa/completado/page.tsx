@@ -20,7 +20,7 @@ export default function OnboardingEmpresaCompletadoPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-primary-50 to-white px-4 transition-colors dark:from-paper dark:to-surface">
       <div className="w-full max-w-2xl">
-        <div className="rounded-xl border-2 border-rule bg-white p-12 text-center shadow-lg transition-colors">
+        <div className="rounded-xl border border-rule bg-surface p-12 text-center shadow-lg">
           <div className="mb-6 flex justify-center">
             <div className="flex h-20 w-20 items-center justify-center rounded-full bg-green-100 dark:bg-green-950">
               <svg

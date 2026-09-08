@@ -92,7 +92,7 @@ export function FontSizeControl() {
       />
 
       {/* Desktop: Always visible controls */}
-      <div className="hidden items-center gap-2 rounded-lg border-2 border-rule bg-white p-2 dark:bg-primary-700 md:flex">
+      <div className="hidden items-center gap-2 rounded-lg border border-rule bg-surface p-2 md:flex">
         <span className="text-sm font-semibold text-ink-soft">
           Texto:
         </span>
@@ -145,7 +145,7 @@ export function FontSizeControl() {
         </Button>
 
         {isOpen && (
-          <div className="absolute right-4 top-16 z-50 rounded-lg border-2 border-rule bg-white p-4 shadow-lg dark:bg-primary-700">
+          <div className="absolute right-4 top-16 z-50 rounded-lg border border-rule bg-surface p-4 shadow-lg">
             <p className="mb-3 text-sm font-semibold text-ink-soft">
               Tamaño de texto
             </p>

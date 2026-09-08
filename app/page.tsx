@@ -78,7 +78,7 @@ export default async function HomePage() {
           Asimétrico 7/5: el texto manda, la foto acompaña. Rompe la
           verticalidad centrada que hacía ver todo como un folleto. */}
       <section className="border-b border-rule bg-surface">
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-12 lg:gap-16 lg:py-24">
+        <div className="band-hero mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7 lg:pr-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl">
               {copy.heroTitle}
@@ -91,13 +91,15 @@ export default async function HomePage() {
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
                 href="/empleos"
-                className="focus-visible:outline-3 inline-flex min-h-[56px] items-center justify-center rounded-md bg-primary-600 px-8 text-lg font-semibold text-white transition-colors hover:bg-primary-700 focus:outline-none"
+                className="press inline-flex min-h-[56px] items-center justify-center rounded-md bg-primary-600 px-8 text-lg font-semibold text-white transition-colors hover:bg-primary-700"
               >
                 Ver empleos
               </Link>
+              {/* Acción secundaria: borde en vez de relleno. Una sola llamada
+                  primaria por pantalla, o ninguna manda. */}
               <Link
                 href="/empresas"
-                className="inline-flex min-h-[56px] items-center justify-center rounded-md border border-primary-600 px-8 text-lg font-semibold text-primary-700 transition-colors hover:bg-primary-50 dark:border-primary-300 dark:text-primary-200 dark:hover:bg-primary-900/40"
+                className="press inline-flex min-h-[56px] items-center justify-center rounded-md border border-primary-600 px-8 text-lg font-semibold text-primary-700 transition-colors hover:bg-primary-50 dark:border-primary-300 dark:text-primary-200 dark:hover:bg-primary-900/40"
               >
                 Publicar un empleo
               </Link>
@@ -164,14 +166,14 @@ export default async function HomePage() {
           aria-labelledby="recientes"
           className="border-b border-rule bg-paper"
         >
-          <div className="mx-auto max-w-7xl px-6 py-16">
+          <div className="band-major mx-auto max-w-7xl px-6">
             <div className="flex flex-wrap items-baseline justify-between gap-4">
               <h2 id="recientes" className="text-2xl md:text-3xl">
                 Publicados esta semana
               </h2>
               <Link
                 href="/empleos"
-                className="text-lg font-semibold text-primary-700 underline underline-offset-4 hover:text-primary-800 dark:text-primary-200"
+                className="link-text text-lg font-semibold text-primary-700 dark:text-primary-200"
               >
                 Ver los {jobCount.toLocaleString("es-AR")} avisos
               </Link>
@@ -182,7 +184,7 @@ export default async function HomePage() {
                 <li key={job.id} className="bg-surface">
                   <Link
                     href={`/empleos/${job.id}`}
-                    className="flex h-full flex-col p-6 transition-colors hover:bg-primary-50 dark:hover:bg-primary-900/20"
+                    className="interactive-surface flex h-full flex-col p-6"
                   >
                     <h3 className="font-display text-xl font-semibold">
                       {job.title}
@@ -211,7 +213,7 @@ export default async function HomePage() {
         aria-labelledby="beneficios"
         className="border-b border-rule bg-surface"
       >
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
+        <div className="band-major mx-auto max-w-7xl px-6">
           <div className="max-w-measure">
             <h2 id="beneficios" className="text-2xl md:text-3xl">
               {copy.benefitsTitle}
@@ -243,7 +245,7 @@ export default async function HomePage() {
         aria-labelledby="pasos"
         className="border-b border-rule bg-paper"
       >
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
+        <div className="band-minor mx-auto max-w-7xl px-6">
           <h2 id="pasos" className="text-2xl md:text-3xl">
             {copy.stepsTitle}
           </h2>
@@ -274,7 +276,7 @@ export default async function HomePage() {
         aria-labelledby="confianza"
         className="border-b border-rule bg-surface"
       >
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-12 lg:py-20">
+        <div className="band-minor mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-12">
           <h2 id="confianza" className="text-2xl md:text-3xl lg:col-span-4">
             {copy.trustTitle}
           </h2>
@@ -304,13 +306,13 @@ export default async function HomePage() {
 
       {/* ── Cierre ──────────────────────────────────────────── */}
       <section className="bg-primary-700 dark:bg-primary-900">
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
+        <div className="band-major mx-auto max-w-7xl px-6">
           <div className="max-w-measure">
             <h2 className="text-2xl text-white md:text-3xl">{copy.ctaTitle}</h2>
             <p className="mt-4 text-lg text-primary-100">{copy.ctaLead}</p>
             <Link
               href="/empleos"
-              className="mt-8 inline-flex min-h-[56px] items-center justify-center rounded-md bg-white px-8 text-lg font-semibold text-primary-700 transition-colors hover:bg-primary-50"
+              className="press mt-8 inline-flex min-h-[56px] items-center justify-center rounded-md bg-surface px-8 text-lg font-semibold text-primary-700 transition-colors hover:bg-primary-50"
             >
               Ver empleos disponibles
             </Link>
@@ -328,7 +330,7 @@ export default async function HomePage() {
                     href="https://inclujobs.com"
                     className="font-semibold text-white underline underline-offset-4"
                   >
-                    InclúJobs
+                    IncluJobs
                   </a>{" "}
                   cada aviso declara sus condiciones de accesibilidad antes de
                   que te postules.

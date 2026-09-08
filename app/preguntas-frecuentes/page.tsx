@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function FAQsPage() {
   return (
-    <div className="min-h-screen bg-paper py-16 transition-colors">
+    <div className="min-h-screen bg-paper py-16">
       <div className="mx-auto max-w-4xl px-4">
         <h1 className="mb-6 text-4xl font-bold text-ink md:text-5xl">
           Preguntas Frecuentes
@@ -25,7 +25,7 @@ export default function FAQsPage() {
             </h2>
 
             <div className="space-y-6">
-              <div className="rounded-xl border-2 border-rule bg-white p-8 shadow-sm transition-colors">
+              <div className="rounded-xl border border-rule bg-surface p-8 shadow-sm">
                 <h3 className="mb-3 text-2xl font-semibold text-ink">
                   ¿Un jubilado argentino puede trabajar sin perder su
                   jubilación?
@@ -151,49 +151,49 @@ export default function FAQsPage() {
                   Resumen: ¿Puedo trabajar sin perder mi jubilación?
                 </h4>
                 <div className="overflow-x-auto">
-                  <table className="min-w-full border-2 border-rule">
+                  <table className="min-w-full border border-rule">
                     <thead className="bg-primary-100 dark:bg-primary-950">
                       <tr>
-                        <th className="border-2 border-rule px-4 py-3 text-left text-lg font-semibold text-ink">
+                        <th className="border border-rule px-4 py-3 text-left text-lg font-semibold text-ink">
                           Tipo de Jubilación
                         </th>
-                        <th className="border-2 border-rule px-4 py-3 text-left text-lg font-semibold text-ink">
+                        <th className="border border-rule px-4 py-3 text-left text-lg font-semibold text-ink">
                           Relación de dependencia (privado)
                         </th>
-                        <th className="border-2 border-rule px-4 py-3 text-left text-lg font-semibold text-ink">
+                        <th className="border border-rule px-4 py-3 text-left text-lg font-semibold text-ink">
                           Relación de dependencia (público)
                         </th>
-                        <th className="border-2 border-rule px-4 py-3 text-left text-lg font-semibold text-ink">
+                        <th className="border border-rule px-4 py-3 text-left text-lg font-semibold text-ink">
                           Monotributista/Autónomo
                         </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className="bg-white">
-                        <td className="border-2 border-rule px-4 py-3 text-lg font-semibold text-ink">
+                      <tr className="bg-surface">
+                        <td className="border border-rule px-4 py-3 text-lg font-semibold text-ink">
                           Nacional (ANSES)
                         </td>
-                        <td className="border-2 border-rule px-4 py-3 text-lg text-ink-soft">
+                        <td className="border border-rule px-4 py-3 text-lg text-ink-soft">
                           ✅ Sí, sin restricciones
                         </td>
-                        <td className="border-2 border-rule px-4 py-3 text-lg text-ink-soft">
+                        <td className="border border-rule px-4 py-3 text-lg text-ink-soft">
                           ✅ Sí, sin restricciones
                         </td>
-                        <td className="border-2 border-rule px-4 py-3 text-lg text-ink-soft">
+                        <td className="border border-rule px-4 py-3 text-lg text-ink-soft">
                           ✅ Sí, sin restricciones
                         </td>
                       </tr>
                       <tr className="bg-paper">
-                        <td className="border-2 border-rule px-4 py-3 text-lg font-semibold text-ink">
+                        <td className="border border-rule px-4 py-3 text-lg font-semibold text-ink">
                           Provincial (Ej: Córdoba)
                         </td>
-                        <td className="border-2 border-rule px-4 py-3 text-lg text-ink-soft">
+                        <td className="border border-rule px-4 py-3 text-lg text-ink-soft">
                           ✅ Sí (sector privado)
                         </td>
-                        <td className="border-2 border-rule px-4 py-3 text-lg text-ink-soft">
+                        <td className="border border-rule px-4 py-3 text-lg text-ink-soft">
                           ❌ Puede suspenderse (sector público provincial)
                         </td>
-                        <td className="border-2 border-rule px-4 py-3 text-lg text-ink-soft">
+                        <td className="border border-rule px-4 py-3 text-lg text-ink-soft">
                           ✅ Sí, sin restricciones
                         </td>
                       </tr>
@@ -214,7 +214,7 @@ export default function FAQsPage() {
                 </div>
               </div>
 
-              <div className="rounded-xl border-2 border-rule bg-white p-8 shadow-sm transition-colors">
+              <div className="rounded-xl border border-rule bg-surface p-8 shadow-sm">
                 <h3 className="mb-4 text-2xl font-semibold text-ink">
                   ¿Cómo me postulo a un empleo?
                 </h3>
@@ -226,7 +226,7 @@ export default function FAQsPage() {
                 </p>
               </div>
 
-              <div className="rounded-xl border-2 border-rule bg-white p-8 shadow-sm transition-colors">
+              <div className="rounded-xl border border-rule bg-surface p-8 shadow-sm">
                 <h3 className="mb-4 text-2xl font-semibold text-ink">
                   ¿Necesito CV o LinkedIn?
                 </h3>
@@ -237,7 +237,7 @@ export default function FAQsPage() {
                 </p>
               </div>
 
-              <div className="rounded-xl border-2 border-rule bg-white p-8 shadow-sm transition-colors">
+              <div className="rounded-xl border border-rule bg-surface p-8 shadow-sm">
                 <h3 className="mb-4 text-2xl font-semibold text-ink">
                   ¿Es gratis para candidatos?
                 </h3>
@@ -247,7 +247,7 @@ export default function FAQsPage() {
                 </p>
               </div>
 
-              <div className="rounded-xl border-2 border-rule bg-white p-8 shadow-sm transition-colors">
+              <div className="rounded-xl border border-rule bg-surface p-8 shadow-sm">
                 <h3 className="mb-4 text-2xl font-semibold text-ink">
                   ¿Qué tipo de empleos hay?
                 </h3>
@@ -267,7 +267,7 @@ export default function FAQsPage() {
             </h2>
 
             <div className="space-y-6">
-              <div className="rounded-xl border-2 border-rule bg-white p-8 shadow-sm transition-colors">
+              <div className="rounded-xl border border-rule bg-surface p-8 shadow-sm">
                 <h3 className="mb-4 text-2xl font-semibold text-ink">
                   ¿Cuánto cuesta publicar empleos?
                 </h3>
@@ -276,7 +276,7 @@ export default function FAQsPage() {
                 </p>
               </div>
 
-              <div className="rounded-xl border-2 border-rule bg-white p-8 shadow-sm transition-colors">
+              <div className="rounded-xl border border-rule bg-surface p-8 shadow-sm">
                 <h3 className="mb-4 text-2xl font-semibold text-ink">
                   ¿Cuánto tarda en publicarse un empleo?
                 </h3>
@@ -285,7 +285,7 @@ export default function FAQsPage() {
                 </p>
               </div>
 
-              <div className="rounded-xl border-2 border-rule bg-white p-8 shadow-sm transition-colors">
+              <div className="rounded-xl border border-rule bg-surface p-8 shadow-sm">
                 <h3 className="mb-4 text-2xl font-semibold text-ink">
                   ¿Puedo editar o pausar un empleo?
                 </h3>
@@ -294,7 +294,7 @@ export default function FAQsPage() {
                 </p>
               </div>
 
-              <div className="rounded-xl border-2 border-rule bg-white p-8 shadow-sm transition-colors">
+              <div className="rounded-xl border border-rule bg-surface p-8 shadow-sm">
                 <h3 className="mb-4 text-2xl font-semibold text-ink">
                   ¿Cómo contacto a los candidatos?
                 </h3>
@@ -303,7 +303,7 @@ export default function FAQsPage() {
                 </p>
               </div>
 
-              <div className="rounded-xl border-2 border-rule bg-white p-8 shadow-sm transition-colors">
+              <div className="rounded-xl border border-rule bg-surface p-8 shadow-sm">
                 <h3 className="mb-4 text-2xl font-semibold text-ink">
                   ¿Tienen que ser jubilados oficialmente?
                 </h3>
@@ -313,7 +313,7 @@ export default function FAQsPage() {
                 </p>
               </div>
 
-              <div className="rounded-xl border-2 border-rule bg-white p-8 shadow-sm transition-colors">
+              <div className="rounded-xl border border-rule bg-surface p-8 shadow-sm">
                 <h3 className="mb-4 text-2xl font-semibold text-ink">
                   ¿Qué pasa con personas con discapacidad?
                 </h3>

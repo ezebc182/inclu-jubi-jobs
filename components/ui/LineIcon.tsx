@@ -16,6 +16,7 @@ type IconName =
   | "shield" // confianza
   | "accessible" // accesibilidad
   | "chat" // contacto
+  | "phone" // ingreso por SMS
   | "check";
 
 const PATHS: Record<IconName, React.ReactNode> = {
@@ -71,6 +72,16 @@ const PATHS: Record<IconName, React.ReactNode> = {
   chat: (
     <>
       <path d="M20 12.5c0 3.6-3.6 6.5-8 6.5-1 0-2-.15-2.9-.43L4 20.5l1.4-3.6A6.5 6.5 0 0 1 4 12.5C4 8.9 7.6 6 12 6s8 2.9 8 6.5Z" />
+    </>
+  ),
+  /**
+   * Celular, no el auricular de teléfono fijo: el código llega por SMS y la
+   * metáfora tiene que coincidir con el objeto que la persona tiene en la mano.
+   */
+  phone: (
+    <>
+      <rect x="6.5" y="2.5" width="11" height="19" rx="2.5" />
+      <path d="M10.5 18.5h3" />
     </>
   ),
   check: <path d="M4.5 12.5l4.5 4.5L19.5 6.5" />,

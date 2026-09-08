@@ -58,11 +58,13 @@
   --brand-900: 40 21 47;
 
   /* Terracota apagada: contrasta con la ciruela sin estridencia. */
-  --accent-50: 250 244 240;
-  --accent-100: 243 229 220;
-  --accent-500: 166 92 61;
-  --accent-600: 138 74 47;
-  --accent-700: 110 58 36;
+  /* Verde salvia: reemplaza la terracota, que sobre la ciruela oscura
+     quedaba marrón sobre marrón y los chips no se leían. */
+  --accent-50: 240 246 242;
+  --accent-100: 219 233 224;
+  --accent-500: 74 124 94;
+  --accent-600: 58 101 76;
+  --accent-700: 44 79 59;
 
   --paper: 250 249 250;
   --surface: 255 255 255;
@@ -109,6 +111,24 @@
   --brand-100: 48 30 54;
   --brand-600: 184 155 194;
   --brand-700: 212 192 220;
+
+  /* El acento también se aclara: sobre fondo oscuro el verde medio no
+     alcanza el contraste que necesita un chip informativo. */
+  --accent-50: 26 38 30;
+  --accent-100: 36 54 42;
+  --accent-500: 138 186 154;
+  --accent-600: 158 202 172;
+  --accent-700: 186 220 198;
+}
+
+/* Mismo criterio para JubiJobs en oscuro. */
+:root.dark,
+:root.dark[data-portal="jubi"] {
+  --accent-50: 26 36 30;
+  --accent-100: 36 52 42;
+  --accent-500: 142 182 156;
+  --accent-600: 162 198 174;
+  --accent-700: 188 216 198;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -125,6 +145,35 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/**
+ * Familias por portal.
+ *
+ * JubiJobs usa Fraunces en títulos e Inter en cuerpo: una serif con carácter
+ * da la autoridad institucional que esta audiencia necesita para confiar.
+ *
+ * IncluJobs usa Atkinson Hyperlegible en TODO. Es un intercambio consciente:
+ * se pierde el contraste serif/sans de la jerarquía y se gana que la I, la l y
+ * el 1 no se confundan nunca. En un portal donde parte de la audiencia tiene
+ * baja visión, la legibilidad le gana a la expresión tipográfica.
+ *
+ * La jerarquía en IncluJobs la sostienen el tamaño, el peso y el espacio —
+ * herramientas que funcionan igual con una sola familia.
+ */
+:root[data-portal="inclu"] {
+  --font-body: var(--font-hyperlegible), system-ui, sans-serif;
+  --font-heading: var(--font-hyperlegible), system-ui, sans-serif;
+  /* Atkinson tiene una x-height generosa: al mismo tamaño en px se ve más
+     grande que Inter, así que no hace falta subir la escala. */
+  --heading-tracking: -0.005em;
+}
+
+:root,
+:root[data-portal="jubi"] {
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-heading: var(--font-display), Georgia, "Times New Roman", serif;
+  --heading-tracking: -0.015em;
+}
+
 /* Escala del usuario, independiente de UserWay. */
 html.font-size-large {
   font-size: 112.5%;
@@ -137,6 +186,7 @@ html.font-size-xl {
 body {
   background-color: rgb(var(--paper));
   color: rgb(var(--ink));
+  font-family: var(--font-body);
   font-size: 18px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -147,12 +197,35 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-heading);
   color: rgb(var(--ink));
   font-weight: 600;
-  letter-spacing: -0.015em;
+  letter-spacing: var(--heading-tracking);
   line-height: 1.12;
   text-wrap: balance;
+}
+
+/**
+ * Atkinson solo trae 400 y 700: un `font-weight: 600` lo sintetiza el
+ * navegador engordando el trazo, y eso emborrona justo los detalles que hacen
+ * legible la fuente. En IncluJobs los títulos van al 700 real.
+ */
+:root[data-portal="inclu"] :is(h1, h2, h3, h4) {
+  font-weight: 700;
+}
+
+/**
+ * Cuanto más grande el título, más se nota el espacio entre letras. El tracking
+ * cerrado que le da presencia a un h1 de 48px aprieta de más un h3 de 20px.
+ */
+h1 {
+  letter-spacing: calc(var(--heading-tracking) - 0.005em);
+}
+
+h3,
+h4 {
+  letter-spacing: 0;
+  line-height: 1.25;
 }
 
 p {
@@ -197,6 +270,90 @@ input[type="submit"] {
     border-top: 1px solid rgb(var(--rule));
   }
 
+  /* ─────────────────────────────────────────────────────────────
+     Ritmo vertical
+
+     El problema que resuelven: todas las secciones eran `py-16` con
+     `border-b`. Bandas idénticas apiladas, y el ojo sin pistas de qué
+     mirar primero. La jerarquía se declara acá, no a mano en cada página.
+     ───────────────────────────────────────────────────────────── */
+
+  /* Apertura: la sección que recibe. Respira más que ninguna. */
+  .band-hero {
+    padding-block: 4rem;
+  }
+
+  /* Sección de peso: contenido que el usuario vino a buscar. */
+  .band-major {
+    padding-block: 3.5rem;
+  }
+
+  /* Sección de apoyo: contexto, pasos, confianza. Más comprimida. */
+  .band-minor {
+    padding-block: 2.75rem;
+  }
+
+  @media (min-width: 1024px) {
+    .band-hero {
+      padding-block: 6.5rem;
+    }
+    .band-major {
+      padding-block: 5rem;
+    }
+    .band-minor {
+      padding-block: 3.75rem;
+    }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Estados de interacción
+
+     Antes cada componente inventaba su hover: unos cambiaban fondo, otros
+     sombra, otros nada. Un producto se siente barato cuando dos elementos
+     que hacen lo mismo responden distinto al mouse.
+
+     Todo dura 150ms — el rango donde el cambio se percibe inmediato sin
+     parecer un parpadeo. `prefers-reduced-motion` lo anula más abajo.
+     ───────────────────────────────────────────────────────────── */
+
+  /* Superficie que se puede clickear entera: una card de aviso, un ítem
+     de lista. El borde se tiñe de marca y el fondo levanta apenas. */
+  .interactive-surface {
+    transition:
+      background-color 150ms ease-out,
+      border-color 150ms ease-out;
+  }
+
+  /* El borde va en `brand-400`, no en `brand-300`: WCAG 1.4.11 pide 3:1 para
+     un elemento no textual que transmite estado, y el 300 sobre superficie
+     blanca da 2.48:1 — el hover se veía como un cambio de fondo nada más. El
+     400 llega a 4.05:1 en JubiJobs y 4.30:1 en IncluJobs. */
+  .interactive-surface:hover {
+    background-color: rgb(var(--brand-50));
+    border-color: rgb(var(--brand-400));
+  }
+
+  /* El foco de teclado tiene que verse al menos tanto como el hover del
+     mouse: quien navega con Tab no tiene un cursor que le diga dónde está. */
+  .interactive-surface:focus-within {
+    border-color: rgb(var(--brand-600));
+  }
+
+  /* Enlace de texto. El subrayado ya está siempre visible — aparecerlo en
+     hover esconde que el texto era un enlace. Lo que cambia es el grosor. */
+  .link-text {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition:
+      text-decoration-thickness 150ms ease-out,
+      color 150ms ease-out;
+  }
+
+  .link-text:hover {
+    text-decoration-thickness: 2px;
+  }
+
   /**
    * En oscuro el relleno de marca se aclara, así que el texto blanco de
    * los botones primarios pierde contraste. Se invierte a tinta.
@@ -209,6 +366,25 @@ input[type="submit"] {
   :root.dark .bg-primary-600:hover,
   :root.dark .bg-primary-700:hover {
     background-color: rgb(var(--brand-700));
+  }
+
+  /**
+   * Feedback de presión.
+   *
+   * En touch no hay hover: entre el toque y la respuesta del servidor no pasa
+   * NADA visible, y la persona vuelve a tocar creyendo que no funcionó. Esa
+   * doble postulación después la vemos en la base.
+   *
+   * 1px de desplazamiento, no un scale. El scale reescala el texto y a 18px
+   * se nota el temblor.
+   */
+  .press:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  /* Ancla el desplazamiento: sin esto el transform no aplica en <a>. */
+  .press {
+    transition: transform 80ms ease-out;
   }
 
   /* Superficie de contenido. Sombra casi imperceptible: la jerarquía

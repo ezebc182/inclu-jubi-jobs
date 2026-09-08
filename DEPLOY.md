@@ -61,7 +61,7 @@ Después de eso te aparece "Administración" en el header.
 
 No hace falta en producción. `portalBaseUrl()` deriva la URL del dominio de
 cada portal, y **ignora esta variable si apunta a un dominio productivo** —
-así una configuración equivocada no puede hacer que InclúJobs publique
+así una configuración equivocada no puede hacer que IncluJobs publique
 canonical y sitemap apuntando a jubijobs.com.
 
 Es útil solo en previews de Vercel o en local, donde querés fijar una URL
@@ -94,7 +94,7 @@ Sin esto, el login falla en el dominio que falte.
 En cada dominio, comprobá:
 
 - [ ] `/manifest.webmanifest` devuelve el nombre y los iconos correctos
-      (`JubiJobs` + iconos `jubi-*`, `InclúJobs` + iconos `inclu-*`)
+      (`JubiJobs` + iconos `jubi-*`, `IncluJobs` + iconos `inclu-*`)
 - [ ] `/robots.txt` apunta al sitemap del dominio correcto
 - [ ] `/sitemap.xml` lista solo los avisos de ese portal
 - [ ] El logo y los colores del header son los de la marca

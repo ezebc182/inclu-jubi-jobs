@@ -67,10 +67,10 @@ export default async function EmpresaDashboardPage() {
   });
 
   return (
-    <div className="min-h-screen bg-paper transition-colors">
+    <div className="min-h-screen bg-paper">
       <div className="mx-auto max-w-7xl px-4 py-8">
         {/* Header mejorado */}
-        <header className="mb-8 rounded-xl bg-white p-8 shadow-sm transition-colors">
+        <header className="mb-8 rounded-xl bg-surface p-8 shadow-sm">
           <div className="flex items-start justify-between">
             <div>
               <h1 className="mb-2 text-4xl font-bold text-ink">
@@ -130,7 +130,7 @@ export default async function EmpresaDashboardPage() {
         </header>
 
         <Tabs.Root defaultValue="empleos" className="w-full">
-          <Tabs.List className="mb-6 flex flex-wrap gap-2 rounded-lg bg-white p-2 shadow-sm transition-colors">
+          <Tabs.List className="mb-6 flex flex-wrap gap-2 rounded-lg bg-surface p-2 shadow-sm">
             <Tabs.Trigger
               value="empleos"
               className="rounded-lg px-6 py-3 text-base font-semibold text-ink-soft transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-300 data-[state=active]:bg-primary-600 data-[state=active]:text-white dark:data-[state=active]:bg-primary-500"
@@ -162,7 +162,7 @@ export default async function EmpresaDashboardPage() {
           </Tabs.Content>
 
           <Tabs.Content value="crear">
-            <div className="rounded-xl bg-white p-8 shadow-sm transition-colors">
+            <div className="rounded-xl bg-surface p-8 shadow-sm">
               <h2 className="mb-6 text-2xl font-bold text-ink">
                 Publicar un nuevo empleo
               </h2>
@@ -175,7 +175,7 @@ export default async function EmpresaDashboardPage() {
           </Tabs.Content>
 
           <Tabs.Content value="perfil">
-            <div className="rounded-xl bg-white p-8 shadow-sm transition-colors">
+            <div className="rounded-xl bg-surface p-8 shadow-sm">
               <h2 className="mb-6 text-2xl font-bold text-ink">
                 Perfil de {company.name}
               </h2>
@@ -227,7 +227,7 @@ export default async function EmpresaDashboardPage() {
                   </div>
                 )}
 
-                <div className="mt-4 rounded-lg border-2 border-rule bg-paper p-4 transition-colors">
+                <div className="mt-4 rounded-lg border border-rule bg-paper p-4">
                   <p className="text-sm text-ink-soft">
                     💡 Para editar el perfil de tu empresa, contactanos a través
                     de nuestro email de soporte.

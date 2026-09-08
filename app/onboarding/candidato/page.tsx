@@ -13,8 +13,8 @@ export default async function OnboardingCandidatoPage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 transition-colors">
-      <div className="rounded-lg border-2 border-rule bg-white p-8 transition-colors">
+    <div className="mx-auto max-w-3xl px-4 py-12">
+      <div className="rounded-lg border border-rule bg-surface p-8">
         <h1 className="mb-4 text-4xl font-bold text-ink">
           Completá tu perfil
         </h1>
@@ -40,7 +40,7 @@ export default async function OnboardingCandidatoPage() {
               name="name"
               required
               defaultValue={session.user.name || ""}
-              className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
+              className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
             />
           </div>
 
@@ -55,7 +55,7 @@ export default async function OnboardingCandidatoPage() {
               type="tel"
               id="phone"
               name="phone"
-              className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+              className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               placeholder="11-1234-5678"
             />
           </div>
@@ -72,7 +72,7 @@ export default async function OnboardingCandidatoPage() {
               id="location"
               name="location"
               required
-              className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
+              className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
             >
               <option value="">Seleccioná tu provincia</option>
               {[
@@ -120,7 +120,7 @@ export default async function OnboardingCandidatoPage() {
               name="birthYear"
               min="1920"
               max="2010"
-              className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+              className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               placeholder="1960"
             />
           </div>
@@ -135,7 +135,7 @@ export default async function OnboardingCandidatoPage() {
                 id="isDisabled"
                 name="isDisabled"
                 value="true"
-                className="h-6 w-6 rounded border-2 border-rule focus:ring-2 focus:ring-primary-300"
+                className="h-6 w-6 rounded border border-rule focus:ring-2 focus:ring-primary-300"
               />
               <label
                 htmlFor="isDisabled"
@@ -155,7 +155,7 @@ export default async function OnboardingCandidatoPage() {
               <select
                 id="disabilityType"
                 name="disabilityType"
-                className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
+                className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
               >
                 {DISABILITY_TYPES.map((d) => (
                   <option key={d.value} value={d.value}>
@@ -177,7 +177,7 @@ export default async function OnboardingCandidatoPage() {
                 name="accessibilityNeeds"
                 rows={3}
                 maxLength={500}
-                className="rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+                className="rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
                 placeholder="Ej: Necesito rampas de acceso, baños adaptados..."
               />
             </div>
@@ -207,7 +207,7 @@ export default async function OnboardingCandidatoPage() {
               minLength={10}
               maxLength={1000}
               rows={4}
-              className="rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+              className="rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               placeholder="Ejemplo: Trabajé 30 años en el sector bancario..."
             />
           </div>
@@ -230,7 +230,7 @@ export default async function OnboardingCandidatoPage() {
               minLength={10}
               maxLength={1000}
               rows={4}
-              className="rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+              className="rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               placeholder="Ejemplo: Sé usar computadoras, atender teléfonos..."
             />
           </div>
@@ -253,7 +253,7 @@ export default async function OnboardingCandidatoPage() {
               minLength={10}
               maxLength={1000}
               rows={4}
-              className="rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+              className="rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
               placeholder="Ejemplo: Me gustaría trabajar part-time atendiendo al público..."
             />
           </div>

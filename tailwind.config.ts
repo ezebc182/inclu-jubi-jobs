@@ -13,7 +13,7 @@ const config: Config = {
         /**
          * `primary` sale de las CSS variables que define globals.css según
          * `<html data-portal>`. Así el MISMO componente se ve azul en
-         * JubiJobs y violeta en InclúJobs, sin duplicar una sola clase.
+         * JubiJobs y violeta en IncluJobs, sin duplicar una sola clase.
          *
          * El formato `rgb(var(--x) / <alpha-value>)` es lo que permite que
          * sigan funcionando los modificadores de opacidad (bg-primary-600/20).
@@ -70,9 +70,18 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        /** Fraunces: serif con carácter para títulos. */
-        display: ["var(--font-display)", "Georgia", "serif"],
+        /**
+         * Las dos apuntan a las variables que globals.css redefine según
+         * `<html data-portal>`. Así `font-display` da Fraunces en JubiJobs y
+         * Atkinson Hyperlegible en IncluJobs, sin tocar los 12 lugares que
+         * ya usan la clase.
+         *
+         * Antes `display` apuntaba a `--font-display` (Fraunces) directo, y
+         * cada `font-display` en un componente forzaba la serif también en
+         * IncluJobs — anulando ahí la fuente elegida por legibilidad.
+         */
+        sans: ["var(--font-body)", "system-ui", "sans-serif"],
+        display: ["var(--font-heading)", "Georgia", "serif"],
       },
       fontSize: {
         /**

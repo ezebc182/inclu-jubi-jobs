@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function AyudaPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 transition-colors">
+    <div className="mx-auto max-w-7xl px-4 py-12">
       <h1 className="mb-6 text-center text-4xl font-bold text-ink">
         Centro de Ayuda
       </h1>
@@ -24,7 +24,7 @@ export default function AyudaPage() {
         </h2>
 
         <div className="space-y-8">
-          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors">
+          <div className="rounded-lg bg-surface p-6 shadow-sm">
             <h3 className="mb-4 flex items-center gap-3 text-2xl font-bold text-ink">
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-xl text-white dark:bg-primary-500">
                 1
@@ -57,7 +57,7 @@ export default function AyudaPage() {
             </div>
           </div>
 
-          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors">
+          <div className="rounded-lg bg-surface p-6 shadow-sm">
             <h3 className="mb-4 flex items-center gap-3 text-2xl font-bold text-ink">
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-xl text-white dark:bg-primary-500">
                 2
@@ -94,7 +94,7 @@ export default function AyudaPage() {
             </div>
           </div>
 
-          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors">
+          <div className="rounded-lg bg-surface p-6 shadow-sm">
             <h3 className="mb-4 flex items-center gap-3 text-2xl font-bold text-ink">
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-xl text-white dark:bg-primary-500">
                 3
@@ -128,7 +128,7 @@ export default function AyudaPage() {
             </div>
           </div>
 
-          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors">
+          <div className="rounded-lg bg-surface p-6 shadow-sm">
             <h3 className="mb-4 flex items-center gap-3 text-2xl font-bold text-ink">
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-xl text-white dark:bg-primary-500">
                 4
@@ -159,7 +159,7 @@ export default function AyudaPage() {
             </div>
           </div>
 
-          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors">
+          <div className="rounded-lg bg-surface p-6 shadow-sm">
             <h3 className="mb-4 flex items-center gap-3 text-2xl font-bold text-ink">
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-xl text-white dark:bg-primary-500">
                 5
@@ -193,13 +193,13 @@ export default function AyudaPage() {
         </p>
 
         <div className="space-y-6">
-          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors">
+          <div className="rounded-lg bg-surface p-6 shadow-sm">
             <h3 className="mb-4 text-2xl font-bold text-blue-900 dark:text-blue-200">
               Teclas principales
             </h3>
             <div className="space-y-4">
               <div className="flex items-start gap-4">
-                <kbd className="min-w-[100px] rounded-lg border-2 border-rule bg-paper px-4 py-2 text-center text-lg font-bold text-ink shadow-sm">
+                <kbd className="min-w-[100px] rounded-lg border border-rule bg-paper px-4 py-2 text-center text-lg font-bold text-ink shadow-sm">
                   Tab
                 </kbd>
                 <p className="flex-1 text-lg text-ink-soft">
@@ -208,7 +208,7 @@ export default function AyudaPage() {
               </div>
 
               <div className="flex items-start gap-4">
-                <kbd className="min-w-[100px] rounded-lg border-2 border-rule bg-paper px-4 py-2 text-center text-lg font-bold text-ink shadow-sm">
+                <kbd className="min-w-[100px] rounded-lg border border-rule bg-paper px-4 py-2 text-center text-lg font-bold text-ink shadow-sm">
                   Shift + Tab
                 </kbd>
                 <p className="flex-1 text-lg text-ink-soft">
@@ -217,7 +217,7 @@ export default function AyudaPage() {
               </div>
 
               <div className="flex items-start gap-4">
-                <kbd className="min-w-[100px] rounded-lg border-2 border-rule bg-paper px-4 py-2 text-center text-lg font-bold text-ink shadow-sm">
+                <kbd className="min-w-[100px] rounded-lg border border-rule bg-paper px-4 py-2 text-center text-lg font-bold text-ink shadow-sm">
                   Enter
                 </kbd>
                 <p className="flex-1 text-lg text-ink-soft">
@@ -226,7 +226,7 @@ export default function AyudaPage() {
               </div>
 
               <div className="flex items-start gap-4">
-                <kbd className="min-w-[100px] rounded-lg border-2 border-rule bg-paper px-4 py-2 text-center text-lg font-bold text-ink shadow-sm">
+                <kbd className="min-w-[100px] rounded-lg border border-rule bg-paper px-4 py-2 text-center text-lg font-bold text-ink shadow-sm">
                   Espacio
                 </kbd>
                 <p className="flex-1 text-lg text-ink-soft">
@@ -235,7 +235,7 @@ export default function AyudaPage() {
               </div>
 
               <div className="flex items-start gap-4">
-                <kbd className="min-w-[100px] rounded-lg border-2 border-rule bg-paper px-4 py-2 text-center text-lg font-bold text-ink shadow-sm">
+                <kbd className="min-w-[100px] rounded-lg border border-rule bg-paper px-4 py-2 text-center text-lg font-bold text-ink shadow-sm">
                   Esc
                 </kbd>
                 <p className="flex-1 text-lg text-ink-soft">
@@ -244,7 +244,7 @@ export default function AyudaPage() {
               </div>
 
               <div className="flex items-start gap-4">
-                <kbd className="min-w-[100px] rounded-lg border-2 border-rule bg-paper px-4 py-2 text-center text-lg font-bold text-ink shadow-sm">
+                <kbd className="min-w-[100px] rounded-lg border border-rule bg-paper px-4 py-2 text-center text-lg font-bold text-ink shadow-sm">
                   ↑ ↓
                 </kbd>
                 <p className="flex-1 text-lg text-ink-soft">
@@ -254,7 +254,7 @@ export default function AyudaPage() {
             </div>
           </div>
 
-          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors">
+          <div className="rounded-lg bg-surface p-6 shadow-sm">
             <h3 className="mb-4 text-2xl font-bold text-blue-900 dark:text-blue-200">
               Indicador de foco
             </h3>
@@ -270,13 +270,13 @@ export default function AyudaPage() {
             </div>
           </div>
 
-          <div className="rounded-lg bg-white p-6 shadow-sm transition-colors">
+          <div className="rounded-lg bg-surface p-6 shadow-sm">
             <h3 className="mb-4 text-2xl font-bold text-blue-900 dark:text-blue-200">
               Saltar al contenido principal
             </h3>
             <p className="mb-4 text-lg text-ink-soft">
               Al cargar cualquier página, presioná{" "}
-              <kbd className="rounded border-2 border-rule bg-paper px-2 py-1 font-mono">
+              <kbd className="rounded border border-rule bg-paper px-2 py-1 font-mono">
                 Tab
               </kbd>{" "}
               una vez y vas a ver un enlace especial:
@@ -288,7 +288,7 @@ export default function AyudaPage() {
             </div>
             <p className="mt-4 text-lg text-ink-soft">
               Si presionás{" "}
-              <kbd className="rounded border-2 border-rule bg-paper px-2 py-1 font-mono">
+              <kbd className="rounded border border-rule bg-paper px-2 py-1 font-mono">
                 Enter
               </kbd>
               , vas directo al contenido sin tener que pasar por todos los
@@ -299,13 +299,13 @@ export default function AyudaPage() {
       </section>
 
       {/* Sección 3: Herramientas de Accesibilidad */}
-      <section className="mb-16 rounded-xl border-2 border-rule bg-white p-8 transition-colors">
+      <section className="mb-16 rounded-xl border border-rule bg-surface p-8">
         <h2 className="mb-8 text-3xl font-bold text-ink">
           3. Herramientas de accesibilidad
         </h2>
 
         <div className="space-y-8">
-          <div className="rounded-lg bg-paper p-6 transition-colors">
+          <div className="rounded-lg bg-paper p-6">
             <h3 className="mb-4 text-2xl font-bold text-ink">
               Ajustar el tamaño del texto
             </h3>
@@ -340,7 +340,7 @@ export default function AyudaPage() {
             </div>
           </div>
 
-          <div className="rounded-lg bg-paper p-6 transition-colors">
+          <div className="rounded-lg bg-paper p-6">
             <h3 className="mb-4 text-2xl font-bold text-ink">
               Cambiar entre modo claro y oscuro
             </h3>
@@ -367,7 +367,7 @@ export default function AyudaPage() {
             </div>
           </div>
 
-          <div className="rounded-lg bg-paper p-6 transition-colors">
+          <div className="rounded-lg bg-paper p-6">
             <h3 className="mb-4 text-2xl font-bold text-ink">
               Navegación por teclado
             </h3>
@@ -398,13 +398,13 @@ export default function AyudaPage() {
       </section>
 
       {/* Sección 4: Preguntas Frecuentes */}
-      <section className="mb-16 rounded-xl border-2 border-rule bg-white p-8 transition-colors">
+      <section className="mb-16 rounded-xl border border-rule bg-surface p-8">
         <h2 className="mb-8 text-3xl font-bold text-ink">
           4. Preguntas frecuentes
         </h2>
 
         <div className="space-y-6">
-          <div className="rounded-lg border-2 border-rule bg-paper p-6 transition-colors">
+          <div className="rounded-lg border border-rule bg-paper p-6">
             <h3 className="mb-3 text-xl font-bold text-ink">
               ❓ ¿Es gratis usar JubiJobs?
             </h3>
@@ -415,7 +415,7 @@ export default function AyudaPage() {
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-rule bg-paper p-6 transition-colors">
+          <div className="rounded-lg border border-rule bg-paper p-6">
             <h3 className="mb-3 text-xl font-bold text-ink">
               ❓ ¿Por qué no necesito subir un CV?
             </h3>
@@ -426,7 +426,7 @@ export default function AyudaPage() {
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-rule bg-paper p-6 transition-colors">
+          <div className="rounded-lg border border-rule bg-paper p-6">
             <h3 className="mb-3 text-xl font-bold text-ink">
               ❓ ¿Cuánto tiempo tarda en responder una empresa?
             </h3>
@@ -437,7 +437,7 @@ export default function AyudaPage() {
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-rule bg-paper p-6 transition-colors">
+          <div className="rounded-lg border border-rule bg-paper p-6">
             <h3 className="mb-3 text-xl font-bold text-ink">
               ❓ ¿Puedo modificar mi perfil después de crearlo?
             </h3>
@@ -447,7 +447,7 @@ export default function AyudaPage() {
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-rule bg-paper p-6 transition-colors">
+          <div className="rounded-lg border border-rule bg-paper p-6">
             <h3 className="mb-3 text-xl font-bold text-ink">
               ❓ ¿Qué hago si no recibo el código por SMS?
             </h3>
@@ -459,7 +459,7 @@ export default function AyudaPage() {
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-rule bg-paper p-6 transition-colors">
+          <div className="rounded-lg border border-rule bg-paper p-6">
             <h3 className="mb-3 text-xl font-bold text-ink">
               ❓ ¿Mis datos están seguros?
             </h3>
@@ -470,7 +470,7 @@ export default function AyudaPage() {
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-rule bg-paper p-6 transition-colors">
+          <div className="rounded-lg border border-rule bg-paper p-6">
             <h3 className="mb-3 text-xl font-bold text-ink">
               ❓ ¿Hay un límite de edad para usar JubiJobs?
             </h3>
@@ -490,7 +490,7 @@ export default function AyudaPage() {
         </h2>
 
         <div className="space-y-6">
-          <div className="rounded-lg border-2 border-yellow-300 bg-white p-6 transition-colors dark:border-yellow-700">
+          <div className="rounded-lg border-2 border-yellow-300 bg-surface p-6 transition-colors dark:border-yellow-700">
             <h3 className="mb-3 text-xl font-bold text-ink">
               🔧 No puedo ver el botón "Postularme"
             </h3>
@@ -510,7 +510,7 @@ export default function AyudaPage() {
             </ul>
           </div>
 
-          <div className="rounded-lg border-2 border-yellow-300 bg-white p-6 transition-colors dark:border-yellow-700">
+          <div className="rounded-lg border-2 border-yellow-300 bg-surface p-6 transition-colors dark:border-yellow-700">
             <h3 className="mb-3 text-xl font-bold text-ink">
               🔧 Las letras se ven muy chicas
             </h3>
@@ -530,7 +530,7 @@ export default function AyudaPage() {
             </ul>
           </div>
 
-          <div className="rounded-lg border-2 border-yellow-300 bg-white p-6 transition-colors dark:border-yellow-700">
+          <div className="rounded-lg border-2 border-yellow-300 bg-surface p-6 transition-colors dark:border-yellow-700">
             <h3 className="mb-3 text-xl font-bold text-ink">
               🔧 No encuentro el menú en el celular
             </h3>
@@ -549,7 +549,7 @@ export default function AyudaPage() {
             </ul>
           </div>
 
-          <div className="rounded-lg border-2 border-yellow-300 bg-white p-6 transition-colors dark:border-yellow-700">
+          <div className="rounded-lg border-2 border-yellow-300 bg-surface p-6 transition-colors dark:border-yellow-700">
             <h3 className="mb-3 text-xl font-bold text-ink">
               🔧 La página se ve rara o no carga bien
             </h3>
@@ -592,7 +592,7 @@ export default function AyudaPage() {
           </a>
           <Link
             href="/accesibilidad"
-            className="inline-flex min-h-[56px] items-center justify-center gap-3 rounded-lg border-2 border-primary-600 bg-white px-8 py-4 text-lg font-semibold text-primary-600 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:border-primary-400 dark:text-primary-400"
+            className="inline-flex min-h-[56px] items-center justify-center gap-3 rounded-lg border-2 border-primary-600 bg-surface px-8 py-4 text-lg font-semibold text-primary-600 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:border-primary-400 dark:text-primary-400"
           >
             Ver compromiso de accesibilidad
           </Link>

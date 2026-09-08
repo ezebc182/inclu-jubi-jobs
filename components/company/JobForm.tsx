@@ -20,7 +20,7 @@ const PORTAL_OPTIONS: Array<{
   },
   {
     value: "INCLU",
-    label: "InclúJobs",
+    label: "IncluJobs",
     hint: "Personas con discapacidad. Requiere declarar las condiciones de accesibilidad del puesto.",
   },
 ];
@@ -137,7 +137,7 @@ export function JobForm() {
                 type="checkbox"
                 checked={portals.includes(option.value)}
                 onChange={() => togglePortal(option.value)}
-                className="mt-1 h-6 w-6 rounded border-2 border-rule text-primary-600 focus:ring-4 focus:ring-primary-300"
+                className="mt-1 h-6 w-6 rounded border border-rule text-primary-600 focus:ring-4 focus:ring-primary-300"
               />
               <span>
                 <span className="block text-lg font-semibold text-ink">
@@ -167,7 +167,7 @@ export function JobForm() {
           required
           minLength={5}
           maxLength={100}
-          className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+          className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
           placeholder="Ej: Administrativo part-time"
         />
       </div>
@@ -187,7 +187,7 @@ export function JobForm() {
           minLength={20}
           maxLength={3000}
           rows={6}
-          className="rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+          className="rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
           placeholder="Describí las tareas, requisitos y cualquier información relevante..."
         />
       </div>
@@ -205,7 +205,7 @@ export function JobForm() {
             id="province"
             name="province"
             required
-            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
+            className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
           >
             <option value="">Seleccioná tu provincia</option>
             {PROVINCIAS_AR.map((p) => (
@@ -227,7 +227,7 @@ export function JobForm() {
             type="text"
             id="city"
             name="city"
-            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+            className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
             placeholder="Ej: Córdoba Capital"
           />
         </div>
@@ -246,7 +246,7 @@ export function JobForm() {
             id="modality"
             name="modality"
             required
-            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
+            className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
           >
             <option value="">Seleccioná modalidad</option>
             {MODALITIES.map((m) => (
@@ -269,7 +269,7 @@ export function JobForm() {
             id="schedule"
             name="schedule"
             required
-            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
+            className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
           >
             <option value="">Seleccioná jornada</option>
             {SCHEDULES.map((s) => (
@@ -295,7 +295,7 @@ export function JobForm() {
             name="salaryArsMin"
             min="0"
             step="1000"
-            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+            className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
             placeholder="250000"
           />
         </div>
@@ -313,7 +313,7 @@ export function JobForm() {
             name="salaryArsMax"
             min="0"
             step="1000"
-            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+            className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
             placeholder="350000"
           />
         </div>
@@ -334,7 +334,7 @@ export function JobForm() {
         </legend>
         <p className="mb-4 text-base text-ink-soft">
           {publishesToInclu
-            ? "Publicás en InclúJobs, así que necesitamos al menos un dato acá. El candidato lo lee antes de postularse: sin esta información no puede saber si el puesto le sirve."
+            ? "Publicás en IncluJobs, así que necesitamos al menos un dato acá. El candidato lo lee antes de postularse: sin esta información no puede saber si el puesto le sirve."
             : "Opcional, pero suma: ayuda a que más candidatos se animen a postularse."}
         </p>
 
@@ -360,7 +360,7 @@ export function JobForm() {
           ).map((item) => (
             <label
               key={item.key}
-              className="flex cursor-pointer items-start gap-3 rounded-lg p-2 hover:bg-white/60/60"
+              className="flex cursor-pointer items-start gap-3 rounded-lg p-2 hover:bg-paper"
             >
               <input
                 type="checkbox"
@@ -371,7 +371,7 @@ export function JobForm() {
                     [item.key]: e.target.checked,
                   }))
                 }
-                className="mt-1 h-6 w-6 rounded border-2 border-rule text-primary-600 focus:ring-4 focus:ring-primary-300"
+                className="mt-1 h-6 w-6 rounded border border-rule text-primary-600 focus:ring-4 focus:ring-primary-300"
               />
               <span>
                 <span className="block text-lg font-semibold text-ink">
@@ -397,7 +397,7 @@ export function JobForm() {
             name="accessibilityNotes"
             rows={3}
             maxLength={1000}
-            className="rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+            className="rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
             placeholder="Ej: la oficina está en planta baja, tenemos lector de pantalla instalado y el equipo maneja lengua de señas básica."
           />
         </div>
@@ -422,7 +422,7 @@ export function JobForm() {
                 handleAddTag();
               }
             }}
-            className="min-h-[48px] flex-1 rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+            className="min-h-[48px] flex-1 rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
             placeholder="Ej: Atención al cliente"
             disabled={tags.length >= 10}
           />

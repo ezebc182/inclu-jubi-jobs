@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Atkinson_Hyperlegible, Fraunces, Inter } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
 import { RootClientWrapper } from "@/components/layout/RootClientWrapper";
@@ -31,6 +31,27 @@ const display = Fraunces({
   weight: "variable",
   display: "swap",
   variable: "--font-display",
+});
+
+/**
+ * Atkinson Hyperlegible — solo IncluJobs.
+ *
+ * No es una elección estética, es la razón por la que existe la fuente. La
+ * diseñó el Braille Institute desambiguando las formas que se confunden a baja
+ * visión: la I mayúscula, la l minúscula y el 1; la O y el 0; la b y la d.
+ *
+ * Para un portal donde parte de la audiencia tiene discapacidad visual, eso
+ * cambia la tasa de error de lectura real — no es un gesto de marca.
+ *
+ * Se carga siempre y se aplica por `data-portal` en globals.css. Un `<link>`
+ * condicional por portal obligaría a mover la carga de fuentes al cliente y
+ * perderíamos el preload que hace next/font.
+ */
+const hyperlegible = Atkinson_Hyperlegible({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+  variable: "--font-hyperlegible",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -106,7 +127,7 @@ export default async function RootLayout({
       lang="es-AR"
       data-portal={portal.dataAttr}
       suppressHydrationWarning
-      className={`${inter.variable} ${display.variable}`}
+      className={`${inter.variable} ${display.variable} ${hyperlegible.variable}`}
     >
       <head>
         {/* Solo la escala tipográfica: el tema lo maneja next-themes, que
@@ -124,7 +145,11 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
+      {/* Sin `inter.className`: esa clase fija `font-family: Inter` en el body
+          y le ganaba a `--font-body`, dejando a IncluJobs con Inter en vez de
+          Atkinson. La familia la resuelve globals.css por `data-portal`; acá
+          solo declaramos las variables (en el <html>, arriba). */}
+      <body>
         <RootClientWrapper
           session={session}
           brand={portal.dataAttr}

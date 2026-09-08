@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function DeclaracionAccesibilidadPage() {
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12 transition-colors">
+    <div className="mx-auto max-w-5xl px-4 py-12">
       <h1 className="mb-6 text-center text-4xl font-bold text-ink">
         Declaración de Accesibilidad
       </h1>
@@ -44,7 +44,7 @@ export default function DeclaracionAccesibilidadPage() {
       </section>
 
       {/* Sección 2: Estándares de Cumplimiento */}
-      <section className="mb-16 rounded-xl border-2 border-rule bg-white p-8 transition-colors">
+      <section className="mb-16 rounded-xl border border-rule bg-surface p-8">
         <h2 className="mb-6 text-3xl font-bold text-ink">
           Estándares de cumplimiento
         </h2>
@@ -81,7 +81,7 @@ export default function DeclaracionAccesibilidadPage() {
       </section>
 
       {/* Sección 3: Características de Accesibilidad */}
-      <section className="mb-16 rounded-xl border-2 border-rule bg-white p-8 transition-colors">
+      <section className="mb-16 rounded-xl border border-rule bg-surface p-8">
         <h2 className="mb-8 text-3xl font-bold text-ink">
           Características de accesibilidad implementadas
         </h2>
@@ -395,7 +395,7 @@ export default function DeclaracionAccesibilidadPage() {
       </section>
 
       {/* Sección 4: Tecnologías Asistivas */}
-      <section className="mb-16 rounded-xl border-2 border-rule bg-white p-8 transition-colors">
+      <section className="mb-16 rounded-xl border border-rule bg-surface p-8">
         <h2 className="mb-6 text-3xl font-bold text-ink">
           Compatibilidad con tecnologías asistivas
         </h2>
@@ -507,14 +507,14 @@ export default function DeclaracionAccesibilidadPage() {
       </section>
 
       {/* Sección 7: Recursos */}
-      <section className="rounded-xl border-2 border-rule bg-white p-8 transition-colors">
+      <section className="rounded-xl border border-rule bg-surface p-8">
         <h2 className="mb-6 text-3xl font-bold text-ink">
           Recursos de ayuda
         </h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <Link
             href="/ayuda"
-            className="group rounded-lg border-2 border-rule bg-paper p-6 transition-all hover:border-primary-500 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-primary-300 dark:hover:border-primary-400"
+            className="group rounded-lg border border-rule bg-paper p-6 transition-all hover:border-primary-500 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-primary-300 dark:hover:border-primary-400"
           >
             <h3 className="mb-2 text-xl font-bold text-ink group-hover:text-primary-600 dark:group-hover:text-primary-400">
               📚 Centro de Ayuda
@@ -526,7 +526,7 @@ export default function DeclaracionAccesibilidadPage() {
 
           <Link
             href="/como-funciona"
-            className="group rounded-lg border-2 border-rule bg-paper p-6 transition-all hover:border-primary-500 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-primary-300 dark:hover:border-primary-400"
+            className="group rounded-lg border border-rule bg-paper p-6 transition-all hover:border-primary-500 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-primary-300 dark:hover:border-primary-400"
           >
             <h3 className="mb-2 text-xl font-bold text-ink group-hover:text-primary-600 dark:group-hover:text-primary-400">
               💡 Cómo Funciona

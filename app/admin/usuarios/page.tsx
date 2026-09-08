@@ -72,7 +72,7 @@ export default async function AdminUsuariosPage({
             name="q"
             type="search"
             defaultValue={params.q ?? ""}
-            className="min-h-[48px] w-full rounded-lg border-2 border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
+            className="min-h-[48px] w-full rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
           />
         </div>
 
@@ -87,11 +87,11 @@ export default async function AdminUsuariosPage({
             id="portal"
             name="portal"
             defaultValue={params.portal ?? ""}
-            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg"
+            className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg"
           >
             <option value="">Todos</option>
             <option value="JUBI">JubiJobs</option>
-            <option value="INCLU">InclúJobs</option>
+            <option value="INCLU">IncluJobs</option>
           </select>
         </div>
 
@@ -106,7 +106,7 @@ export default async function AdminUsuariosPage({
             id="rol"
             name="rol"
             defaultValue={params.rol ?? ""}
-            className="min-h-[48px] rounded-lg border-2 border-rule px-4 py-3 text-lg"
+            className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg"
           >
             <option value="">Todos</option>
             <option value="CANDIDATE">Candidatos</option>
@@ -140,7 +140,7 @@ export default async function AdminUsuariosPage({
             {users.map((user) => (
               <li
                 key={user.id}
-                className="rounded-xl border-2 border-rule bg-white p-6"
+                className="rounded-xl border border-rule bg-surface p-6"
               >
                 <div className="mb-3 flex flex-wrap items-start justify-between gap-3">
                   <div>
