@@ -186,15 +186,6 @@ html {
   --heading-tracking: -0.015em;
 }
 
-/* Escala del usuario, independiente de UserWay. */
-html.font-size-large {
-  font-size: 112.5%;
-}
-
-html.font-size-xl {
-  font-size: 125%;
-}
-
 body {
   background-color: rgb(var(--paper));
   color: rgb(var(--ink));

@@ -129,22 +129,6 @@ export default async function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${display.variable} ${hyperlegible.variable}`}
     >
-      <head>
-        {/* Solo la escala tipográfica: el tema lo maneja next-themes, que
-            inyecta su propio script anti-parpadeo. Aplicar `dark` acá
-            también dejaba `light dark` a la vez en el <html> y rompía el
-            modo oscuro entero. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                var f = localStorage.getItem('font-size');
-                if (f) document.documentElement.classList.add('font-size-' + f);
-              } catch (e) {}
-            `,
-          }}
-        />
-      </head>
       {/* Sin `inter.className`: esa clase fija `font-family: Inter` en el body
           y le ganaba a `--font-body`, dejando a IncluJobs con Inter en vez de
           Atkinson. La familia la resuelve globals.css por `data-portal`; acá
