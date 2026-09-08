@@ -17,30 +17,53 @@ import { formatCurrency } from "@/lib/constants";
  * convence a nadie. Estos números salen de la base: si hay diez avisos,
  * dice diez.
  */
+type Snapshot = {
+  jobCount: number;
+  companyCount: number;
+  latest: Array<{
+    id: string;
+    title: string;
+    province: string;
+    city: string | null;
+    salaryArsMin: number | null;
+    company: { name: string };
+  }>;
+};
+
+const EMPTY_SNAPSHOT: Snapshot = { jobCount: 0, companyCount: 0, latest: [] };
+
 async function loadSnapshot(
   portal: Awaited<ReturnType<typeof getCurrentPortal>>
-) {
+): Promise<Snapshot> {
   const where = publicJobFilter(portal);
 
-  const [jobCount, companyCount, latest] = await Promise.all([
-    prisma.job.count({ where }),
-    prisma.company.count({ where: { jobs: { some: where } } }),
-    prisma.job.findMany({
-      where,
-      select: {
-        id: true,
-        title: true,
-        province: true,
-        city: true,
-        salaryArsMin: true,
-        company: { select: { name: true } },
-      },
-      orderBy: { createdAt: "desc" },
-      take: 3,
-    }),
-  ]);
+  try {
+    const [jobCount, companyCount, latest] = await Promise.all([
+      prisma.job.count({ where }),
+      prisma.company.count({ where: { jobs: { some: where } } }),
+      prisma.job.findMany({
+        where,
+        select: {
+          id: true,
+          title: true,
+          province: true,
+          city: true,
+          salaryArsMin: true,
+          company: { select: { name: true } },
+        },
+        orderBy: { createdAt: "desc" },
+        take: 3,
+      }),
+    ]);
 
-  return { jobCount, companyCount, latest };
+    return { jobCount, companyCount, latest };
+  } catch (error) {
+    // La portada es la puerta de entrada: si la base no responde debe
+    // seguir cargando y dejar entrar a la gente, no devolver un 500.
+    // Los bloques de cifras y avisos se ocultan solos cuando vienen en 0.
+    console.error("[home] No se pudo leer el estado de los avisos:", error);
+    return EMPTY_SNAPSHOT;
+  }
 }
 
 export default async function HomePage() {

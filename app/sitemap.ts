@@ -33,12 +33,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const portal = await getCurrentPortal();
   const baseUrl = portalBaseUrl(portal);
 
-  const jobs = await prisma.job.findMany({
-    where: publicJobFilter(portal),
-    select: { id: true, updatedAt: true },
-    orderBy: { createdAt: "desc" },
-    take: 5000,
-  });
+  // Si la base no responde igual servimos el sitemap con las páginas
+  // estáticas: un sitemap incompleto es mucho mejor que un 500, que le
+  // dice al buscador que el sitio está roto.
+  let jobs: Array<{ id: string; updatedAt: Date }> = [];
+  try {
+    jobs = await prisma.job.findMany({
+      where: publicJobFilter(portal),
+      select: { id: true, updatedAt: true },
+      orderBy: { createdAt: "desc" },
+      take: 5000,
+    });
+  } catch (error) {
+    console.error("[sitemap] No se pudieron listar los avisos:", error);
+  }
 
   return [
     ...STATIC_PATHS.map((entry) => ({
