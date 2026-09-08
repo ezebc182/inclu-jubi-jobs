@@ -106,7 +106,7 @@ export function SavedSearches({
   };
 
   return (
-    <div className="rounded-lg border-2 border-rule bg-white p-6 transition-colors">
+    <div className="rounded-lg border border-rule bg-surface p-6">
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-2xl font-bold text-ink">
           Búsquedas guardadas
@@ -138,7 +138,7 @@ export function SavedSearches({
             value={saveName}
             onChange={(e) => setSaveName(e.target.value)}
             placeholder="Ej: Empleos en CABA part-time"
-            className="mb-3 min-h-[48px] w-full rounded-lg border-2 border-rule px-4 py-2 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+            className="mb-3 min-h-[48px] w-full rounded-lg border border-rule px-4 py-2 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
             required
             minLength={3}
             autoFocus
@@ -154,7 +154,7 @@ export function SavedSearches({
       )}
 
       {searches.length === 0 ? (
-        <div className="rounded-lg bg-paper p-6 text-center transition-colors">
+        <div className="rounded-lg bg-paper p-6 text-center">
           <p className="mb-2 text-lg font-semibold text-ink-soft">
             No tenés búsquedas guardadas
           </p>
@@ -168,7 +168,7 @@ export function SavedSearches({
           {searches.map((search) => (
             <div
               key={search.id}
-              className="group rounded-lg border-2 border-rule bg-paper p-4 transition-colors hover:border-primary-500 dark:hover:border-primary-400"
+              className="group rounded-lg border border-rule bg-paper p-4 transition-colors hover:border-primary-500 dark:hover:border-primary-400"
             >
               <div className="mb-2 flex items-start justify-between">
                 <h3 className="text-lg font-bold text-ink">

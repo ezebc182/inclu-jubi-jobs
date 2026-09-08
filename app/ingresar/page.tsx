@@ -11,7 +11,7 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-primary-50 to-white px-4 py-12 transition-colors dark:from-paper dark:to-surface">
       <div className="w-full max-w-md">
-        <div className="rounded-xl border-2 border-rule bg-white p-10 shadow-lg transition-colors">
+        <div className="rounded-xl border border-rule bg-surface p-10 shadow-lg">
           <h1 className="mb-3 text-center text-4xl font-bold text-ink">
             Ingresá a JubiJobs
           </h1>
@@ -21,7 +21,7 @@ export default function LoginPage() {
 
           <LoginOptions />
 
-          <div className="mt-10 rounded-lg bg-primary-50 p-6 transition-colors">
+          <div className="mt-10 rounded-lg bg-primary-50 p-6">
             <p className="text-center text-lg leading-relaxed text-ink">
               <strong className="text-xl">
                 ¿Por qué no usamos contraseñas?

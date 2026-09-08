@@ -35,7 +35,7 @@ export function SignInButtons() {
           />
         </svg>
       ),
-      bgColor: "bg-white hover:bg-paper",
+      bgColor: "bg-surface hover:bg-paper",
       textColor: "text-ink",
       borderColor: "border-rule",
     },
@@ -50,7 +50,7 @@ export function SignInButtons() {
           />
         </svg>
       ),
-      bgColor: "bg-white hover:bg-paper",
+      bgColor: "bg-surface hover:bg-paper",
       textColor: "text-ink",
       borderColor: "border-rule",
     },
@@ -65,7 +65,7 @@ export function SignInButtons() {
           />
         </svg>
       ),
-      bgColor: "bg-white hover:bg-paper",
+      bgColor: "bg-surface hover:bg-paper",
       textColor: "text-ink",
       borderColor: "border-rule",
     },

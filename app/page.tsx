@@ -310,7 +310,7 @@ export default async function HomePage() {
             <p className="mt-4 text-lg text-primary-100">{copy.ctaLead}</p>
             <Link
               href="/empleos"
-              className="mt-8 inline-flex min-h-[56px] items-center justify-center rounded-md bg-white px-8 text-lg font-semibold text-primary-700 transition-colors hover:bg-primary-50"
+              className="mt-8 inline-flex min-h-[56px] items-center justify-center rounded-md bg-surface px-8 text-lg font-semibold text-primary-700 transition-colors hover:bg-primary-50"
             >
               Ver empleos disponibles
             </Link>

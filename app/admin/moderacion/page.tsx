@@ -39,7 +39,7 @@ export default async function ModeracionPage() {
         {jobs.map((job) => (
           <li
             key={job.id}
-            className="rounded-xl border-2 border-rule bg-white p-6"
+            className="rounded-xl border border-rule bg-surface p-6"
           >
             <article>
               <header className="mb-4">

@@ -58,11 +58,13 @@
   --brand-900: 40 21 47;
 
   /* Terracota apagada: contrasta con la ciruela sin estridencia. */
-  --accent-50: 250 244 240;
-  --accent-100: 243 229 220;
-  --accent-500: 166 92 61;
-  --accent-600: 138 74 47;
-  --accent-700: 110 58 36;
+  /* Verde salvia: reemplaza la terracota, que sobre la ciruela oscura
+     quedaba marrón sobre marrón y los chips no se leían. */
+  --accent-50: 240 246 242;
+  --accent-100: 219 233 224;
+  --accent-500: 74 124 94;
+  --accent-600: 58 101 76;
+  --accent-700: 44 79 59;
 
   --paper: 250 249 250;
   --surface: 255 255 255;
@@ -109,6 +111,24 @@
   --brand-100: 48 30 54;
   --brand-600: 184 155 194;
   --brand-700: 212 192 220;
+
+  /* El acento también se aclara: sobre fondo oscuro el verde medio no
+     alcanza el contraste que necesita un chip informativo. */
+  --accent-50: 26 38 30;
+  --accent-100: 36 54 42;
+  --accent-500: 138 186 154;
+  --accent-600: 158 202 172;
+  --accent-700: 186 220 198;
+}
+
+/* Mismo criterio para JubiJobs en oscuro. */
+:root.dark,
+:root.dark[data-portal="jubi"] {
+  --accent-50: 26 36 30;
+  --accent-100: 36 52 42;
+  --accent-500: 142 182 156;
+  --accent-600: 162 198 174;
+  --accent-700: 188 216 198;
 }
 
 /* ═══════════════════════════════════════════════════════════════

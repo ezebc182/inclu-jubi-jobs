@@ -17,7 +17,7 @@ export function Footer({
   return (
     <footer
       role="contentinfo"
-      className="border-t-2 border-rule bg-white py-12 transition-colors"
+      className="border-t border-rule bg-surface py-12"
     >
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3">

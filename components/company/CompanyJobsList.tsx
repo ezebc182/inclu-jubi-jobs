@@ -49,7 +49,7 @@ export function CompanyJobsList({ jobs }: { jobs: Job[] }) {
 
   if (jobs.length === 0) {
     return (
-      <div className="rounded-xl border-2 border-dashed border-rule bg-white p-12 text-center shadow-sm transition-colors">
+      <div className="rounded-xl border border-dashed border-rule bg-surface p-12 text-center shadow-sm">
         <p className="text-xl font-semibold text-ink-soft">
           No tenés empleos publicados todavía
         </p>
@@ -66,7 +66,7 @@ export function CompanyJobsList({ jobs }: { jobs: Job[] }) {
       {jobs.map((job) => (
         <article
           key={job.id}
-          className="rounded-xl border-2 border-rule bg-white p-6 shadow-sm transition-colors"
+          className="rounded-xl border border-rule bg-surface p-6 shadow-sm"
         >
           <div className="mb-4 flex items-start justify-between">
             <div className="flex-1">

@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function ComoFuncionaPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 transition-colors">
+    <div className="mx-auto max-w-7xl px-4 py-12">
       <h1 className="mb-8 text-center text-4xl font-bold text-ink">
         ¿Cómo funciona JubiJobs?
       </h1>
@@ -89,12 +89,12 @@ export default function ComoFuncionaPage() {
         </section>
       </div>
 
-      <section className="mb-16 rounded-lg bg-paper p-8 transition-colors">
+      <section className="mb-16 rounded-lg bg-paper p-8">
         <h2 className="mb-6 text-3xl font-bold text-ink">
           Sin LinkedIn, sin vueltas
         </h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="rounded-lg bg-white p-6 transition-colors">
+          <div className="rounded-lg bg-surface p-6">
             <h3 className="mb-3 text-xl font-bold text-ink">
               ❌ Lo que NO necesitás
             </h3>

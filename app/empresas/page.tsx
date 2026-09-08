@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function EmpresasPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 transition-colors">
+    <div className="mx-auto max-w-7xl px-4 py-12">
       <section className="mb-16 text-center">
         <h1 className="mb-6 text-4xl font-bold text-ink md:text-5xl">
           Contratá talento con experiencia
@@ -26,7 +26,7 @@ export default function EmpresasPage() {
           ¿Por qué contratar jubilados?
         </h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-lg border-2 border-rule bg-white p-6 transition-colors">
+          <div className="rounded-lg border border-rule bg-surface p-6">
             <h3 className="mb-3 text-2xl font-bold text-primary-700 dark:text-primary-400">
               Experiencia comprobada
             </h3>
@@ -36,7 +36,7 @@ export default function EmpresasPage() {
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-rule bg-white p-6 transition-colors">
+          <div className="rounded-lg border border-rule bg-surface p-6">
             <h3 className="mb-3 text-2xl font-bold text-primary-700 dark:text-primary-400">
               Responsabilidad y compromiso
             </h3>
@@ -46,7 +46,7 @@ export default function EmpresasPage() {
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-rule bg-white p-6 transition-colors">
+          <div className="rounded-lg border border-rule bg-surface p-6">
             <h3 className="mb-3 text-2xl font-bold text-primary-700 dark:text-primary-400">
               Flexibilidad horaria
             </h3>
@@ -56,7 +56,7 @@ export default function EmpresasPage() {
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-rule bg-white p-6 transition-colors">
+          <div className="rounded-lg border border-rule bg-surface p-6">
             <h3 className="mb-3 text-2xl font-bold text-primary-700 dark:text-primary-400">
               Trato con clientes
             </h3>
@@ -66,7 +66,7 @@ export default function EmpresasPage() {
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-rule bg-white p-6 transition-colors">
+          <div className="rounded-lg border border-rule bg-surface p-6">
             <h3 className="mb-3 text-2xl font-bold text-primary-700 dark:text-primary-400">
               Transmiten conocimiento
             </h3>
@@ -76,7 +76,7 @@ export default function EmpresasPage() {
             </p>
           </div>
 
-          <div className="rounded-lg border-2 border-rule bg-white p-6 transition-colors">
+          <div className="rounded-lg border border-rule bg-surface p-6">
             <h3 className="mb-3 text-2xl font-bold text-primary-700 dark:text-primary-400">
               Costo-beneficio
             </h3>
@@ -88,7 +88,7 @@ export default function EmpresasPage() {
         </div>
       </section>
 
-      <section className="mb-16 rounded-lg bg-primary-50 p-8 transition-colors">
+      <section className="mb-16 rounded-lg bg-primary-50 p-8">
         <h2 className="mb-6 text-center text-3xl font-bold text-ink">
           Cómo funciona para empresas
         </h2>

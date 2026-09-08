@@ -38,7 +38,7 @@ export default async function AdminEmpresasPage() {
         {companies.map((company) => (
           <li
             key={company.id}
-            className="rounded-xl border-2 border-rule bg-white p-6"
+            className="rounded-xl border border-rule bg-surface p-6"
           >
             <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
               <div>

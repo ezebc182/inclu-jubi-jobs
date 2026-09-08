@@ -63,7 +63,7 @@ export function ApplicationsList({
 
   if (applications.length === 0) {
     return (
-      <div className="rounded-xl border-2 border-dashed border-rule bg-white p-12 text-center shadow-sm transition-colors">
+      <div className="rounded-xl border border-dashed border-rule bg-surface p-12 text-center shadow-sm">
         <p className="text-xl font-semibold text-ink-soft">
           No hay postulaciones todavía
         </p>
@@ -79,7 +79,7 @@ export function ApplicationsList({
       {applications.map((app) => (
         <article
           key={app.id}
-          className="rounded-xl border-2 border-rule bg-white p-6 shadow-sm transition-colors"
+          className="rounded-xl border border-rule bg-surface p-6 shadow-sm"
         >
           <div className="mb-4 flex items-start justify-between">
             <div className="flex-1">
@@ -140,7 +140,7 @@ export function ApplicationsList({
           </button>
 
           {expanded === app.id && (
-            <div className="mb-4 flex flex-col gap-4 rounded-lg bg-paper p-6 transition-colors">
+            <div className="mb-4 flex flex-col gap-4 rounded-lg bg-paper p-6">
               <div>
                 <p className="mb-2 text-base font-bold text-ink">
                   ¿Qué hiciste?

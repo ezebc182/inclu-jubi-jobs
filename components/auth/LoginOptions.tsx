@@ -12,12 +12,12 @@ export function LoginOptions() {
   return (
     <div className="space-y-6">
       {/* Tabs para alternar entre métodos */}
-      <div className="flex gap-2 rounded-lg bg-paper p-1 transition-colors">
+      <div className="flex gap-2 rounded-lg bg-paper p-1">
         <button
           onClick={() => setMethod("oauth")}
           className={`flex-1 rounded-md px-4 py-3 text-base font-semibold transition-all ${
             method === "oauth"
-              ? "bg-white text-ink shadow-sm"
+              ? "bg-surface text-ink shadow-sm"
               : "text-ink-soft hover:text-ink"
           }`}
         >
@@ -27,7 +27,7 @@ export function LoginOptions() {
           onClick={() => setMethod("phone")}
           className={`flex-1 rounded-md px-4 py-3 text-base font-semibold transition-all ${
             method === "phone"
-              ? "bg-white text-ink shadow-sm"
+              ? "bg-surface text-ink shadow-sm"
               : "text-ink-soft hover:text-ink"
           }`}
         >

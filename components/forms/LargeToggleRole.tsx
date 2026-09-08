@@ -16,7 +16,7 @@ export function LargeToggleRole({ value, onChange }: LargeToggleRoleProps) {
         className={`flex min-h-[80px] flex-1 items-center justify-center rounded-lg border-4 px-6 py-4 text-xl font-bold transition-all focus:outline-none focus:ring-4 focus:ring-primary-300 ${
           value === "CANDIDATE"
             ? "border-primary-600 bg-primary-50 text-primary-700"
-            : "border-rule bg-white text-ink-soft hover:border-rule"
+            : "border-rule bg-surface text-ink-soft hover:border-rule"
         }`}
       >
         Busco trabajo
@@ -29,7 +29,7 @@ export function LargeToggleRole({ value, onChange }: LargeToggleRoleProps) {
         className={`flex min-h-[80px] flex-1 items-center justify-center rounded-lg border-4 px-6 py-4 text-xl font-bold transition-all focus:outline-none focus:ring-4 focus:ring-primary-300 ${
           value === "COMPANY"
             ? "border-primary-600 bg-primary-50 text-primary-700"
-            : "border-rule bg-white text-ink-soft hover:border-rule"
+            : "border-rule bg-surface text-ink-soft hover:border-rule"
         }`}
       >
         Soy empresa
