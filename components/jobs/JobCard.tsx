@@ -11,7 +11,7 @@ interface JobCardProps {
   schedule: string;
   salaryArsMin?: number | null;
   salaryArsMax?: number | null;
-  /** Condiciones de accesibilidad, relevantes sobre todo en InclúJobs. */
+  /** Condiciones de accesibilidad, relevantes sobre todo en IncluJobs. */
   hasAccessibleSite?: boolean;
   supportsFlexHours?: boolean;
   isRemoteFriendly?: boolean;
@@ -59,15 +59,19 @@ export function JobCard({
   ].filter(Boolean) as string[];
 
   return (
-    <article className="group relative h-full bg-surface transition-colors hover:bg-primary-50 dark:hover:bg-primary-900/20">
+    <article className="interactive-surface group relative h-full border-transparent bg-surface">
       <div className="flex h-full flex-col p-6">
-        <h3 className="font-display text-xl font-semibold leading-snug">
+        {/* Sin `font-display`: el h3 ya hereda la familia del portal desde
+            globals.css, que es Fraunces en JubiJobs y Atkinson en IncluJobs.
+            Fijarla acá dejaba a IncluJobs con la serif que justamente no
+            queremos en un portal de baja visión. */}
+        <h3 className="text-xl font-semibold leading-snug">
           {/* El enlace cubre toda la tarjeta vía ::after, pero el área
               accesible sigue siendo el título: el lector de pantalla
               anuncia el puesto, no "enlace, tarjeta". */}
           <Link
             href={`/empleos/${id}`}
-            className="after:absolute after:inset-0 after:content-[''] hover:text-primary-700 dark:hover:text-primary-200"
+            className="after:absolute after:inset-0 after:content-[''] group-hover:text-primary-700 dark:group-hover:text-primary-200"
           >
             {title}
           </Link>
@@ -76,12 +80,22 @@ export function JobCard({
         <p className="mt-1.5 text-base text-ink-soft">{company}</p>
 
         {/* Los datos hablan solos: nadie necesita que le aclaren que
-            "Córdoba" es una ubicación. */}
+            "Córdoba" es una ubicación.
+
+            Los separadores van con `aria-hidden`: un lector de pantalla leía
+            "Córdoba barra vertical Presencial barra vertical Part-time". Las
+            comas del `sr-only` le devuelven la pausa natural. */}
         <p className="mt-4 text-base text-ink">
           {location}
-          <span className="mx-2 text-rule">|</span>
+          <span className="mx-2 text-rule" aria-hidden="true">
+            |
+          </span>
+          <span className="sr-only">, </span>
           {MODALITY_LABELS[modality]}
-          <span className="mx-2 text-rule">|</span>
+          <span className="mx-2 text-rule" aria-hidden="true">
+            |
+          </span>
+          <span className="sr-only">, </span>
           {SCHEDULE_LABELS[schedule]}
         </p>
 

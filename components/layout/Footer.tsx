@@ -31,9 +31,7 @@ export function Footer({
           </div>
 
           <div>
-            <h3 className="mb-4 text-xl font-bold text-ink">
-              Enlaces
-            </h3>
+            <h3 className="mb-4 text-xl font-bold text-ink">Enlaces</h3>
             <ul className="flex flex-col gap-3">
               <li>
                 <Link
@@ -51,7 +49,7 @@ export function Footer({
                   Preguntas Frecuentes
                 </Link>
               </li>
-              {/* En InclúJobs la inclusión es el portal entero, no una
+              {/* En IncluJobs la inclusión es el portal entero, no una
                   sección aparte: el link solo tiene sentido en JubiJobs. */}
               {brand === "jubi" && (
                 <li>
@@ -75,9 +73,7 @@ export function Footer({
           </div>
 
           <div>
-            <h3 className="mb-4 text-xl font-bold text-ink">
-              Legal
-            </h3>
+            <h3 className="mb-4 text-xl font-bold text-ink">Legal</h3>
             <ul className="flex flex-col gap-3">
               <li>
                 <Link

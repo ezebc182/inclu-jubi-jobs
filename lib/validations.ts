@@ -89,7 +89,7 @@ export const jobFormSchema = z
     }
   )
   .refine(
-    // Publicar en InclúJobs sin decir nada sobre accesibilidad deja al
+    // Publicar en IncluJobs sin decir nada sobre accesibilidad deja al
     // candidato sin la información que justamente vino a buscar.
     (data) =>
       !data.portals.includes("INCLU") ||
@@ -99,7 +99,7 @@ export const jobFormSchema = z
       Boolean(data.accessibilityNotes?.trim()),
     {
       message:
-        "Para publicar en InclúJobs indicá al menos una condición de accesibilidad del puesto",
+        "Para publicar en IncluJobs indicá al menos una condición de accesibilidad del puesto",
       path: ["accessibilityNotes"],
     }
   );

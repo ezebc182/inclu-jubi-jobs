@@ -20,7 +20,7 @@ const PORTAL_OPTIONS: Array<{
   },
   {
     value: "INCLU",
-    label: "InclúJobs",
+    label: "IncluJobs",
     hint: "Personas con discapacidad. Requiere declarar las condiciones de accesibilidad del puesto.",
   },
 ];
@@ -334,7 +334,7 @@ export function JobForm() {
         </legend>
         <p className="mb-4 text-base text-ink-soft">
           {publishesToInclu
-            ? "Publicás en InclúJobs, así que necesitamos al menos un dato acá. El candidato lo lee antes de postularse: sin esta información no puede saber si el puesto le sirve."
+            ? "Publicás en IncluJobs, así que necesitamos al menos un dato acá. El candidato lo lee antes de postularse: sin esta información no puede saber si el puesto le sirve."
             : "Opcional, pero suma: ayuda a que más candidatos se animen a postularse."}
         </p>
 

@@ -11,6 +11,7 @@ import {
   publicJobFilter,
 } from "@/lib/portal";
 import { ThreeQuestionsForm } from "@/components/forms/ThreeQuestionsForm";
+import { LineIcon } from "@/components/ui/LineIcon";
 import { applyToJob } from "@/app/actions/applications";
 
 const MODALITY_LABELS: Record<string, string> = {
@@ -26,7 +27,7 @@ const SCHEDULE_LABELS: Record<string, string> = {
 };
 
 /**
- * Busca un aviso visible EN ESTE PORTAL. Un aviso de InclúJobs no debe ser
+ * Busca un aviso visible EN ESTE PORTAL. Un aviso de IncluJobs no debe ser
  * accesible desde jubijobs.com ni con la URL directa.
  */
 async function findVisibleJob(id: string) {
@@ -169,12 +170,10 @@ export default async function EmpleoDetailPage({
         </div>
       </header>
 
-      <div className="mx-auto max-w-5xl px-6 py-12">
+      <div className="band-major mx-auto max-w-5xl px-6">
         <article>
           <section className="mb-12">
-            <h2 className="mb-4 text-2xl font-bold text-ink">
-              Descripción del puesto
-            </h2>
+            <h2 className="mb-4 text-2xl">Descripción del puesto</h2>
             <div className="whitespace-pre-wrap text-lg leading-relaxed text-ink-soft">
               {job.description}
             </div>
@@ -185,16 +184,19 @@ export default async function EmpleoDetailPage({
               aria-labelledby="accesibilidad-puesto"
               className="mb-12 rounded-lg border-2 border-primary-200 bg-primary-50 p-6 dark:border-primary-800 dark:bg-primary-950"
             >
-              <h2
-                id="accesibilidad-puesto"
-                className="mb-4 text-2xl font-bold text-ink"
-              >
+              <h2 id="accesibilidad-puesto" className="mb-4 text-2xl">
                 Condiciones de accesibilidad
               </h2>
+              {/* Iconos de trazo en vez del "✓" de texto: el glifo cambia de
+                  forma y de peso según la fuente del sistema, y en Atkinson no
+                  existe con el mismo trazo. LineIcon hereda el color de marca y
+                  el grosor de la familia. */}
               <ul className="space-y-3 text-lg text-ink">
                 {job.hasAccessibleSite && (
                   <li className="flex items-start gap-3">
-                    <span aria-hidden="true">✓</span>
+                    <span className="mt-1 shrink-0 text-primary-700 dark:text-primary-200">
+                      <LineIcon name="check" size={22} strokeWidth={2.2} />
+                    </span>
                     <span>
                       Instalaciones adaptadas (acceso, ascensor y baño
                       accesible)
@@ -203,7 +205,9 @@ export default async function EmpleoDetailPage({
                 )}
                 {job.supportsFlexHours && (
                   <li className="flex items-start gap-3">
-                    <span aria-hidden="true">✓</span>
+                    <span className="mt-1 shrink-0 text-primary-700 dark:text-primary-200">
+                      <LineIcon name="check" size={22} strokeWidth={2.2} />
+                    </span>
                     <span>
                       Horarios flexibles, ajustables según tus necesidades
                     </span>
@@ -211,7 +215,9 @@ export default async function EmpleoDetailPage({
                 )}
                 {job.isRemoteFriendly && (
                   <li className="flex items-start gap-3">
-                    <span aria-hidden="true">✓</span>
+                    <span className="mt-1 shrink-0 text-primary-700 dark:text-primary-200">
+                      <LineIcon name="check" size={22} strokeWidth={2.2} />
+                    </span>
                     <span>Se puede trabajar de forma remota</span>
                   </li>
                 )}
@@ -226,9 +232,7 @@ export default async function EmpleoDetailPage({
 
           {job.company.about && (
             <section className="mb-12 rounded-lg bg-paper p-6 transition-colors">
-              <h2 className="mb-4 text-2xl font-bold text-ink">
-                Sobre {job.company.name}
-              </h2>
+              <h2 className="mb-4 text-2xl">Sobre {job.company.name}</h2>
               <p className="text-lg text-ink-soft">{job.company.about}</p>
               {job.company.website && (
                 <a
@@ -245,7 +249,7 @@ export default async function EmpleoDetailPage({
 
           {isCandidate && !hasApplied && (
             <section className="rounded-lg border-2 border-primary-300 bg-primary-50 p-8 transition-colors dark:border-primary-700 dark:bg-primary-950">
-              <h2 className="mb-6 text-3xl font-bold text-ink">
+              <h2 className="mb-6 text-2xl md:text-3xl">
                 Postularme (3 preguntas)
               </h2>
               <ThreeQuestionsForm
@@ -260,38 +264,41 @@ export default async function EmpleoDetailPage({
             </section>
           )}
 
+          {/* Confirmación de postulación. El énfasis lo da la jerarquía
+              —icono, título, cuerpo— en vez de apilar borde de 4px, gradiente,
+              sombra y un emoji de 60px como antes. El verde sale de `success`,
+              que está en la escala de tokens. `role="status"` para que un lector
+              de pantalla anuncie el resultado sin mover el foco. */}
           {hasApplied && (
-            <div className="rounded-xl border-4 border-green-400 bg-gradient-to-b from-green-50 to-green-100 p-10 text-center shadow-lg transition-colors dark:border-green-600 dark:from-green-950 dark:to-green-900">
-              <div className="mb-4 text-6xl" aria-hidden="true">
-                ✅
-              </div>
-              <p className="mb-4 text-3xl font-bold text-green-900 dark:text-green-200">
-                ¡Postulación enviada exitosamente!
-              </p>
-              <p className="mb-2 text-xl text-green-800 dark:text-green-300">
-                La empresa va a revisar tu perfil y las 3 respuestas que
-                enviaste.
-              </p>
-              <p className="mb-6 text-lg text-green-700 dark:text-green-400">
-                Te vamos a notificar por email si hay novedades.
+            <div
+              role="status"
+              className="surface-raised rounded-lg border-success-500/40 p-8 text-center sm:p-10"
+            >
+              <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-success-100 text-success-700 dark:bg-success-900/40 dark:text-success-300">
+                <LineIcon name="check" size={30} strokeWidth={2.4} />
+              </span>
+              <h2 className="mt-5 text-2xl md:text-3xl">
+                Tu postulación quedó enviada
+              </h2>
+              <p className="mx-auto mt-3 max-w-measure text-lg text-ink-soft">
+                La empresa va a leer tu perfil y las tres respuestas que
+                mandaste. Te avisamos por email si hay novedades.
               </p>
               <a
                 href="/postulaciones"
-                className="inline-flex min-h-[56px] items-center justify-center rounded-lg bg-primary-600 px-8 py-4 text-lg font-semibold text-white shadow-sm transition-colors hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
+                className="press mt-7 inline-flex min-h-[56px] items-center justify-center rounded-md bg-primary-600 px-8 text-lg font-semibold text-white transition-colors hover:bg-primary-700"
               >
-                Ver todas mis postulaciones
+                Ver mis postulaciones
               </a>
             </div>
           )}
 
           {!session && (
             <div className="rounded-lg border-2 border-primary-300 bg-primary-50 p-8 text-center transition-colors dark:border-primary-700 dark:bg-primary-950">
-              <p className="mb-4 text-2xl font-bold text-ink">
-                Para postularte, ingresá primero
-              </p>
+              <p className="mb-4 text-2xl">Para postularte, ingresá primero</p>
               <a
                 href="/ingresar"
-                className="inline-block rounded-lg bg-primary-600 px-8 py-4 text-xl font-bold text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600"
+                className="press inline-flex min-h-[56px] items-center justify-center rounded-md bg-primary-600 px-8 text-lg font-semibold text-white transition-colors hover:bg-primary-700"
               >
                 Ingresar
               </a>

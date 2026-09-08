@@ -21,7 +21,7 @@ export interface BrandArt {
 
 export const BRAND_ART: Record<BrandSlug, BrandArt> = {
   jubi: { primary: "#1E40AF", accent: "#F59E0B", wordmark: "JubiJobs" },
-  inclu: { primary: "#6D28D9", accent: "#14B8A6", wordmark: "InclúJobs" },
+  inclu: { primary: "#6D28D9", accent: "#14B8A6", wordmark: "IncluJobs" },
 };
 
 /**
@@ -45,7 +45,7 @@ function jubiSymbol(art: BrandArt, onDark: boolean): string {
 }
 
 /**
- * Símbolo de InclúJobs: cuatro figuras distintas alrededor de un centro común.
+ * Símbolo de IncluJobs: cuatro figuras distintas alrededor de un centro común.
  *
  * La lectura es la idea entera de la marca: la inclusión no es que todos sean
  * iguales, es que piezas de formas diferentes tengan lugar en el mismo

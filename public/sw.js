@@ -1,5 +1,5 @@
 /**
- * Service Worker — JubiJobs / InclúJobs
+ * Service Worker — JubiJobs / IncluJobs
  *
  * Sin librerías: Workbox trae 40 KB para lo que acá se resuelve en 150 líneas
  * legibles. Menos peso en la red de un usuario que puede estar con 3G en el

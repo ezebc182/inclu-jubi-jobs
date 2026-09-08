@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 /**
  * Portales del producto.
  *
- * IMPORTANTE: JubiJobs e InclúJobs son audiencias SEPARADAS, no intercambiables.
+ * IMPORTANTE: JubiJobs e IncluJobs son audiencias SEPARADAS, no intercambiables.
  * Un aviso pensado para una persona con discapacidad visual no es lo mismo que
  * uno pensado para una persona jubilada de 68 años. Comparten infraestructura
  * (código, base de datos, auth, panel admin) pero NO comparten contenido:
@@ -63,8 +63,8 @@ const PORTALS: Record<PortalId, PortalConfig> = {
   },
   INCLU: {
     id: "INCLU",
-    name: "InclúJobs",
-    legalName: "InclúJobs",
+    name: "IncluJobs",
+    legalName: "IncluJobs",
     domain: "inclujobs.com",
     audience: "Personas con discapacidad",
     tagline: "Trabajo real, con las condiciones que necesitás.",
@@ -141,7 +141,7 @@ export async function getCurrentPortalConfig(): Promise<PortalConfig> {
 /**
  * Filtro Prisma que aísla los avisos de un portal.
  *
- * Sin esto, un candidato de JubiJobs ve avisos de InclúJobs — que es
+ * Sin esto, un candidato de JubiJobs ve avisos de IncluJobs — que es
  * exactamente lo que este producto NO debe hacer.
  */
 export function portalJobFilter(portal: PortalId) {
@@ -163,7 +163,7 @@ export function publicJobFilter(portal: PortalId) {
  * Deriva del dominio de cada portal, NO de una variable de entorno. Motivo:
  * `NEXT_PUBLIC_*` se congela en tiempo de build con un solo valor, y ambos
  * dominios se sirven desde el mismo deployment — un override haría que
- * InclúJobs publicara canonical y sitemap apuntando a jubijobs.com.
+ * IncluJobs publicara canonical y sitemap apuntando a jubijobs.com.
  *
  * El override solo se respeta cuando NO es un dominio productivo, para poder
  * fijar una URL en previews de Vercel o en desarrollo local.

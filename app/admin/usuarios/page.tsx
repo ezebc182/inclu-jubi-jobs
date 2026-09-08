@@ -91,7 +91,7 @@ export default async function AdminUsuariosPage({
           >
             <option value="">Todos</option>
             <option value="JUBI">JubiJobs</option>
-            <option value="INCLU">InclúJobs</option>
+            <option value="INCLU">IncluJobs</option>
           </select>
         </div>
 

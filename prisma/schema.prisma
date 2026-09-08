@@ -168,7 +168,7 @@ model Job {
   // Se filtra con `portals: { has: <portal> }` en toda query pública.
   portals Portal[] @default([JUBI])
 
-  // Accesibilidad declarada del puesto. Clave para InclúJobs: el candidato
+  // Accesibilidad declarada del puesto. Clave para IncluJobs: el candidato
   // necesita saber ANTES de postularse si el lugar está preparado.
   accessibilityNotes String?
   isRemoteFriendly   Boolean @default(false)
