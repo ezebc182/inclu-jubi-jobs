@@ -17,6 +17,10 @@ type IconName =
   | "accessible" // accesibilidad
   | "chat" // contacto
   | "phone" // ingreso por SMS
+  | "whatsapp" // contacto por WhatsApp
+  | "mail" // contacto por correo
+  | "chevron-down" // acordeón abierto
+  | "chevron-right" // acordeón cerrado
   | "check";
 
 const PATHS: Record<IconName, React.ReactNode> = {
@@ -84,6 +88,26 @@ const PATHS: Record<IconName, React.ReactNode> = {
       <path d="M10.5 18.5h3" />
     </>
   ),
+  /**
+   * WhatsApp: el auricular dentro de la burbuja con la cola quebrada, que es
+   * la silueta que la marca hace reconocible. Va en trazo como el resto de la
+   * familia — el logo oficial en verde lo reservamos para donde haga falta
+   * respetar la marca, no para un botón de contacto.
+   */
+  whatsapp: (
+    <>
+      <path d="M20 11.7c0 4-3.4 7.2-7.6 7.2-1.2 0-2.4-.27-3.4-.75L4.5 19.5l1.4-4.2A7 7 0 0 1 4.8 11.7c0-4 3.4-7.2 7.6-7.2s7.6 3.2 7.6 7.2Z" />
+      <path d="M9.6 9.1c.2-.1.5 0 .7.3l.6 1c.1.3.1.5-.1.7l-.4.4c-.1.2-.2.3 0 .6.5.8 1.2 1.4 2 1.8.3.1.4 0 .5-.1l.4-.5c.2-.2.4-.2.6-.1l1 .5c.3.2.4.4.3.7-.2.7-.9 1.2-1.7 1.1-2-.3-4.1-2.3-4.5-4.3-.1-.7.2-1.4.6-2.1Z" />
+    </>
+  ),
+  mail: (
+    <>
+      <rect x="3" y="5.5" width="18" height="13" rx="2.5" />
+      <path d="M3.6 7.2l7.6 5.3c.5.35 1.1.35 1.6 0l7.6-5.3" />
+    </>
+  ),
+  "chevron-down": <path d="M6 9.5l6 6 6-6" />,
+  "chevron-right": <path d="M9.5 6l6 6-6 6" />,
   check: <path d="M4.5 12.5l4.5 4.5L19.5 6.5" />,
 };
 
