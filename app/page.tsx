@@ -305,11 +305,17 @@ export default async function HomePage() {
       </section>
 
       {/* ── Cierre ──────────────────────────────────────────── */}
-      <section className="bg-primary-700 dark:bg-primary-900">
+      {/* `brand-panel` en vez de `bg-primary-700 dark:bg-primary-900`: esas
+          clases usan la escala de marca, que en modo oscuro se aclara para que
+          los botones contrasten sobre fondo negro. Acá producía lo contrario —
+          el fondo se volvía celeste y el texto blanco quedaba en 1.74:1, y el
+          párrafo en 1.10:1. El panel lleva sus propios tokens, que no se
+          invierten con el tema. */}
+      <section className="brand-panel">
         <div className="band-major mx-auto max-w-7xl px-6">
           <div className="max-w-measure">
-            <h2 className="text-2xl text-white md:text-3xl">{copy.ctaTitle}</h2>
-            <p className="mt-4 text-lg text-primary-100">{copy.ctaLead}</p>
+            <h2 className="text-2xl md:text-3xl">{copy.ctaTitle}</h2>
+            <p className="panel-soft mt-4 text-lg">{copy.ctaLead}</p>
             <Link
               href="/empleos"
               className="press mt-8 inline-flex min-h-[56px] items-center justify-center rounded-md bg-surface px-8 text-lg font-semibold text-primary-700 transition-colors hover:bg-primary-50"
@@ -321,8 +327,8 @@ export default async function HomePage() {
           {/* Puente al otro portal: si alguien llegó al equivocado,
               orientarlo es el mejor servicio. El contenido no se
               mezcla, pero las personas sí se guían. */}
-          <div className="mt-12 border-t border-primary-500/40 pt-8">
-            <p className="text-base text-primary-100">
+          <div className="mt-12 border-t border-white/20 pt-8">
+            <p className="panel-soft text-base">
               {portalId === "JUBI" ? (
                 <>
                   ¿Tenés una discapacidad? En{" "}
