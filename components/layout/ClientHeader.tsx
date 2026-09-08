@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
-import { FontSizeControl } from "@/components/ui/FontSizeControl";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
@@ -75,7 +74,6 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
             </Link>
 
             <ThemeToggle />
-            <FontSizeControl />
 
             {session ? (
               <>
