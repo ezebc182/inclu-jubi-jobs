@@ -79,9 +79,18 @@ function providerCredentials(provider: string, portal: PortalId) {
 /**
  * URL base del portal, la que define el `redirect_uri` de OAuth.
  *
- * En producción sale del dominio canónico del portal, NO de `BETTER_AUTH_URL`:
- * esa variable tiene un solo valor y haría que un portal armara el callback
- * del otro.
+ * Usa `canonicalHost` y NO `domain`. La diferencia importa:
+ *
+ *   JubiJobs   canoniza a www   (jubijobs.com → 308 → www.jubijobs.com)
+ *   IncluJobs  canoniza sin www (www.inclujobs.com → 307 → inclujobs.com)
+ *
+ * Antes esta función devolvía `https://${config.domain}`, o sea siempre sin
+ * `www`. En JubiJobs eso mandaba a Google un `redirect_uri` que redirige: la
+ * cookie `__Secure-better-auth.state` se guardaba en `jubijobs.com`, Google
+ * devolvía ahí, el 308 llevaba a `www.jubijobs.com` y el navegador ya no
+ * mandaba esa cookie —es de otro host—. Better-Auth no encontraba el `state`,
+ * descartaba el callback y la persona volvía a la pantalla de ingreso sin
+ * ningún error visible.
  *
  * El override solo se respeta cuando no apunta a un dominio productivo, para
  * poder trabajar en local y en previews de Vercel.
@@ -97,7 +106,7 @@ function resolveBaseUrl(portal: PortalId): string {
     if (!pointsAtProduction) return override;
   }
 
-  return `https://${config.domain}`;
+  return `https://${config.canonicalHost}`;
 }
 
 /** Orígenes autorizados a llamar a la API de auth. Ambos dominios, siempre. */
