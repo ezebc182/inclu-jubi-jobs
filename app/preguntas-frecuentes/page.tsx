@@ -1,12 +1,27 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { getCurrentPortalConfig } from "@/lib/portal";
 
-export const metadata: Metadata = {
-  title: "Preguntas Frecuentes - JubiJobs",
-  description:
-    "Respuestas a las preguntas más frecuentes sobre cómo funciona JubiJobs para jubilados y empresas.",
-};
+/**
+ * WhatsApp de contacto, de Deshoku.
+ *
+ * En formato E.164 sin signos para el enlace —wa.me no acepta espacios ni
+ * guiones— y con el formato local para mostrar. Los dos portales comparten la
+ * línea: quien atiende es el mismo equipo.
+ */
+const WHATSAPP_E164 = "5493518758427";
+const WHATSAPP_VISIBLE = "+54 9 3518 75-8427";
 
-export default function FAQsPage() {
+export async function generateMetadata(): Promise<Metadata> {
+  const portal = await getCurrentPortalConfig();
+  return {
+    title: "Preguntas frecuentes",
+    description: `Respuestas a las dudas más comunes sobre cómo funciona ${portal.name}.`,
+  };
+}
+
+export default async function FAQsPage() {
+  const portal = await getCurrentPortalConfig();
+
   return (
     <div className="min-h-screen bg-paper py-16">
       <div className="mx-auto max-w-4xl px-4">
@@ -14,7 +29,7 @@ export default function FAQsPage() {
           Preguntas Frecuentes
         </h1>
         <p className="mb-16 text-xl leading-relaxed text-ink-soft">
-          Encontrá respuestas a las preguntas más comunes sobre JubiJobs
+          Encontrá respuestas a las preguntas más comunes sobre {portal.name}
         </p>
 
         <div className="space-y-12">
@@ -228,9 +243,9 @@ export default function FAQsPage() {
                   ¿Necesito CV o LinkedIn?
                 </h3>
                 <p className="text-lg leading-relaxed text-ink-soft">
-                  No. En JubiJobs no necesitás CV en PDF ni perfil de LinkedIn.
-                  Solo respondés 3 preguntas sobre tu experiencia: qué hiciste,
-                  qué sabés hacer y qué te gustaría hacer.
+                  No. En {portal.name} no necesitás CV en PDF ni perfil de
+                  LinkedIn. Solo respondés 3 preguntas sobre tu experiencia: qué
+                  hiciste, qué sabés hacer y qué te gustaría hacer.
                 </p>
               </div>
 
@@ -333,24 +348,31 @@ export default function FAQsPage() {
                 ayudamos.
               </p>
               <div className="space-y-4">
+                {/* Contactos reales.
+                    El email salía hardcodeado como hola@jubijobs.com, así que
+                    en IncluJobs mostraba el del otro portal; ahora viene de
+                    `portal.contactEmail`.
+                    El WhatsApp era +54 9 11 2345-6789, un número de relleno:
+                    alguien que necesitaba ayuda escribía a un desconocido. */}
                 <p className="text-lg text-ink">
                   <strong className="text-xl">Email:</strong>{" "}
                   <a
-                    href="mailto:hola@jubijobs.com"
+                    href={`mailto:${portal.contactEmail}`}
                     className="font-semibold text-primary-600 underline-offset-4 hover:text-primary-700 hover:underline dark:text-primary-400 dark:hover:text-primary-300"
                   >
-                    hola@jubijobs.com
+                    {portal.contactEmail}
                   </a>
                 </p>
                 <p className="text-lg text-ink">
                   <strong className="text-xl">WhatsApp:</strong>{" "}
                   <a
-                    href="https://wa.me/5491123456789"
+                    href={`https://wa.me/${WHATSAPP_E164}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-semibold text-primary-600 underline-offset-4 hover:text-primary-700 hover:underline dark:text-primary-400 dark:hover:text-primary-300"
                   >
-                    +54 9 11 2345-6789
+                    {WHATSAPP_VISIBLE}
+                    <span className="sr-only"> (se abre en otra pestaña)</span>
                   </a>
                 </p>
               </div>
