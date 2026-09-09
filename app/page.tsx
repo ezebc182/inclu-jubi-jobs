@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { LineIcon } from "@/components/ui/LineIcon";
+import { AuthErrorNotice } from "@/components/auth/AuthErrorNotice";
 import {
   getCurrentPortal,
   getPortalConfig,
@@ -66,14 +67,31 @@ async function loadSnapshot(
   }
 }
 
-export default async function HomePage() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
   const portalId = await getCurrentPortal();
   const portal = getPortalConfig(portalId);
   const copy = getPortalCopy(portalId);
-  const { jobCount, companyCount, latest } = await loadSnapshot(portalId);
+  const [{ jobCount, companyCount, latest }, params] = await Promise.all([
+    loadSnapshot(portalId),
+    searchParams,
+  ]);
 
   return (
     <>
+      {/* Better-Auth devuelve acá con `?error=<codigo>` cuando el ingreso
+          falla, y hasta ahora la portada lo ignoraba: la persona veía la home
+          normal con un parámetro raro en la URL, sin saber que su intento de
+          entrar no funcionó. */}
+      {params.error && (
+        <AuthErrorNotice
+          code={params.error}
+          contactEmail={portal.contactEmail}
+        />
+      )}
       {/* ── Hero ────────────────────────────────────────────────
           Asimétrico 7/5: el texto manda, la foto acompaña. Rompe la
           verticalidad centrada que hacía ver todo como un folleto. */}
