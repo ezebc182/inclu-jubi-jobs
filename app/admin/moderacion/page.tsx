@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/db";
 import { requireAdmin } from "@/lib/admin";
 import { getPortalConfig } from "@/lib/portal";
+import { formatearCuit } from "@/lib/identificacion";
 import { formatCurrency, formatDate } from "@/lib/constants";
 import { ModerationActions } from "@/components/admin/ModerationActions";
 import { EmptyState } from "@/components/ui/EmptyState";
@@ -11,7 +12,21 @@ export default async function ModeracionPage() {
   const jobs = await prisma.job.findMany({
     where: { moderationStatus: "PENDING" },
     include: {
-      company: { select: { id: true, name: true, isVerified: true } },
+      company: {
+        select: {
+          id: true,
+          name: true,
+          isVerified: true,
+          // Acreditación de quien publica. Sin esto el moderador decide mirando
+          // un nombre suelto, que es exactamente lo que no alcanza.
+          employerType: true,
+          taxId: true,
+          nationalId: true,
+          contactName: true,
+          contactRole: true,
+          contactPhone: true,
+        },
+      },
     },
     orderBy: { createdAt: "asc" }, // Los más viejos primero: nadie espera de más.
     take: 50,
@@ -43,9 +58,7 @@ export default async function ModeracionPage() {
           >
             <article>
               <header className="mb-4">
-                <h3 className="text-xl font-bold text-ink">
-                  {job.title}
-                </h3>
+                <h3 className="text-xl font-bold text-ink">{job.title}</h3>
                 <p className="mt-1 text-base text-ink-soft">
                   {job.company.name}
                   {job.company.isVerified && (
@@ -60,6 +73,71 @@ export default async function ModeracionPage() {
                 </p>
               </header>
 
+              {/* Quién publica.
+                  Va arriba de todo y separado: es lo primero que hay que mirar
+                  ante un aviso sospechoso. Antes solo se veía el nombre de la
+                  empresa, que cualquiera puede inventar.
+
+                  "Sin declarar" cuando falta: son avisos de empresas anteriores
+                  a que se pidieran estos datos, y esa ausencia también es
+                  información para quien modera. */}
+              <div className="mb-4 rounded-lg border border-rule bg-paper p-4">
+                <h4 className="text-base font-semibold text-ink">
+                  Quién publica
+                </h4>
+                <dl className="mt-2 grid grid-cols-1 gap-x-6 gap-y-2 text-base sm:grid-cols-2">
+                  <div>
+                    <dt className="text-ink-soft">Tipo</dt>
+                    <dd className="font-semibold text-ink">
+                      {job.company.employerType === "PARTICULAR"
+                        ? "Persona particular"
+                        : "Empresa"}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="text-ink-soft">
+                      {job.company.employerType === "PARTICULAR"
+                        ? "DNI"
+                        : "CUIT"}
+                    </dt>
+                    <dd className="font-semibold text-ink">
+                      {job.company.employerType === "PARTICULAR"
+                        ? (job.company.nationalId ?? "Sin declarar")
+                        : job.company.taxId
+                          ? formatearCuit(job.company.taxId)
+                          : "Sin declarar"}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="text-ink-soft">Responsable</dt>
+                    <dd className="font-semibold text-ink">
+                      {job.company.contactName ?? "Sin declarar"}
+                      {job.company.contactRole && (
+                        <span className="font-normal text-ink-soft">
+                          {" "}
+                          · {job.company.contactRole}
+                        </span>
+                      )}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="text-ink-soft">Teléfono</dt>
+                    <dd className="font-semibold text-ink">
+                      {job.company.contactPhone ? (
+                        <a
+                          href={`tel:${job.company.contactPhone}`}
+                          className="link-text text-primary-700 dark:text-primary-200"
+                        >
+                          {job.company.contactPhone}
+                        </a>
+                      ) : (
+                        "Sin declarar"
+                      )}
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+
               <dl className="mb-4 grid grid-cols-2 gap-3 text-base sm:grid-cols-3">
                 <div>
                   <dt className="text-ink-soft">Portales</dt>
@@ -70,12 +148,8 @@ export default async function ModeracionPage() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-ink-soft">
-                    Modalidad
-                  </dt>
-                  <dd className="font-semibold text-ink">
-                    {job.modality}
-                  </dd>
+                  <dt className="text-ink-soft">Modalidad</dt>
+                  <dd className="font-semibold text-ink">{job.modality}</dd>
                 </div>
                 <div>
                   <dt className="text-ink-soft">Salario</dt>

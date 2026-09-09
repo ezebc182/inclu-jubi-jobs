@@ -147,6 +147,33 @@ model Company {
   whatsappNumber String? // Número de WhatsApp de contacto
   isVerified Boolean  @default(false)
 
+  // ─── Acreditación de quien publica ──────────────────────────────
+  //
+  // Antes el único dato obligatorio era el nombre: cualquiera escribía
+  // "Empresa SA" y ya podía publicar avisos que ven personas jubiladas y
+  // personas con discapacidad buscando trabajo.
+  //
+  // Nada de esto PRUEBA identidad —no se consulta a AFIP ni a RENAPER—, pero
+  // deja rastro y disuade: quien inventa un CUIT miente por escrito. La defensa
+  // real sigue siendo la moderación; estos datos son para que quien modera
+  // tenga con qué decidir, en vez de mirar un nombre suelto.
+
+  /// EMPRESA o PARTICULAR. Mucho trabajo por día para esta audiencia lo ofrece
+  /// una casa que busca cuidador, no una empresa formal: dejarlos afuera sería
+  /// dejar afuera el trabajo real.
+  employerType EmployerType @default(EMPRESA)
+
+  /// CUIT de la empresa. Se valida el dígito verificador, no la titularidad.
+  taxId      String?
+  /// DNI de quien publica, cuando es particular.
+  nationalId String?
+
+  /// Quién publica y con qué responsabilidad. Un aviso lo firma una persona,
+  /// no una razón social.
+  contactName  String?
+  contactRole  String?
+  contactPhone String?
+
   // Empresa verificada: sus avisos se auto-aprueban y saltan la cola de moderación.
   autoApproveJobs Boolean @default(false)
 
@@ -159,6 +186,7 @@ model Company {
 
   @@index([ownerId])
   @@index([isVerified])
+  @@index([taxId])
   @@index([createdAt(sort: Desc)])
 }
 
@@ -256,6 +284,12 @@ enum ModerationStatus {
   PENDING
   APPROVED
   REJECTED
+}
+
+/// Quién publica un empleo.
+enum EmployerType {
+  EMPRESA
+  PARTICULAR
 }
 
 enum UserRole {

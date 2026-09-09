@@ -1,4 +1,9 @@
 import { z } from "zod";
+import {
+  esCuitValido,
+  esDniValido,
+  esTelefonoValido,
+} from "@/lib/identificacion";
 
 export const threeQuestionsSchema = z.object({
   did: z
@@ -34,17 +39,66 @@ export const candidateOnboardingSchema = z.object({
   wantToDo: z.string().min(10).max(1000),
 });
 
-export const companyProfileSchema = z.object({
-  name: z.string().min(2, "El nombre de la empresa es muy corto"),
-  website: z
-    .string()
-    .url("Ingresá una URL válida")
-    .optional()
-    .or(z.literal("")),
-  about: z.string().max(1000, "Máximo 1000 caracteres").optional(),
-  location: z.string().optional(),
-  whatsappNumber: z.string().optional(),
-});
+/**
+ * Perfil de quien publica empleos.
+ *
+ * Antes el único campo obligatorio era el nombre: cualquiera escribía
+ * "Empresa SA" y publicaba avisos que ven personas jubiladas y personas con
+ * discapacidad buscando trabajo.
+ *
+ * Ahora se pide con qué responsabilidad se publica. Nada de esto prueba
+ * identidad —no se consulta a AFIP ni a RENAPER—, pero deja rastro y disuade:
+ * quien inventa un CUIT miente por escrito. La defensa real sigue siendo la
+ * moderación; esto le da a quien modera con qué decidir.
+ *
+ * Se admiten particulares a propósito: mucho trabajo por día para esta
+ * audiencia lo ofrece una casa que busca cuidador, no una empresa formal.
+ */
+export const companyProfileSchema = z
+  .object({
+    employerType: z.enum(["EMPRESA", "PARTICULAR"]),
+    name: z.string().min(2, "El nombre es muy corto"),
+
+    taxId: z.string().optional().or(z.literal("")),
+    nationalId: z.string().optional().or(z.literal("")),
+
+    contactName: z.string().min(3, "Escribí tu nombre y apellido"),
+    contactRole: z.string().optional().or(z.literal("")),
+    contactPhone: z
+      .string()
+      .refine(esTelefonoValido, "Ingresá un teléfono con código de área"),
+
+    website: z
+      .string()
+      .url("Ingresá una URL válida")
+      .optional()
+      .or(z.literal("")),
+    about: z.string().max(1000, "Máximo 1000 caracteres").optional(),
+    location: z.string().optional(),
+    whatsappNumber: z.string().optional(),
+  })
+  // El documento que se pide depende de quién publica. Se valida acá y no en
+  // el campo porque una regla necesita ver el otro valor.
+  .superRefine((data, ctx) => {
+    if (data.employerType === "EMPRESA") {
+      if (!esCuitValido(data.taxId ?? "")) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["taxId"],
+          message: "Revisá el CUIT: son 11 dígitos y el último no coincide",
+        });
+      }
+      return;
+    }
+
+    if (!esDniValido(data.nationalId ?? "")) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["nationalId"],
+        message: "Ingresá tu DNI sin puntos",
+      });
+    }
+  });
 
 export const portalEnum = z.enum(["JUBI", "INCLU"]);
 
