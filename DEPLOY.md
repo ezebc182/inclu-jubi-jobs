@@ -18,18 +18,39 @@ gh auth setup-git
 git push -u origin feat/multi-portal-pwa-a11y
 ```
 
-## 2. Aplicar la migración
+## 2. Migraciones
 
-La migración está en `prisma/migrations/20260907120000_add_multi_portal_and_moderation/`.
-Revisá el SQL antes de correrla.
+**Se aplican solas en cada deploy.** El `build` corre `prisma migrate deploy`
+antes de compilar, así que no hay paso manual.
+
+```
+build: prisma generate && prisma migrate deploy && next build
+```
+
+Antes solo hacía `prisma generate`, que genera el cliente TypeScript pero no
+toca la base. El resultado: el código se desplegaba esperando columnas que la
+base no tenía, y las consultas de Prisma fallaban en producción sin que el
+build diera error. Así se rompió el login con Google —`unable_to_create_user`—
+cuando el modelo `Account` quedó tres columnas atrás de lo que escribe
+Better-Auth.
+
+Si una migración falla, el build falla y el deploy no sale. Eso es
+intencional: es preferible no desplegar a desplegar contra una base
+incompatible.
+
+### Correrla a mano
+
+Solo hace falta para aplicar una migración sin desplegar:
 
 ```bash
-# Contra la base productiva
 DATABASE_URL="<url-de-produccion>" pnpm exec prisma migrate deploy
 ```
 
-Incluye backfill defensivo: los avisos que ya estaban `PUBLISHED` quedan
-`APPROVED` y no se apagan.
+### Antes de mergear una migración
+
+Leé el SQL. `migrate deploy` no pide confirmación y no se puede deshacer solo:
+un `DROP COLUMN` o un `NOT NULL` sobre datos existentes se lleva puesto lo que
+haya. Las migraciones aditivas —columnas nuevas y opcionales— son seguras.
 
 ## 3. Crear el primer administrador
 
