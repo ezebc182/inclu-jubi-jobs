@@ -22,7 +22,10 @@ export default async function OnboardingPage() {
     redirect("/ingresar");
   }
 
-  // Si ya tiene un rol asignado, redirigir según el rol
+  // Con rol elegido, cada quien va a lo suyo. Sin rol, se muestra el selector
+  // de abajo — que antes era código muerto: como el schema ponía CANDIDATE por
+  // defecto a todo usuario nuevo, esta condición se cumplía siempre y nadie
+  // llegaba a elegir.
   if (user.role === "CANDIDATE") {
     redirect("/empleos");
   }

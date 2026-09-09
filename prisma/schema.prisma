@@ -14,7 +14,13 @@ model User {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  role      UserRole @default(CANDIDATE)
+  /// Sin valor hasta que la persona elige en /onboarding.
+  ///
+  /// Antes era `@default(CANDIDATE)`, y eso volvia imposible registrarse como
+  /// empresa: quien entraba con Google quedaba marcado como candidato sin que
+  /// se le preguntara, y /onboarding —que ve el rol ya puesto— lo mandaba
+  /// directo a /empleos sin mostrar nunca el selector.
+  role      UserRole?
   email     String   @unique
   emailVerified Boolean @default(false)
   name      String?

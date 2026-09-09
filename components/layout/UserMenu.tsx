@@ -63,11 +63,6 @@ export function UserMenu({ user }: { user: UserMenuUser }) {
   // navegación y en pantallas medianas la parte.
   const firstName = displayName.split(" ")[0]!;
 
-  const homeLink =
-    user.role === "COMPANY"
-      ? { href: "/empresa", label: "Mi empresa" }
-      : { href: "/postulaciones", label: "Mis postulaciones" };
-
   return (
     <div ref={containerRef} className="relative">
       <button
@@ -101,15 +96,22 @@ export function UserMenu({ user }: { user: UserMenuUser }) {
             </p>
           </div>
 
+          {/* Sin repetir el botón que ya está afuera en el header: tenerlo dos
+              veces a la vista no da una opción más, solo hace dudar de si son
+              lo mismo. */}
           <div className="pt-2">
-            <Link
-              href={homeLink.href}
-              role="menuitem"
-              onClick={() => setOpen(false)}
-              className="flex min-h-[44px] items-center rounded-md px-3 text-lg text-ink transition-colors hover:bg-primary-50 dark:hover:bg-primary-900/30"
-            >
-              {homeLink.label}
-            </Link>
+            {/* Sin rol elegido todavía: el único camino útil es terminar de
+                decidir para qué es la cuenta. */}
+            {!user.role && (
+              <Link
+                href="/onboarding"
+                role="menuitem"
+                onClick={() => setOpen(false)}
+                className="flex min-h-[44px] items-center rounded-md px-3 text-lg text-ink transition-colors hover:bg-primary-50 dark:hover:bg-primary-900/30"
+              >
+                Completar mi perfil
+              </Link>
+            )}
 
             {user.role === "ADMIN" && (
               <Link

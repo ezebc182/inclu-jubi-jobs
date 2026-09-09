@@ -137,12 +137,15 @@ export default async function RootLayout({
         name: session.user.name ?? null,
         email: session.user.email,
         image: session.user.image ?? null,
-        role: (
-          await prisma.user.findUnique({
-            where: { id: session.user.id },
-            select: { role: true },
-          })
-        )?.role,
+        // `?? undefined` porque en la base el rol puede ser NULL —quien no
+        // eligió todavía— y el tipo del header usa `undefined` para eso.
+        role:
+          (
+            await prisma.user.findUnique({
+              where: { id: session.user.id },
+              select: { role: true },
+            })
+          )?.role ?? undefined,
       }
     : null;
 
