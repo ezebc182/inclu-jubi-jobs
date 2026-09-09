@@ -7,6 +7,7 @@ import { ServiceWorkerRegistrar } from "@/components/pwa/ServiceWorkerRegistrar"
 import { InstallPrompt } from "@/components/pwa/InstallPrompt";
 import { UserWayWidget } from "@/components/a11y/UserWayWidget";
 import { auth } from "@/lib/auth";
+import { prisma } from "@/lib/db";
 import { getCurrentPortalConfig, portalBaseUrl } from "@/lib/portal";
 
 const inter = Inter({
@@ -122,6 +123,29 @@ export default async function RootLayout({
     getCurrentPortalConfig(),
   ]);
 
+  /**
+   * El rol no viaja en la sesión de Better-Auth: vive en la tabla `User`, que
+   * es nuestra. Por eso el header no mostraba "Mis postulaciones" ni
+   * "Mi empresa" aunque hubiera sesión — `session.user.role` venía `undefined`
+   * y ninguna condición se cumplía.
+   *
+   * Nombre, correo e imagen sí vienen de Google en la sesión.
+   */
+  const headerUser = session
+    ? {
+        id: session.user.id,
+        name: session.user.name ?? null,
+        email: session.user.email,
+        image: session.user.image ?? null,
+        role: (
+          await prisma.user.findUnique({
+            where: { id: session.user.id },
+            select: { role: true },
+          })
+        )?.role,
+      }
+    : null;
+
   return (
     <html
       lang="es-AR"
@@ -135,7 +159,7 @@ export default async function RootLayout({
           solo declaramos las variables (en el <html>, arriba). */}
       <body>
         <RootClientWrapper
-          session={session}
+          session={headerUser ? { user: headerUser } : null}
           brand={portal.dataAttr}
           portalName={portal.name}
         >
