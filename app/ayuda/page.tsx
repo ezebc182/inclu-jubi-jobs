@@ -1,20 +1,34 @@
+import type { Metadata } from "next";
 import { BigCTAButton } from "@/components/ui/BigCTAButton";
 import Link from "next/link";
+import { getCurrentPortalConfig } from "@/lib/portal";
 
-export const metadata = {
-  title: "Ayuda - JubiJobs",
-  description:
-    "Guía completa para usar JubiJobs paso a paso. Tutoriales y ayuda para encontrar empleo.",
-};
+/**
+ * La marca sale del portal del request.
+ *
+ * Antes decía "JubiJobs" fijo en el título y en siete lugares del cuerpo, así
+ * que en inclujobs.com la página mezclaba las dos marcas: el encabezado y el
+ * pie decían IncluJobs y el contenido, JubiJobs. Y es justamente la página que
+ * alguien abre cuando ya está confundido.
+ */
+export async function generateMetadata(): Promise<Metadata> {
+  const portal = await getCurrentPortalConfig();
+  return {
+    title: "Ayuda",
+    description: `Guía paso a paso para usar ${portal.name} y encontrar empleo.`,
+  };
+}
 
-export default function AyudaPage() {
+export default async function AyudaPage() {
+  const portal = await getCurrentPortalConfig();
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-12">
       <h1 className="mb-6 text-center text-4xl font-bold text-ink">
         Centro de Ayuda
       </h1>
       <p className="mb-12 text-center text-xl text-ink-soft">
-        Guía paso a paso para usar JubiJobs. Todo lo que necesitás saber.
+        Guía paso a paso para usar {portal.name}. Todo lo que necesitás saber.
       </p>
 
       {/* Sección 1: Primeros Pasos */}
@@ -31,28 +45,28 @@ export default function AyudaPage() {
               </span>
               Ingresar a la plataforma
             </h3>
+            {/* Una sola opción, que es la única que existe. Antes enumeraba
+                cuatro —Google, Microsoft, Facebook y teléfono— y tres no están
+                disponibles. En la página de ayuda eso es doblemente grave: la
+                lee alguien que ya se trabó, y le describe botones que no va a
+                encontrar. */}
             <div className="ml-15 space-y-3 text-lg text-ink-soft">
               <p>
-                <strong>Opción 1 - Con Google:</strong> Hacé click en el botón
-                "Continuar con Google". Te va a pedir permiso para usar tu
-                cuenta de Gmail. Hacé click en "Permitir".
+                Hacé click en el botón{" "}
+                <strong>&quot;Continuar con Google&quot;</strong>. Te va a pedir
+                permiso para usar tu cuenta de Gmail: hacé click en
+                &quot;Permitir&quot; y ya estás adentro.
               </p>
               <p>
-                <strong>Opción 2 - Con Microsoft:</strong> Si tenés cuenta de
-                Outlook o Hotmail, hacé click en "Continuar con Microsoft".
+                Si usás Gmail en el celular, ya tenés una cuenta de Google: es
+                la misma dirección de correo. Si no tenés, se crea gratis desde
+                ese mismo botón.
               </p>
-              <p>
-                <strong>Opción 3 - Con Facebook:</strong> Si preferís, podés
-                ingresar con tu cuenta de Facebook.
-              </p>
-              <p>
-                <strong>Opción 4 - Con tu teléfono:</strong> Ingresá tu número
-                de celular (con código de área, sin el 0). Te vamos a enviar un
-                SMS con un código de 6 dígitos. Ingresá ese código y listo.
-              </p>
-              <p className="rounded-lg bg-primary-100 p-4 text-base dark:bg-primary-900">
-                💡 <strong>No necesitás crear contraseña.</strong> Cada vez que
-                quieras ingresar, elegís una de estas opciones y entrás directo.
+              <p className="rounded-lg border border-rule bg-paper p-4 text-base">
+                <strong className="text-ink">
+                  No necesitás crear ninguna contraseña.
+                </strong>{" "}
+                Cada vez que quieras entrar, hacés click en ese botón y listo.
               </p>
             </div>
           </div>
@@ -87,9 +101,9 @@ export default function AyudaPage() {
                 </li>
               </ul>
               <p className="rounded-lg bg-yellow-50 p-4 text-base dark:bg-yellow-900">
-                ⚠️ <strong>Importante:</strong> Escribí con tus propias
-                palabras. No hace falta usar lenguaje técnico. Sé honesto y
-                claro. Las empresas valoran la sinceridad.
+                <strong>Importante:</strong> Escribí con tus propias palabras.
+                No hace falta usar lenguaje técnico. Sé honesto y claro. Las
+                empresas valoran la sinceridad.
               </p>
             </div>
           </div>
@@ -122,8 +136,8 @@ export default function AyudaPage() {
                 </li>
               </ul>
               <p className="rounded-lg bg-green-50 p-4 text-base dark:bg-green-900">
-                ✓ <strong>Tip:</strong> Si no sabés qué filtro usar, dejá todo
-                sin seleccionar y vas a ver todas las ofertas disponibles.
+                <strong>Tip:</strong> Si no sabés qué filtro usar, dejá todo sin
+                seleccionar y vas a ver todas las ofertas disponibles.
               </p>
             </div>
           </div>
@@ -152,9 +166,9 @@ export default function AyudaPage() {
                 <li>¡Listo! La empresa va a ver tu perfil</li>
               </ol>
               <p className="rounded-lg bg-primary-100 p-4 text-base dark:bg-primary-900">
-                💡 <strong>Recordá:</strong> Podés postularte a todos los
-                empleos que quieras. No hay límite. Mientras más postulaciones,
-                más chances de conseguir trabajo.
+                <strong>Recordá:</strong> Podés postularte a todos los empleos
+                que quieras. No hay límite. Mientras más postulaciones, más
+                chances de conseguir trabajo.
               </p>
             </div>
           </div>
@@ -187,8 +201,8 @@ export default function AyudaPage() {
           2. Navegación por teclado
         </h2>
         <p className="mb-6 text-lg text-ink-soft">
-          Podés usar JubiJobs completamente con el teclado, sin necesidad de
-          mouse. Esto es útil si te resulta más cómodo o si usás tecnologías
+          Podés usar {portal.name} completamente con el teclado, sin necesidad
+          de mouse. Esto es útil si te resulta más cómodo o si usás tecnologías
           asistivas.
         </p>
 
@@ -333,9 +347,8 @@ export default function AyudaPage() {
                 </li>
               </ol>
               <p className="rounded-lg bg-primary-100 p-4 text-base dark:bg-primary-900">
-                💡 <strong>Se guarda automáticamente:</strong> La próxima vez
-                que ingreses, el tamaño de texto va a quedar como lo
-                configuraste.
+                <strong>Se guarda automáticamente:</strong> La próxima vez que
+                ingreses, el tamaño de texto va a quedar como lo configuraste.
               </p>
             </div>
           </div>
@@ -360,7 +373,7 @@ export default function AyudaPage() {
                 </li>
               </ol>
               <p className="rounded-lg bg-paper p-4 text-base">
-                ✓ <strong>Beneficios del modo oscuro:</strong> Cansa menos la
+                <strong>Beneficios del modo oscuro:</strong> Cansa menos la
                 vista, especialmente si usás la computadora de noche. Ahorra
                 batería en celulares con pantalla OLED.
               </p>
@@ -406,7 +419,7 @@ export default function AyudaPage() {
         <div className="space-y-6">
           <div className="rounded-lg border border-rule bg-paper p-6">
             <h3 className="mb-3 text-xl font-bold text-ink">
-              ❓ ¿Es gratis usar JubiJobs?
+              ¿Es gratis usar {portal.name}?
             </h3>
             <p className="text-lg text-ink-soft">
               Sí, es <strong>100% gratis</strong> para candidatos. No cobramos
@@ -417,7 +430,7 @@ export default function AyudaPage() {
 
           <div className="rounded-lg border border-rule bg-paper p-6">
             <h3 className="mb-3 text-xl font-bold text-ink">
-              ❓ ¿Por qué no necesito subir un CV?
+              ¿Por qué no necesito subir un CV?
             </h3>
             <p className="text-lg text-ink-soft">
               Porque queremos que sea más simple. Las 3 preguntas que respondés
@@ -428,7 +441,7 @@ export default function AyudaPage() {
 
           <div className="rounded-lg border border-rule bg-paper p-6">
             <h3 className="mb-3 text-xl font-bold text-ink">
-              ❓ ¿Cuánto tiempo tarda en responder una empresa?
+              ¿Cuánto tiempo tarda en responder una empresa?
             </h3>
             <p className="text-lg text-ink-soft">
               Depende de cada empresa. Algunas responden en 1-2 días, otras
@@ -439,7 +452,7 @@ export default function AyudaPage() {
 
           <div className="rounded-lg border border-rule bg-paper p-6">
             <h3 className="mb-3 text-xl font-bold text-ink">
-              ❓ ¿Puedo modificar mi perfil después de crearlo?
+              ¿Puedo modificar mi perfil después de crearlo?
             </h3>
             <p className="text-lg text-ink-soft">
               Sí. En la sección "Mis postulaciones" vas a encontrar un botón
@@ -465,7 +478,7 @@ export default function AyudaPage() {
 
           <div className="rounded-lg border border-rule bg-paper p-6">
             <h3 className="mb-3 text-xl font-bold text-ink">
-              ❓ ¿Mis datos están seguros?
+              ¿Mis datos están seguros?
             </h3>
             <p className="text-lg text-ink-soft">
               Sí. Usamos los mismos sistemas de seguridad que los bancos. Tu
@@ -474,15 +487,37 @@ export default function AyudaPage() {
             </p>
           </div>
 
+          {/* La pregunta cambia según el portal: "¿hay límite de edad?" es la
+              duda de alguien jubilado, no la de alguien con discapacidad, que
+              se pregunta si el aviso va a respetar lo que necesita. Antes se
+              mostraba la de JubiJobs en los dos. */}
           <div className="rounded-lg border border-rule bg-paper p-6">
-            <h3 className="mb-3 text-xl font-bold text-ink">
-              ❓ ¿Hay un límite de edad para usar JubiJobs?
-            </h3>
-            <p className="text-lg text-ink-soft">
-              No. JubiJobs está diseñado especialmente para personas mayores de
-              60 años, pero cualquier persona puede usarlo. No discriminamos por
-              edad.
-            </p>
+            {portal.id === "JUBI" ? (
+              <>
+                <h3 className="mb-3 text-xl font-bold text-ink">
+                  ¿Hay un límite de edad para usar {portal.name}?
+                </h3>
+                <p className="text-lg text-ink-soft">
+                  No. {portal.name} está pensado para personas jubiladas y
+                  mayores de 60, pero cualquiera puede usarlo. Descartar a
+                  alguien por su edad es discriminación, y las empresas lo
+                  aceptan por escrito al publicar.
+                </p>
+              </>
+            ) : (
+              <>
+                <h3 className="mb-3 text-xl font-bold text-ink">
+                  ¿Tengo que contar cuál es mi discapacidad?
+                </h3>
+                <p className="text-lg text-ink-soft">
+                  No. Cargar esa información es opcional y podés postularte sin
+                  completarla. Si la cargás, la empresa ve únicamente las
+                  condiciones que el puesto tiene que garantizar —una rampa, un
+                  horario ajustable, trabajo remoto—, no una etiqueta sobre vos.
+                  Podés borrarla cuando quieras.
+                </p>
+              </>
+            )}
           </div>
         </div>
       </section>
