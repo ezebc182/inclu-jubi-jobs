@@ -89,6 +89,16 @@ model Session {
   @@index([userId])
 }
 
+/// Cuenta de un proveedor de identidad vinculada a un usuario.
+///
+/// Los nombres de los campos los define Better-Auth, no nosotros: su adaptador
+/// de Prisma escribe exactamente estas columnas. Si falta una, el insert entero
+/// se rechaza y el login termina en `unable_to_create_user` — que es lo que
+/// pasaba con `scope`, `accessTokenExpiresAt` y `refreshTokenExpiresAt`.
+///
+/// `expiresAt` era el nombre de la versión anterior; 1.4 lo separó en dos
+/// campos, uno por token. Se mantiene la columna vieja para no romper filas
+/// existentes, pero ya no la usa nadie.
 model Account {
   id              String   @id @default(cuid())
   userId          String
@@ -98,6 +108,11 @@ model Account {
   accessToken     String?
   refreshToken    String?
   idToken         String?
+  /// Permisos que otorgó la persona en la pantalla de Google.
+  scope           String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  /// Obsoleto: reemplazado por los dos campos de arriba. No se escribe más.
   expiresAt       DateTime?
   password        String?
   createdAt       DateTime @default(now())
