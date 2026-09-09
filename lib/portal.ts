@@ -26,8 +26,20 @@ export interface PortalConfig {
   name: string;
   /** Nombre completo, para metadata y documentos legales. */
   legalName: string;
-  /** Dominio productivo canónico. */
+  /** Dominio de marca, sin `www`. Se usa para identificar y para mostrar. */
   domain: string;
+  /**
+   * Host canónico REAL en producción, el que sirve el sitio sin redirigir.
+   *
+   * No es lo mismo que `domain`: cada portal quedó configurado distinto en
+   * Vercel —JubiJobs canoniza a `www`, InclúJobs canoniza sin `www`— y esa
+   * diferencia rompe OAuth. Google devuelve al `redirect_uri` que le mandamos;
+   * si ese host redirige a otro, la cookie `state` queda en el host de origen,
+   * el navegador no la envía al destino y Better-Auth responde
+   * `state_not_found`: el usuario vuelve a la pantalla de ingreso como si nada
+   * hubiera pasado.
+   */
+  canonicalHost: string;
   /** Audiencia, en una línea. Se usa en el admin y en la metadata. */
   audience: string;
   tagline: string;
@@ -51,6 +63,8 @@ const PORTALS: Record<PortalId, PortalConfig> = {
     name: "JubiJobs",
     legalName: "JubiJobs",
     domain: "jubijobs.com",
+    // Vercel canoniza a www: jubijobs.com responde 308 hacia www.jubijobs.com.
+    canonicalHost: "www.jubijobs.com",
     audience: "Personas jubiladas y mayores de 60 años",
     tagline: "Tu experiencia vale. Encontrá trabajo sin vueltas.",
     description:
@@ -66,6 +80,8 @@ const PORTALS: Record<PortalId, PortalConfig> = {
     name: "IncluJobs",
     legalName: "IncluJobs",
     domain: "inclujobs.com",
+    // Al reves que JubiJobs: aca el canonico es SIN www.
+    canonicalHost: "inclujobs.com",
     audience: "Personas con discapacidad",
     tagline: "Trabajo real, con las condiciones que necesitás.",
     description:
@@ -167,6 +183,10 @@ export function publicJobFilter(portal: PortalId) {
  *
  * El override solo se respeta cuando NO es un dominio productivo, para poder
  * fijar una URL en previews de Vercel o en desarrollo local.
+ *
+ * Usa `canonicalHost`: una URL canónica que redirige se contradice a sí misma,
+ * y un sitemap que apunta a hosts con 308 hace que el buscador gaste rastreo
+ * en saltos en vez de en páginas.
  */
 export function portalBaseUrl(id: PortalId): string {
   const config = getPortalConfig(id);
@@ -179,5 +199,5 @@ export function portalBaseUrl(id: PortalId): string {
     if (!isProductionDomain) return override;
   }
 
-  return `https://${config.domain}`;
+  return `https://${config.canonicalHost}`;
 }
