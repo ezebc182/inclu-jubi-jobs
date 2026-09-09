@@ -182,6 +182,28 @@ function createAuthForPortal(portal: PortalId) {
         },
       }),
     ],
+    /**
+     * Sella el portal de origen en el usuario cuando se registra.
+     *
+     * Sin esto, `user.portal` se quedaba con el `@default(JUBI)` del schema y
+     * TODO el mundo terminaba en JubiJobs, incluso quien entraba por
+     * inclujobs.com. Verificado en producción: los siete usuarios existentes
+     * tenían portal JUBI, ninguno INCLU.
+     *
+     * Cada instancia de auth ya sabe a qué portal pertenece —hay una por
+     * portal, elegida por Host—, así que el dato está disponible acá sin
+     * inspeccionar el request.
+     */
+    databaseHooks: {
+      user: {
+        create: {
+          before: async (user) => ({
+            data: { ...user, portal },
+          }),
+        },
+      },
+    },
+
     secret: process.env.AUTH_SECRET || "development-secret-min-32-chars-long",
     baseURL: resolveBaseUrl(portal),
     trustedOrigins: TRUSTED_ORIGINS,
