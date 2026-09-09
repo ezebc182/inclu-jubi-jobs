@@ -23,7 +23,8 @@ export function UserAdminActions({
 }: {
   userId: string;
   userLabel: string;
-  role: Role;
+  /** Puede venir vacío: quien no eligió todavía en /onboarding. */
+  role: Role | null;
   isActive: boolean;
   isSelf: boolean;
 }) {
@@ -64,7 +65,7 @@ export function UserAdminActions({
           </label>
           <select
             id={`role-${userId}`}
-            defaultValue={role}
+            defaultValue={role ?? ""}
             disabled={isPending}
             onChange={(e) =>
               run(

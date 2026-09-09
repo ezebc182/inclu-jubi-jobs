@@ -148,7 +148,8 @@ export default async function AdminUsuariosPage({
                       {user.name || "Sin nombre"}
                     </h3>
                     <p className="mt-1 text-base text-ink-soft">
-                      {user.email} · {ROLE_LABELS[user.role]} ·{" "}
+                      {user.email} ·{" "}
+                      {user.role ? ROLE_LABELS[user.role] : "Sin definir"} ·{" "}
                       {getPortalConfig(user.portal).name} · Alta el{" "}
                       {formatDate(user.createdAt)}
                     </p>

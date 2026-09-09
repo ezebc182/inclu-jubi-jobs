@@ -126,7 +126,10 @@ export function SignInButtons({
      */
     const { error: signInError } = await authClient.signIn.social({
       provider,
-      callbackURL: "/",
+      // A /onboarding, no a la home: ahí se elige si la cuenta es para buscar
+      // trabajo o para publicar. Quien ya eligió no ve nada — esa página
+      // redirige sola al destino que corresponde a su rol.
+      callbackURL: "/onboarding",
     });
 
     // Si falla, el botón tiene que soltarse. Antes, ante cualquier error,

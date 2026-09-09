@@ -35,9 +35,14 @@ export async function PublishJobButton({ children }: PublishJobButtonProps) {
     }
   }
 
-  // Si es candidato, ir a onboarding para cambiar de rol o crear nueva cuenta
+  // Quien tiene cuenta de candidato va a /empresa, que explica que hace falta
+  // una cuenta aparte para publicar.
+  //
+  // Antes mandaba a /ingresar: la persona ya tenía sesión y le volvía a pedir
+  // "Continuar con Google", que no resuelve nada —vuelve con la misma cuenta y
+  // el mismo rol— y parece que la sesión se hubiera perdido.
   if (user?.role === "CANDIDATE") {
-    return <BigCTAButton href="/ingresar">{children}</BigCTAButton>;
+    return <BigCTAButton href="/empresa">{children}</BigCTAButton>;
   }
 
   // Si no tiene rol, ir a onboarding
