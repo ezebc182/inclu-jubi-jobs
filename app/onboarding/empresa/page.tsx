@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { completeOnboardingCompany } from "@/app/actions/onboarding";
+import { EmployerIdentityFields } from "@/components/onboarding/EmployerIdentityFields";
 import { PROVINCIAS_AR } from "@/lib/constants";
 import { prisma } from "@/lib/db";
 
@@ -43,12 +44,13 @@ export default async function OnboardingEmpresaPage() {
           action={completeOnboardingCompany}
           className="flex flex-col gap-6"
         >
+          <EmployerIdentityFields />
+
           <div className="flex flex-col gap-2">
-            <label
-              htmlFor="companyName"
-              className="text-lg font-bold text-ink"
-            >
-              Nombre de la empresa
+            <label htmlFor="companyName" className="text-lg font-bold text-ink">
+              {/* "Nombre" a secas: un particular que ofrece trabajo no tiene
+                  nombre de empresa, y el campo es el mismo para los dos. */}
+              Nombre con el que se publica
               <span className="ml-1 text-red-600 dark:text-red-400">*</span>
             </label>
             <input
@@ -57,23 +59,20 @@ export default async function OnboardingEmpresaPage() {
               name="companyName"
               required
               minLength={2}
-              className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+              className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
               placeholder="Supermercado Sur"
             />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label
-              htmlFor="website"
-              className="text-lg font-bold text-ink"
-            >
+            <label htmlFor="website" className="text-lg font-bold text-ink">
               Sitio web (opcional)
             </label>
             <input
               type="url"
               id="website"
               name="website"
-              className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+              className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
               placeholder="https://ejemplo.com"
             />
           </div>
@@ -93,16 +92,13 @@ export default async function OnboardingEmpresaPage() {
               type="tel"
               id="whatsappNumber"
               name="whatsappNumber"
-              className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+              className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
               placeholder="+54 11 1234-5678"
             />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label
-              htmlFor="location"
-              className="text-lg font-bold text-ink"
-            >
+            <label htmlFor="location" className="text-lg font-bold text-ink">
               Ubicación principal (opcional)
             </label>
             <select
@@ -120,10 +116,7 @@ export default async function OnboardingEmpresaPage() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label
-              htmlFor="about"
-              className="text-lg font-bold text-ink"
-            >
+            <label htmlFor="about" className="text-lg font-bold text-ink">
               Sobre la empresa (opcional)
             </label>
             <p className="text-base text-ink-soft">
@@ -134,7 +127,7 @@ export default async function OnboardingEmpresaPage() {
               name="about"
               rows={5}
               maxLength={1000}
-              className="rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 "
+              className="rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
               placeholder="Somos una empresa familiar con más de 20 años en el mercado..."
             />
           </div>

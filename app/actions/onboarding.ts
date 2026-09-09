@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/db";
+import { soloDigitos } from "@/lib/identificacion";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -59,7 +60,18 @@ export async function completeOnboardingCompany(formData: FormData) {
   }
 
   const data = {
+    employerType:
+      (formData.get("employerType") as string) === "PARTICULAR"
+        ? ("PARTICULAR" as const)
+        : ("EMPRESA" as const),
     name: formData.get("companyName") as string,
+    // Solo dígitos: la persona escribe "20-12345678-9" y se guarda normalizado,
+    // así el índice sirve para buscar sin importar cómo se tipeó.
+    taxId: soloDigitos((formData.get("taxId") as string) ?? ""),
+    nationalId: soloDigitos((formData.get("nationalId") as string) ?? ""),
+    contactName: (formData.get("contactName") as string) ?? "",
+    contactRole: (formData.get("contactRole") as string) || "",
+    contactPhone: (formData.get("contactPhone") as string) ?? "",
     website: (formData.get("website") as string) || "",
     about: (formData.get("about") as string) || undefined,
     location: (formData.get("location") as string) || undefined,
@@ -85,6 +97,12 @@ export async function completeOnboardingCompany(formData: FormData) {
         where: { ownerId: session.user.id },
         data: {
           name: validated.name,
+          employerType: validated.employerType,
+          taxId: validated.taxId || null,
+          nationalId: validated.nationalId || null,
+          contactName: validated.contactName,
+          contactRole: validated.contactRole || null,
+          contactPhone: validated.contactPhone,
           website: validated.website,
           about: validated.about,
           location: validated.location,
@@ -104,6 +122,12 @@ export async function completeOnboardingCompany(formData: FormData) {
         data: {
           ownerId: session.user.id,
           name: validated.name,
+          employerType: validated.employerType,
+          taxId: validated.taxId || null,
+          nationalId: validated.nationalId || null,
+          contactName: validated.contactName,
+          contactRole: validated.contactRole || null,
+          contactPhone: validated.contactPhone,
           website: validated.website,
           about: validated.about,
           location: validated.location,
