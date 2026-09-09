@@ -10,6 +10,10 @@ import type { BrandSlug } from "@/lib/brand-assets";
 interface SessionUser {
   id: string;
   role?: "CANDIDATE" | "COMPANY" | "ADMIN";
+  /** Los tres vienen de Google. `name` e `image` pueden faltar. */
+  name: string | null;
+  email: string;
+  image: string | null;
 }
 
 export function RootClientWrapper({

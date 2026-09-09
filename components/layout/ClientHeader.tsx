@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { UserMenu } from "./UserMenu";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
@@ -12,6 +13,10 @@ import type { BrandSlug } from "@/lib/brand-assets";
 interface SessionUser {
   id: string;
   role?: "CANDIDATE" | "COMPANY" | "ADMIN";
+  /** Los tres vienen de Google. `name` e `image` pueden faltar. */
+  name: string | null;
+  email: string;
+  image: string | null;
 }
 
 interface ClientHeaderProps {
@@ -76,15 +81,10 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
             <ThemeToggle />
 
             {session ? (
+              // La acción principal queda a la vista y el resto entra al menú.
+              // Antes había hasta tres botones sueltos más un "Salir" sin
+              // contexto: no se sabía con qué cuenta se había entrado.
               <>
-                {isAdmin && (
-                  <Link
-                    href="/admin"
-                    className="min-h-[44px] rounded-md border border-primary-600 px-4 py-2.5 text-lg font-medium text-primary-700 transition-colors hover:bg-primary-50 dark:border-primary-300 dark:text-primary-200 dark:hover:bg-primary-900/30"
-                  >
-                    Administración
-                  </Link>
-                )}
                 {session.user.role === "COMPANY" && (
                   <Link
                     href="/empresa"
@@ -101,12 +101,7 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
                     Mis postulaciones
                   </Link>
                 )}
-                <button
-                  onClick={handleLogout}
-                  className="min-h-[44px] rounded-md px-4 py-2.5 text-lg font-medium text-ink transition-colors hover:bg-primary-50 dark:hover:bg-primary-900/30"
-                >
-                  Salir
-                </button>
+                <UserMenu user={session.user} />
               </>
             ) : (
               <Link
