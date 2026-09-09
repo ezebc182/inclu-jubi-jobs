@@ -2,6 +2,75 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+/**
+ * Este seed BORRA TODA LA BASE antes de sembrar: `deleteMany()` sin filtro
+ * sobre usuarios, empresas, avisos y postulaciones. Contra producción eso se
+ * lleva puesto las cuentas reales, no solo agrega datos de prueba.
+ *
+ * Ya pasó algo parecido: los seis usuarios y los seis avisos que sembró
+ * quedaron publicados en producción, con empresas inventadas y sueldos
+ * inventados, hasta que se despublicaron a mano.
+ *
+ * Dos barreras, porque una sola se saltea sin querer:
+ *
+ *   1. NODE_ENV. Cubre el caso de correrlo dentro de un deploy.
+ *   2. El host de la base. Cubre el caso real que faltaba: correrlo desde la
+ *      máquina de uno con el DATABASE_URL de producción pegado en el .env.
+ *
+ * Para forzarlo igual —restaurar un entorno de staging, por ejemplo— hay que
+ * pasar SEED_CONFIRMO_BORRAR_TODO=si. Ese nombre es a propósito: nadie lo
+ * escribe sin saber lo que hace.
+ */
+function abortarSiEsProduccion() {
+  const forzado = process.env.SEED_CONFIRMO_BORRAR_TODO === "si";
+  if (forzado) {
+    console.warn(
+      "\n⚠️  Forzado con SEED_CONFIRMO_BORRAR_TODO. Se borra todo.\n"
+    );
+    return;
+  }
+
+  const motivos: string[] = [];
+
+  if (process.env.NODE_ENV === "production") {
+    motivos.push("NODE_ENV es production");
+  }
+
+  // Hosts gestionados: si la base está en uno de estos, no es un Postgres local.
+  const url = process.env.DATABASE_URL ?? "";
+  const REMOTOS = [
+    "neon.tech",
+    "supabase.co",
+    "amazonaws.com",
+    "vercel-storage.com",
+    "railway.app",
+  ];
+  const remoto = REMOTOS.find((h) => url.includes(h));
+  if (remoto) {
+    motivos.push(`DATABASE_URL apunta a ${remoto}`);
+  }
+
+  if (motivos.length === 0) return;
+
+  console.error(
+    [
+      "",
+      "✋ El seed NO se ejecuta.",
+      "",
+      ...motivos.map((m) => `   · ${m}`),
+      "",
+      "   Este script borra TODOS los usuarios, empresas, avisos y",
+      "   postulaciones antes de sembrar. Contra una base con datos reales",
+      "   eso es irreversible.",
+      "",
+      "   Si de verdad querés borrar todo:",
+      "     SEED_CONFIRMO_BORRAR_TODO=si pnpm db:seed",
+      "",
+    ].join("\n")
+  );
+  process.exit(1);
+}
+
 const PROVINCIAS_AR = [
   "CABA",
   "Buenos Aires",
@@ -29,6 +98,8 @@ const PROVINCIAS_AR = [
 ];
 
 async function main() {
+  abortarSiEsProduccion();
+
   console.log("🌱 Iniciando seed...");
 
   // Limpiar datos existentes
