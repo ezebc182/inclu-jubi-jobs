@@ -128,6 +128,32 @@ function createAuthForPortal(portal: PortalId) {
     emailAndPassword: {
       enabled: false, // Solo OAuth y teléfono: menos fricción, menos soporte.
     },
+
+    /**
+     * Vinculación de cuentas.
+     *
+     * Sin esta configuración, Better-Auth toma el camino más restrictivo: si ya
+     * existe un usuario con ese correo y no tiene cuenta OAuth asociada, se
+     * niega a vincular y devuelve `unable_to_link_account`. La persona vuelve a
+     * la portada con un error en la URL y sin sesión.
+     *
+     * La negativa por defecto protege de un ataque real: si cualquiera pudiera
+     * vincular su Google a un correo ya registrado, se apropiaría de esa cuenta.
+     *
+     * Acá la habilitamos SOLO para Google, y eso es seguro por un motivo
+     * concreto: Google verifica que la persona sea dueña del correo antes de
+     * entregárnoslo. Quien llega con `alguien@gmail.com` es dueño de esa
+     * casilla — no hay suplantación posible.
+     *
+     * Se limita a `trustedProviders`. Un proveedor que no verifique el correo
+     * NO debe entrar en esta lista.
+     */
+    account: {
+      accountLinking: {
+        enabled: true,
+        trustedProviders: ["google"],
+      },
+    },
     socialProviders: {
       google: providerCredentials("google", portal),
       github: providerCredentials("github", portal),
