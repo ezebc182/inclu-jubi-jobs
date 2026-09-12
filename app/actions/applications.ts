@@ -6,6 +6,11 @@ import { prisma } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { getCurrentPortal, publicJobFilter } from "@/lib/portal";
 import { threeQuestionsSchema } from "@/lib/validations";
+import {
+  sendApplicationConfirmation,
+  sendContactRequest,
+  sendNewApplicationNotification,
+} from "@/lib/email";
 
 export async function submitApplication(
   jobId: string,
@@ -36,7 +41,13 @@ export async function submitApplication(
     // Verificar el rol directamente desde la base de datos
     const user = await prisma.user.findUnique({
       where: { id: session.user.id },
-      select: { role: true, portal: true, isActive: true },
+      select: {
+        role: true,
+        portal: true,
+        isActive: true,
+        name: true,
+        email: true,
+      },
     });
 
     if (!user || user.role !== "CANDIDATE") {
@@ -53,7 +64,16 @@ export async function submitApplication(
     const portal = await getCurrentPortal();
     const job = await prisma.job.findFirst({
       where: { id: jobId, ...publicJobFilter(portal) },
-      select: { id: true },
+      select: {
+        id: true,
+        title: true,
+        company: {
+          select: {
+            name: true,
+            owner: { select: { email: true, portal: true } },
+          },
+        },
+      },
     });
 
     if (!job) {
@@ -94,6 +114,31 @@ export async function submitApplication(
           wantToDo: validated.wantToDo,
           status: "SUBMITTED",
         },
+      }),
+    ]);
+
+    // Los mails salen DESPUÉS de la transacción y no pueden hacerla fallar:
+    // ninguna de estas funciones lanza. Se esperan igual, porque un
+    // serverless puede cortar la ejecución apenas devuelve la respuesta y
+    // una promesa suelta se pierde en el aire.
+    //
+    // Cada persona recibe del portal donde se registró: el candidato del
+    // portal actual (que es el suyo, por el filtro de arriba) y la empresa
+    // del portal donde abrió su cuenta.
+    await Promise.all([
+      sendApplicationConfirmation({
+        portal: user.portal,
+        to: user.email,
+        candidateName: user.name,
+        jobTitle: job.title,
+        companyName: job.company.name,
+      }),
+      sendNewApplicationNotification({
+        portal: job.company.owner.portal,
+        to: job.company.owner.email,
+        companyName: job.company.name,
+        jobTitle: job.title,
+        candidateName: user.name,
       }),
     ]);
 
@@ -139,6 +184,12 @@ export async function contactCandidate(applicationId: string) {
   // Obtener la empresa del usuario
   const company = await prisma.company.findUnique({
     where: { ownerId: session.user.id },
+    select: {
+      id: true,
+      name: true,
+      contactPhone: true,
+      owner: { select: { email: true } },
+    },
   });
 
   if (!company) {
@@ -148,9 +199,10 @@ export async function contactCandidate(applicationId: string) {
   // Verificar que la postulación pertenezca a un empleo de la empresa
   const application = await prisma.application.findUnique({
     where: { id: applicationId },
-    include: {
-      job: true,
-      user: true,
+    select: {
+      id: true,
+      job: { select: { companyId: true, title: true } },
+      user: { select: { email: true, name: true, portal: true } },
     },
   });
 
@@ -168,8 +220,18 @@ export async function contactCandidate(applicationId: string) {
     data: { status: "CONTACTED" },
   });
 
-  // TODO: Aquí se podría implementar el envío de email al candidato
-  // Por ahora solo actualizamos el estado
+  // El candidato recibe los datos de contacto que la empresa declaró como
+  // responsable en el onboarding, y puede responder el mail directo a la
+  // empresa (reply-to). Se manda con la marca del portal del candidato.
+  await sendContactRequest({
+    portal: application.user.portal,
+    to: application.user.email,
+    candidateName: application.user.name,
+    jobTitle: application.job.title,
+    companyName: company.name,
+    companyEmail: company.owner.email,
+    companyPhone: company.contactPhone,
+  });
 
   // Revalidar la página de empresa para reflejar los cambios
   revalidatePath("/empresa");

@@ -77,6 +77,31 @@ Después de eso te aparece "Administración" en el header.
 | `BETTER_AUTH_GOOGLE_SECRET`      | client secret                 |                               |
 | `NEXT_PUBLIC_USERWAY_ACCOUNT_ID` | `6s9F7XAeLa`                  | Opcional: ya está por defecto |
 | `NEXT_PUBLIC_BASE_URL`           | _(no setear en prod)_         | Solo para previews            |
+| `RESEND_API_KEY_JUBI`            | api key de Resend             | Restringida a `jubijobs.com`  |
+| `RESEND_API_KEY_INCLU`           | api key de Resend             | Restringida a `inclujobs.com` |
+
+### Emails con Resend
+
+Los correos transaccionales —confirmación de postulación, aviso a la empresa,
+solicitud de contacto, aviso aprobado o rechazado— salen por Resend desde
+`lib/email.ts`.
+
+Hay **una API key por portal**, creada en Resend con acceso de envío
+restringido a su dominio. Si una se filtra, solo sirve para mandar desde ese
+dominio. Sin la key de un portal no se envía nada desde ese portal: se loguea
+el intento en consola y la acción sigue igual. Así en local y en previews no
+hace falta configurar nada.
+
+Cada persona recibe correo del portal donde se registró, con remitente
+`JubiJobs <hola@jubijobs.com>` o `IncluJobs <hola@inclujobs.com>`. Para que
+Resend acepte esos remitentes, hay que verificar **los dos dominios** en
+Resend → Domains y cargar en el DNS de cada uno los registros que indica
+(SPF, DKIM y el de retorno). Sin verificar el dominio, Resend rechaza el envío
+y queda en el log como `[email] Resend rechazó el envío`.
+
+Las casillas `hola@` tienen que existir y leerse: son el remitente, así que
+las respuestas de la gente llegan ahí. Para esta audiencia, responder un mail
+es lo natural.
 
 ### Sobre `NEXT_PUBLIC_BASE_URL`
 
@@ -131,8 +156,6 @@ En cada dominio, comprobá:
 - **SMS de producción**: `lib/auth.ts` loguea el OTP por consola en
   desarrollo y no envía nada en producción. Falta integrar Twilio o
   equivalente para que el login por teléfono funcione en prod.
-- **Notificaciones por email**: `contactCandidate` cambia el estado de la
-  postulación pero no le avisa al candidato.
 - **Prisma 7** está disponible; el proyecto usa 6.19. Migrar después de
   estabilizar, no antes.
 - **Logos**: son SVG geométricos generados por código, sólidos y

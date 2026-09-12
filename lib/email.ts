@@ -1,161 +1,359 @@
-import nodemailer from "nodemailer";
+import "server-only";
 
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST || "smtp.gmail.com",
-  port: parseInt(process.env.SMTP_PORT || "587"),
-  secure: false, // true for 465, false for other ports
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+import { Resend } from "resend";
+import { getPortalConfig, portalBaseUrl, type PortalId } from "@/lib/portal";
 
-const FROM_EMAIL = process.env.EMAIL_FROM || "noreply@jubijobs.com";
+/**
+ * Emails transaccionales, por Resend.
+ *
+ * Reglas:
+ *
+ * - Cada persona recibe correo del portal en el que se registró. Un candidato
+ *   de IncluJobs recibe un mail de IncluJobs aunque el aviso también esté en
+ *   JubiJobs; una empresa recibe del portal donde abrió su cuenta. Por eso
+ *   todas las funciones piden `portal` y no lo adivinan.
+ *
+ * - Ninguna función lanza. Un mail que no sale se loguea y se sigue: la
+ *   postulación ya está guardada, el aviso ya está aprobado. Bloquear la
+ *   acción principal porque falló el correo sería castigar al usuario por un
+ *   problema nuestro.
+ *
+ * - Todo texto que escribió una persona —nombres, títulos, motivos— pasa por
+ *   `escape()`. Un título de aviso con `<script>` no puede terminar ejecutado
+ *   en el cliente de correo de una persona con discapacidad visual.
+ *
+ * - Una API key por portal, restringida en Resend a su propio dominio:
+ *   `RESEND_API_KEY_JUBI` y `RESEND_API_KEY_INCLU`. Si una se filtra, solo
+ *   puede mandar desde ese dominio, no desde el otro. Sin la key del portal se
+ *   loguea el envío y no se manda nada, así en desarrollo y en previews no hace
+ *   falta configurar nada para probar el resto del flujo.
+ */
 
-export async function sendApplicationConfirmation({
-  to,
-  candidateName,
-  jobTitle,
-  companyName,
-}: {
+const API_KEY_ENV: Record<PortalId, string> = {
+  JUBI: "RESEND_API_KEY_JUBI",
+  INCLU: "RESEND_API_KEY_INCLU",
+};
+
+const clients = new Map<PortalId, Resend>();
+
+function getClient(portal: PortalId): Resend | null {
+  const cached = clients.get(portal);
+  if (cached) return cached;
+
+  const apiKey = process.env[API_KEY_ENV[portal]];
+  if (!apiKey) return null;
+
+  const client = new Resend(apiKey);
+  clients.set(portal, client);
+  return client;
+}
+
+function escape(value: string): string {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+/**
+ * Remitente del portal: "JubiJobs <hola@jubijobs.com>".
+ *
+ * Se usa la casilla de contacto real y no un `no-responder@`. Para esta
+ * audiencia, contestar un mail es lo natural, y una respuesta que rebota es
+ * una persona que se queda sin saber qué pasó. El dominio tiene que estar
+ * verificado en Resend, ver DEPLOY.md.
+ */
+function sender(portal: PortalId): string {
+  const config = getPortalConfig(portal);
+  return `${config.name} <${config.contactEmail}>`;
+}
+
+interface Layout {
+  portal: PortalId;
+  heading: string;
+  /** Párrafos ya escapados. */
+  paragraphs: string[];
+  /** Bloque destacado opcional, HTML ya escapado. */
+  highlight?: string;
+  /** Párrafos después del bloque destacado, ya escapados. */
+  closing?: string[];
+  cta?: { label: string; href: string };
+}
+
+/**
+ * Plantilla única. Tipografía grande, contraste alto y un solo botón: el
+ * mismo criterio de accesibilidad que el sitio, porque es la misma gente.
+ */
+function layout({
+  portal,
+  heading,
+  paragraphs,
+  highlight,
+  closing = [],
+  cta,
+}: Layout) {
+  const config = getPortalConfig(portal);
+  const base = portalBaseUrl(portal);
+  const color = config.themeColor;
+
+  const paragraph = (p: string) =>
+    `<p style="margin:0 0 16px;font-size:18px;line-height:1.5;color:#111827;">${p}</p>`;
+
+  const body = paragraphs.map(paragraph).join("");
+  const closingHtml = closing.map(paragraph).join("");
+
+  const highlightHtml = highlight
+    ? `<div style="margin:24px 0;padding:20px;border-radius:8px;background:#f3f4f6;font-size:18px;line-height:1.6;color:#111827;">${highlight}</div>`
+    : "";
+
+  const ctaHtml = cta
+    ? `<p style="margin:28px 0;"><a href="${cta.href}" style="display:inline-block;padding:16px 28px;border-radius:8px;background:${color};color:#ffffff;font-size:18px;font-weight:700;text-decoration:none;">${cta.label}</a></p>`
+    : "";
+
+  return `<!doctype html>
+<html lang="es">
+  <body style="margin:0;padding:0;background:#f9fafb;font-family:Arial,Helvetica,sans-serif;">
+    <div style="max-width:600px;margin:0 auto;padding:32px 24px;">
+      <p style="margin:0 0 24px;font-size:22px;font-weight:700;color:${color};">${config.name}</p>
+      <h1 style="margin:0 0 20px;font-size:26px;line-height:1.3;color:#111827;">${heading}</h1>
+      ${body}
+      ${highlightHtml}
+      ${closingHtml}
+      ${ctaHtml}
+      <hr style="border:0;border-top:1px solid #e5e7eb;margin:32px 0;">
+      <p style="margin:0;font-size:15px;line-height:1.5;color:#6b7280;">
+        ${config.name} · ${escape(config.audience)}<br>
+        <a href="${base}" style="color:${color};">${config.domain}</a>
+      </p>
+    </div>
+  </body>
+</html>`;
+}
+
+async function send(input: {
+  portal: PortalId;
   to: string;
-  candidateName: string;
-  jobTitle: string;
-  companyName: string;
+  subject: string;
+  html: string;
+  replyTo?: string;
 }) {
-  if (!process.env.SMTP_USER) {
-    console.log("⚠️  Email no enviado (SMTP no configurado):", {
-      to,
-      subject: "Confirmación de postulación",
+  const resend = getClient(input.portal);
+
+  if (!resend) {
+    console.log(`[email] ${API_KEY_ENV[input.portal]} ausente, no se envía:`, {
+      to: input.to,
+      subject: input.subject,
     });
     return;
   }
 
   try {
-    await transporter.sendMail({
-      from: FROM_EMAIL,
-      to,
-      subject: "Confirmación de postulación - JubiJobs",
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #0ea5e9;">¡Postulación enviada con éxito!</h2>
-          <p>Hola ${candidateName},</p>
-          <p>Tu postulación para el puesto de <strong>${jobTitle}</strong> en <strong>${companyName}</strong> fue enviada correctamente.</p>
-          <p>La empresa revisará tu perfil y se pondrá en contacto si tu perfil se ajusta a lo que buscan.</p>
-          <hr style="border: 1px solid #e5e7eb; margin: 20px 0;">
-          <p style="color: #6b7280; font-size: 14px;">
-            Gracias por usar JubiJobs - Trabajos para jubilados<br>
-            <a href="${process.env.BETTER_AUTH_URL || "http://localhost:3000"}" style="color: #0ea5e9;">Ver mis postulaciones</a>
-          </p>
-        </div>
-      `,
+    const { error } = await resend.emails.send({
+      from: sender(input.portal),
+      to: input.to,
+      subject: input.subject,
+      html: input.html,
+      replyTo: input.replyTo,
     });
-    console.log("✅ Email de confirmación enviado a:", to);
+
+    if (error) {
+      console.error("[email] Resend rechazó el envío:", {
+        to: input.to,
+        subject: input.subject,
+        error,
+      });
+    }
   } catch (error) {
-    console.error("❌ Error enviando email de confirmación:", error);
+    console.error("[email] Falló el envío:", {
+      to: input.to,
+      subject: input.subject,
+      error,
+    });
   }
 }
 
-export async function sendNewApplicationNotification({
-  to,
-  companyName,
-  jobTitle,
-  candidateName,
-  dashboardUrl,
-}: {
+// ─── Candidato ────────────────────────────────────────────────────────────
+
+/** Al candidato, apenas se postula. */
+export async function sendApplicationConfirmation(input: {
+  portal: PortalId;
   to: string;
-  companyName: string;
+  candidateName: string | null;
   jobTitle: string;
-  candidateName: string;
-  dashboardUrl: string;
+  companyName: string;
 }) {
-  if (!process.env.SMTP_USER) {
-    console.log("⚠️  Email no enviado (SMTP no configurado):", {
-      to,
-      subject: "Nueva postulación recibida",
-    });
-    return;
-  }
+  const name = escape(input.candidateName?.trim() || "Hola");
+  const jobTitle = escape(input.jobTitle);
+  const companyName = escape(input.companyName);
 
-  try {
-    await transporter.sendMail({
-      from: FROM_EMAIL,
-      to,
-      subject: `Nueva postulación - ${jobTitle}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #0ea5e9;">Nueva postulación recibida</h2>
-          <p>Hola ${companyName},</p>
-          <p><strong>${candidateName}</strong> se postuló para el puesto de <strong>${jobTitle}</strong>.</p>
-          <p>
-            <a href="${dashboardUrl}" style="background-color: #0ea5e9; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">
-              Ver postulación
-            </a>
-          </p>
-          <hr style="border: 1px solid #e5e7eb; margin: 20px 0;">
-          <p style="color: #6b7280; font-size: 14px;">
-            JubiJobs - Plataforma de empleos para jubilados
-          </p>
-        </div>
-      `,
-    });
-    console.log("✅ Email de notificación enviado a:", to);
-  } catch (error) {
-    console.error("❌ Error enviando email de notificación:", error);
-  }
+  await send({
+    portal: input.portal,
+    to: input.to,
+    subject: `Tu postulación a ${input.jobTitle} quedó enviada`,
+    html: layout({
+      portal: input.portal,
+      heading: "Tu postulación quedó enviada",
+      paragraphs: [
+        `${name},`,
+        `Tu postulación para <strong>${jobTitle}</strong> en <strong>${companyName}</strong> fue recibida.`,
+        `La empresa va a leer tus tres respuestas. Si le interesa tu perfil, te va a escribir o llamar con los datos que dejaste en tu cuenta. Te avisamos por acá cuando eso pase.`,
+      ],
+      cta: {
+        label: "Ver mis postulaciones",
+        href: `${portalBaseUrl(input.portal)}/postulaciones`,
+      },
+    }),
+  });
 }
 
-export async function sendContactRequest({
-  to,
-  candidateName,
-  jobTitle,
-  companyName,
-  companyEmail,
-  companyPhone,
-}: {
+/** Al candidato, cuando la empresa pide contactarlo. */
+export async function sendContactRequest(input: {
+  portal: PortalId;
   to: string;
-  candidateName: string;
+  candidateName: string | null;
   jobTitle: string;
   companyName: string;
   companyEmail: string;
-  companyPhone?: string;
+  companyPhone: string | null;
 }) {
-  if (!process.env.SMTP_USER) {
-    console.log("⚠️  Email no enviado (SMTP no configurado):", {
-      to,
-      subject: "Solicitud de contacto",
-    });
-    return;
-  }
+  const name = escape(input.candidateName?.trim() || "Hola");
+  const jobTitle = escape(input.jobTitle);
+  const companyName = escape(input.companyName);
+  const companyEmail = escape(input.companyEmail);
+  const companyPhone = input.companyPhone ? escape(input.companyPhone) : null;
 
-  try {
-    await transporter.sendMail({
-      from: FROM_EMAIL,
-      to,
-      replyTo: companyEmail,
-      subject: `${companyName} quiere contactarte - ${jobTitle}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #0ea5e9;">¡Buenas noticias!</h2>
-          <p>Hola ${candidateName},</p>
-          <p><strong>${companyName}</strong> revisó tu postulación para <strong>${jobTitle}</strong> y quiere ponerse en contacto con vos.</p>
-          <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="margin-top: 0;">Datos de contacto:</h3>
-            <p style="margin: 5px 0;"><strong>Empresa:</strong> ${companyName}</p>
-            <p style="margin: 5px 0;"><strong>Email:</strong> <a href="mailto:${companyEmail}">${companyEmail}</a></p>
-            ${companyPhone ? `<p style="margin: 5px 0;"><strong>Teléfono:</strong> ${companyPhone}</p>` : ""}
-          </div>
-          <p>Podés responder este email o contactarlos directamente.</p>
-          <hr style="border: 1px solid #e5e7eb; margin: 20px 0;">
-          <p style="color: #6b7280; font-size: 14px;">
-            JubiJobs - Trabajos para jubilados<br>
-            <a href="${process.env.BETTER_AUTH_URL || "http://localhost:3000"}/postulaciones" style="color: #0ea5e9;">Ver mis postulaciones</a>
-          </p>
-        </div>
-      `,
-    });
-    console.log("✅ Email de solicitud de contacto enviado a:", to);
-  } catch (error) {
-    console.error("❌ Error enviando email de solicitud de contacto:", error);
-  }
+  const contact = [
+    `<strong>Empresa:</strong> ${companyName}`,
+    `<strong>Email:</strong> <a href="mailto:${companyEmail}">${companyEmail}</a>`,
+    companyPhone
+      ? `<strong>Teléfono:</strong> <a href="tel:${companyPhone.replace(/\s/g, "")}">${companyPhone}</a>`
+      : null,
+  ]
+    .filter(Boolean)
+    .join("<br>");
+
+  await send({
+    portal: input.portal,
+    to: input.to,
+    // Responder este mail le escribe a la empresa, no a nosotros.
+    replyTo: input.companyEmail,
+    subject: `${input.companyName} quiere contactarte por ${input.jobTitle}`,
+    html: layout({
+      portal: input.portal,
+      heading: "Buenas noticias",
+      paragraphs: [
+        `${name},`,
+        `<strong>${companyName}</strong> leyó tu postulación para <strong>${jobTitle}</strong> y quiere hablar con vos.`,
+        `Podés responder este mismo correo o comunicarte directamente:`,
+      ],
+      highlight: contact,
+      cta: {
+        label: "Ver mis postulaciones",
+        href: `${portalBaseUrl(input.portal)}/postulaciones`,
+      },
+    }),
+  });
+}
+
+// ─── Empresa ──────────────────────────────────────────────────────────────
+
+/** A la empresa, cuando alguien se postula a uno de sus avisos. */
+export async function sendNewApplicationNotification(input: {
+  portal: PortalId;
+  to: string;
+  companyName: string;
+  jobTitle: string;
+  candidateName: string | null;
+}) {
+  const companyName = escape(input.companyName);
+  const jobTitle = escape(input.jobTitle);
+  const candidateName = escape(input.candidateName?.trim() || "Una persona");
+
+  await send({
+    portal: input.portal,
+    to: input.to,
+    subject: `Nueva postulación para ${input.jobTitle}`,
+    html: layout({
+      portal: input.portal,
+      heading: "Recibiste una postulación",
+      paragraphs: [
+        `Hola, ${companyName}.`,
+        `<strong>${candidateName}</strong> se postuló para <strong>${jobTitle}</strong>.`,
+        `Entrá al panel para leer sus tres respuestas y, si te interesa, contactarla.`,
+      ],
+      cta: {
+        label: "Ver la postulación",
+        href: `${portalBaseUrl(input.portal)}/empresa`,
+      },
+    }),
+  });
+}
+
+/** A la empresa, cuando moderación aprueba su aviso. */
+export async function sendJobApproved(input: {
+  portal: PortalId;
+  to: string;
+  companyName: string;
+  jobTitle: string;
+  jobId: string;
+}) {
+  const companyName = escape(input.companyName);
+  const jobTitle = escape(input.jobTitle);
+
+  await send({
+    portal: input.portal,
+    to: input.to,
+    subject: `Tu aviso ${input.jobTitle} ya está publicado`,
+    html: layout({
+      portal: input.portal,
+      heading: "Tu aviso ya está publicado",
+      paragraphs: [
+        `Hola, ${companyName}.`,
+        `Revisamos <strong>${jobTitle}</strong> y ya está visible para los candidatos.`,
+        `Te vamos a avisar por correo cada vez que alguien se postule.`,
+      ],
+      cta: {
+        label: "Ver el aviso",
+        href: `${portalBaseUrl(input.portal)}/empleos/${input.jobId}`,
+      },
+    }),
+  });
+}
+
+/** A la empresa, cuando moderación rechaza su aviso. Siempre con el motivo. */
+export async function sendJobRejected(input: {
+  portal: PortalId;
+  to: string;
+  companyName: string;
+  jobTitle: string;
+  reason: string;
+}) {
+  const companyName = escape(input.companyName);
+  const jobTitle = escape(input.jobTitle);
+  const reason = escape(input.reason);
+  const config = getPortalConfig(input.portal);
+
+  await send({
+    portal: input.portal,
+    to: input.to,
+    subject: `No pudimos publicar tu aviso ${input.jobTitle}`,
+    html: layout({
+      portal: input.portal,
+      heading: "No pudimos publicar tu aviso",
+      paragraphs: [
+        `Hola, ${companyName}.`,
+        `Revisamos <strong>${jobTitle}</strong> y por ahora no lo publicamos. El motivo:`,
+      ],
+      highlight: reason,
+      closing: [
+        `Si tenés dudas sobre el motivo, escribinos a <a href="mailto:${config.contactEmail}" style="color:${config.themeColor};">${config.contactEmail}</a>.`,
+      ],
+      cta: {
+        label: "Ir a mi panel",
+        href: `${portalBaseUrl(input.portal)}/empresa`,
+      },
+    }),
+  });
 }

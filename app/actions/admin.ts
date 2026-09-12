@@ -3,8 +3,26 @@
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/db";
 import { recordAudit, requireAdminActor } from "@/lib/admin";
+import { sendJobApproved, sendJobRejected } from "@/lib/email";
 
 type Result = { success: boolean; error?: string };
+
+/**
+ * Lo que hace falta para moderar un aviso y avisarle a la empresa. El mail
+ * va al dueño de la cuenta, con la marca del portal donde la abrió.
+ */
+const moderatedJobSelect = {
+  id: true,
+  title: true,
+  portals: true,
+  moderationStatus: true,
+  company: {
+    select: {
+      name: true,
+      owner: { select: { email: true, portal: true } },
+    },
+  },
+} as const;
 
 function fail(error: string): Result {
   return { success: false, error };
@@ -20,7 +38,7 @@ export async function approveJob(
 
     const job = await prisma.job.findUnique({
       where: { id: jobId },
-      select: { id: true, portals: true, moderationStatus: true },
+      select: moderatedJobSelect,
     });
     if (!job) return fail("Aviso no encontrado");
 
@@ -42,6 +60,14 @@ export async function approveJob(
       targetId: jobId,
       portal: job.portals[0] ?? null,
       metadata: { previousStatus: job.moderationStatus, note: note ?? null },
+    });
+
+    await sendJobApproved({
+      portal: job.company.owner.portal,
+      to: job.company.owner.email,
+      companyName: job.company.name,
+      jobTitle: job.title,
+      jobId: job.id,
     });
 
     revalidatePath("/admin/moderacion");
@@ -69,7 +95,7 @@ export async function rejectJob(
 
     const job = await prisma.job.findUnique({
       where: { id: jobId },
-      select: { id: true, portals: true, moderationStatus: true },
+      select: moderatedJobSelect,
     });
     if (!job) return fail("Aviso no encontrado");
 
@@ -91,6 +117,16 @@ export async function rejectJob(
       targetId: jobId,
       portal: job.portals[0] ?? null,
       metadata: { reason: trimmed, previousStatus: job.moderationStatus },
+    });
+
+    // El motivo que escribió el moderador va tal cual en el mail: para eso
+    // se le pide que sea concreto.
+    await sendJobRejected({
+      portal: job.company.owner.portal,
+      to: job.company.owner.email,
+      companyName: job.company.name,
+      jobTitle: job.title,
+      reason: trimmed,
     });
 
     revalidatePath("/admin/moderacion");
