@@ -92,12 +92,9 @@ BETTER_AUTH_URL="http://localhost:3000"
 BETTER_AUTH_GOOGLE_ID="..."
 BETTER_AUTH_GOOGLE_SECRET="..."
 
-# Email (opcional para dev)
-SMTP_HOST="smtp.gmail.com"
-SMTP_PORT="587"
-SMTP_USER="tu-email@gmail.com"
-SMTP_PASS="tu-app-password"
-EMAIL_FROM="noreply@jubijobs.com"
+# Email por Resend, una key por portal (opcional en dev: sin la key, los mails se loguean en consola)
+RESEND_API_KEY_JUBI="re_..."
+RESEND_API_KEY_INCLU="re_..."
 ```
 
 ### 4. Setup de base de datos
