@@ -322,6 +322,132 @@ export async function sendJobApproved(input: {
   });
 }
 
+// ─── Lista de espera ──────────────────────────────────────────────────────
+
+/**
+ * Aviso a quien dejó su correo sin registrarse.
+ *
+ * Lo dispara un admin a mano desde /admin/lista, nunca la publicación de un
+ * aviso: con diez avisos en una semana serían diez correos a la misma
+ * persona, y el cuarto ya cae en spam.
+ *
+ * El asunto lleva la noticia completa —"Ya hay 12 empleos publicados"— y no
+ * un "Novedades de JubiJobs" que no dice nada. Quien recibe decide si abre
+ * leyendo esa línea; si no dice qué pasó, no abre.
+ */
+export async function sendLeadAnnouncementToCandidate(input: {
+  portal: PortalId;
+  to: string;
+  /** Total publicado en el portal, no el largo de la muestra. */
+  totalJobs: number;
+  jobs: Array<{
+    id: string;
+    title: string;
+    province: string;
+    city: string | null;
+  }>;
+  /** Provincia que dejó la persona, si dejó alguna. */
+  province: string | null;
+}) {
+  const config = getPortalConfig(input.portal);
+  const base = portalBaseUrl(input.portal);
+  const plural = input.totalJobs === 1;
+
+  const subject = plural
+    ? `Ya hay un empleo publicado en ${config.name}`
+    : `Ya hay ${input.totalJobs} empleos publicados en ${config.name}`;
+
+  const list = input.jobs
+    .map((job) => {
+      const title = escape(job.title);
+      const place = escape(
+        job.city ? `${job.city}, ${job.province}` : job.province
+      );
+      return `<a href="${base}/empleos/${job.id}" style="color:${config.themeColor};font-weight:700;text-decoration:none;">${title}</a><br><span style="color:#4b5563;">${place}</span>`;
+    })
+    .join("<br><br>");
+
+  // Si pidió una provincia y ninguna de las muestras es de ahí, se dice.
+  // Mostrar tres avisos de la otra punta del país como si fueran para ella
+  // es peor que no mandar nada: la próxima vez no abre el correo.
+  const fromHerProvince =
+    input.province !== null &&
+    input.jobs.some((job) => job.province === input.province);
+
+  const intro =
+    input.province && !fromHerProvince
+      ? `Por ahora no hay nada publicado en ${escape(input.province)}. Te dejamos lo último que se sumó, por si algo te sirve:`
+      : `Te dejamos algunos para que veas:`;
+
+  // La búsqueda del botón arranca filtrada por su provincia cuando hay algo
+  // ahí: llegar a una lista ya acotada evita el trabajo de filtrar a mano.
+  const searchHref =
+    input.province && fromHerProvince
+      ? `${base}/empleos?provincia=${encodeURIComponent(input.province)}`
+      : `${base}/empleos`;
+
+  await send({
+    portal: input.portal,
+    to: input.to,
+    subject,
+    html: layout({
+      portal: input.portal,
+      heading: plural
+        ? "Ya hay un empleo publicado"
+        : `Ya hay ${input.totalJobs} empleos publicados`,
+      paragraphs: [
+        `Nos dejaste tu correo para que te avisáramos cuando hubiera trabajo. Ya hay.`,
+        intro,
+      ],
+      highlight: list,
+      closing: [
+        `Para postularte vas a necesitar una cuenta: son tres preguntas y listo, sin currículum.`,
+      ],
+      cta: { label: "Ver los empleos", href: searchHref },
+    }),
+  });
+}
+
+/**
+ * Aviso a la empresa que dejó su correo. Argumento invertido: a ella no le
+ * interesan los avisos publicados sino cuánta gente hay esperando leerlos.
+ */
+export async function sendLeadAnnouncementToCompany(input: {
+  portal: PortalId;
+  to: string;
+  totalCandidates: number;
+}) {
+  const config = getPortalConfig(input.portal);
+  const single = input.totalCandidates === 1;
+
+  const subject = single
+    ? `Hay una persona buscando trabajo en ${config.name}`
+    : `Hay ${input.totalCandidates} personas buscando trabajo en ${config.name}`;
+
+  await send({
+    portal: input.portal,
+    to: input.to,
+    subject,
+    html: layout({
+      portal: input.portal,
+      heading: single
+        ? "Hay una persona esperando tu aviso"
+        : `Hay ${input.totalCandidates} personas esperando tu aviso`,
+      paragraphs: [
+        `Nos dejaste tu correo para saber cuándo valía la pena publicar.`,
+        single
+          ? `Hoy hay <strong>una persona</strong> anotada en ${escape(config.name)} buscando trabajo: ${escape(config.audience.toLowerCase())}.`
+          : `Hoy hay <strong>${input.totalCandidates} personas</strong> anotadas en ${escape(config.name)} buscando trabajo: ${escape(config.audience.toLowerCase())}.`,
+        `Publicar es gratis y lleva unos minutos. Cada aviso pasa por moderación antes de salir.`,
+      ],
+      cta: {
+        label: "Publicar un empleo",
+        href: `${portalBaseUrl(input.portal)}/empresas`,
+      },
+    }),
+  });
+}
+
 /** A la empresa, cuando moderación rechaza su aviso. Siempre con el motivo. */
 export async function sendJobRejected(input: {
   portal: PortalId;

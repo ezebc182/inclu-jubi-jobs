@@ -57,7 +57,9 @@ export async function requireAdminActor(): Promise<AdminActor> {
 export async function recordAudit(input: {
   actorId: string;
   action: string;
-  targetType: "Job" | "Company" | "User";
+  // "Lead" no apunta a una fila: un envío a la lista tiene por objetivo a un
+  // grupo entero (portal + tipo). La columna en la base ya es texto libre.
+  targetType: "Job" | "Company" | "User" | "Lead";
   targetId: string;
   portal?: PortalId | null;
   metadata?: Record<string, unknown>;
