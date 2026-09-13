@@ -35,6 +35,18 @@ export async function updateJobStatus(
     throw new Error("No se encontró la empresa");
   }
 
+  // Una empresa suspendida no puede tocar el estado de sus avisos.
+  //
+  // Sin este chequeo la suspensión no suspendía nada: `setCompanySuspension`
+  // pasa los avisos a PAUSED, pero la empresa entraba a su panel y los volvía
+  // a PUBLISHED con un click, anulando la decisión de moderación sin que
+  // nadie se enterara.
+  if (!company.isActive) {
+    throw new Error(
+      "Tu cuenta de empresa está suspendida. Escribinos si creés que es un error."
+    );
+  }
+
   // Verificar que el empleo pertenezca a la empresa
   const job = await prisma.job.findUnique({
     where: { id: jobId },

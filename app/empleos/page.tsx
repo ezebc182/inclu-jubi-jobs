@@ -12,6 +12,7 @@ import { JobCard } from "@/components/jobs/JobCard";
 import { JobFilters } from "@/components/jobs/JobFilters";
 import { SavedSearches } from "@/components/jobs/SavedSearches";
 import { EmptyState } from "@/components/ui/EmptyState";
+import { LeadForm } from "@/components/leads/LeadForm";
 
 export async function generateMetadata(): Promise<Metadata> {
   const portal = await getCurrentPortalConfig();
@@ -128,15 +129,32 @@ export default async function EmpleosPage({
                   actionHref="/empleos"
                 />
               ) : (
-                <EmptyState
-                  icon="clock"
-                  title="Todavía no hay empleos publicados"
-                  description="Estamos sumando empresas. Dejanos tu contacto y te avisamos apenas se publique el primero."
-                  actionLabel="Quiero que me avisen"
-                  actionHref="/ingresar"
-                  secondaryLabel="Cómo funciona"
-                  secondaryHref="/como-funciona"
-                />
+                /* El formulario va DEBAJO del EmptyState, no adentro: ese
+                   componente lo usan otras cinco pantallas y no tiene por qué
+                   saber de leads.
+
+                   Se le quitó el "Quiero que me avisen" que llevaba a
+                   /ingresar, donde no había ninguna forma de dejar contacto:
+                   había que registrarse con Google y hacer el onboarding
+                   entero. Prometíamos algo que no existía. */
+                <div className="flex flex-col gap-8">
+                  <EmptyState
+                    icon="clock"
+                    title="Todavía no hay empleos publicados"
+                    description="Estamos sumando empresas. Dejanos tu correo y te avisamos apenas se publique el primero."
+                    secondaryLabel="Cómo funciona"
+                    secondaryHref="/como-funciona"
+                  />
+                  <LeadForm
+                    kind="CANDIDATE"
+                    title="Avisame cuando haya empleos"
+                    description="Dejá tu correo y te escribimos apenas se publique el primero. No hace falta crear una cuenta."
+                    submitLabel="Avisame cuando haya"
+                    confirmationTitle="Listo, te vamos a avisar"
+                    confirmationBody="Guardamos tu correo. Apenas haya empleos publicados te escribimos con los primeros avisos."
+                    showRemote
+                  />
+                </div>
               )
             ) : (
               /* Grilla a hueco de 1px: las tarjetas comparten borde en vez

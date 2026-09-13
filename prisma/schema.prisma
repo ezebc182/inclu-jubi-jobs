@@ -261,6 +261,51 @@ model Application {
   @@index([userId])
 }
 
+/// Persona que dejó su correo sin registrarse.
+///
+/// Tabla SEPARADA de User a propósito. Un lead no tiene rol, ni sesión, ni
+/// cuenta OAuth, ni portal de registro —solo dijo "avisame"—. Y el `email
+/// @unique` de User choca de frente el día que esa misma persona se registra
+/// en serio: tendríamos que elegir entre perder el lead o romper el alta.
+///
+/// La única compuesta es intencional: la misma persona puede anotarse como
+/// candidato en JubiJobs y como empresa en IncluJobs, y son dos intenciones
+/// distintas. Reenviar el formulario hace upsert, no duplica.
+model Lead {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  email  String
+  portal Portal
+  kind   LeadKind
+
+  /// Provincia AR, si la dejó. Opcional: cada campo obligatorio es gente que
+  /// abandona el formulario, y el correo solo ya sirve para avisar.
+  province String?
+
+  /// "También me sirve trabajo remoto". NO es lo mismo que `province`: un
+  /// aviso remoto igual tiene provincia, y alguien de Chaco puede querer lo
+  /// de Chaco Y lo remoto. Son dos dimensiones, no una sola.
+  wantsRemote Boolean @default(false)
+
+  /// Cuándo se le avisó por última vez. `null` = nunca. Es el corte que usa
+  /// /admin/lista para no mandarle dos veces la misma noticia.
+  notifiedAt DateTime?
+
+  @@unique([email, portal, kind])
+  /// El índice calca la query del admin: "los que faltan avisar de este
+  /// portal y este tipo". Sin él, cada envío escanea la tabla entera.
+  @@index([portal, kind, notifiedAt])
+  @@index([createdAt(sort: Desc)])
+}
+
+/// Qué vino a buscar quien dejó el correo. Determina qué mail recibe: al
+/// candidato se le cuentan avisos, a la empresa se le cuentan candidatos.
+enum LeadKind {
+  CANDIDATE
+  COMPANY
+}
+
 /// Traza de acciones administrativas. Sin esto, "gestionar los portales" es
 /// un botón que borra cosas sin que nadie sepa quién ni por qué.
 model AuditLog {

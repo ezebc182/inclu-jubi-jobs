@@ -1,5 +1,6 @@
 import { BigCTAButton } from "@/components/ui/BigCTAButton";
 import { PublishJobButton } from "@/components/ui/PublishJobButton";
+import { LeadForm } from "@/components/leads/LeadForm";
 
 export const metadata = {
   title: "Para Empresas - JubiJobs",
@@ -134,12 +135,27 @@ export default function EmpresasPage() {
         </div>
       </section>
 
-      <section className="text-center">
+      <section className="mb-16 text-center">
         <h2 className="mb-6 text-3xl font-bold text-ink">Empezá hoy mismo</h2>
         <p className="mb-8 text-xl text-ink-soft">
           Publicar empleos es gratis. Sin costos ocultos, sin planes premium.
         </p>
         <PublishJobButton>Publicar mi primer empleo</PublishJobButton>
+      </section>
+
+      {/* Alternativa para quien todavía no quiere abrir una cuenta. Va al
+          final y con menos peso visual a propósito: publicar sigue siendo la
+          acción principal, esto es la salida para quien se iría sin dejar
+          nada. */}
+      <section className="mx-auto max-w-2xl">
+        <LeadForm
+          kind="COMPANY"
+          title="¿Todavía no querés crear una cuenta?"
+          description="Dejanos tu correo y te avisamos cuándo hay suficiente gente buscando trabajo como para que publicar valga la pena."
+          submitLabel="Avisame cuando valga la pena"
+          confirmationTitle="Listo, te vamos a avisar"
+          confirmationBody="Guardamos tu correo. Te escribimos cuando haya una cantidad de candidatos que justifique publicar."
+        />
       </section>
     </div>
   );
