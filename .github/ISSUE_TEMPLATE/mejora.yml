@@ -1,0 +1,37 @@
+name: Proponer una mejora
+description: Una idea para que el sitio sirva mejor
+labels: ["mejora"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Antes de escribir, mirá la sección "Lo que no va a entrar" en
+        CONTRIBUTING.md. Te ahorra el trabajo si la idea ya está descartada.
+
+  - type: textarea
+    id: problema
+    attributes:
+      label: Qué problema resuelve
+      description: Contá la situación real, no la solución. Qué le pasa hoy a la persona que usa el sitio.
+      placeholder: Una persona se postula y después no sabe si la empresa la vio.
+    validations:
+      required: true
+
+  - type: textarea
+    id: propuesta
+    attributes:
+      label: Qué proponés
+    validations:
+      required: false
+
+  - type: dropdown
+    id: a-quien
+    attributes:
+      label: A quién le sirve
+      options:
+        - A quien busca trabajo
+        - A quien ofrece trabajo
+        - A los dos
+        - A quien modera
+    validations:
+      required: false

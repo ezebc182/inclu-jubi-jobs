@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Un push nuevo a la misma rama cancela la corrida anterior: no tiene sentido
+# gastar minutos verificando un commit que ya quedó atrás.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  typecheck:
+    name: Chequeo de tipos
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Instalar dependencias
+        run: pnpm install --frozen-lockfile
+
+      # El cliente de Prisma se genera a partir del schema y no está versionado.
+      # Sin este paso, cada import de @prisma/client falla y el chequeo de tipos
+      # reporta cientos de errores que no existen.
+      #
+      # `generate` solo escribe el cliente en disco: no se conecta a ninguna
+      # base. El `migrate deploy` del script de build sí necesita base, y por eso
+      # acá no se corre `pnpm build`.
+      - name: Generar el cliente de Prisma
+        run: pnpm exec prisma generate
+
+      - name: Chequear tipos
+        run: pnpm typecheck

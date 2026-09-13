@@ -1,0 +1,53 @@
+name: Problema de accesibilidad
+description: Algo del sitio que dificulta o impide usarlo
+labels: ["accesibilidad"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por tomarte el trabajo de contarlo. La accesibilidad no es una
+        característica extra de este proyecto, es el producto. Un reporte acá
+        vale muchísimo.
+
+        No hace falta que uses terminología técnica ni que cites ninguna norma.
+        Contalo con tus palabras.
+
+  - type: textarea
+    id: problema
+    attributes:
+      label: Qué pasó
+      description: Qué intentaste hacer y con qué te encontraste.
+      placeholder: Quise postularme a un aviso y no pude llegar al botón de enviar usando el teclado.
+    validations:
+      required: true
+
+  - type: input
+    id: donde
+    attributes:
+      label: En qué parte del sitio
+      placeholder: La página de un empleo, en jubijobs.com
+    validations:
+      required: true
+
+  - type: dropdown
+    id: herramienta
+    attributes:
+      label: Usás alguna herramienta de apoyo
+      description: Opcional, pero ayuda mucho a reproducir el problema.
+      options:
+        - Prefiero no decirlo
+        - No uso ninguna
+        - Lector de pantalla (NVDA, JAWS, VoiceOver, TalkBack)
+        - Solo teclado, sin mouse
+        - Zoom o aumento de texto
+        - Otra
+    validations:
+      required: false
+
+  - type: input
+    id: entorno
+    attributes:
+      label: Navegador y dispositivo
+      placeholder: Chrome en Android, o Safari en iPhone
+    validations:
+      required: false

@@ -1,5 +1,5 @@
 {
-  "name": "deshoku-jobs",
+  "name": "inclu-jubi-jobs",
   "version": "1.0.0",
   "private": true,
   "description": "Plataforma de empleos para jubilados y personas con discapacidad en Argentina",
@@ -9,6 +9,7 @@
     "build": "prisma generate && prisma migrate deploy && next build",
     "start": "next start",
     "lint": "next lint",
+    "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
