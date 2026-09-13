@@ -1,0 +1,50 @@
+name: Reportar un error
+description: Algo no funciona como debería
+labels: ["error"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Contá lo que puedas. Un reporte incompleto es mejor que ninguno.
+
+        **Si es un problema de seguridad, no lo publiques acá.** Escribí a
+        hola@jubijobs.com. Ver SECURITY.md.
+
+  - type: textarea
+    id: que-paso
+    attributes:
+      label: Qué pasó
+      description: Qué esperabas que pasara y qué pasó en cambio.
+    validations:
+      required: true
+
+  - type: textarea
+    id: pasos
+    attributes:
+      label: Cómo llegaste ahí
+      placeholder: |
+        1. Entré a la lista de empleos
+        2. Filtré por Córdoba
+        3. Al apretar un aviso me llevó a una página de error
+    validations:
+      required: false
+
+  - type: dropdown
+    id: portal
+    attributes:
+      label: En qué portal
+      options:
+        - JubiJobs
+        - IncluJobs
+        - En los dos
+        - No sé
+    validations:
+      required: false
+
+  - type: input
+    id: entorno
+    attributes:
+      label: Navegador y dispositivo
+      placeholder: Chrome en Android, o Firefox en Windows
+    validations:
+      required: false

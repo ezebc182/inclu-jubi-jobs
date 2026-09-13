@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Reportar un problema de seguridad
+    url: https://github.com/ezebc182/inclu-jubi-jobs/blob/main/SECURITY.md
+    about: Los problemas de seguridad NO van acá. Se reportan en privado por correo.
+  - name: Publicar un empleo en JubiJobs
+    url: https://jubijobs.com/empresas
+    about: Para personas jubiladas y mayores de 60. Es gratis y es la ayuda que más sirve.
+  - name: Publicar un empleo en IncluJobs
+    url: https://inclujobs.com/empresas
+    about: Para personas con discapacidad. Es gratis y es la ayuda que más sirve.

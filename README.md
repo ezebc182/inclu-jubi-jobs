@@ -1,365 +1,103 @@
-# JubiJobs 🧑‍💼
-
 <div align="center">
 
-**Plataforma de empleos para personas jubiladas y con discapacidad en Argentina**
+<img src="public/icons/jubi-192.png" alt="JubiJobs" width="96" height="96">
+&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="public/icons/inclu-192.png" alt="IncluJobs" width="96" height="96">
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.1.0-black?logo=next.js)](https://nextjs.org)
-[![React](https://img.shields.io/badge/React-19.2.3-blue?logo=react)](https://react.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?logo=typescript)](https://www.typescriptlang.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+# JubiJobs · IncluJobs
 
-_Sin LinkedIn, sin vueltas. Solo tres preguntas y un click._
+**Dos plataformas de empleo para dos grupos de personas a las que el mercado laboral argentino deja afuera.**
 
-[Demo](#) · [Documentación](#-documentación-adicional) · [Reportar Bug](../../issues) · [Solicitar Feature](../../issues)
+Tu experiencia no se jubila. · Las condiciones, antes de la entrevista.
+
+[jubijobs.com](https://jubijobs.com) · [inclujobs.com](https://inclujobs.com)
 
 </div>
 
 ---
 
-## 📖 Sobre el Proyecto
+## El problema
 
-JubiJobs es una plataforma fullstack diseñada para conectar a personas jubiladas y con discapacidad con oportunidades laborales en Argentina. Prioriza la **accesibilidad**, **simplicidad** y **dignidad** en cada interacción.
+En Argentina, una persona de 63 años que necesita trabajar manda el currículum y no le contestan. No porque no sirva: porque un sistema de selección automático la descarta por la fecha de nacimiento.
 
-### ✨ Características Principales
+Una persona con discapacidad se postula, la llaman, va a la entrevista, y recién ahí descubre que la oficina está en un primer piso por escalera. Perdió el día, el viaje y la expectativa por un dato que nadie le dijo antes.
 
-- 🚀 **Onboarding en 1 paso**: Login con Google/Microsoft/Facebook o teléfono (SMS OTP)
-- ♿ **100% Accesible**: Diseño WCAG AA compliant, tipografía grande, alto contraste
-- 📱 **Responsive**: Optimizado para móviles y tablets
-- 🌙 **Dark Mode**: Soporte nativo con next-themes
-- 🔐 **Seguro**: Autenticación robusta con Better-Auth
-- 📧 **Notificaciones**: Sistema de emails para candidatos y empresas
-- 🇦🇷 **Argentinizado**: i18n en español argentino, provincias, formato de fecha/moneda
+Los dos casos tienen la misma raíz: **el portal de empleo tradicional no está pensado para ellos.** Pide currículum en PDF, letra chica, formularios de veinte campos y una cuenta de LinkedIn.
 
-## 🚀 Stack Tecnológico
+## Qué hacen estas plataformas
 
-| Categoría         | Tecnología                                           |
-| ----------------- | ---------------------------------------------------- |
-| **Framework**     | Next.js 16.1.0 (App Router, React Server Components) |
-| **UI Library**    | React 19.2.3                                         |
-| **Lenguaje**      | TypeScript 5.7                                       |
-| **Base de datos** | PostgreSQL (Neon)                                    |
-| **ORM**           | Prisma 6.1                                           |
-| **Autenticación** | Better-Auth (OAuth + Phone OTP)                      |
-| **Estilos**       | Tailwind CSS 3.4 + Radix UI                          |
-| **Validación**    | Zod 3.24                                             |
-| **Emails**        | Nodemailer (dev) / Resend (prod)                     |
-| **Testing**       | Playwright                                           |
-| **Build Tool**    | Turbopack                                            |
-| **Deploy**        | Vercel (recomendado)                                 |
+**JubiJobs** es para personas jubiladas y mayores de 60. Trabajos part-time, por día y con horarios flexibles. Sin currículum: la persona responde tres preguntas en su idioma y eso es su postulación.
 
-## 📋 Requisitos Previos
+> ¿Qué hiciste? · ¿Qué sabés hacer? · ¿Qué te gustaría hacer?
 
-- Node.js >= 20.0.0
-- pnpm (recomendado) o npm
-- PostgreSQL (Neon recomendado)
-- Credenciales OAuth de Google/Microsoft/Facebook (al menos una)
+**IncluJobs** es para personas con discapacidad. La diferencia clave: **cada aviso declara sus condiciones de accesibilidad antes de que alguien se postule.** Si el lugar tiene rampa y ascensor, lo dice. Si los horarios se ajustan a un tratamiento, lo dice. Si se puede trabajar desde casa, lo dice. Nadie viaja dos horas para descubrir que el baño no es accesible.
 
-## 🛠️ Instalación
+Son dos sitios separados, con dos públicos separados. Una empresa publica una vez y elige en cuál de los dos aparece, o en los dos.
 
-### 1. Clonar el repositorio
+## Cómo funciona
 
-```bash
-git clone <url-repo>
-cd jubijobs
-```
+**Para quien busca trabajo**
 
-### 2. Instalar dependencias
+1. Entra, mira los avisos y elige uno. No hace falta cuenta para mirar.
+2. Se registra con Google o con su teléfono.
+3. Responde las tres preguntas y se postula. Listo.
+4. Recibe un correo cuando la empresa quiere contactarlo.
+
+**Para quien ofrece trabajo**
+
+1. Se registra y declara quién es: empresa con CUIT, o persona particular con DNI.
+2. Publica el aviso y elige el portal o los dos.
+3. Un moderador lo revisa antes de que se publique.
+4. Recibe un correo cada vez que alguien se postula, con sus tres respuestas.
+
+Publicar es gratis. Postularse es gratis. No hay plan premium ni destacados pagos.
+
+## Decisiones que valen la pena contar
+
+**Se admiten particulares, no solo empresas.** Mucho del trabajo por día para esta gente lo ofrece una casa que busca a alguien que cuide a un familiar, no una empresa con CUIT. Dejarlos afuera era dejar afuera el trabajo real. Se les pide DNI y quedan igual de identificados.
+
+**Todo aviso pasa por moderación humana** antes de publicarse. Esta audiencia es blanco frecuente de estafas laborales. Una empresa que ya demostró seriedad queda verificada y sus avisos salen directo.
+
+**La condición de discapacidad no se muestra en la pantalla donde la empresa decide a quién llamar.** Estaba ahí, destacada, y era lo primero que veía el ojo: la condición antes que la persona. Lo que la empresa sí necesita saber son las condiciones de trabajo a garantizar, y eso se muestra junto al resto de los datos del puesto.
+
+**Accesibilidad real, no una etiqueta.** Tipografía grande por defecto, botones de 48 píxeles como mínimo, contraste alto, todo navegable con teclado y anunciado correctamente por lector de pantalla. IncluJobs usa una tipografía diseñada para baja visión.
+
+**Los dos públicos no se mezclan.** Un aviso publicado solo en JubiJobs no se ve en IncluJobs, ni siquiera entrando con el enlace directo.
+
+## Cómo podés ayudar
+
+Esto lo mantengo yo, en mi tiempo, y es gratis para quien lo usa.
+
+<div align="center">
+
+[![Invitame un café en cafecito.app](https://cdn.cafecito.app/imgs/buttons/button_5.svg)](https://cafecito.app/ezebc182)
+
+</div>
+
+Si trabajás en una empresa y tenés un puesto part-time, por día o flexible: **publicalo.** Es gratis y es la ayuda que más sirve. Sin avisos, no hay plataforma.
+
+Si conocés un centro de jubilados, una organización de personas con discapacidad o una bolsa de trabajo que pueda difundirlo, contame.
+
+Si querés reportar un problema o proponer algo, abrí un issue acá mismo.
+
+## Correr el proyecto
+
+Hace falta Node 20 o superior, pnpm y una base PostgreSQL.
 
 ```bash
 pnpm install
-```
-
-### 3. Configurar variables de entorno
-
-Copiar `.env.example` a `.env` y completar:
-
-```bash
-cp .env.example .env
-```
-
-**Variables obligatorias:**
-
-```env
-# Database
-DATABASE_URL="postgresql://USER:PASS@HOST/db?sslmode=require"
-
-# Auth
-AUTH_SECRET="min-32-chars-random-secret"
-BETTER_AUTH_URL="http://localhost:3000"
-
-# OAuth Providers (al menos uno)
-BETTER_AUTH_GOOGLE_ID="..."
-BETTER_AUTH_GOOGLE_SECRET="..."
-
-# Email por Resend, una key por portal (opcional en dev: sin la key, los mails se loguean en consola)
-RESEND_API_KEY_JUBI="re_..."
-RESEND_API_KEY_INCLU="re_..."
-```
-
-### 4. Setup de base de datos
-
-```bash
-# Generar cliente Prisma
-pnpm prisma generate
-
-# Ejecutar migraciones
+cp .env.example .env          # completar las variables
 pnpm db:migrate
-
-# Cargar datos de prueba (opcional)
-pnpm db:seed
-```
-
-### 5. Ejecutar en desarrollo
-
-```bash
 pnpm dev
 ```
 
-Abre [http://localhost:3000](http://localhost:3000)
+Los dos portales se sirven desde el mismo proyecto y se distinguen por el dominio. En desarrollo:
 
-## 🗂️ Estructura del Proyecto
+- `localhost:3000` abre JubiJobs
+- `inclu.localhost:3000` abre IncluJobs
 
-```
-jubijobs/
-├── app/
-│   ├── (public)/              # Rutas públicas
-│   │   ├── page.tsx           # Home
-│   │   ├── empleos/           # Listado y detalle de empleos
-│   │   ├── empresas/          # Landing para empresas
-│   │   ├── discapacidad/      # Página de inclusión
-│   │   ├── como-funciona/
-│   │   ├── accesibilidad/
-│   │   ├── privacidad/
-│   │   └── terminos/
-│   ├── (private)/
-│   │   ├── empresa/           # Dashboard empresa
-│   │   └── postulaciones/     # Mis postulaciones (candidato)
-│   ├── api/
-│   │   └── auth/[...all]/     # Better-Auth routes
-│   ├── actions/               # Server Actions
-│   ├── globals.css
-│   └── layout.tsx
-├── components/
-│   ├── layout/                # Header, Footer
-│   ├── ui/                    # Componentes UI base
-│   ├── forms/                 # Formularios
-│   ├── jobs/                  # Componentes de empleos
-│   └── applications/          # Componentes de postulaciones
-├── lib/
-│   ├── auth.ts               # Better-Auth config
-│   ├── auth-client.ts        # Cliente auth
-│   ├── db.ts                 # Prisma client
-│   ├── email.ts              # Envío de emails
-│   ├── constants.ts          # Constantes (provincias, etc.)
-│   └── validations.ts        # Esquemas Zod
-├── prisma/
-│   ├── schema.prisma         # Modelos de BD
-│   └── seed.ts               # Datos de prueba
-├── .env.example
-├── package.json
-└── README.md
-```
+Está hecho con Next.js, TypeScript, PostgreSQL y Tailwind. Los detalles de despliegue, variables de entorno y puesta en producción están en [DEPLOY.md](DEPLOY.md).
 
-## 📊 Modelos de Datos
+## Licencia
 
-### User
-
-- Rol: `CANDIDATE | COMPANY | ADMIN`
-- Perfil candidato: 3 preguntas, ubicación, año nacimiento
-- Discapacidad: tipo y necesidades de accesibilidad
-
-### Company
-
-- Empresa asociada a un User (1:1)
-- Datos: nombre, logo, website, ubicación
-
-### Job
-
-- Publicado por Company
-- Datos: título, descripción, provincia, ciudad, modalidad, jornada, salario
-- Estados: `DRAFT | PUBLISHED | PAUSED | CLOSED`
-
-### Application
-
-- Candidato se postula a Job
-- Guarda snapshot de las 3 respuestas
-- Estados: `SUBMITTED | REVIEWED | CONTACTED | REJECTED`
-
-## 🎯 Flujos Principales
-
-### Candidato
-
-1. **Login**: OAuth (Google/Facebook/Microsoft) o teléfono con SMS OTP
-2. **Onboarding**:
-   - Elegir "Busco trabajo"
-   - Completar 3 preguntas + ubicación
-   - (Opcional) Marcar discapacidad
-3. **Explorar empleos**: Filtrar por provincia, modalidad, jornada
-4. **Postularse**: Responder 3 preguntas (prellenadas del perfil)
-5. **Ver postulaciones**: Estado de cada postulación
-
-### Empresa
-
-1. **Login**: OAuth
-2. **Onboarding**:
-   - Elegir "Soy empresa"
-   - Completar datos de empresa
-3. **Publicar empleo**: Formulario simple
-4. **Ver postulaciones**: Filtrar, revisar respuestas
-5. **Contactar candidato**: Botón que envía email y marca como contactado
-
-## 🔑 Features Principales
-
-### Autenticación por Teléfono (SMS OTP)
-
-**En Desarrollo:**
-
-- El código OTP es **aleatorio de 6 dígitos**
-- Se muestra en la consola del servidor (terminal donde corre `npm run dev`)
-- La UI indica dónde buscar el código
-
-**En Producción:**
-
-- Configurar servicio de SMS (Twilio recomendado)
-- El código se envía por SMS real
-- Variables de entorno necesarias:
-  ```env
-  TWILIO_ACCOUNT_SID="..."
-  TWILIO_AUTH_TOKEN="..."
-  TWILIO_PHONE_NUMBER="+1234567890"
-  ```
-
-**Flujo:**
-
-1. Usuario ingresa número de teléfono (formato argentino: +54)
-2. Sistema genera y envía código OTP de 6 dígitos
-3. Usuario ingresa código para verificar
-4. Si es nuevo, se crea cuenta automáticamente
-5. Si existe, inicia sesión
-
-### Accesibilidad (A11y)
-
-- Tipografía grande (base 18-20px)
-- Alto contraste
-- Botones grandes (mín 44px)
-- Labels a la izquierda
-- Skip to content
-- Navegación por teclado
-- ARIA labels
-- Soporte lector de pantalla
-
-### i18n (es-AR)
-
-- Formato de fecha: dd/mm/aaaa
-- Moneda: ARS (Intl.NumberFormat)
-- Zona horaria: America/Argentina/Buenos_Aires
-
-### Emails
-
-- Confirmación de postulación (candidato)
-- Nueva postulación (empresa)
-- Solicitud de contacto (candidato)
-
-## 🚢 Deploy a Producción
-
-### Vercel + Neon
-
-1. **Conectar repositorio a Vercel**
-
-2. **Configurar variables de entorno** en Vercel Dashboard
-
-3. **Configurar base de datos en Neon**:
-   - Crear proyecto en [neon.tech](https://neon.tech)
-   - Copiar `DATABASE_URL`
-   - Ejecutar migraciones:
-
-```bash
-pnpm prisma migrate deploy
-```
-
-4. **Build automático**: Vercel ejecutará `pnpm build`
-
-5. **Verificar OAuth callbacks**:
-   - Google: `https://tu-dominio.vercel.app/api/auth/callback/google`
-   - Microsoft: `https://tu-dominio.vercel.app/api/auth/callback/microsoft`
-   - Facebook: `https://tu-dominio.vercel.app/api/auth/callback/facebook`
-   - GitHub: `https://tu-dominio.vercel.app/api/auth/callback/github` (deshabilitado en UI)
-
-## 🧪 Testing
-
-### E2E con Playwright
-
-```bash
-# Instalar Playwright
-pnpm playwright install
-
-# Ejecutar tests
-pnpm test:e2e
-```
-
-**Smoke tests incluidos:**
-
-- Alta de empleo (empresa)
-- Postulación (candidato)
-- Login empresa
-
-## 📝 Scripts Disponibles
-
-```bash
-pnpm dev          # Desarrollo con Turbopack
-pnpm build        # Build para producción
-pnpm start        # Servidor producción
-pnpm lint         # ESLint
-pnpm format       # Prettier
-pnpm db:push      # Push schema sin migración
-pnpm db:migrate   # Crear migración
-pnpm db:seed      # Seed con datos de prueba
-pnpm db:studio    # Prisma Studio (GUI)
-pnpm test:e2e     # Playwright
-```
-
-## 🔐 Seguridad
-
-- Server Actions con validación de rol
-- Usuario solo puede editar sus recursos
-- Sanitización de inputs (Zod)
-- Sin hooks que salteen (--no-verify)
-- ENV secrets nunca en código
-
-## 🌍 Provincias de Argentina
-
-Lista completa en `lib/constants.ts`:
-
-- CABA, Buenos Aires, Córdoba, Santa Fe, Mendoza, Tucumán, Entre Ríos, Salta, Misiones, Chaco, Chubut, Corrientes, Formosa, Jujuy, La Pampa, La Rioja, Neuquén, Río Negro, San Juan, San Luis, Santa Cruz, Santiago del Estero, Tierra del Fuego
-
-## 📖 Documentación Adicional
-
-- [Better-Auth Docs](https://better-auth.com)
-- [Prisma Docs](https://www.prisma.io/docs)
-- [Next.js 16 Docs](https://nextjs.org/docs)
-- [Radix UI](https://www.radix-ui.com/)
-- [Tailwind CSS](https://tailwindcss.com/docs)
-
-## 🤝 Contribuir
-
-1. Fork el proyecto
-2. Crear branch (`git checkout -b feature/nueva-funcionalidad`)
-3. Commit cambios (`git commit -m 'Add: nueva funcionalidad'`)
-4. Push al branch (`git push origin feature/nueva-funcionalidad`)
-5. Abrir Pull Request
-
-## 📄 Licencia
-
-MIT © 2025 JubiJobs
-
----
-
-**Próximos pasos sugeridos:**
-
-- Implementar autenticación con DNI digital (Argentina)
-- Agregar passwordless (magic links)
-- Expandir a otros países de LatAm
-- Sistema de mensajería interna
-- Verificación de empresas
-- Reviews de empresas por candidatos
+MIT. El código es libre de usar. Si armás algo parecido para otro país o para otro grupo de personas que el mercado laboral deja afuera, contame: me gustaría verlo.
