@@ -114,6 +114,15 @@ export function UserMenu({ user }: { user: UserMenuUser }) {
               </Link>
             )}
 
+            <Link
+              href="/cuenta"
+              role="menuitem"
+              onClick={() => setOpen(false)}
+              className="flex min-h-[44px] items-center rounded-md px-3 text-lg text-ink transition-colors hover:bg-primary-50 dark:hover:bg-primary-900/30"
+            >
+              Mi cuenta
+            </Link>
+
             {user.role === "ADMIN" && (
               <Link
                 href="/admin"
