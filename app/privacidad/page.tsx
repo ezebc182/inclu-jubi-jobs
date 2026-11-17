@@ -13,7 +13,7 @@ import { getCurrentPortalConfig } from "@/lib/portal";
  * versión aceptó una persona — justo lo que la fecha tiene que probar.
  * Actualizarla a mano al cambiar el texto es parte del cambio.
  */
-const ULTIMA_ACTUALIZACION = "8 de septiembre de 2026";
+const ULTIMA_ACTUALIZACION = "17 de noviembre de 2026";
 
 export async function generateMetadata(): Promise<Metadata> {
   const portal = await getCurrentPortalConfig();
@@ -151,7 +151,18 @@ export default async function PrivacidadPage() {
           actualizarlos y pedir que los demos de baja.
         </p>
         <p className="mt-4 text-lg text-ink-soft">
-          Para ejercerlos, escribinos a{" "}
+          Podés descargar tus datos o eliminar tu cuenta vos mismo desde{" "}
+          <a
+            href="/cuenta"
+            className="font-semibold text-primary-700 underline underline-offset-4 hover:text-primary-800 dark:text-primary-200"
+          >
+            Mi cuenta
+          </a>
+          . Si dejaste tu correo en la lista de espera, cada correo que te
+          mandamos trae un link para darte de baja.
+        </p>
+        <p className="mt-4 text-lg text-ink-soft">
+          Para cualquier otro pedido, escribinos a{" "}
           <a
             href={`mailto:${portal.contactEmail}`}
             className="font-semibold text-primary-700 underline underline-offset-4 hover:text-primary-800 dark:text-primary-200"

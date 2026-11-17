@@ -192,6 +192,13 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
                     Mis postulaciones
                   </Link>
                 )}
+                <Link
+                  href="/cuenta"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="min-h-[44px] rounded-md px-4 py-2.5 text-center text-lg font-medium text-ink transition-colors hover:bg-primary-50 dark:hover:bg-primary-900/30"
+                >
+                  Mi cuenta
+                </Link>
                 <button
                   onClick={handleLogout}
                   className="min-h-[44px] rounded-md px-4 py-2.5 text-lg font-medium text-ink transition-colors hover:bg-primary-50 dark:hover:bg-primary-900/30"

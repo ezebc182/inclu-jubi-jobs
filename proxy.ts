@@ -12,6 +12,7 @@ const PROTECTED_PREFIXES = [
   "/postulaciones",
   "/onboarding",
   "/admin",
+  "/cuenta",
 ] as const;
 
 /**
