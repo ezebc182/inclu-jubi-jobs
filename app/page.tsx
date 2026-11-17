@@ -126,35 +126,37 @@ export default async function HomePage({
             <p className="mt-5 text-base text-ink-soft">{copy.heroFootnote}</p>
 
             {/* Cifras reales de la base, no promesas.
+                dt antes que dd (lo exige el HTML y el lector de pantalla
+                lee el rótulo primero); flex-col-reverse deja el número arriba.
                 Dos columnas en móvil: a 390px las tres quedan tan angostas
                 que las etiquetas se parten en tres líneas. */}
             {jobCount > 0 && (
               <dl className="mt-10 grid grid-cols-2 gap-6 border-t border-rule pt-8 sm:grid-cols-3">
-                <div>
-                  <dd className="font-display text-3xl font-semibold text-primary-700 dark:text-primary-200">
-                    {jobCount.toLocaleString("es-AR")}
-                  </dd>
+                <div className="flex flex-col-reverse">
                   <dt className="mt-1 text-base text-ink-soft">
                     {jobCount === 1 ? "empleo publicado" : "empleos publicados"}
                   </dt>
-                </div>
-                <div>
                   <dd className="font-display text-3xl font-semibold text-primary-700 dark:text-primary-200">
-                    {companyCount.toLocaleString("es-AR")}
+                    {jobCount.toLocaleString("es-AR")}
                   </dd>
+                </div>
+                <div className="flex flex-col-reverse">
                   <dt className="mt-1 text-base text-ink-soft">
                     {companyCount === 1
                       ? "empresa buscando"
                       : "empresas buscando"}
                   </dt>
-                </div>
-                <div>
                   <dd className="font-display text-3xl font-semibold text-primary-700 dark:text-primary-200">
-                    3
+                    {companyCount.toLocaleString("es-AR")}
                   </dd>
+                </div>
+                <div className="flex flex-col-reverse">
                   <dt className="mt-1 text-base text-ink-soft">
                     preguntas para postularse
                   </dt>
+                  <dd className="font-display text-3xl font-semibold text-primary-700 dark:text-primary-200">
+                    3
+                  </dd>
                 </div>
               </dl>
             )}
