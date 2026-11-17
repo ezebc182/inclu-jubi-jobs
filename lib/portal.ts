@@ -1,6 +1,7 @@
 import "server-only";
 
 import { headers } from "next/headers";
+import type { Prisma } from "@prisma/client";
 
 /**
  * Portales del producto.
@@ -164,13 +165,19 @@ export function portalJobFilter(portal: PortalId) {
   return { portals: { has: portal } } as const;
 }
 
-/** Avisos visibles al público: del portal, publicados y aprobados. */
+/**
+ * Avisos visibles al público: del portal, publicados, aprobados y vigentes.
+ *
+ * El vencimiento va dentro de `AND` y no como `OR` suelto: /empleos arma su
+ * búsqueda de texto con `where.OR` y la pisaría.
+ */
 export function publicJobFilter(portal: PortalId) {
   return {
     ...portalJobFilter(portal),
-    status: "PUBLISHED",
-    moderationStatus: "APPROVED",
-  } as const;
+    status: "PUBLISHED" as const,
+    moderationStatus: "APPROVED" as const,
+    AND: [{ OR: [{ expiresAt: null }, { expiresAt: { gt: new Date() } }] }],
+  } satisfies Prisma.JobWhereInput;
 }
 
 /**

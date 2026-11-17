@@ -6,7 +6,7 @@ import type { LeadKind, Portal } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { recordAudit, requireAdminActor } from "@/lib/admin";
 import { checkRateLimit } from "@/lib/rate-limit";
-import { getCurrentPortal, type PortalId } from "@/lib/portal";
+import { getCurrentPortal, publicJobFilter, type PortalId } from "@/lib/portal";
 import {
   sendLeadAnnouncementToCandidate,
   sendLeadAnnouncementToCompany,
@@ -282,11 +282,7 @@ type CompanyContent = {
 async function buildCandidateContent(
   portal: Portal
 ): Promise<CandidateContent | null> {
-  const where = {
-    portals: { has: portal },
-    status: "PUBLISHED",
-    moderationStatus: "APPROVED",
-  } as const;
+  const where = publicJobFilter(portal);
 
   const [totalJobs, jobs] = await Promise.all([
     prisma.job.count({ where }),

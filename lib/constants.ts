@@ -24,6 +24,14 @@ export const PROVINCIAS_AR = [
   "Tierra del Fuego",
 ] as const;
 
+/**
+ * Vigencia de un aviso, en días. Un aviso sin fecha de cierre queda colgado
+ * para siempre: la persona se postula a algo que ya se cubrió y nadie le
+ * contesta. 60 días es el default; la empresa puede elegir otro de la lista.
+ */
+export const JOB_DURATION_DAYS_DEFAULT = 60;
+export const JOB_DURATION_DAYS_OPTIONS = [30, 60, 90] as const;
+
 export const MODALITIES = [
   { value: "PRESENCIAL", label: "Presencial" },
   { value: "REMOTO", label: "Remoto" },

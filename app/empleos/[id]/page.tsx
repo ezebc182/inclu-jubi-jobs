@@ -13,6 +13,7 @@ import {
 import { ThreeQuestionsForm } from "@/components/forms/ThreeQuestionsForm";
 import { LineIcon } from "@/components/ui/LineIcon";
 import { applyToJob } from "@/app/actions/applications";
+import { jobPostingLd, serializeJsonLd } from "@/lib/job-posting";
 
 const MODALITY_LABELS: Record<string, string> = {
   PRESENCIAL: "Presencial",
@@ -106,6 +107,12 @@ export default async function EmpleoDetailPage({
 
   return (
     <div className="bg-paper">
+      {/* `findVisibleJob` ya garantiza aprobado y vigente: no hay JobPosting
+          de un aviso que Google no debería listar. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jobPostingLd(job)) }}
+      />
       {/* Encabezado sobre superficie clara: separa el "qué es este puesto"
           del "de qué se trata". */}
       <header className="border-b border-rule bg-surface">
