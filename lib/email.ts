@@ -2,6 +2,7 @@ import "server-only";
 
 import { Resend } from "resend";
 import { getPortalConfig, portalBaseUrl, type PortalId } from "@/lib/portal";
+import { signLeadId, unsubscribeSecret } from "@/lib/unsubscribe";
 
 /**
  * Emails transaccionales, por Resend.
@@ -80,6 +81,8 @@ interface Layout {
   /** Párrafos después del bloque destacado, ya escapados. */
   closing?: string[];
   cta?: { label: string; href: string };
+  /** Link de baja, solo en los mails a la lista de espera. */
+  unsubscribeHref?: string;
 }
 
 /**
@@ -93,6 +96,7 @@ function layout({
   highlight,
   closing = [],
   cta,
+  unsubscribeHref,
 }: Layout) {
   const config = getPortalConfig(portal);
   const base = portalBaseUrl(portal);
@@ -126,7 +130,14 @@ function layout({
       <p style="margin:0;font-size:15px;line-height:1.5;color:#6b7280;">
         ${config.name} · ${escape(config.audience)}<br>
         <a href="${base}" style="color:${color};">${config.domain}</a>
-      </p>
+      </p>${
+        unsubscribeHref
+          ? `
+      <p style="margin:16px 0 0;font-size:15px;line-height:1.5;color:#6b7280;">
+        ¿No querés recibir más estos correos? <a href="${unsubscribeHref}" style="color:${color};">Darte de baja</a>
+      </p>`
+          : ""
+      }
     </div>
   </body>
 </html>`;
@@ -138,6 +149,7 @@ async function send(input: {
   subject: string;
   html: string;
   replyTo?: string;
+  headers?: Record<string, string>;
 }) {
   const resend = getClient(input.portal);
 
@@ -156,6 +168,7 @@ async function send(input: {
       subject: input.subject,
       html: input.html,
       replyTo: input.replyTo,
+      headers: input.headers,
     });
 
     if (error) {
@@ -172,6 +185,23 @@ async function send(input: {
       error,
     });
   }
+}
+
+/**
+ * Baja de la lista de espera: link visible (pide confirmar, ver app/baja) y
+ * headers RFC 8058 para el botón "Anular suscripción" del cliente de correo,
+ * que hace POST directo a app/api/leads/baja.
+ */
+function leadUnsubscribe(portal: PortalId, leadId: string) {
+  const query = `id=${encodeURIComponent(leadId)}&t=${signLeadId(leadId, unsubscribeSecret())}`;
+  const base = portalBaseUrl(portal);
+  return {
+    href: `${base}/baja?${query}`,
+    headers: {
+      "List-Unsubscribe": `<${base}/api/leads/baja?${query}>`,
+      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+    },
+  };
 }
 
 // ─── Candidato ────────────────────────────────────────────────────────────
@@ -338,6 +368,7 @@ export async function sendJobApproved(input: {
 export async function sendLeadAnnouncementToCandidate(input: {
   portal: PortalId;
   to: string;
+  leadId: string;
   /** Total publicado en el portal, no el largo de la muestra. */
   totalJobs: number;
   jobs: Array<{
@@ -386,12 +417,16 @@ export async function sendLeadAnnouncementToCandidate(input: {
       ? `${base}/empleos?provincia=${encodeURIComponent(input.province)}`
       : `${base}/empleos`;
 
+  const unsubscribe = leadUnsubscribe(input.portal, input.leadId);
+
   await send({
     portal: input.portal,
     to: input.to,
     subject,
+    headers: unsubscribe.headers,
     html: layout({
       portal: input.portal,
+      unsubscribeHref: unsubscribe.href,
       heading: plural
         ? "Ya hay un empleo publicado"
         : `Ya hay ${input.totalJobs} empleos publicados`,
@@ -415,6 +450,7 @@ export async function sendLeadAnnouncementToCandidate(input: {
 export async function sendLeadAnnouncementToCompany(input: {
   portal: PortalId;
   to: string;
+  leadId: string;
   totalCandidates: number;
 }) {
   const config = getPortalConfig(input.portal);
@@ -424,12 +460,16 @@ export async function sendLeadAnnouncementToCompany(input: {
     ? `Hay una persona buscando trabajo en ${config.name}`
     : `Hay ${input.totalCandidates} personas buscando trabajo en ${config.name}`;
 
+  const unsubscribe = leadUnsubscribe(input.portal, input.leadId);
+
   await send({
     portal: input.portal,
     to: input.to,
     subject,
+    headers: unsubscribe.headers,
     html: layout({
       portal: input.portal,
+      unsubscribeHref: unsubscribe.href,
       heading: single
         ? "Hay una persona esperando tu aviso"
         : `Hay ${input.totalCandidates} personas esperando tu aviso`,

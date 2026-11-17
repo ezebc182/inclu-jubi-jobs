@@ -220,6 +220,7 @@ export async function announceToLeads(input: {
             ? sendLeadAnnouncementToCandidate({
                 portal: input.portal,
                 to: lead.email,
+                leadId: lead.id,
                 totalJobs: content.totalJobs,
                 jobs: pickSample(content.jobs, lead.province, lead.wantsRemote),
                 province: lead.province,
@@ -227,6 +228,7 @@ export async function announceToLeads(input: {
             : sendLeadAnnouncementToCompany({
                 portal: input.portal,
                 to: lead.email,
+                leadId: lead.id,
                 totalCandidates: content.totalCandidates,
               })
         )
