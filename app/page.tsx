@@ -89,6 +89,7 @@ export default async function HomePage({
       {params.error && (
         <AuthErrorNotice
           code={params.error}
+          portal={portalId}
           contactEmail={portal.contactEmail}
         />
       )}

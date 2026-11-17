@@ -57,6 +57,12 @@ export default async function PrivacidadPage() {
             <strong className="text-ink">Avisos y postulaciones:</strong> los
             empleos publicados y las postulaciones que enviás.
           </li>
+          <li>
+            <strong className="text-ink">País de conexión:</strong> cuando creás
+            una cuenta o dejás tu correo en la lista, guardamos solo el país
+            desde el que te conectás (por ejemplo, &quot;AR&quot;). Lo deducimos
+            de tu conexión, pero no guardamos tu dirección IP.
+          </li>
         </ul>
       </section>
 
@@ -98,6 +104,11 @@ export default async function PrivacidadPage() {
         <ul className="mt-4 space-y-2 text-lg text-ink-soft">
           <li>Conectar candidatos con empresas.</li>
           <li>Mostrar avisos según ubicación y preferencias.</li>
+          <li>
+            Confirmar que las cuentas nuevas se crean desde Argentina: por ahora
+            el servicio funciona solo acá, y eso frena registros falsos desde
+            otros países.
+          </li>
           <li>
             Enviar correos sobre tus postulaciones. No mandamos publicidad.
           </li>

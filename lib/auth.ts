@@ -1,8 +1,10 @@
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { phoneNumber } from "better-auth/plugins";
+import { APIError } from "better-auth/api";
 import { headers } from "next/headers";
 import { prisma } from "./db";
+import { COUNTRY_HEADER, COUNTRY_NOT_ALLOWED, decideCountry } from "./country";
 import {
   allPortals,
   getPortalConfig,
@@ -197,9 +199,19 @@ function createAuthForPortal(portal: PortalId) {
     databaseHooks: {
       user: {
         create: {
-          before: async (user) => ({
-            data: { ...user, portal },
-          }),
+          // Corta el alta desde fuera de Argentina (ver lib/country.ts). Lanza
+          // APIError y no devuelve `false`: con `false` el callback de OAuth
+          // redirige con `?error=n`; con APIError usa el mensaje como código, y
+          // la portada lo traduce en AuthErrorNotice.
+          before: async (user, ctx) => {
+            const { allowed, country } = decideCountry(
+              (ctx?.headers ?? ctx?.request?.headers)?.get(COUNTRY_HEADER)
+            );
+            if (!allowed) {
+              throw new APIError("FORBIDDEN", { message: COUNTRY_NOT_ALLOWED });
+            }
+            return { data: { ...user, portal, country } };
+          },
         },
       },
     },
