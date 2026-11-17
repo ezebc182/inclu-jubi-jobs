@@ -13,7 +13,7 @@ import { getCurrentPortalConfig } from "@/lib/portal";
  * versión aceptó una persona — justo lo que la fecha tiene que probar.
  * Actualizarla a mano al cambiar el texto es parte del cambio.
  */
-const ULTIMA_ACTUALIZACION = "8 de septiembre de 2026";
+const ULTIMA_ACTUALIZACION = "17 de noviembre de 2026";
 
 export async function generateMetadata(): Promise<Metadata> {
   const portal = await getCurrentPortalConfig();
