@@ -5,6 +5,10 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { jobFormSchema } from "@/lib/validations";
+import {
+  JOB_DURATION_DAYS_DEFAULT,
+  JOB_DURATION_DAYS_OPTIONS,
+} from "@/lib/constants";
 
 export async function updateJobStatus(
   jobId: string,
@@ -140,6 +144,15 @@ export async function createJob(formData: FormData) {
 
   const validated = jobFormSchema.parse(data);
 
+  // Solo valores de la lista: llega por la red y no queremos avisos a 10 años.
+  const requestedDays = Number(formData.get("durationDays"));
+  const durationDays = (JOB_DURATION_DAYS_OPTIONS as readonly number[]).includes(
+    requestedDays
+  )
+    ? requestedDays
+    : JOB_DURATION_DAYS_DEFAULT;
+  const expiresAt = new Date(Date.now() + durationDays * 24 * 60 * 60 * 1000);
+
   // Las empresas verificadas con auto-aprobación publican directo; el resto
   // pasa por la cola de moderación.
   const approved = company.autoApproveJobs;
@@ -161,6 +174,7 @@ export async function createJob(formData: FormData) {
       isRemoteFriendly: validated.isRemoteFriendly,
       hasAccessibleSite: validated.hasAccessibleSite,
       supportsFlexHours: validated.supportsFlexHours,
+      expiresAt,
       status: approved ? "PUBLISHED" : "DRAFT",
       moderationStatus: approved ? "APPROVED" : "PENDING",
       moderatedAt: approved ? new Date() : null,

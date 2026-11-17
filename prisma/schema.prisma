@@ -213,6 +213,10 @@ model Job {
   status       JobStatus @default(DRAFT)
   tags         String[] // p. ej. ["Atención al cliente","Administración"]
 
+  /// Hasta cuándo se lista y acepta postulaciones. `null` = sin vencimiento
+  /// (avisos anteriores a este campo). Ver `publicJobFilter` en lib/portal.ts.
+  expiresAt    DateTime?
+
   // Portales donde se publica el aviso. La empresa elige uno, otro o ambos.
   // Se filtra con `portals: { has: <portal> }` en toda query pública.
   portals Portal[] @default([JUBI])

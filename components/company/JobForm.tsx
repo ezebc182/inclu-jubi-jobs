@@ -1,7 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { MODALITIES, PROVINCIAS_AR, SCHEDULES } from "@/lib/constants";
+import {
+  JOB_DURATION_DAYS_DEFAULT,
+  JOB_DURATION_DAYS_OPTIONS,
+  MODALITIES,
+  PROVINCIAS_AR,
+  SCHEDULES,
+} from "@/lib/constants";
 import { createJob } from "@/app/actions/jobs";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -317,6 +323,29 @@ export function JobForm() {
             placeholder="350000"
           />
         </div>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <label htmlFor="durationDays" className="text-lg font-bold text-ink">
+          Vigencia del aviso
+        </label>
+        <select
+          id="durationDays"
+          name="durationDays"
+          defaultValue={JOB_DURATION_DAYS_DEFAULT}
+          aria-describedby="durationDays-help"
+          className="min-h-[48px] rounded-lg border border-rule px-4 py-3 text-lg focus:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300"
+        >
+          {JOB_DURATION_DAYS_OPTIONS.map((days) => (
+            <option key={days} value={days}>
+              {days} días
+            </option>
+          ))}
+        </select>
+        <p id="durationDays-help" className="text-base text-ink-soft">
+          Pasado ese plazo el aviso deja de mostrarse y no recibe más
+          postulaciones.
+        </p>
       </div>
 
       <fieldset
