@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { UserMenu } from "./UserMenu";
 import { BrandLogo } from "@/components/brand/BrandLogo";
-import { authClient } from "@/lib/auth-client";
+import { authClient, clearSessionCaches } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import type { BrandSlug } from "@/lib/brand-assets";
@@ -31,6 +31,7 @@ export function ClientHeader({ session, brand }: ClientHeaderProps) {
 
   const handleLogout = async () => {
     await authClient.signOut();
+    await clearSessionCaches();
     router.push("/");
     router.refresh();
     setMobileMenuOpen(false);

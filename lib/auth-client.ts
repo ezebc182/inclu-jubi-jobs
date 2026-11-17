@@ -22,3 +22,26 @@ export const authClient = createAuthClient({
 });
 
 export const { signIn, signOut, useSession } = authClient;
+
+/**
+ * Borra las páginas e imágenes que guardó el service worker. Se llama al
+ * cerrar sesión: en un dispositivo compartido, lo cacheado durante la sesión
+ * (nombre en el header, avatar) no debe quedar para la próxima persona.
+ * Shell y assets con hash no tienen datos personales y se conservan.
+ * Nunca lanza: un fallo acá no puede bloquear el logout.
+ */
+export async function clearSessionCaches(): Promise<void> {
+  try {
+    if (typeof caches === "undefined") return;
+    const names = await caches.keys();
+    await Promise.all(
+      names
+        .filter(
+          (name) => name.startsWith("pages-") || name.startsWith("images-")
+        )
+        .map((name) => caches.delete(name))
+    );
+  } catch {
+    // Sin permisos de storage (modo privado, etc.): no hay nada que borrar.
+  }
+}
