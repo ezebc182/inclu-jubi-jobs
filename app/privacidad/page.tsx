@@ -58,10 +58,10 @@ export default async function PrivacidadPage() {
             empleos publicados y las postulaciones que enviás.
           </li>
           <li>
-            <strong className="text-ink">País de conexión:</strong> cuando
-            creás una cuenta o dejás tu correo en la lista, guardamos solo el
-            país desde el que te conectás (por ejemplo, &quot;AR&quot;). Lo
-            deducimos de tu conexión, pero no guardamos tu dirección IP.
+            <strong className="text-ink">País de conexión:</strong> cuando creás
+            una cuenta o dejás tu correo en la lista, guardamos solo el país
+            desde el que te conectás (por ejemplo, &quot;AR&quot;). Lo deducimos
+            de tu conexión, pero no guardamos tu dirección IP.
           </li>
         </ul>
       </section>
@@ -105,9 +105,9 @@ export default async function PrivacidadPage() {
           <li>Conectar candidatos con empresas.</li>
           <li>Mostrar avisos según ubicación y preferencias.</li>
           <li>
-            Confirmar que las cuentas nuevas se crean desde Argentina: por
-            ahora el servicio funciona solo acá, y eso frena registros falsos
-            desde otros países.
+            Confirmar que las cuentas nuevas se crean desde Argentina: por ahora
+            el servicio funciona solo acá, y eso frena registros falsos desde
+            otros países.
           </li>
           <li>
             Enviar correos sobre tus postulaciones. No mandamos publicidad.

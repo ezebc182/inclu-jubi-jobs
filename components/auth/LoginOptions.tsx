@@ -66,7 +66,11 @@ export function LoginOptions({
   const onlyOneMethod = !hasSocial || !phoneEnabled;
 
   if (onlyOneMethod) {
-    return hasSocial ? <SignInButtons providers={providers} /> : <PhoneLogin portal={portal} />;
+    return hasSocial ? (
+      <SignInButtons providers={providers} />
+    ) : (
+      <PhoneLogin portal={portal} />
+    );
   }
 
   const tabs: Array<{

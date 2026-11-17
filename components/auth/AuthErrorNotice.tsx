@@ -1,9 +1,6 @@
 import Link from "next/link";
 import { LineIcon } from "@/components/ui/LineIcon";
-import {
-  COUNTRY_NOT_ALLOWED,
-  countryNotAllowedMessage,
-} from "@/lib/country";
+import { COUNTRY_NOT_ALLOWED, countryNotAllowedMessage } from "@/lib/country";
 
 /**
  * Aviso cuando el ingreso falla.
