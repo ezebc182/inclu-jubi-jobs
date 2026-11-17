@@ -26,9 +26,11 @@ type LoginMethod = "oauth" | "phone";
 export function LoginOptions({
   providers,
   phoneEnabled,
+  portal,
 }: {
   providers: SocialProviderId[];
   phoneEnabled: boolean;
+  portal: "JUBI" | "INCLU";
 }) {
   const hasSocial = providers.length > 0;
   const [method, setMethod] = useState<LoginMethod>(
@@ -64,7 +66,7 @@ export function LoginOptions({
   const onlyOneMethod = !hasSocial || !phoneEnabled;
 
   if (onlyOneMethod) {
-    return hasSocial ? <SignInButtons providers={providers} /> : <PhoneLogin />;
+    return hasSocial ? <SignInButtons providers={providers} /> : <PhoneLogin portal={portal} />;
   }
 
   const tabs: Array<{
@@ -155,7 +157,7 @@ export function LoginOptions({
           {tab.id === "oauth" ? (
             <SignInButtons providers={providers} />
           ) : (
-            <PhoneLogin />
+            <PhoneLogin portal={portal} />
           )}
         </div>
       ))}

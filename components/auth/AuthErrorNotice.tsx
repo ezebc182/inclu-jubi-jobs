@@ -1,5 +1,9 @@
 import Link from "next/link";
 import { LineIcon } from "@/components/ui/LineIcon";
+import {
+  COUNTRY_NOT_ALLOWED,
+  countryNotAllowedMessage,
+} from "@/lib/country";
 
 /**
  * Aviso cuando el ingreso falla.
@@ -45,12 +49,17 @@ const GENERICO = {
 
 export function AuthErrorNotice({
   code,
+  portal,
   contactEmail,
 }: {
   code: string;
+  portal: "JUBI" | "INCLU";
   contactEmail: string;
 }) {
-  const { titulo, detalle } = MENSAJES[code] ?? GENERICO;
+  const { titulo, detalle } =
+    code === COUNTRY_NOT_ALLOWED
+      ? countryNotAllowedMessage(portal)
+      : (MENSAJES[code] ?? GENERICO);
 
   return (
     // role="alert" para que un lector de pantalla lo anuncie al cargar: quien

@@ -130,6 +130,9 @@ export function SignInButtons({
       // trabajo o para publicar. Quien ya eligió no ve nada — esa página
       // redirige sola al destino que corresponde a su rol.
       callbackURL: "/onboarding",
+      // Sin esto Better-Auth manda los errores a su página cruda
+      // /api/auth/error. La portada los traduce con AuthErrorNotice.
+      errorCallbackURL: "/",
     });
 
     // Si falla, el botón tiene que soltarse. Antes, ante cualquier error,

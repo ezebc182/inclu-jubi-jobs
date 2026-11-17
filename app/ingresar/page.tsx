@@ -42,7 +42,11 @@ export default async function LoginPage() {
         </p>
 
         <div className="mt-8">
-          <LoginOptions providers={social} phoneEnabled={phone} />
+          <LoginOptions
+            providers={social}
+            phoneEnabled={phone}
+            portal={portalId}
+          />
         </div>
 
         <p className="mt-8 border-t border-rule pt-6 text-base leading-relaxed text-ink-soft">

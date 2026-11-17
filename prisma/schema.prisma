@@ -29,6 +29,11 @@ model User {
   // Portal por el que se registró. Un candidato solo ve contenido de su portal.
   portal    Portal   @default(JUBI)
 
+  /// País desde el que se registró (ISO de 2 letras, de `x-vercel-ip-country`).
+  /// Solo el país, nunca la IP. `null` = registro sin ese header (dev local o
+  /// cuentas anteriores a este campo). Ver lib/country.ts.
+  country   String?
+
   // Moderación desde /admin
   isActive        Boolean   @default(true)
   suspendedAt     DateTime?
@@ -287,6 +292,9 @@ model Lead {
   /// aviso remoto igual tiene provincia, y alguien de Chaco puede querer lo
   /// de Chaco Y lo remoto. Son dos dimensiones, no una sola.
   wantsRemote Boolean @default(false)
+
+  /// País desde el que se anotó (ISO de 2 letras). Igual que `User.country`.
+  country String?
 
   /// Cuándo se le avisó por última vez. `null` = nunca. Es el corte que usa
   /// /admin/lista para no mandarle dos veces la misma noticia.

@@ -13,6 +13,11 @@ import {
 } from "@/lib/email";
 import { PROVINCIAS_AR } from "@/lib/constants";
 import { pickSample, type SampleJob } from "@/lib/leads";
+import {
+  COUNTRY_HEADER,
+  countryNotAllowedMessage,
+  decideCountry,
+} from "@/lib/country";
 
 /**
  * Captura de interés sin registro.
@@ -101,6 +106,14 @@ export async function subscribeLead(input: SubscribeInput): Promise<Result> {
     const portal = await getCurrentPortal();
     const wantsRemote = input.wantsRemote ?? false;
 
+    const { allowed, country } = decideCountry(
+      requestHeaders.get(COUNTRY_HEADER)
+    );
+    if (!allowed) {
+      const { titulo, detalle } = countryNotAllowedMessage(portal);
+      return fail(`${titulo}. ${detalle}`);
+    }
+
     await prisma.lead.upsert({
       where: {
         email_portal_kind: {
@@ -112,13 +125,14 @@ export async function subscribeLead(input: SubscribeInput): Promise<Result> {
       // Reenviar el formulario actualiza la ubicación —quizás se mudó, o la
       // primera vez no la completó— pero NO toca `notifiedAt`: ya recibió lo
       // que recibió, y resetearlo le mandaría la misma noticia dos veces.
-      update: { province, wantsRemote },
+      update: { province, wantsRemote, country },
       create: {
         email,
         portal: portal as Portal,
         kind: input.kind,
         province,
         wantsRemote,
+        country,
       },
     });
 

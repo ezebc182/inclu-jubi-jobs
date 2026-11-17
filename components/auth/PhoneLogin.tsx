@@ -5,8 +5,12 @@ import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { sendOTPWithRateLimit } from "@/app/actions/auth";
 import { toast } from "sonner";
+import {
+  COUNTRY_NOT_ALLOWED,
+  countryNotAllowedMessage,
+} from "@/lib/country";
 
-export function PhoneLogin() {
+export function PhoneLogin({ portal }: { portal: "JUBI" | "INCLU" }) {
   const router = useRouter();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [otpCode, setOtpCode] = useState("");
@@ -78,6 +82,12 @@ export function PhoneLogin() {
         code: otpCode,
       });
 
+      if (result.error?.message === COUNTRY_NOT_ALLOWED) {
+        const { titulo, detalle } = countryNotAllowedMessage(portal);
+        setError(`${titulo}. ${detalle}`);
+        setLoading(false);
+        return;
+      }
       if (result.error) {
         setError(result.error.message || "Código incorrecto");
         setLoading(false);
