@@ -6,13 +6,18 @@
  * conurbano, y cero magia que después nadie sabe depurar.
  *
  * Estrategias:
- *   - Navegación (HTML) → network-first con timeout, fallback a /offline
+ *   - Navegación (HTML) → network-first con timeout, fallback a /offline.
+ *                         Solo se guardan páginas públicas (allowlist): el
+ *                         resto va siempre a la red, para que un dispositivo
+ *                         compartido no muestre sin conexión datos de otra
+ *                         persona (panel de admin, postulantes, etc.).
  *   - Assets de Next    → cache-first (llevan hash en el nombre, son inmutables)
  *   - Imágenes          → stale-while-revalidate
  *   - POST / actions    → SIEMPRE red. Nunca se cachea una mutación.
  */
 
-const VERSION = "v1";
+// v2: descarta los caches de v1, que guardaban páginas privadas.
+const VERSION = "v2";
 const SHELL_CACHE = `shell-${VERSION}`;
 const PAGES_CACHE = `pages-${VERSION}`;
 const ASSETS_CACHE = `assets-${VERSION}`;
@@ -25,6 +30,43 @@ const NETWORK_TIMEOUT_MS = 4000;
 
 /** Recursos mínimos para que la app abra sin conexión. */
 const PRECACHE_URLS = [OFFLINE_URL];
+
+/**
+ * Páginas que se pueden guardar para verlas sin conexión. Allowlist y no
+ * denylist: una ruta privada nueva queda fuera del cache sin que nadie se
+ * acuerde de excluirla.
+ */
+const PUBLIC_PAGES = new Set([
+  "/",
+  "/empleos",
+  "/empresas",
+  "/como-funciona",
+  "/preguntas-frecuentes",
+  "/ayuda",
+  "/accesibilidad",
+  "/discapacidad",
+  "/privacidad",
+  "/terminos",
+  OFFLINE_URL,
+]);
+const PUBLIC_PREFIXES = ["/empleos/"];
+
+function isPublicPage(pathname) {
+  return (
+    PUBLIC_PAGES.has(pathname) ||
+    PUBLIC_PREFIXES.some((prefix) => pathname.startsWith(prefix))
+  );
+}
+
+/**
+ * Set-Cookie no se chequea: es un header prohibido y fetch() nunca lo expone,
+ * así que esa condición sería siempre falsa.
+ */
+function isCacheableResponse(response) {
+  if (!response || !response.ok) return false;
+  const cacheControl = response.headers.get("Cache-Control") || "";
+  return !/no-store/i.test(cacheControl);
+}
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -82,13 +124,15 @@ function timeout(ms) {
  * último caso, la página offline.
  */
 async function handleNavigation(request) {
+  const isPublic = isPublicPage(new URL(request.url).pathname);
+
   try {
     const response = await Promise.race([
       fetch(request),
       timeout(NETWORK_TIMEOUT_MS),
     ]);
 
-    if (response && response.ok) {
+    if (isPublic && isCacheableResponse(response)) {
       const copy = response.clone();
       caches
         .open(PAGES_CACHE)
@@ -98,7 +142,7 @@ async function handleNavigation(request) {
     }
     return response;
   } catch {
-    const cached = await caches.match(request);
+    const cached = isPublic ? await caches.match(request) : undefined;
     if (cached) return cached;
 
     const offline = await caches.match(OFFLINE_URL);

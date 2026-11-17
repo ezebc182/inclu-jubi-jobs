@@ -24,7 +24,6 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
     start_url: "/empleos?utm_source=pwa",
     scope: "/",
     display: "standalone",
-    orientation: "portrait",
     theme_color: portal.themeColor,
     background_color: portal.backgroundColor,
     lang: "es-AR",

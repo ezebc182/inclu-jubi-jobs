@@ -4,7 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { authClient } from "@/lib/auth-client";
+import { authClient, clearSessionCaches } from "@/lib/auth-client";
 import { LineIcon } from "@/components/ui/LineIcon";
 
 export interface UserMenuUser {
@@ -54,6 +54,7 @@ export function UserMenu({ user }: { user: UserMenuUser }) {
   const handleSignOut = async () => {
     setSigningOut(true);
     await authClient.signOut();
+    await clearSessionCaches();
     router.push("/");
     router.refresh();
   };
