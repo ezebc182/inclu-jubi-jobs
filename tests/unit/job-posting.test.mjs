@@ -33,7 +33,9 @@ test("presencial y sin vencimiento no inventa campos", () => {
 });
 
 test("el JSON no puede cerrar el <script>", () => {
-  const out = serializeJsonLd({ title: "</script><img src=x onerror=alert(1)>" });
+  const out = serializeJsonLd({
+    title: "</script><img src=x onerror=alert(1)>",
+  });
   assert.equal(out.includes("<"), false);
   assert.deepEqual(JSON.parse(out), {
     title: "</script><img src=x onerror=alert(1)>",

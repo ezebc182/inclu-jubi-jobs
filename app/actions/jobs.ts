@@ -146,9 +146,9 @@ export async function createJob(formData: FormData) {
 
   // Solo valores de la lista: llega por la red y no queremos avisos a 10 años.
   const requestedDays = Number(formData.get("durationDays"));
-  const durationDays = (JOB_DURATION_DAYS_OPTIONS as readonly number[]).includes(
-    requestedDays
-  )
+  const durationDays = (
+    JOB_DURATION_DAYS_OPTIONS as readonly number[]
+  ).includes(requestedDays)
     ? requestedDays
     : JOB_DURATION_DAYS_DEFAULT;
   const expiresAt = new Date(Date.now() + durationDays * 24 * 60 * 60 * 1000);

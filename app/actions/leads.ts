@@ -6,11 +6,7 @@ import type { LeadKind, Portal } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { recordAudit, requireAdminActor } from "@/lib/admin";
 import { checkRateLimit } from "@/lib/rate-limit";
-import {
-  getCurrentPortal,
-  publicJobFilter,
-  type PortalId,
-} from "@/lib/portal";
+import { getCurrentPortal, publicJobFilter, type PortalId } from "@/lib/portal";
 import {
   sendLeadAnnouncementToCandidate,
   sendLeadAnnouncementToCompany,
