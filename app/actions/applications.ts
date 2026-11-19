@@ -7,6 +7,11 @@ import { revalidatePath } from "next/cache";
 import { getCurrentPortal, publicJobFilter } from "@/lib/portal";
 import { threeQuestionsSchema } from "@/lib/validations";
 import {
+  callPreferenceSchema,
+  statusesBefore,
+  type CallSlot,
+} from "@/lib/postulacion";
+import {
   sendApplicationConfirmation,
   sendContactRequest,
   sendNewApplicationNotification,
@@ -20,23 +25,50 @@ export async function submitApplication(
     wantToDo: string;
   }
 ) {
+  // Validamos en el servidor: la validación del cliente es una cortesía
+  // de UX, no un control de seguridad.
+  const parsed = threeQuestionsSchema.safeParse(answers);
+  if (!parsed.success) {
+    return {
+      success: false,
+      error: parsed.error.issues[0]?.message ?? "Revisá tus respuestas",
+    };
+  }
+  return createApplication(jobId, { answers: parsed.data });
+}
+
+/**
+ * "Prefiero que me llamen": postularse dejando solo teléfono y franja. Escribir
+ * en el celular es la barrera más grande; las tres respuestas salen del
+ * perfil, que se completó en el onboarding.
+ */
+export async function applyByCall(
+  jobId: string,
+  input: { phone: string; slot: string }
+) {
+  const parsed = callPreferenceSchema.safeParse(input);
+  if (!parsed.success) {
+    return {
+      success: false,
+      error: parsed.error.issues[0]?.message ?? "Revisá los datos",
+    };
+  }
+  return createApplication(jobId, { call: parsed.data });
+}
+
+async function createApplication(
+  jobId: string,
+  input: {
+    answers?: { did: string; canDo: string; wantToDo: string };
+    call?: { phone: string; slot: CallSlot };
+  }
+) {
   try {
     const session = await auth.api.getSession({ headers: await headers() });
 
     if (!session) {
       return { success: false, error: "No autorizado" };
     }
-
-    // Validamos en el servidor: la validación del cliente es una cortesía
-    // de UX, no un control de seguridad.
-    const parsed = threeQuestionsSchema.safeParse(answers);
-    if (!parsed.success) {
-      return {
-        success: false,
-        error: parsed.error.issues[0]?.message ?? "Revisá tus respuestas",
-      };
-    }
-    const validated = parsed.data;
 
     // Verificar el rol directamente desde la base de datos
     const user = await prisma.user.findUnique({
@@ -47,6 +79,9 @@ export async function submitApplication(
         isActive: true,
         name: true,
         email: true,
+        did: true,
+        canDo: true,
+        wantToDo: true,
       },
     });
 
@@ -94,24 +129,30 @@ export async function submitApplication(
       return { success: false, error: "Ya te postulaste a este empleo" };
     }
 
+    const answers = input.answers ?? {
+      did: user.did ?? "",
+      canDo: user.canDo ?? "",
+      wantToDo: user.wantToDo ?? "",
+    };
+
     // Guardamos perfil y postulación en una transacción: no queremos un
     // perfil actualizado sin la postulación que lo motivó.
     await prisma.$transaction([
-      prisma.user.update({
-        where: { id: session.user.id },
-        data: {
-          did: validated.did,
-          canDo: validated.canDo,
-          wantToDo: validated.wantToDo,
-        },
-      }),
+      ...(input.answers
+        ? [
+            prisma.user.update({
+              where: { id: session.user.id },
+              data: input.answers,
+            }),
+          ]
+        : []),
       prisma.application.create({
         data: {
           jobId,
           userId: session.user.id,
-          did: validated.did,
-          canDo: validated.canDo,
-          wantToDo: validated.wantToDo,
+          ...answers,
+          callPhone: input.call?.phone,
+          callSlot: input.call?.slot,
           status: "SUBMITTED",
         },
       }),
@@ -214,25 +255,59 @@ export async function contactCandidate(applicationId: string) {
     throw new Error("No tenés permiso para contactar este candidato");
   }
 
-  // Actualizar el estado de la postulación
-  await prisma.application.update({
-    where: { id: applicationId },
-    data: { status: "CONTACTED" },
+  // El filtro por estado hace que nunca retroceda y que el mail salga una
+  // sola vez, aunque lleguen dos clics a la vez.
+  const { count } = await prisma.application.updateMany({
+    where: { id: applicationId, status: { in: statusesBefore("CONTACTED") } },
+    data: { status: "CONTACTED", contactedAt: new Date() },
   });
 
   // El candidato recibe los datos de contacto que la empresa declaró como
   // responsable en el onboarding, y puede responder el mail directo a la
   // empresa (reply-to). Se manda con la marca del portal del candidato.
-  await sendContactRequest({
-    portal: application.user.portal,
-    to: application.user.email,
-    candidateName: application.user.name,
-    jobTitle: application.job.title,
-    companyName: company.name,
-    companyEmail: company.owner.email,
-    companyPhone: company.contactPhone,
-  });
+  // sendContactRequest no lanza: si falla, loguea y la acción sigue.
+  if (count > 0) {
+    await sendContactRequest({
+      portal: application.user.portal,
+      to: application.user.email,
+      candidateName: application.user.name,
+      jobTitle: application.job.title,
+      companyName: company.name,
+      companyEmail: company.owner.email,
+      companyPhone: company.contactPhone,
+    });
+  }
 
   // Revalidar la página de empresa para reflejar los cambios
   revalidatePath("/empresa");
+}
+
+/**
+ * Marca como vistas las postulaciones que la empresa acaba de abrir. Solo la
+ * primera vez (el estado no retrocede ni se pisa la fecha) y solo las de
+ * avisos propios: la autorización va en el mismo `where`, así un id ajeno
+ * simplemente no matchea.
+ */
+export async function markApplicationsViewed(applicationIds: string[]) {
+  const session = await auth.api.getSession({ headers: await headers() });
+  if (!session || !Array.isArray(applicationIds)) return { count: 0 };
+
+  const ids = applicationIds
+    .filter((id) => typeof id === "string")
+    .slice(0, 200);
+  if (ids.length === 0) return { count: 0 };
+
+  const { count } = await prisma.application.updateMany({
+    where: {
+      id: { in: ids },
+      status: { in: statusesBefore("REVIEWED") },
+      job: {
+        company: { ownerId: session.user.id, owner: { role: "COMPANY" } },
+      },
+    },
+    data: { status: "REVIEWED", reviewedAt: new Date() },
+  });
+
+  if (count > 0) revalidatePath("/postulaciones");
+  return { count };
 }

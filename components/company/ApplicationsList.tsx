@@ -1,8 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { APP_STATUS_LABELS, formatDate } from "@/lib/constants";
-import { contactCandidate } from "@/app/actions/applications";
+import { CALL_SLOT_LABELS, type CallSlot } from "@/lib/postulacion";
+import {
+  contactCandidate,
+  markApplicationsViewed,
+} from "@/app/actions/applications";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { LineIcon } from "@/components/ui/LineIcon";
@@ -15,6 +19,8 @@ interface Application {
   wantToDo: string;
   status: "SUBMITTED" | "REVIEWED" | "CONTACTED" | "REJECTED";
   createdAt: Date | string;
+  callPhone: string | null;
+  callSlot: CallSlot | null;
   user: {
     name: string | null;
     email: string;
@@ -39,6 +45,22 @@ export function ApplicationsList({
   const router = useRouter();
   const [contacting, setContacting] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
+
+  // Esta lista se monta cuando la empresa abre la pestaña de postulaciones:
+  // ahí las ve. Pasan a "vista" una sola vez; el servidor ignora las que ya
+  // avanzaron y las de avisos ajenos.
+  const unseen = applications
+    .filter((a) => a.status === "SUBMITTED")
+    .map((a) => a.id)
+    .join(",");
+  useEffect(() => {
+    if (!unseen) return;
+    markApplicationsViewed(unseen.split(","))
+      .then(({ count }) => count > 0 && router.refresh())
+      .catch((error) =>
+        console.error("No se pudieron marcar como vistas:", error)
+      );
+  }, [unseen, router]);
 
   const handleContact = async (applicationId: string) => {
     setContacting(applicationId);
@@ -144,6 +166,26 @@ export function ApplicationsList({
             </div>
           )}
 
+          {app.callPhone && (
+            <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-lg border-2 border-primary-300 bg-primary-50 p-4 dark:border-primary-700 dark:bg-primary-950">
+              <p className="text-lg font-semibold text-ink">
+                Prefiere que lo/la llamen:
+              </p>
+              <a
+                href={`tel:${app.callPhone}`}
+                className="press inline-flex min-h-[48px] items-center gap-2 rounded-md bg-primary-600 px-4 text-lg font-bold text-white hover:bg-primary-700"
+              >
+                <LineIcon name="phone" size={20} />
+                {app.callPhone}
+              </a>
+              {app.callSlot && (
+                <span className="text-lg text-ink">
+                  · {CALL_SLOT_LABELS[app.callSlot]}
+                </span>
+              )}
+            </div>
+          )}
+
           {/* aria-expanded y aria-controls: el boton controla una region que
               aparece y desaparece, y un lector de pantalla necesita saberlo.
               Antes eran flechas de texto (▼ ▶) sin ninguna semantica. */}
@@ -173,25 +215,19 @@ export function ApplicationsList({
                 <p className="mb-2 text-base font-bold text-ink">
                   ¿Qué hiciste?
                 </p>
-                <p className="text-base text-ink-soft">
-                  {app.did}
-                </p>
+                <p className="text-base text-ink-soft">{app.did}</p>
               </div>
               <div>
                 <p className="mb-2 text-base font-bold text-ink">
                   ¿Qué sabés hacer?
                 </p>
-                <p className="text-base text-ink-soft">
-                  {app.canDo}
-                </p>
+                <p className="text-base text-ink-soft">{app.canDo}</p>
               </div>
               <div>
                 <p className="mb-2 text-base font-bold text-ink">
                   ¿Qué te gustaría hacer?
                 </p>
-                <p className="text-base text-ink-soft">
-                  {app.wantToDo}
-                </p>
+                <p className="text-base text-ink-soft">{app.wantToDo}</p>
               </div>
             </div>
           )}
@@ -240,11 +276,11 @@ export function ApplicationsList({
               <button
                 onClick={() => handleContact(app.id)}
                 disabled={contacting === app.id}
-                className="rounded-lg bg-primary-600 px-4 py-2 text-base font-semibold text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 disabled:opacity-50"
+                className="min-h-[48px] rounded-lg bg-primary-600 px-4 py-2 text-base font-semibold text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 disabled:opacity-50"
               >
                 {contacting === app.id
                   ? "Enviando..."
-                  : "Solicitar contacto (enviar email)"}
+                  : "Marcar como contactado y avisarle por email"}
               </button>
             )}
           </div>

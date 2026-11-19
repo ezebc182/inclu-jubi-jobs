@@ -55,7 +55,7 @@ export const DISABILITY_TYPES = [
 
 export const APP_STATUS_LABELS = {
   SUBMITTED: "Enviada",
-  REVIEWED: "Revisada",
+  REVIEWED: "Vista",
   CONTACTED: "Contactado/a",
   REJECTED: "Rechazada",
 } as const;
