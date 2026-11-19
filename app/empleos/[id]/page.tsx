@@ -12,7 +12,8 @@ import {
 } from "@/lib/portal";
 import { ThreeQuestionsForm } from "@/components/forms/ThreeQuestionsForm";
 import { LineIcon } from "@/components/ui/LineIcon";
-import { applyToJob } from "@/app/actions/applications";
+import { applyByCall, applyToJob } from "@/app/actions/applications";
+import { CallMeForm } from "@/components/applications/CallMeForm";
 import { jobPostingLd, serializeJsonLd } from "@/lib/job-posting";
 
 const MODALITY_LABELS: Record<string, string> = {
@@ -70,7 +71,10 @@ export default async function EmpleoDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const job = await findVisibleJob(id);
+  const [job, portal] = await Promise.all([
+    findVisibleJob(id),
+    getCurrentPortal(),
+  ]);
 
   if (!job) notFound();
 
@@ -256,9 +260,20 @@ export default async function EmpleoDetailPage({
 
           {isCandidate && !hasApplied && (
             <section className="rounded-lg border-2 border-primary-300 bg-primary-50 p-8 transition-colors dark:border-primary-700 dark:bg-primary-950">
-              <h2 className="mb-6 text-2xl md:text-3xl">
-                Postularme (3 preguntas)
-              </h2>
+              {/* Dos formas de postularse, las dos a la vista. La llamada va
+                  primero: escribir en el celular es la barrera más grande. */}
+              <h2 className="mb-6 text-2xl md:text-3xl">Postularme</h2>
+              <h3 className="mb-4 text-xl font-bold md:text-2xl">
+                Prefiero que me llamen
+              </h3>
+              <CallMeForm
+                portal={portal}
+                initialPhone={user?.phoneNumber ?? ""}
+                action={applyByCall.bind(null, id)}
+              />
+              <h3 className="mb-4 mt-10 border-t border-rule pt-8 text-xl font-bold md:text-2xl">
+                O responder las 3 preguntas
+              </h3>
               <ThreeQuestionsForm
                 initialValues={{
                   did: user?.did || "",
