@@ -42,9 +42,7 @@ export default async function PostulacionesPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
       <header className="mb-8">
-        <h1 className="mb-4 text-4xl font-bold text-ink">
-          Mis postulaciones
-        </h1>
+        <h1 className="mb-4 text-4xl font-bold text-ink">Mis postulaciones</h1>
         <p className="text-xl text-ink-soft">
           {applications.length}{" "}
           {applications.length === 1
@@ -70,6 +68,8 @@ export default async function PostulacionesPage() {
               companyName={app.job.company.name}
               status={app.status}
               createdAt={app.createdAt}
+              reviewedAt={app.reviewedAt}
+              contactedAt={app.contactedAt}
             />
           ))}
         </div>
@@ -94,8 +94,8 @@ export default async function PostulacionesPage() {
               👀
             </span>
             <div>
-              <strong className="dark:text-ink-soft">Revisada:</strong> La
-              empresa vio tu postulación y está evaluando tu perfil.
+              <strong className="dark:text-ink-soft">Vista:</strong> La empresa
+              vio tu postulación y está evaluando tu perfil.
             </div>
           </li>
           <li className="flex items-start gap-3">

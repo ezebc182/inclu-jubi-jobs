@@ -21,6 +21,7 @@ type IconName =
   | "mail" // contacto por correo
   | "chevron-down" // acordeón abierto
   | "chevron-right" // acordeón cerrado
+  | "eye" // postulación vista
   | "check";
 
 const PATHS: Record<IconName, React.ReactNode> = {
@@ -109,6 +110,12 @@ const PATHS: Record<IconName, React.ReactNode> = {
   "chevron-down": <path d="M6 9.5l6 6 6-6" />,
   "chevron-right": <path d="M9.5 6l6 6-6 6" />,
   check: <path d="M4.5 12.5l4.5 4.5L19.5 6.5" />,
+  eye: (
+    <>
+      <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" />
+      <circle cx="12" cy="12" r="3" />
+    </>
+  ),
 };
 
 export function LineIcon({
