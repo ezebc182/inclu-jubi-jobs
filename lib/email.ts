@@ -264,19 +264,26 @@ export async function sendContactRequest(input: {
     .filter(Boolean)
     .join("<br>");
 
+  // Usted en JubiJobs, vos en IncluJobs (ver PRODUCT.md).
+  const usted = input.portal === "JUBI";
+
   await send({
     portal: input.portal,
     to: input.to,
     // Responder este mail le escribe a la empresa, no a nosotros.
     replyTo: input.companyEmail,
-    subject: `${input.companyName} quiere contactarte por ${input.jobTitle}`,
+    subject: `${input.companyName} quiere hablar sobre ${usted ? "su" : "tu"} postulación a ${input.jobTitle}`,
     html: layout({
       portal: input.portal,
       heading: "Buenas noticias",
       paragraphs: [
         `${name},`,
-        `<strong>${companyName}</strong> leyó tu postulación para <strong>${jobTitle}</strong> y quiere hablar con vos.`,
-        `Podés responder este mismo correo o comunicarte directamente:`,
+        usted
+          ? `<strong>${companyName}</strong> leyó su postulación para <strong>${jobTitle}</strong> y quiere hablar con usted.`
+          : `<strong>${companyName}</strong> leyó tu postulación para <strong>${jobTitle}</strong> y quiere hablar con vos.`,
+        usted
+          ? `Puede responder este mismo correo o comunicarse directamente:`
+          : `Podés responder este mismo correo o comunicarte directamente:`,
       ],
       highlight: contact,
       cta: {
