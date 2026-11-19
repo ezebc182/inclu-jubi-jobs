@@ -265,6 +265,17 @@ model Application {
   status AppStatus @default(SUBMITTED) // SUBMITTED, REVIEWED, CONTACTED, REJECTED
   notes  String?
 
+  /// Primera vez que la empresa dueña del aviso abrió la postulación.
+  reviewedAt  DateTime?
+  /// Cuándo la empresa la marcó como contactada. El estado nunca retrocede,
+  /// ver lib/postulacion.ts.
+  contactedAt DateTime?
+
+  /// "Prefiero que me llamen": teléfono y franja que dejó al postularse.
+  /// Dato personal: sale en /api/cuenta/exportar y se borra con la cuenta.
+  callPhone String?
+  callSlot  CallSlot?
+
   @@unique([jobId, userId]) // Una postulación por usuario por empleo
   @@index([jobId, createdAt(sort: Desc)])
   @@index([userId])
@@ -387,6 +398,12 @@ enum JobStatus {
   PUBLISHED
   PAUSED
   CLOSED
+}
+
+enum CallSlot {
+  MORNING
+  AFTERNOON
+  ANYTIME
 }
 
 enum AppStatus {
