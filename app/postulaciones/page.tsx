@@ -4,10 +4,37 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { ApplicationCard } from "@/components/applications/ApplicationCard";
 import { EmptyState } from "@/components/ui/EmptyState";
+import { getCurrentPortal } from "@/lib/portal";
+
+// Usted en JubiJobs, vos en IncluJobs (ver PRODUCT.md).
+const TEXTOS = {
+  JUBI: {
+    vacioTitulo: "Todavía no tiene postulaciones",
+    vacioTexto:
+      "Busque empleos que le interesen y postúlese respondiendo 3 preguntas simples.",
+    enviada: "Su postulación fue recibida y la empresa la va a revisar.",
+    vista: "La empresa vio su postulación y está evaluando su perfil.",
+    contactado:
+      "¡La empresa se interesó en su perfil! Debería recibir un email con sus datos de contacto.",
+    rechazada:
+      "La empresa decidió no continuar con su postulación esta vez. Siga buscando otras oportunidades.",
+  },
+  INCLU: {
+    vacioTitulo: "No tenés postulaciones todavía",
+    vacioTexto:
+      "Buscá empleos que te interesen y postulate respondiendo 3 preguntas simples.",
+    enviada: "Tu postulación fue recibida y la empresa la va a revisar.",
+    vista: "La empresa vio tu postulación y está evaluando tu perfil.",
+    contactado:
+      "¡La empresa se interesó en tu perfil! Deberías recibir un email con sus datos de contacto.",
+    rechazada:
+      "La empresa decidió no continuar con tu postulación esta vez. Seguí buscando otras oportunidades.",
+  },
+} as const;
 
 export const metadata = {
   title: "Mis Postulaciones - JubiJobs",
-  description: "Seguimiento de tus postulaciones a empleos",
+  description: "Seguimiento de las postulaciones a empleos",
 };
 
 export default async function PostulacionesPage() {
@@ -38,6 +65,7 @@ export default async function PostulacionesPage() {
     },
     orderBy: { createdAt: "desc" },
   });
+  const t = TEXTOS[await getCurrentPortal()];
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
@@ -53,8 +81,8 @@ export default async function PostulacionesPage() {
 
       {applications.length === 0 ? (
         <EmptyState
-          title="No tenés postulaciones todavía"
-          description="Buscá empleos que te interesen y postulate respondiendo 3 preguntas simples."
+          title={t.vacioTitulo}
+          description={t.vacioTexto}
           actionLabel="Buscar empleos"
           actionHref="/empleos"
         />
@@ -85,8 +113,8 @@ export default async function PostulacionesPage() {
               📤
             </span>
             <div>
-              <strong className="dark:text-ink-soft">Enviada:</strong> Tu
-              postulación fue recibida y la empresa la va a revisar.
+              <strong className="dark:text-ink-soft">Enviada:</strong>{" "}
+              {t.enviada}
             </div>
           </li>
           <li className="flex items-start gap-3">
@@ -94,8 +122,7 @@ export default async function PostulacionesPage() {
               👀
             </span>
             <div>
-              <strong className="dark:text-ink-soft">Vista:</strong> La empresa
-              vio tu postulación y está evaluando tu perfil.
+              <strong className="dark:text-ink-soft">Vista:</strong> {t.vista}
             </div>
           </li>
           <li className="flex items-start gap-3">
@@ -103,9 +130,8 @@ export default async function PostulacionesPage() {
               ✅
             </span>
             <div>
-              <strong className="dark:text-ink-soft">Contactado/a:</strong> ¡La
-              empresa se interesó en tu perfil! Deberías recibir un email con
-              sus datos de contacto.
+              <strong className="dark:text-ink-soft">Contactado/a:</strong>{" "}
+              {t.contactado}
             </div>
           </li>
           <li className="flex items-start gap-3">
@@ -113,9 +139,8 @@ export default async function PostulacionesPage() {
               ❌
             </span>
             <div>
-              <strong className="dark:text-ink-soft">Rechazada:</strong> La
-              empresa decidió no continuar con tu postulación esta vez. Seguí
-              buscando otras oportunidades.
+              <strong className="dark:text-ink-soft">Rechazada:</strong>{" "}
+              {t.rechazada}
             </div>
           </li>
         </ul>

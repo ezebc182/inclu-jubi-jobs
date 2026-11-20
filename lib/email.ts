@@ -217,18 +217,23 @@ export async function sendApplicationConfirmation(input: {
   const name = escape(input.candidateName?.trim() || "Hola");
   const jobTitle = escape(input.jobTitle);
   const companyName = escape(input.companyName);
+  // Usted en JubiJobs, vos en IncluJobs (ver PRODUCT.md).
+  const usted = input.portal === "JUBI";
+  const su = usted ? "Su" : "Tu";
 
   await send({
     portal: input.portal,
     to: input.to,
-    subject: `Tu postulación a ${input.jobTitle} quedó enviada`,
+    subject: `${su} postulación a ${input.jobTitle} quedó enviada`,
     html: layout({
       portal: input.portal,
-      heading: "Tu postulación quedó enviada",
+      heading: `${su} postulación quedó enviada`,
       paragraphs: [
         `${name},`,
-        `Tu postulación para <strong>${jobTitle}</strong> en <strong>${companyName}</strong> fue recibida.`,
-        `La empresa va a leer tus tres respuestas. Si le interesa tu perfil, te va a escribir o llamar con los datos que dejaste en tu cuenta. Te avisamos por acá cuando eso pase.`,
+        `${su} postulación para <strong>${jobTitle}</strong> en <strong>${companyName}</strong> fue recibida.`,
+        usted
+          ? `La empresa va a revisar su postulación. Si le interesa su perfil, lo va a contactar por email o por teléfono con los datos que dejó en su cuenta. Le avisamos por acá cuando eso pase.`
+          : `La empresa va a revisar tu postulación. Si le interesa tu perfil, te va a escribir o llamar con los datos que dejaste en tu cuenta. Te avisamos por acá cuando eso pase.`,
       ],
       cta: {
         label: "Ver mis postulaciones",
