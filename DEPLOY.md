@@ -20,12 +20,18 @@ git push -u origin feat/multi-portal-pwa-a11y
 
 ## 2. Migraciones
 
-**Se aplican solas en cada deploy.** El `build` corre `prisma migrate deploy`
-antes de compilar, así que no hay paso manual.
+**Se aplican solas en cada deploy de producción.** El `build` corre
+`prisma migrate deploy` antes de compilar, pero solo si `VERCEL_ENV` es
+`production`, así que no hay paso manual.
 
 ```
-build: prisma generate && prisma migrate deploy && next build
+build: prisma generate && if [ "$VERCEL_ENV" = production ]; then prisma migrate deploy; fi && next build
 ```
+
+Los previews no migran: comparten `DATABASE_URL` con producción, y un PR
+abierto (o abandonado) no debe cambiar la base real. Contra: el preview de un
+PR que agrega columnas puede fallar en runtime hasta que se mergee. La salida
+completa es darle a Preview su propia base (branch de Neon).
 
 Antes solo hacía `prisma generate`, que genera el cliente TypeScript pero no
 toca la base. El resultado: el código se desplegaba esperando columnas que la
